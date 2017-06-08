@@ -21,7 +21,15 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 #define ACCESSTOKEN @"2.00NofgBD0L1k4pc584f79cc48SKGdD"
 
 //请求公共微博的网络接口
-#define REQUESTPUBLICURL @"https://api.weibo.com/2/statuses/public_timeline.json"
+#if 1
+
+#define BaseUrl @"http://115.29.5.227/hiwatchclient/"
+
+#else
+
+#define BaseUrl @"http://101.201.80.234/watchclient/"
+
+#endif
 
 #define SOURCE @"source"
 #define TOKEN @"access_token"
@@ -35,5 +43,12 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 #define UID @"id"
 #define HEADIMAGEURL @"profile_image_url"
 #define USERNAME @"screen_name"
+
+//屏幕的宽度，屏幕的高度
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
+
+#define kTabBarViewHeight 49
+#define kStatusNavigationHeight 64
 
 #endif

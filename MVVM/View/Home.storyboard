@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2xg-7U-qH1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="jSH-tp-k85">
+            <objects>
+                <viewController id="mUf-b0-o4z" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4kA-9p-Xyl"/>
+                        <viewControllerLayoutGuide type="bottom" id="sUD-N6-BNJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxC-dy-gPv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_bg" translatesAutoresizingMaskIntoConstraints="NO" id="GGj-Qb-72Q">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="ev8-3a-TCy">
+                                <rect key="frame" x="12" y="70" width="351" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="aFR-hS-wMX"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GGj-Qb-72Q" secondAttribute="trailing" id="Dv0-v0-Gph"/>
+                            <constraint firstAttribute="trailing" secondItem="ev8-3a-TCy" secondAttribute="trailing" constant="12" id="KZw-5Z-saR"/>
+                            <constraint firstItem="sUD-N6-BNJ" firstAttribute="top" secondItem="GGj-Qb-72Q" secondAttribute="bottom" id="SBU-dl-COR"/>
+                            <constraint firstItem="ev8-3a-TCy" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" constant="6" id="XJW-RA-bkr"/>
+                            <constraint firstItem="ev8-3a-TCy" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" constant="12" id="eI3-vc-fW7"/>
+                            <constraint firstItem="GGj-Qb-72Q" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" id="hjq-9s-jdp"/>
+                            <constraint firstItem="GGj-Qb-72Q" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" id="zcX-rG-WdM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VQJ-ka-hAu"/>
+                    <connections>
+                        <outlet property="bannerImg" destination="ev8-3a-TCy" id="f6q-9U-iJr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAp-Ne-gar" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1280.8" y="187.55622188905548"/>
+        </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="3QD-c4-Fbf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2xg-7U-qH1" customClass="BaseNavigationController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k64-yw-xgD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mUf-b0-o4z" kind="relationship" relationship="rootViewController" id="TMs-Ex-4b8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mFS-UU-0cf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="567" y="170"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg1" width="674" height="209"/>
+        <image name="register_bg" width="360" height="640"/>
+    </resources>
+</document>

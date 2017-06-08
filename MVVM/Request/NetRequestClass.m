@@ -57,9 +57,10 @@
               WithReturnValeuBlock:(ReturnValueBlock) block
                   WithFailureBlock:(FailureBlock) failureBlock
 {
+    NSString *requestURL = [BaseUrl stringByAppendingString:requestURLString];
     NSMutableDictionary *allParameter = [[NSMutableDictionary alloc] initWithDictionary:parameter];
     [allParameter setValue:ACCESSTOKEN forKey:TOKEN];
-    [[AFHTTPSessionManager manager] GET:requestURLString parameters:allParameter progress:^(NSProgress * _Nonnull downloadProgress) {
+    [[AFHTTPSessionManager manager] GET:requestURL parameters:allParameter progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         block(responseObject);
@@ -82,8 +83,8 @@
                WithReturnValeuBlock:(ReturnValueBlock) block
                    WithFailureBlock:(FailureBlock) failureBlock
 {
-    
-    [[AFHTTPSessionManager manager] POST:requestURLString parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    NSString *requestURL = [BaseUrl stringByAppendingString:requestURLString];
+    [[AFHTTPSessionManager manager] POST:requestURL parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     } progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         block(responseObject);
