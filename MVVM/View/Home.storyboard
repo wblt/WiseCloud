@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2xg-7U-qH1">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2xg-7U-qH1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,27 +24,29 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_bg" translatesAutoresizingMaskIntoConstraints="NO" id="GGj-Qb-72Q">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1" translatesAutoresizingMaskIntoConstraints="NO" id="ev8-3a-TCy">
-                                <rect key="frame" x="12" y="70" width="351" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-r0-KdN" customClass="ImagePlayerView">
+                                <rect key="frame" x="10" y="74" width="355" height="140"/>
+                                <color key="backgroundColor" red="0.84965217110000002" green="0.84965217110000002" blue="0.84965217110000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="aFR-hS-wMX"/>
+                                    <constraint firstAttribute="height" constant="140" id="ahj-vJ-8Ok"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="lGL-Cw-gnM"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GGj-Qb-72Q" secondAttribute="trailing" id="Dv0-v0-Gph"/>
-                            <constraint firstAttribute="trailing" secondItem="ev8-3a-TCy" secondAttribute="trailing" constant="12" id="KZw-5Z-saR"/>
+                            <constraint firstItem="sa4-r0-KdN" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" constant="10" id="Q7x-Hz-d3G"/>
                             <constraint firstItem="sUD-N6-BNJ" firstAttribute="top" secondItem="GGj-Qb-72Q" secondAttribute="bottom" id="SBU-dl-COR"/>
-                            <constraint firstItem="ev8-3a-TCy" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" constant="6" id="XJW-RA-bkr"/>
-                            <constraint firstItem="ev8-3a-TCy" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" constant="12" id="eI3-vc-fW7"/>
+                            <constraint firstItem="sa4-r0-KdN" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" constant="10" id="cr3-gh-CeT"/>
                             <constraint firstItem="GGj-Qb-72Q" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" id="hjq-9s-jdp"/>
+                            <constraint firstAttribute="trailing" secondItem="sa4-r0-KdN" secondAttribute="trailing" constant="10" id="ywQ-Ye-p0f"/>
                             <constraint firstItem="GGj-Qb-72Q" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" id="zcX-rG-WdM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VQJ-ka-hAu"/>
                     <connections>
-                        <outlet property="bannerImg" destination="ev8-3a-TCy" id="f6q-9U-iJr"/>
+                        <outlet property="imgPlayerView" destination="sa4-r0-KdN" id="GCK-ab-IaX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAp-Ne-gar" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,7 +73,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg1" width="674" height="209"/>
         <image name="register_bg" width="360" height="640"/>
     </resources>
 </document>

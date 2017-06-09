@@ -5,4 +5,5 @@ target 'MVVM' do
   pod 'AFNetworking', '~> 3.1.0'
   pod 'SDWebImage', '~> 4.0.0'
   pod 'SVProgressHUD', '~> 2.1.2'
+  pod 'ImagePlayerView'
 end
