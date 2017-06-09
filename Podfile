@@ -6,4 +6,6 @@ target 'MVVM' do
   pod 'SDWebImage', '~> 4.0.0'
   pod 'SVProgressHUD', '~> 2.1.2'
   pod 'ImagePlayerView'
+  pod 'Masonry'
+  pod 'MJRefresh'
 end

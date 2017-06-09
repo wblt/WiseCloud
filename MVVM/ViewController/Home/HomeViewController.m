@@ -26,6 +26,8 @@
     
     // 初始化 师徒
     [self initBannerView];
+    
+    
 }
 
 - (void)initBannerView {
