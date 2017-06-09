@@ -10,12 +10,12 @@
 
 @interface LoginViewModel : BaseViewModel
 
-- (void)fetchLoginUserInformation;
-
-
-/**
- 跳转
- */
-//- (void) weiboDetailWithPublicModel:(PublicModel *) publicModel
-                 WithViewController:(UIViewController *)superController;
+//- (void)fetchLoginUserInformation;
+//
+//
+///**
+// 跳转
+// */
+////- (void) weiboDetailWithPublicModel:(PublicModel *) publicModel
+//                 WithViewController:(UIViewController *)superController;
 @end
