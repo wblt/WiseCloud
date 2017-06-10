@@ -46,6 +46,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"]];
     [SVProgressHUD showWithStatus:@"加载中..."];
     [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+        [SVProgressHUD dismiss];
         NSLog(@"%@",data);
         NSArray *dataArray = (NSArray *)data;
         
@@ -74,6 +75,7 @@
         [cuTableView reloadData];
         
     } failureBlock:^(NSError *error) {
+        [SVProgressHUD dismiss];
         NSLog(@"%@",error);
     }];
     
