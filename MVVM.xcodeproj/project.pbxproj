@@ -704,7 +704,7 @@
 				TargetAttributes = {
 					366A1B631EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 59Q2E3377P;
+						DevelopmentTeam = 3VHRG6J3L4;
 						ProvisioningStyle = Automatic;
 					};
 					366A1B7C1EE7DE150090FB81 = {
@@ -1009,7 +1009,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 59Q2E3377P;
+				DEVELOPMENT_TEAM = 3VHRG6J3L4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1027,7 +1027,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 59Q2E3377P;
+				DEVELOPMENT_TEAM = 3VHRG6J3L4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
