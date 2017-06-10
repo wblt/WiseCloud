@@ -14,6 +14,8 @@
 
 #import "AddDeviceController.h"
 
+#import "BraceletSearchController.h"
+
 @interface HomeViewController ()<ImagePlayerViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CXXPhotoCellDelegate>
 
 @property (weak, nonatomic) IBOutlet ImagePlayerView *imgPlayerView;
@@ -162,7 +164,9 @@
     }
     else {
         //进入到一个新的界面
-        
+        BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
+        BraceletVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:BraceletVC animated:YES];
     }
 
     

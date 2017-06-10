@@ -17,6 +17,7 @@
 		367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB2661EEB91600051CA37 /* UIView_extra.m */; };
 		367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */; };
 		367FB2701EEB99280051CA37 /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26F1EEB99280051CA37 /* AddDeviceController.m */; };
+		36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */; };
 		40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B541EE92D29008F653D /* BaseViewModel.m */; };
 		40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B5E1EE92D7F008F653D /* BaseNavigationController.m */; };
 		40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B601EE92D7F008F653D /* BaseViewController.m */; };
@@ -116,6 +117,8 @@
 		367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticePhotoSelectCell.m; sourceTree = "<group>"; };
 		367FB26E1EEB99280051CA37 /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
 		367FB26F1EEB99280051CA37 /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
+		36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraceletSearchController.h; sourceTree = "<group>"; };
+		36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BraceletSearchController.m; sourceTree = "<group>"; };
 		40C32B531EE92D29008F653D /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		40C32B541EE92D29008F653D /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		40C32B5D1EE92D7F008F653D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 				40C32BDF1EE93978008F653D /* HomeViewController.m */,
 				367FB26E1EEB99280051CA37 /* AddDeviceController.h */,
 				367FB26F1EEB99280051CA37 /* AddDeviceController.m */,
+				36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */,
+				36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 				40C32BD51EE9375D008F653D /* UIView+MJExtension.m in Sources */,
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,
+				36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */,
 				40C32BC61EE9375D008F653D /* NSString+Extend.m in Sources */,
 				EECEDDEB1EEBE35500BF5955 /* MyDeviceCell.m in Sources */,
 			);
