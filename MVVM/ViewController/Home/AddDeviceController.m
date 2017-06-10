@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) NSMutableArray *dataArr;
+
 @end
 
 @implementation AddDeviceController {
@@ -22,6 +24,12 @@
     [super viewDidLoad];
     self.title = @"添加设备";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.dataArr addObject:@"手表"];
+    [self.dataArr addObject:@"手杖"];
+    [self.dataArr addObject:@"手环"];
+    [self.dataArr addObject:@"体脂"];
+    [self.dataArr addObject:@"水分子检测"];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -48,7 +56,7 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    cell.textLabel.text = @"拐杖";
+    cell.textLabel.text = self.dataArr[indexPath.row];
     return cell;
 }
 
@@ -56,6 +64,14 @@
     self.returnBlock(@"dfdf");
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (NSMutableArray *)dataArr{
+    if (_dataArr == nil) {
+        _dataArr = [[NSMutableArray alloc] init];
+    }
+    return _dataArr;
+}
+
 
 /*
 #pragma mark - Navigation

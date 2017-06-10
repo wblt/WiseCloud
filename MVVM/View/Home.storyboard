@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-r0-KdN" customClass="ImagePlayerView">
-                                <rect key="frame" x="10" y="74" width="355" height="140"/>
+                                <rect key="frame" x="4" y="74" width="367" height="140"/>
                                 <color key="backgroundColor" red="0.84965217110000002" green="0.84965217110000002" blue="0.84965217110000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="ahj-vJ-8Ok"/>
@@ -35,12 +35,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sa4-r0-KdN" secondAttribute="trailing" constant="4" id="7tI-Cz-SPH"/>
                             <constraint firstAttribute="trailing" secondItem="GGj-Qb-72Q" secondAttribute="trailing" id="Dv0-v0-Gph"/>
+                            <constraint firstItem="sa4-r0-KdN" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" constant="4" id="OBv-yh-bMx"/>
                             <constraint firstItem="sa4-r0-KdN" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" constant="10" id="Q7x-Hz-d3G"/>
                             <constraint firstItem="sUD-N6-BNJ" firstAttribute="top" secondItem="GGj-Qb-72Q" secondAttribute="bottom" id="SBU-dl-COR"/>
-                            <constraint firstItem="sa4-r0-KdN" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" constant="10" id="cr3-gh-CeT"/>
                             <constraint firstItem="GGj-Qb-72Q" firstAttribute="leading" secondItem="pxC-dy-gPv" secondAttribute="leading" id="hjq-9s-jdp"/>
-                            <constraint firstAttribute="trailing" secondItem="sa4-r0-KdN" secondAttribute="trailing" constant="10" id="ywQ-Ye-p0f"/>
                             <constraint firstItem="GGj-Qb-72Q" firstAttribute="top" secondItem="4kA-9p-Xyl" secondAttribute="bottom" id="zcX-rG-WdM"/>
                         </constraints>
                     </view>

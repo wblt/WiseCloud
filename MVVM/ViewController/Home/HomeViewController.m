@@ -149,14 +149,24 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
-    addDev.returnBlock = ^(NSString *returnValue) {
-        UIImage *img = [UIImage imageNamed:@"gndg10"];
-        [self.dataArr addObject:img];
-        [self reloadData];
-    };
-    addDev.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:addDev animated:YES];
+    
+    if (indexPath.row == self.dataArr.count) {
+        AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
+        addDev.returnBlock = ^(NSString *returnValue) {
+            UIImage *img = [UIImage imageNamed:@"gndg10"];
+            [self.dataArr addObject:img];
+            [self reloadData];
+        };
+        addDev.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:addDev animated:YES];
+    }
+    else {
+        //进入到一个新的界面
+        
+    }
+
+    
+    
 }
 
 - (NSMutableArray *)dataArr{
