@@ -42,6 +42,12 @@
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)getDeviceList {
     NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"]];
     [SVProgressHUD showWithStatus:@"加载中..."];

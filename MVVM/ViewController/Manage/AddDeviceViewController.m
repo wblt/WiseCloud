@@ -8,7 +8,7 @@
 
 #import "AddDeviceViewController.h"
 
-//#import "XDScaningViewController.h"
+#import "XDScaningViewController.h"
 
 @interface AddDeviceViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *deviceNum;
@@ -26,11 +26,11 @@
 }
 
 - (IBAction)scanDeviceAction:(id)sender {
-//    XDScaningViewController *scanningVC = [[XDScaningViewController alloc]init];
-//    scanningVC.backValue = ^(NSString *scannedStr){
-//        self.deviceNum.text = scannedStr;
-//    };
-//    [self.navigationController pushViewController:scanningVC animated:YES];
+    XDScaningViewController *scanningVC = [[XDScaningViewController alloc]init];
+    scanningVC.backValue = ^(NSString *scannedStr){
+        self.deviceNum.text = scannedStr;
+    };
+    [self.navigationController pushViewController:scanningVC animated:YES];
 }
 
 - (IBAction)confirmAction:(id)sender {

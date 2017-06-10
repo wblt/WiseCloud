@@ -71,6 +71,22 @@
 		EECEDDEB1EEBE35500BF5955 /* MyDeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDEA1EEBE35500BF5955 /* MyDeviceCell.m */; };
 		EECEDDEF1EEBE67C00BF5955 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDED1EEBE67C00BF5955 /* AddDeviceViewController.m */; };
 		EECEDDF01EEBE67C00BF5955 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDEE1EEBE67C00BF5955 /* AddDeviceViewController.xib */; };
+		EECEDE061EEBEAA400BF5955 /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDF71EEBEAA400BF5955 /* HistoryTableViewController.m */; };
+		EECEDE071EEBEAA400BF5955 /* album.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDF91EEBEAA400BF5955 /* album.png */; };
+		EECEDE081EEBEAA400BF5955 /* album@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDFA1EEBEAA400BF5955 /* album@2x.png */; };
+		EECEDE091EEBEAA400BF5955 /* flash_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDFB1EEBEAA400BF5955 /* flash_off@2x.png */; };
+		EECEDE0A1EEBEAA400BF5955 /* flash_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDFC1EEBEAA400BF5955 /* flash_on@2x.png */; };
+		EECEDE0B1EEBEAA400BF5955 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDFD1EEBEAA400BF5955 /* history.png */; };
+		EECEDE0C1EEBEAA400BF5955 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDFE1EEBEAA400BF5955 /* history@2x.png */; };
+		EECEDE0D1EEBEAA400BF5955 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDFF1EEBEAA400BF5955 /* line@2x.png */; };
+		EECEDE0E1EEBEAA400BF5955 /* myctrip_line_scan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDE001EEBEAA400BF5955 /* myctrip_line_scan@3x.png */; };
+		EECEDE0F1EEBEAA400BF5955 /* return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDE011EEBEAA400BF5955 /* return@2x.png */; };
+		EECEDE101EEBEAA400BF5955 /* scan.wav in Resources */ = {isa = PBXBuildFile; fileRef = EECEDE021EEBEAA400BF5955 /* scan.wav */; };
+		EECEDE111EEBEAA400BF5955 /* scan_net@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EECEDE031EEBEAA400BF5955 /* scan_net@2x.png */; };
+		EECEDE121EEBEAA400BF5955 /* XDScaningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDE051EEBEAA400BF5955 /* XDScaningViewController.m */; };
+		EECEDE151EEBEB4500BF5955 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDE141EEBEB4500BF5955 /* HelpViewController.m */; };
+		EECEDE191EEBEB9300BF5955 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDE171EEBEB9300BF5955 /* AboutViewController.m */; };
+		EECEDE1A1EEBEB9300BF5955 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECEDE181EEBEB9300BF5955 /* AboutViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +232,27 @@
 		EECEDDEC1EEBE67C00BF5955 /* AddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		EECEDDED1EEBE67C00BF5955 /* AddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
 		EECEDDEE1EEBE67C00BF5955 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
+		EECEDDF51EEBEAA400BF5955 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		EECEDDF61EEBEAA400BF5955 /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
+		EECEDDF71EEBEAA400BF5955 /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
+		EECEDDF91EEBEAA400BF5955 /* album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = album.png; sourceTree = "<group>"; };
+		EECEDDFA1EEBEAA400BF5955 /* album@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album@2x.png"; sourceTree = "<group>"; };
+		EECEDDFB1EEBEAA400BF5955 /* flash_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_off@2x.png"; sourceTree = "<group>"; };
+		EECEDDFC1EEBEAA400BF5955 /* flash_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_on@2x.png"; sourceTree = "<group>"; };
+		EECEDDFD1EEBEAA400BF5955 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
+		EECEDDFE1EEBEAA400BF5955 /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history@2x.png"; sourceTree = "<group>"; };
+		EECEDDFF1EEBEAA400BF5955 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
+		EECEDE001EEBEAA400BF5955 /* myctrip_line_scan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myctrip_line_scan@3x.png"; sourceTree = "<group>"; };
+		EECEDE011EEBEAA400BF5955 /* return@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return@2x.png"; sourceTree = "<group>"; };
+		EECEDE021EEBEAA400BF5955 /* scan.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scan.wav; sourceTree = "<group>"; };
+		EECEDE031EEBEAA400BF5955 /* scan_net@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_net@2x.png"; sourceTree = "<group>"; };
+		EECEDE041EEBEAA400BF5955 /* XDScaningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDScaningViewController.h; sourceTree = "<group>"; };
+		EECEDE051EEBEAA400BF5955 /* XDScaningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDScaningViewController.m; sourceTree = "<group>"; };
+		EECEDE131EEBEB4500BF5955 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		EECEDE141EEBEB4500BF5955 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		EECEDE161EEBEB9300BF5955 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		EECEDE171EEBEB9300BF5955 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		EECEDE181EEBEB9300BF5955 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +370,7 @@
 		366A1BA61EE7DE830090FB81 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				EECEDDF41EEBEAA400BF5955 /* SaoMiao */,
 				40C32B841EE9375D008F653D /* Category */,
 				366A1BA71EE7DE830090FB81 /* Tools.h */,
 				366A1BA81EE7DE830090FB81 /* Tools.m */,
@@ -576,6 +614,11 @@
 				EECEDDEC1EEBE67C00BF5955 /* AddDeviceViewController.h */,
 				EECEDDED1EEBE67C00BF5955 /* AddDeviceViewController.m */,
 				EECEDDEE1EEBE67C00BF5955 /* AddDeviceViewController.xib */,
+				EECEDE131EEBEB4500BF5955 /* HelpViewController.h */,
+				EECEDE141EEBEB4500BF5955 /* HelpViewController.m */,
+				EECEDE161EEBEB9300BF5955 /* AboutViewController.h */,
+				EECEDE171EEBEB9300BF5955 /* AboutViewController.m */,
+				EECEDE181EEBEB9300BF5955 /* AboutViewController.xib */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -637,6 +680,37 @@
 				EECEDDEA1EEBE35500BF5955 /* MyDeviceCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		EECEDDF41EEBEAA400BF5955 /* SaoMiao */ = {
+			isa = PBXGroup;
+			children = (
+				EECEDDF51EEBEAA400BF5955 /* Config.h */,
+				EECEDDF61EEBEAA400BF5955 /* HistoryTableViewController.h */,
+				EECEDDF71EEBEAA400BF5955 /* HistoryTableViewController.m */,
+				EECEDDF81EEBEAA400BF5955 /* resource */,
+				EECEDE041EEBEAA400BF5955 /* XDScaningViewController.h */,
+				EECEDE051EEBEAA400BF5955 /* XDScaningViewController.m */,
+			);
+			path = SaoMiao;
+			sourceTree = "<group>";
+		};
+		EECEDDF81EEBEAA400BF5955 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				EECEDDF91EEBEAA400BF5955 /* album.png */,
+				EECEDDFA1EEBEAA400BF5955 /* album@2x.png */,
+				EECEDDFB1EEBEAA400BF5955 /* flash_off@2x.png */,
+				EECEDDFC1EEBEAA400BF5955 /* flash_on@2x.png */,
+				EECEDDFD1EEBEAA400BF5955 /* history.png */,
+				EECEDDFE1EEBEAA400BF5955 /* history@2x.png */,
+				EECEDDFF1EEBEAA400BF5955 /* line@2x.png */,
+				EECEDE001EEBEAA400BF5955 /* myctrip_line_scan@3x.png */,
+				EECEDE011EEBEAA400BF5955 /* return@2x.png */,
+				EECEDE021EEBEAA400BF5955 /* scan.wav */,
+				EECEDE031EEBEAA400BF5955 /* scan_net@2x.png */,
+			);
+			path = resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -751,13 +825,25 @@
 			files = (
 				EECEDDF01EEBE67C00BF5955 /* AddDeviceViewController.xib in Resources */,
 				40C32BF61EE94B62008F653D /* Login.storyboard in Resources */,
+				EECEDE081EEBEAA400BF5955 /* album@2x.png in Resources */,
+				EECEDE0F1EEBEAA400BF5955 /* return@2x.png in Resources */,
 				40C32B6B1EE93334008F653D /* Discover.storyboard in Resources */,
+				EECEDE101EEBEAA400BF5955 /* scan.wav in Resources */,
 				40C32BDC1EE93822008F653D /* LaunchScreen.storyboard in Resources */,
 				366A1B741EE7DE150090FB81 /* Assets.xcassets in Resources */,
 				40C32BC51EE9375D008F653D /* NSDateTimeAgo.bundle in Resources */,
+				EECEDE0D1EEBEAA400BF5955 /* line@2x.png in Resources */,
+				EECEDE071EEBEAA400BF5955 /* album.png in Resources */,
+				EECEDE0E1EEBEAA400BF5955 /* myctrip_line_scan@3x.png in Resources */,
 				40C32B641EE93005008F653D /* Home.storyboard in Resources */,
+				EECEDE091EEBEAA400BF5955 /* flash_off@2x.png in Resources */,
+				EECEDE0A1EEBEAA400BF5955 /* flash_on@2x.png in Resources */,
 				40C32BDD1EE93822008F653D /* Main.storyboard in Resources */,
+				EECEDE0B1EEBEAA400BF5955 /* history.png in Resources */,
+				EECEDE0C1EEBEAA400BF5955 /* history@2x.png in Resources */,
+				EECEDE111EEBEAA400BF5955 /* scan_net@2x.png in Resources */,
 				EECEDDE11EEBDA2A00BF5955 /* PersonalViewController.xib in Resources */,
+				EECEDE1A1EEBEB9300BF5955 /* AboutViewController.xib in Resources */,
 				40C32B6D1EE93358008F653D /* Manage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,6 +935,7 @@
 				40C32BD61EE9375D008F653D /* UIView+UIViewController.m in Sources */,
 				40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */,
 				40C32BD81EE9375D008F653D /* UIWindow+Extension.m in Sources */,
+				EECEDE191EEBEB9300BF5955 /* AboutViewController.m in Sources */,
 				40C32BC71EE9375D008F653D /* NSString+MD5.m in Sources */,
 				40C32BCE1EE9375D008F653D /* UIImage+Color.m in Sources */,
 				40C32BD21EE9375D008F653D /* UIView+Additional.m in Sources */,
@@ -856,6 +943,7 @@
 				40C32BC41EE9375D008F653D /* NSDate+TimeAgo.m in Sources */,
 				EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */,
 				40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */,
+				EECEDE151EEBEB4500BF5955 /* HelpViewController.m in Sources */,
 				40C32BEA1EE93A12008F653D /* ManageViewController.m in Sources */,
 				40C32BD41EE9375D008F653D /* UIView+firstResponder.m in Sources */,
 				40C32BCC1EE9375D008F653D /* UIFont+customFont.m in Sources */,
@@ -870,12 +958,14 @@
 				40C32B731EE9371B008F653D /* TabBarItem.m in Sources */,
 				366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */,
 				40C32BCD1EE9375D008F653D /* UILabel+customLabel.m in Sources */,
+				EECEDE061EEBEAA400BF5955 /* HistoryTableViewController.m in Sources */,
 				40C32BCB1EE9375D008F653D /* UIColor+Extend.m in Sources */,
 				40C32BD11EE9375D008F653D /* UIImage+Water.m in Sources */,
 				EECEDDE41EEBE1D100BF5955 /* MyDeviceViewController.m in Sources */,
 				40C32BC01EE9375D008F653D /* NSArray+Extend.m in Sources */,
 				40C32BE01EE93978008F653D /* HomeViewController.m in Sources */,
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
+				EECEDE121EEBEAA400BF5955 /* XDScaningViewController.m in Sources */,
 				40C32BD51EE9375D008F653D /* UIView+MJExtension.m in Sources */,
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,
