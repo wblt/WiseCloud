@@ -12,10 +12,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
 @end
 
-@implementation AddDeviceController
+@implementation AddDeviceController {
+    NSString *identify;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +25,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    identify = @"UITableViewCell";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,16 +34,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 5;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    return nil;
+    cell.textLabel.text = @"拐杖";
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.returnBlock(@"dfdf");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

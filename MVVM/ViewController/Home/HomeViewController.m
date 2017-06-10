@@ -20,6 +20,9 @@
 
 @property (nonatomic, strong) NSArray *imageURLs;
 
+/** 最大可选择图片个数 */
+@property (nonatomic, assign) NSInteger maxImageCount;
+
 /** 选择的图片数据源 */
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
@@ -35,12 +38,13 @@
     [super viewDidLoad];
     self.title = @"首页";
     
+    self.maxImageCount = 9;
+    
     // 初始化 师徒
     [self initBannerView];
     
     //初始化collectionView
     [self initCollectionView];
-    
 }
 
 
@@ -53,7 +57,7 @@
         layout.itemSize = CGSizeMake(_itemWH, _itemWH);
         layout.minimumInteritemSpacing = _margin;
         layout.minimumLineSpacing = _margin;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(_margin, 214, self.view.frame.size.width - 2 * _margin, self.view.frame.size.height - 150) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(_margin, 160, self.view.frame.size.width - 2 * _margin, self.view.frame.size.height - 150) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.contentInset = UIEdgeInsetsMake(4, 0, 0, 2);
         _collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -2);
@@ -70,7 +74,6 @@
         [_collectionView registerClass:[NoticePhotoSelectCell class] forCellWithReuseIdentifier:@"NoticePhotoSelectCell"];
     }
 }
-
 
 
 - (void)initBannerView {
@@ -94,12 +97,8 @@
     
 //    // adjust edgeInset
 //    self.imgPlayerView.edgeInsets = UIEdgeInsetsMake(10, 20, 30, 40);
-    
     [self.imgPlayerView reloadData];
-
 }
-
-
 
 #pragma mark - ImagePlayerViewDelegate
 - (NSInteger)numberOfItems
@@ -111,7 +110,6 @@
 {
     // recommend to use SDWebImage lib to load web image
     //    [imageView setImageWithURL:[self.imageURLs objectAtIndex:index] placeholderImage:nil];
-    
     NSURL *imageURL = [self.imageURLs objectAtIndex:index];
     [imageView sd_setImageWithURL:imageURL placeholderImage:nil];
 }
@@ -128,7 +126,6 @@
 
 #pragma mark UICollectionView
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return self.dataArr.count + 1;
 }
 
@@ -153,9 +150,42 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
+    addDev.returnBlock = ^(NSString *returnValue) {
+        UIImage *img = [UIImage imageNamed:@"gndg10"];
+        [self.dataArr addObject:img];
+        [self reloadData];
+    };
     addDev.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:addDev animated:YES];
 }
+
+- (NSMutableArray *)dataArr{
+    if (_dataArr == nil) {
+        _dataArr = [[NSMutableArray alloc] init];
+    }
+    return _dataArr;
+}
+
+- (void)reloadData{
+    // 大于maxImageCount条的删除
+    if (self.dataArr.count > self.maxImageCount) {
+        NSRange range = NSMakeRange(self.maxImageCount, self.dataArr.count - self.maxImageCount);
+        [self.dataArr removeObjectsInRange:range];
+    }
+    [_collectionView reloadData];
+    
+    CGFloat height = ((self.dataArr.count + 3) / 3 ) * (_margin + _itemWH);
+    
+    if (height > self.view.height - 150) {
+        _collectionView.height = self.view.height - 150;
+    }
+    else {
+        _collectionView.height = height + 4;
+    }
+    
+    _collectionView.contentSize = CGSizeMake(0, ((self.dataArr.count + 2) / 3 ) * (_margin + _itemWH));
+}
+
 
 /*
 #pragma mark - Navigation
