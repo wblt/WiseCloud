@@ -15,4 +15,9 @@
 #import "Tools.h"
 #import "NetRequestClass.h"
 #import "SVProgressHUD.h"
+#import "MJExtension.h"
+#import "Util.h"
+#import "NSString+Regex.h"
+#import "NSString+MD5.h"
+#import "GTMBase64.h"
 #endif

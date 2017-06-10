@@ -25,4 +25,15 @@
               WithReturnValeuBlock:(ReturnValueBlock) block
                   WithFailureBlock:(FailureBlock) failureBlock;
 
++ (void)requestURL:(NSString *)urlString httpMethod:(NSString *)method
+            params:(NSMutableDictionary *)parmas
+      successBlock:(ReturnValueBlock)successBlock
+      failureBlock:(FailureBlock)failureBlock;
+
++ (void)requestURL:(NSString *)urlString httpMethod:(NSString *)method
+            params:(NSMutableDictionary *)parmas
+              file:(NSDictionary *)files
+      successBlock:(ReturnValueBlock)successBlock
+      failureBlock:(FailureBlock)failureBlock;
+
 @end

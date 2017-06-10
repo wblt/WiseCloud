@@ -53,12 +53,14 @@
 		40C32BE01EE93978008F653D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BDF1EE93978008F653D /* HomeViewController.m */; };
 		40C32BE71EE939FF008F653D /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BE61EE939FF008F653D /* DiscoverViewController.m */; };
 		40C32BEA1EE93A12008F653D /* ManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BE91EE93A12008F653D /* ManageViewController.m */; };
-		40C32BF21EE94B4E008F653D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BED1EE94B4E008F653D /* LoginViewController.m */; };
-		40C32BF31EE94B4E008F653D /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BEF1EE94B4E008F653D /* RegisterViewController.m */; };
 		40C32BF41EE94B4E008F653D /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BF11EE94B4E008F653D /* ForgetPwdController.m */; };
 		40C32BF61EE94B62008F653D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C32BF51EE94B62008F653D /* Login.storyboard */; };
 		40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BFC1EE94FEE008F653D /* LoginViewModel.m */; };
 		D9C6F5904BB24842D6AB2F94 /* libPods-MVVM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C377E169344DE7C1866D3C /* libPods-MVVM.a */; };
+		EE6818821EEBA0F900F8ABBD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68187F1EEBA0F900F8ABBD /* LoginViewController.m */; };
+		EE6818831EEBA0F900F8ABBD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6818811EEBA0F900F8ABBD /* RegisterViewController.m */; };
+		EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */; };
+		EE68189C1EEBA25600F8ABBD /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68189A1EEBA25600F8ABBD /* UserModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,16 +174,20 @@
 		40C32BE61EE939FF008F653D /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		40C32BE81EE93A12008F653D /* ManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageViewController.h; sourceTree = "<group>"; };
 		40C32BE91EE93A12008F653D /* ManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageViewController.m; sourceTree = "<group>"; };
-		40C32BEC1EE94B4E008F653D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		40C32BED1EE94B4E008F653D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		40C32BEE1EE94B4E008F653D /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		40C32BEF1EE94B4E008F653D /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		40C32BF01EE94B4E008F653D /* ForgetPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdController.h; sourceTree = "<group>"; };
 		40C32BF11EE94B4E008F653D /* ForgetPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdController.m; sourceTree = "<group>"; };
 		40C32BF51EE94B62008F653D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		40C32BFB1EE94FEE008F653D /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		40C32BFC1EE94FEE008F653D /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		B6C377E169344DE7C1866D3C /* libPods-MVVM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MVVM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE68187E1EEBA0F900F8ABBD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		EE68187F1EEBA0F900F8ABBD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EE6818801EEBA0F900F8ABBD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		EE6818811EEBA0F900F8ABBD /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		EE6818971EEBA25600F8ABBD /* MyDeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDeviceModel.h; sourceTree = "<group>"; };
+		EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDeviceModel.m; sourceTree = "<group>"; };
+		EE6818991EEBA25600F8ABBD /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		EE68189A1EEBA25600F8ABBD /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +245,7 @@
 				366A1BA31EE7DE830090FB81 /* Request */,
 				366A1BA61EE7DE830090FB81 /* Tools */,
 				40C32B521EE92D29008F653D /* Base */,
-				366A1BA01EE7DE830090FB81 /* Model */,
+				EE6818961EEBA24C00F8ABBD /* Model */,
 				366A1BA91EE7DE830090FB81 /* View */,
 				366A1BAC1EE7DE830090FB81 /* ViewController */,
 				366A1BB11EE7DE830090FB81 /* ViewModel */,
@@ -285,13 +291,6 @@
 				366A1B9F1EE7DE830090FB81 /* PrefixHeader.pch */,
 			);
 			path = Config;
-			sourceTree = "<group>";
-		};
-		366A1BA01EE7DE830090FB81 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		366A1BA31EE7DE830090FB81 /* Request */ = {
@@ -547,10 +546,10 @@
 		40C32BEB1EE94B32008F653D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				40C32BEC1EE94B4E008F653D /* LoginViewController.h */,
-				40C32BED1EE94B4E008F653D /* LoginViewController.m */,
-				40C32BEE1EE94B4E008F653D /* RegisterViewController.h */,
-				40C32BEF1EE94B4E008F653D /* RegisterViewController.m */,
+				EE68187E1EEBA0F900F8ABBD /* LoginViewController.h */,
+				EE68187F1EEBA0F900F8ABBD /* LoginViewController.m */,
+				EE6818801EEBA0F900F8ABBD /* RegisterViewController.h */,
+				EE6818811EEBA0F900F8ABBD /* RegisterViewController.m */,
 				40C32BF01EE94B4E008F653D /* ForgetPwdController.h */,
 				40C32BF11EE94B4E008F653D /* ForgetPwdController.m */,
 			);
@@ -581,6 +580,17 @@
 				B6C377E169344DE7C1866D3C /* libPods-MVVM.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE6818961EEBA24C00F8ABBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE6818971EEBA25600F8ABBD /* MyDeviceModel.h */,
+				EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */,
+				EE6818991EEBA25600F8ABBD /* UserModel.h */,
+				EE68189A1EEBA25600F8ABBD /* UserModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -781,6 +791,7 @@
 				40C32BD71EE9375D008F653D /* UIViewExt.m in Sources */,
 				40C32BF41EE94B4E008F653D /* ForgetPwdController.m in Sources */,
 				40C32BC81EE9375D008F653D /* NSString+Password.m in Sources */,
+				EE68189C1EEBA25600F8ABBD /* UserModel.m in Sources */,
 				366A1BB61EE7DE830090FB81 /* NetRequestClass.m in Sources */,
 				40C32BD31EE9375D008F653D /* UIView+Extend.m in Sources */,
 				40C32BC21EE9375D008F653D /* NSDate+Extend.m in Sources */,
@@ -792,12 +803,14 @@
 				40C32BD21EE9375D008F653D /* UIView+Additional.m in Sources */,
 				40C32BCA1EE9375D008F653D /* UIColor+CustomColor.m in Sources */,
 				40C32BC41EE9375D008F653D /* NSDate+TimeAgo.m in Sources */,
+				EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */,
 				40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */,
 				40C32BEA1EE93A12008F653D /* ManageViewController.m in Sources */,
 				40C32BD41EE9375D008F653D /* UIView+firstResponder.m in Sources */,
 				40C32BCC1EE9375D008F653D /* UIFont+customFont.m in Sources */,
+				EE6818831EEBA0F900F8ABBD /* RegisterViewController.m in Sources */,
 				40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */,
-				40C32BF31EE94B4E008F653D /* RegisterViewController.m in Sources */,
+				EE6818821EEBA0F900F8ABBD /* LoginViewController.m in Sources */,
 				40C32BC31EE9375D008F653D /* NSDate+Helper.m in Sources */,
 				40C32BD91EE9375D008F653D /* UIWindow+Launch.m in Sources */,
 				40C32BE71EE939FF008F653D /* DiscoverViewController.m in Sources */,
@@ -810,7 +823,6 @@
 				40C32BE01EE93978008F653D /* HomeViewController.m in Sources */,
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
 				40C32BD51EE9375D008F653D /* UIView+MJExtension.m in Sources */,
-				40C32BF21EE94B4E008F653D /* LoginViewController.m in Sources */,
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,
 				40C32BC61EE9375D008F653D /* NSString+Extend.m in Sources */,

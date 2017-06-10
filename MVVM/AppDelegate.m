@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TabBarViewController.h"
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -21,7 +22,10 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     // 设置窗口的根控制器
-    self.window.rootViewController = [[TabBarViewController alloc] init];;
+    //self.window.rootViewController = [[TabBarViewController alloc] init];;
+    UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    LoginViewController *loginVC = [storyboad instantiateInitialViewController];
+    self.window.rootViewController = loginVC;
     
     // 显示窗口
     [self.window makeKeyAndVisible];
