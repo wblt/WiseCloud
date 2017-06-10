@@ -15,4 +15,5 @@
 #import "Tools.h"
 #import "NetRequestClass.h"
 #import "SVProgressHUD.h"
+#import "UIView_extra.h"
 #endif

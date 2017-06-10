@@ -53,6 +53,39 @@
             </objects>
             <point key="canvasLocation" x="1280.8" y="187.55622188905548"/>
         </scene>
+        <!--Add Device Controller-->
+        <scene sceneID="wEf-9D-Vo1">
+            <objects>
+                <viewController storyboardIdentifier="AddDeviceController" id="nb9-qT-VWp" customClass="AddDeviceController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aGJ-Un-frP"/>
+                        <viewControllerLayoutGuide type="bottom" id="tDB-Wi-29B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Znh-h2-VJI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tSg-OV-Rnk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tDB-Wi-29B" firstAttribute="top" secondItem="tSg-OV-Rnk" secondAttribute="bottom" id="3Xm-uk-eWY"/>
+                            <constraint firstItem="tSg-OV-Rnk" firstAttribute="top" secondItem="aGJ-Un-frP" secondAttribute="bottom" id="6V4-B6-KiT"/>
+                            <constraint firstItem="tSg-OV-Rnk" firstAttribute="leading" secondItem="Znh-h2-VJI" secondAttribute="leading" id="Qnw-Zz-zdq"/>
+                            <constraint firstAttribute="trailing" secondItem="tSg-OV-Rnk" secondAttribute="trailing" id="WCh-sm-Wvf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="tSg-OV-Rnk" id="6Wj-tS-YdM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DvW-pl-nhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="188"/>
+        </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="3QD-c4-Fbf">
             <objects>
