@@ -51,4 +51,6 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 #define kTabBarViewHeight 49
 #define kStatusNavigationHeight 64
 
+#define kGET @"GET"
+
 #endif

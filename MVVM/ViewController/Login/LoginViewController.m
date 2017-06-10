@@ -63,9 +63,8 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     //设置数据
-//    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
-//    self.phoneNumFiled.text = userModel.userPhoneNum;
-//    self.passwordFiled.text = userModel.userPassword;
+    self.phoneNumFiled.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"];
+    self.passwordFiled.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
 }
 
 #pragma mark - 登陆
@@ -94,6 +93,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:@"无" forKey:@"userName"];
             [[NSUserDefaults standardUserDefaults] setObject:phoneNumber forKey:@"userPhoneNum"];
             [[NSUserDefaults standardUserDefaults] setObject:self.passwordFiled.text forKey:@"userPassword"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             //登陆成功，跳转至首页
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -160,7 +161,8 @@
             [temp addObject:model];
         }
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"deviceArray"];
-        //[[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization dataWithJSONObject:temp options:NSJSONWritingPrettyPrinted error:nil] forKey:@"deviceArray"];
+        //[[NSUserDefaults standardUserDefaults] setObject:[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:temp options:NSJSONWritingPrettyPrinted error:nil]  encoding:NSUTF8StringEncoding] forKey:@"deviceArray"];
+//    [@"" dataUsingEncoding:NSUTF8StringEncoding]
 //        id jsonObject = [NSJSONSerialization JSONObjectWithData:aData options:NSJSONReadingAllowFragments error:nil];
 //        NSArray *array = (NSArray *)jsonObject;
         NSString *defaultDeVice = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultDeVice"];

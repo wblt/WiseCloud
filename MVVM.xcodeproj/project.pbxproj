@@ -64,6 +64,12 @@
 		EE6818831EEBA0F900F8ABBD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6818811EEBA0F900F8ABBD /* RegisterViewController.m */; };
 		EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */; };
 		EE68189C1EEBA25600F8ABBD /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68189A1EEBA25600F8ABBD /* UserModel.m */; };
+		EECEDDDF1EEBD9EA00BF5955 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDDE1EEBD9EA00BF5955 /* PersonalViewController.m */; };
+		EECEDDE11EEBDA2A00BF5955 /* PersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDE01EEBDA2A00BF5955 /* PersonalViewController.xib */; };
+		EECEDDE41EEBE1D100BF5955 /* MyDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDE31EEBE1D100BF5955 /* MyDeviceViewController.m */; };
+		EECEDDEB1EEBE35500BF5955 /* MyDeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDEA1EEBE35500BF5955 /* MyDeviceCell.m */; };
+		EECEDDEF1EEBE67C00BF5955 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EECEDDED1EEBE67C00BF5955 /* AddDeviceViewController.m */; };
+		EECEDDF01EEBE67C00BF5955 /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EECEDDEE1EEBE67C00BF5955 /* AddDeviceViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +203,16 @@
 		EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDeviceModel.m; sourceTree = "<group>"; };
 		EE6818991EEBA25600F8ABBD /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		EE68189A1EEBA25600F8ABBD /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		EECEDDDD1EEBD9EA00BF5955 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
+		EECEDDDE1EEBD9EA00BF5955 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
+		EECEDDE01EEBDA2A00BF5955 /* PersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalViewController.xib; sourceTree = "<group>"; };
+		EECEDDE21EEBE1D100BF5955 /* MyDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDeviceViewController.h; sourceTree = "<group>"; };
+		EECEDDE31EEBE1D100BF5955 /* MyDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDeviceViewController.m; sourceTree = "<group>"; };
+		EECEDDE91EEBE35500BF5955 /* MyDeviceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDeviceCell.h; sourceTree = "<group>"; };
+		EECEDDEA1EEBE35500BF5955 /* MyDeviceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDeviceCell.m; sourceTree = "<group>"; };
+		EECEDDEC1EEBE67C00BF5955 /* AddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
+		EECEDDED1EEBE67C00BF5955 /* AddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
+		EECEDDEE1EEBE67C00BF5955 /* AddDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,13 +380,6 @@
 			sourceTree = "<group>";
 		};
 		367FB26C1EEB92B50051CA37 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		367FB26D1EEB92D10051CA37 /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -551,9 +560,17 @@
 		40C32BE31EE939EA008F653D /* Manage */ = {
 			isa = PBXGroup;
 			children = (
-				367FB26D1EEB92D10051CA37 /* View */,
+				EECEDDE81EEBE34C00BF5955 /* view */,
 				40C32BE81EE93A12008F653D /* ManageViewController.h */,
 				40C32BE91EE93A12008F653D /* ManageViewController.m */,
+				EECEDDDD1EEBD9EA00BF5955 /* PersonalViewController.h */,
+				EECEDDDE1EEBD9EA00BF5955 /* PersonalViewController.m */,
+				EECEDDE01EEBDA2A00BF5955 /* PersonalViewController.xib */,
+				EECEDDE21EEBE1D100BF5955 /* MyDeviceViewController.h */,
+				EECEDDE31EEBE1D100BF5955 /* MyDeviceViewController.m */,
+				EECEDDEC1EEBE67C00BF5955 /* AddDeviceViewController.h */,
+				EECEDDED1EEBE67C00BF5955 /* AddDeviceViewController.m */,
+				EECEDDEE1EEBE67C00BF5955 /* AddDeviceViewController.xib */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -606,6 +623,15 @@
 				EE68189A1EEBA25600F8ABBD /* UserModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EECEDDE81EEBE34C00BF5955 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				EECEDDE91EEBE35500BF5955 /* MyDeviceCell.h */,
+				EECEDDEA1EEBE35500BF5955 /* MyDeviceCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -718,6 +744,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECEDDF01EEBE67C00BF5955 /* AddDeviceViewController.xib in Resources */,
 				40C32BF61EE94B62008F653D /* Login.storyboard in Resources */,
 				40C32B6B1EE93334008F653D /* Discover.storyboard in Resources */,
 				40C32BDC1EE93822008F653D /* LaunchScreen.storyboard in Resources */,
@@ -725,6 +752,7 @@
 				40C32BC51EE9375D008F653D /* NSDateTimeAgo.bundle in Resources */,
 				40C32B641EE93005008F653D /* Home.storyboard in Resources */,
 				40C32BDD1EE93822008F653D /* Main.storyboard in Resources */,
+				EECEDDE11EEBDA2A00BF5955 /* PersonalViewController.xib in Resources */,
 				40C32B6D1EE93358008F653D /* Manage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,6 +828,7 @@
 			files = (
 				366A1BB71EE7DE830090FB81 /* Tools.m in Sources */,
 				40C32BC91EE9375D008F653D /* NSString+Regex.m in Sources */,
+				EECEDDDF1EEBD9EA00BF5955 /* PersonalViewController.m in Sources */,
 				367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */,
 				40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */,
 				367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */,
@@ -829,6 +858,7 @@
 				367FB2701EEB99280051CA37 /* AddDeviceController.m in Sources */,
 				40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */,
 				EE6818821EEBA0F900F8ABBD /* LoginViewController.m in Sources */,
+				EECEDDEF1EEBE67C00BF5955 /* AddDeviceViewController.m in Sources */,
 				40C32BC31EE9375D008F653D /* NSDate+Helper.m in Sources */,
 				40C32BD91EE9375D008F653D /* UIWindow+Launch.m in Sources */,
 				40C32BE71EE939FF008F653D /* DiscoverViewController.m in Sources */,
@@ -837,6 +867,7 @@
 				40C32BCD1EE9375D008F653D /* UILabel+customLabel.m in Sources */,
 				40C32BCB1EE9375D008F653D /* UIColor+Extend.m in Sources */,
 				40C32BD11EE9375D008F653D /* UIImage+Water.m in Sources */,
+				EECEDDE41EEBE1D100BF5955 /* MyDeviceViewController.m in Sources */,
 				40C32BC01EE9375D008F653D /* NSArray+Extend.m in Sources */,
 				40C32BE01EE93978008F653D /* HomeViewController.m in Sources */,
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
@@ -844,6 +875,7 @@
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,
 				40C32BC61EE9375D008F653D /* NSString+Extend.m in Sources */,
+				EECEDDEB1EEBE35500BF5955 /* MyDeviceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
