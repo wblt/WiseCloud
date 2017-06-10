@@ -20,4 +20,5 @@
 #import "NSString+Regex.h"
 #import "NSString+MD5.h"
 #import "GTMBase64.h"
+#import "UIView_extra.h"
 #endif

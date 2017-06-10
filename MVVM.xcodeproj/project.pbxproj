@@ -14,6 +14,9 @@
 		366A1B8D1EE7DE150090FB81 /* MVVMUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B8C1EE7DE150090FB81 /* MVVMUITests.m */; };
 		366A1BB61EE7DE830090FB81 /* NetRequestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1BA51EE7DE830090FB81 /* NetRequestClass.m */; };
 		366A1BB71EE7DE830090FB81 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1BA81EE7DE830090FB81 /* Tools.m */; };
+		367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB2661EEB91600051CA37 /* UIView_extra.m */; };
+		367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */; };
+		367FB2701EEB99280051CA37 /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26F1EEB99280051CA37 /* AddDeviceController.m */; };
 		40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B541EE92D29008F653D /* BaseViewModel.m */; };
 		40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B5E1EE92D7F008F653D /* BaseNavigationController.m */; };
 		40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B601EE92D7F008F653D /* BaseViewController.m */; };
@@ -101,6 +104,12 @@
 		366A1BA51EE7DE830090FB81 /* NetRequestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetRequestClass.m; sourceTree = "<group>"; };
 		366A1BA71EE7DE830090FB81 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		366A1BA81EE7DE830090FB81 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		367FB2651EEB91600051CA37 /* UIView_extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView_extra.h; sourceTree = "<group>"; };
+		367FB2661EEB91600051CA37 /* UIView_extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIView_extra.m; sourceTree = "<group>"; };
+		367FB2691EEB927B0051CA37 /* NoticePhotoSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticePhotoSelectCell.h; sourceTree = "<group>"; };
+		367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticePhotoSelectCell.m; sourceTree = "<group>"; };
+		367FB26E1EEB99280051CA37 /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
+		367FB26F1EEB99280051CA37 /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
 		40C32B531EE92D29008F653D /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		40C32B541EE92D29008F653D /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		40C32B5D1EE92D7F008F653D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -345,6 +354,29 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		367FB2681EEB926C0051CA37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				367FB2691EEB927B0051CA37 /* NoticePhotoSelectCell.h */,
+				367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		367FB26C1EEB92B50051CA37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		367FB26D1EEB92D10051CA37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		40C32B521EE92D29008F653D /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,18 +412,13 @@
 		40C32B791EE93733008F653D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				40C32B7E1EE93733008F653D /* view */,
+				367FB2681EEB926C0051CA37 /* View */,
 				40C32BDE1EE93978008F653D /* HomeViewController.h */,
 				40C32BDF1EE93978008F653D /* HomeViewController.m */,
+				367FB26E1EEB99280051CA37 /* AddDeviceController.h */,
+				367FB26F1EEB99280051CA37 /* AddDeviceController.m */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		40C32B7E1EE93733008F653D /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		40C32B841EE9375D008F653D /* Category */ = {
@@ -482,6 +509,8 @@
 		40C32BAE1EE9375D008F653D /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				367FB2651EEB91600051CA37 /* UIView_extra.h */,
+				367FB2661EEB91600051CA37 /* UIView_extra.m */,
 				40C32BAF1EE9375D008F653D /* UIView+Additional.h */,
 				40C32BB01EE9375D008F653D /* UIView+Additional.m */,
 				40C32BB11EE9375D008F653D /* UIView+Extend.h */,
@@ -512,35 +541,21 @@
 		40C32BE11EE939EA008F653D /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				40C32BE21EE939EA008F653D /* view */,
+				367FB26C1EEB92B50051CA37 /* View */,
 				40C32BE51EE939FF008F653D /* DiscoverViewController.h */,
 				40C32BE61EE939FF008F653D /* DiscoverViewController.m */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		40C32BE21EE939EA008F653D /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
 		40C32BE31EE939EA008F653D /* Manage */ = {
 			isa = PBXGroup;
 			children = (
-				40C32BE41EE939EA008F653D /* view */,
+				367FB26D1EEB92D10051CA37 /* View */,
 				40C32BE81EE93A12008F653D /* ManageViewController.h */,
 				40C32BE91EE93A12008F653D /* ManageViewController.m */,
 			);
 			path = Manage;
-			sourceTree = "<group>";
-		};
-		40C32BE41EE939EA008F653D /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		40C32BEB1EE94B32008F653D /* Login */ = {
@@ -785,7 +800,9 @@
 			files = (
 				366A1BB71EE7DE830090FB81 /* Tools.m in Sources */,
 				40C32BC91EE9375D008F653D /* NSString+Regex.m in Sources */,
+				367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */,
 				40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */,
+				367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */,
 				40C32B741EE9371B008F653D /* TabBarViewController.m in Sources */,
 				40C32BC11EE9375D008F653D /* GTMBase64.m in Sources */,
 				40C32BD71EE9375D008F653D /* UIViewExt.m in Sources */,
@@ -809,6 +826,7 @@
 				40C32BD41EE9375D008F653D /* UIView+firstResponder.m in Sources */,
 				40C32BCC1EE9375D008F653D /* UIFont+customFont.m in Sources */,
 				EE6818831EEBA0F900F8ABBD /* RegisterViewController.m in Sources */,
+				367FB2701EEB99280051CA37 /* AddDeviceController.m in Sources */,
 				40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */,
 				EE6818821EEBA0F900F8ABBD /* LoginViewController.m in Sources */,
 				40C32BC31EE9375D008F653D /* NSDate+Helper.m in Sources */,

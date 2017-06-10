@@ -10,6 +10,9 @@
 
 @interface DiscoverViewController ()
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+
 @end
 
 @implementation DiscoverViewController
@@ -17,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发现";
+    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hi-watch.com.cn/hiwatchclient/discover.htm"]];
+    [self.webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {
