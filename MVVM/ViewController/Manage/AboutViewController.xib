@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_bg" translatesAutoresizingMaskIntoConstraints="NO" id="6ld-M9-m9m">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_logo" translatesAutoresizingMaskIntoConstraints="NO" id="U2j-0L-AFN">
+                    <rect key="frame" x="187" y="646" width="1" height="1"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      北京东方德思科技有限责任公司" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sT-Ll-7nI">
+                    <rect key="frame" x="20" y="364" width="335" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="【咨询电话】" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDS-QS-f8l">
+                    <rect key="frame" x="20" y="390" width="80" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="【智能云健康简介】" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GK4-kN-GaD">
+                    <rect key="frame" x="20" y="243.5" width="119.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launcher_gy" translatesAutoresizingMaskIntoConstraints="NO" id="g39-Po-f3W">
+                    <rect key="frame" x="147.5" y="116.5" width="80" height="80"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智能云健康" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aX-Ov-T1m">
+                    <rect key="frame" x="152" y="204.5" width="71.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.094117647060000004" green="0.75686274509999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      智能云健康客户端是为了快速的了解您的亲人健康情况，并且为您提供各种功能的实时查看，其中有：心电图，心率，您亲人的位置，运动，睡眠，体温，血压，血糖，血脂的查看，产品商城是为您提供各种相关商品。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwh-4R-nre">
+                    <rect key="frame" x="20" y="262.5" width="335" height="62.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="【技术咨询】" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9j-hj-FMj">
+                    <rect key="frame" x="20" y="345" width="80" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      400-086-8066" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIH-4U-eHA">
+                    <rect key="frame" x="20" y="409" width="335" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="【意见建议受理邮箱】" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuN-X3-fVu">
+                    <rect key="frame" x="20" y="435" width="133" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      info@welcare-tech.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="er9-ZE-nY6">
+                    <rect key="frame" x="20" y="454" width="335" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="AuN-X3-fVu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="4zK-Qp-gbG"/>
+                <constraint firstItem="0aX-Ov-T1m" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4zR-1G-wwM"/>
+                <constraint firstItem="GK4-kN-GaD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="5vX-0x-lD0"/>
+                <constraint firstItem="kwh-4R-nre" firstAttribute="top" secondItem="GK4-kN-GaD" secondAttribute="bottom" constant="3" id="63c-Zb-pJ6"/>
+                <constraint firstItem="8sT-Ll-7nI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="7IT-pd-Pga"/>
+                <constraint firstItem="g39-Po-f3W" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8M7-BL-3CO"/>
+                <constraint firstItem="aDS-QS-f8l" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8Wd-gO-393"/>
+                <constraint firstAttribute="bottom" secondItem="6ld-M9-m9m" secondAttribute="bottom" id="Aec-oB-ZEf"/>
+                <constraint firstItem="AuN-X3-fVu" firstAttribute="top" secondItem="pIH-4U-eHA" secondAttribute="bottom" constant="10" id="DCv-01-4RN"/>
+                <constraint firstAttribute="trailing" secondItem="pIH-4U-eHA" secondAttribute="trailing" constant="20" id="FZm-cR-Lpp"/>
+                <constraint firstAttribute="trailing" secondItem="er9-ZE-nY6" secondAttribute="trailing" constant="20" id="GY2-v7-5nO"/>
+                <constraint firstItem="G9j-hj-FMj" firstAttribute="top" secondItem="kwh-4R-nre" secondAttribute="bottom" constant="20" id="HVN-BL-0QF"/>
+                <constraint firstItem="g39-Po-f3W" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="120" id="Iiq-Kk-MWh"/>
+                <constraint firstAttribute="trailing" secondItem="6ld-M9-m9m" secondAttribute="trailing" id="J0H-Cw-r5h"/>
+                <constraint firstItem="er9-ZE-nY6" firstAttribute="top" secondItem="AuN-X3-fVu" secondAttribute="bottom" constant="3" id="KQk-1M-wjC"/>
+                <constraint firstItem="pIH-4U-eHA" firstAttribute="top" secondItem="8sT-Ll-7nI" secondAttribute="bottom" constant="10" id="NsR-u9-jfW"/>
+                <constraint firstItem="pIH-4U-eHA" firstAttribute="top" secondItem="aDS-QS-f8l" secondAttribute="bottom" constant="3" id="QHK-x4-DiT"/>
+                <constraint firstItem="0aX-Ov-T1m" firstAttribute="top" secondItem="g39-Po-f3W" secondAttribute="bottom" constant="8" id="QgR-WE-nqe"/>
+                <constraint firstItem="GK4-kN-GaD" firstAttribute="top" secondItem="0aX-Ov-T1m" secondAttribute="bottom" constant="22" id="S5z-bw-WDe"/>
+                <constraint firstItem="6ld-M9-m9m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SYi-Ua-aja"/>
+                <constraint firstItem="6ld-M9-m9m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VQP-rd-hNG"/>
+                <constraint firstItem="aDS-QS-f8l" firstAttribute="top" secondItem="8sT-Ll-7nI" secondAttribute="bottom" constant="10" id="ZFw-XS-aYY"/>
+                <constraint firstItem="pIH-4U-eHA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ZzK-EN-5TM"/>
+                <constraint firstItem="G9j-hj-FMj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="bdP-Vm-7p7"/>
+                <constraint firstItem="kwh-4R-nre" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="gVJ-mb-SMX"/>
+                <constraint firstAttribute="trailing" secondItem="kwh-4R-nre" secondAttribute="trailing" constant="20" id="hn6-W2-FdM"/>
+                <constraint firstItem="8sT-Ll-7nI" firstAttribute="top" secondItem="G9j-hj-FMj" secondAttribute="bottom" constant="3" id="iyo-9J-aJi"/>
+                <constraint firstAttribute="trailing" secondItem="8sT-Ll-7nI" secondAttribute="trailing" constant="20" id="lxZ-xG-9YV"/>
+                <constraint firstItem="er9-ZE-nY6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pRu-XG-Ydz"/>
+                <constraint firstItem="U2j-0L-AFN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pgQ-qY-Lde"/>
+                <constraint firstAttribute="bottom" secondItem="U2j-0L-AFN" secondAttribute="bottom" constant="20" id="x0e-Hq-Cpg"/>
+                <constraint firstItem="kwh-4R-nre" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zdu-Bg-zjd"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Iiq-Kk-MWh"/>
+                    <exclude reference="NsR-u9-jfW"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_launcher_gy" width="80" height="80"/>
+        <image name="register_bg" width="360" height="640"/>
+        <image name="register_logo" width="1" height="1"/>
+    </resources>
+</document>

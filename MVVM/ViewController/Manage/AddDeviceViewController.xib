@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDeviceViewController">
@@ -20,8 +24,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdj-7t-7aA">
-                    <rect key="frame" x="30" y="385" width="315" height="48"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="30" y="325.5" width="315" height="48"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="tdj-7t-7aA" secondAttribute="height" multiplier="105:16" id="BGs-e1-kTy"/>
                     </constraints>
@@ -31,60 +35,60 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备号：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJm-pd-GML">
-                    <rect key="frame" x="30" y="238" width="56" height="17"/>
+                    <rect key="frame" x="30" y="178" width="57.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIM号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnq-Nz-UMH">
-                    <rect key="frame" x="30" y="285" width="56" height="17"/>
+                    <rect key="frame" x="30" y="225" width="57.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵   称：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOr-kO-3uG">
-                    <rect key="frame" x="30" y="332" width="56" height="17"/>
+                    <rect key="frame" x="30" y="272" width="57.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKE-dc-RmK">
-                    <rect key="frame" x="96" y="325" width="249" height="30"/>
+                    <rect key="frame" x="97.5" y="265.5" width="247.5" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-u0-dGf">
-                    <rect key="frame" x="96" y="278" width="249" height="30"/>
+                    <rect key="frame" x="97.5" y="218.5" width="247.5" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MDO-pX-y0i">
-                    <rect key="frame" x="96" y="231" width="174" height="30"/>
+                    <rect key="frame" x="97.5" y="171.5" width="172.5" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtT-Mq-Ffk">
-                    <rect key="frame" x="280" y="230" width="65" height="34"/>
+                    <rect key="frame" x="280" y="169.5" width="65" height="34"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="ypc-BL-W5K"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="扫描设备" backgroundImage="grxg_bg">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="scanDeviceAction:" destination="-1" eventType="touchUpInside" id="skG-sK-RmA"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="jYF-u0-dGf" firstAttribute="centerY" secondItem="dnq-Nz-UMH" secondAttribute="centerY" id="1Dq-zW-Bfz"/>
                 <constraint firstItem="MDO-pX-y0i" firstAttribute="centerY" secondItem="yJm-pd-GML" secondAttribute="centerY" id="2Yc-fo-Bpk"/>
                 <constraint firstItem="HOr-kO-3uG" firstAttribute="trailing" secondItem="yJm-pd-GML" secondAttribute="trailing" id="2ai-Jw-zdC"/>
                 <constraint firstItem="cKE-dc-RmK" firstAttribute="leading" secondItem="MDO-pX-y0i" secondAttribute="leading" id="3rz-H2-h6Z"/>
                 <constraint firstItem="tdj-7t-7aA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="A9e-8j-Tq9"/>
-                <constraint firstItem="dnq-Nz-UMH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="BUh-t5-GeV"/>
+                <constraint firstItem="dnq-Nz-UMH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-100" id="BUh-t5-GeV"/>
                 <constraint firstItem="dnq-Nz-UMH" firstAttribute="trailing" secondItem="yJm-pd-GML" secondAttribute="trailing" id="Bbu-zp-nPA"/>
                 <constraint firstItem="UtT-Mq-Ffk" firstAttribute="trailing" secondItem="jYF-u0-dGf" secondAttribute="trailing" id="CAH-aU-Xmd"/>
                 <constraint firstItem="dnq-Nz-UMH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="CDP-ea-Drd"/>
@@ -102,7 +106,6 @@
                 <constraint firstItem="jYF-u0-dGf" firstAttribute="top" secondItem="MDO-pX-y0i" secondAttribute="bottom" constant="17" id="lDg-Hf-9SG"/>
                 <constraint firstItem="HOr-kO-3uG" firstAttribute="leading" secondItem="yJm-pd-GML" secondAttribute="leading" id="sit-qF-jx7"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
     <resources>

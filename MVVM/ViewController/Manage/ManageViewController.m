@@ -11,6 +11,8 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "MyDeviceViewController.h"
+#import "HelpViewController.h"
+#import "AboutViewController.h"
 @interface ManageViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *manageArr;
@@ -54,9 +56,13 @@
         mydevice.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:mydevice animated:YES];
     }else if (indexPath.row == 2) {
-        
+        HelpViewController *help = [[HelpViewController alloc] init];
+        help.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:help animated:YES];
     }else if (indexPath.row == 3) {
-        
+        AboutViewController *about = [[AboutViewController alloc] init];
+        about.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:about animated:YES];
     }else if (indexPath.row == 4) {
         
     }
