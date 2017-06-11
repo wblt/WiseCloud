@@ -22,7 +22,4 @@
 
 @property (nonatomic,copy) NSString *defaultDeVice;
 
-//@property (nonatomic,strong) TestUserModel *testUserModel;
-
-
 @end

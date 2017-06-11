@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "UserModel.h"
+
 @interface Tools : NSObject
 
 /**
@@ -21,4 +23,20 @@
 + (CGFloat)countTextHeight:(NSString *)text
                      width:(CGFloat) width
                       font:(CGFloat) fontSize;
+
+
+/**
+ * 读取用户信息
+ *
+ */
++ (UserModel *) readUserModelFromLocal;
+
+/**
+ * 写入用户信息
+ *
+ */
++ (void) writeUserModelToLocal:(UserModel *)userModel;
+
+
+
 @end

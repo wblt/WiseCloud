@@ -29,4 +29,24 @@
     CGRect rect = [attributeString boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - width, CGFLOAT_MAX) options:options context:nil];
     return rect.size.height;
 }
+
+/**
+ * 读取用户信息
+ *
+ */
++ (UserModel *) readUserModelFromLocal {
+    
+    return nil;
+}
+
+
+/**
+ * 写入用户信息
+ *
+ */
++ (void) writeUserModelToLocal:(UserModel *)userModel {
+    
+}
+
+
 @end

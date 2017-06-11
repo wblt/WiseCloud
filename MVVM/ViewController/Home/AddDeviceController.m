@@ -7,6 +7,7 @@
 //
 
 #import "AddDeviceController.h"
+#import "AddDeviceViewController.h"
 
 @interface AddDeviceController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -28,8 +29,8 @@
     [self.dataArr addObject:@"手表"];
     [self.dataArr addObject:@"手杖"];
     [self.dataArr addObject:@"手环"];
-    [self.dataArr addObject:@"体脂"];
-    [self.dataArr addObject:@"水分子检测"];
+    [self.dataArr addObject:@"体脂称"];
+    [self.dataArr addObject:@"水分仪"];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -42,7 +43,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return self.dataArr.count;
 }
 
 
@@ -61,8 +62,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.returnBlock(@"dfdf");
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString *title = self.dataArr[indexPath.row];
+    if ([title isEqualToString:@"手表"]) {
+        AddDeviceViewController *add = [[AddDeviceViewController alloc] initWithNibName:@"AddDeviceViewController" bundle:nil];
+        [self.navigationController pushViewController:add animated:YES];
+    } else if ([title isEqualToString:@"手杖"]) {
+        AddDeviceViewController *add = [[AddDeviceViewController alloc] initWithNibName:@"AddDeviceViewController" bundle:nil];
+        [self.navigationController pushViewController:add animated:YES];
+    } else {
+        self.returnBlock(title);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (NSMutableArray *)dataArr{

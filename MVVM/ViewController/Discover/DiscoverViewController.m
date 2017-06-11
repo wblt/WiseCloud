@@ -8,7 +8,7 @@
 
 #import "DiscoverViewController.h"
 
-@interface DiscoverViewController ()
+@interface DiscoverViewController ()<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
@@ -20,14 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发现";
+    self.webView.delegate = self;
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hi-watch.com.cn/hiwatchclient/discover.htm"]];
     [self.webView loadRequest:request];
+    
+    [SVProgressHUD showWithStatus:@"加载中..."];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [SVProgressHUD dismiss];
+}
+
+
 
 /*
 #pragma mark - Navigation

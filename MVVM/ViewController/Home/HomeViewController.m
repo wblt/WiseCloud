@@ -138,7 +138,8 @@
         cell.imageView.image = [UIImage imageNamed:@"AlbumAddBtn.png"];
         cell.closeButton.hidden = YES;
     } else {
-        cell.imageView.image = self.dataArr[indexPath.row];
+        UIImage *img = [UIImage imageNamed:@"gndg10"];
+        cell.imageView.image = img;
         cell.closeButton.hidden = NO;
     }
     return cell;
@@ -155,8 +156,11 @@
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
-            UIImage *img = [UIImage imageNamed:@"gndg10"];
-            [self.dataArr addObject:img];
+            if ([self detechItem:returnValue]) {
+                [self.dataArr removeObject:returnValue];
+            } else {
+                [self.dataArr addObject:returnValue];
+            }
             [self reloadData];
         };
         addDev.hidesBottomBarWhenPushed = YES;
@@ -198,6 +202,17 @@
     }
     
     _collectionView.contentSize = CGSizeMake(0, ((self.dataArr.count + 2) / 3 ) * (_margin + _itemWH));
+}
+
+
+/**
+ * 检测是否有这个数据
+ */
+- (BOOL)detechItem:(NSString *)title {
+    if ([self.dataArr containsObject:title]) {
+        return YES;
+    }
+    return false;
 }
 
 
