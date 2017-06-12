@@ -81,6 +81,7 @@
     CBPeripheral *p = self.devices[indexPath.row];
     BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
     bleModel.deviceName = p.name;
+    bleModel.uuid = p.identifier.UUIDString;
     cell.bleScaningDeviceModel = bleModel;
     return cell;
 }
@@ -90,6 +91,10 @@
     ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
     ShouhuanVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:ShouhuanVC animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
 }
 
 

@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *uuidLabel;
+
+
 @property (nonatomic,strong) BleScaningDecviceModel *bleScaningDeviceModel;
 
 +(instancetype)deviceCellWithTableView:(UITableView *)tableView;

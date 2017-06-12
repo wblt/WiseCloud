@@ -113,9 +113,8 @@
 {
     // recommend to use SDWebImage lib to load web image
     //    [imageView setImageWithURL:[self.imageURLs objectAtIndex:index] placeholderImage:nil];
-    NSURL *imageURL = [self.imageURLs objectAtIndex:index];
+//    NSURL *imageURL = [self.imageURLs objectAtIndex:index];
     imageView.image = [UIImage imageNamed:@"bg1"];
-    
 //    [imageView sd_setImageWithURL:imageURL placeholderImage:nil];
 }
 
@@ -206,7 +205,6 @@
     else {
         _collectionView.height = height + 4;
     }
-    
     _collectionView.contentSize = CGSizeMake(0, ((self.dataArr.count + 2) / 3 ) * (_margin + _itemWH));
 }
 

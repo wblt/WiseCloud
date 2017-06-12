@@ -26,6 +26,7 @@
 - (void)setBleScaningDeviceModel:(BleScaningDecviceModel *)bleScaningDeviceModel {
     _bleScaningDeviceModel = bleScaningDeviceModel;
     self.name.text = bleScaningDeviceModel.deviceName;
+    self.uuidLabel.text = bleScaningDeviceModel.uuid;
 }
 
 - (void)awakeFromNib {
