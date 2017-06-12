@@ -65,6 +65,7 @@
 		40C32BF61EE94B62008F653D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C32BF51EE94B62008F653D /* Login.storyboard */; };
 		40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BFC1EE94FEE008F653D /* LoginViewModel.m */; };
 		D9C6F5904BB24842D6AB2F94 /* libPods-MVVM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C377E169344DE7C1866D3C /* libPods-MVVM.a */; };
+		EE2FC04D1EEEC5750097C712 /* ShouhuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */; };
 		EE6818821EEBA0F900F8ABBD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE68187F1EEBA0F900F8ABBD /* LoginViewController.m */; };
 		EE6818831EEBA0F900F8ABBD /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6818811EEBA0F900F8ABBD /* RegisterViewController.m */; };
 		EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */; };
@@ -225,6 +226,8 @@
 		40C32BFB1EE94FEE008F653D /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		40C32BFC1EE94FEE008F653D /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		B6C377E169344DE7C1866D3C /* libPods-MVVM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MVVM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE2FC04B1EEEC5750097C712 /* ShouhuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShouhuanViewController.h; sourceTree = "<group>"; };
+		EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouhuanViewController.m; sourceTree = "<group>"; };
 		EE68187E1EEBA0F900F8ABBD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EE68187F1EEBA0F900F8ABBD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EE6818801EEBA0F900F8ABBD /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				367FB26F1EEB99280051CA37 /* AddDeviceController.m */,
 				36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */,
 				36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */,
+				EE2FC04B1EEEC5750097C712 /* ShouhuanViewController.h */,
+				EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				40C32BF41EE94B4E008F653D /* ForgetPwdController.m in Sources */,
 				40C32BC81EE9375D008F653D /* NSString+Password.m in Sources */,
 				EE68189C1EEBA25600F8ABBD /* UserModel.m in Sources */,
+				EE2FC04D1EEEC5750097C712 /* ShouhuanViewController.m in Sources */,
 				366A1BB61EE7DE830090FB81 /* NetRequestClass.m in Sources */,
 				40C32BD31EE9375D008F653D /* UIView+Extend.m in Sources */,
 				40C32BC21EE9375D008F653D /* NSDate+Extend.m in Sources */,

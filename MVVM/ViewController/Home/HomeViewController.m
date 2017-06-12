@@ -16,6 +16,7 @@
 
 #import "BraceletSearchController.h"
 
+#import "ShouhuanViewController.h"
 @interface HomeViewController ()<ImagePlayerViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CXXPhotoCellDelegate>
 
 @property (weak, nonatomic) IBOutlet ImagePlayerView *imgPlayerView;
@@ -152,7 +153,10 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
+    ShouhuanVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ShouhuanVC animated:YES];
+    /*
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
@@ -171,7 +175,7 @@
         BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
         BraceletVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:BraceletVC animated:YES];
-    }
+    }*/
 
     
     
