@@ -22,8 +22,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
 @property (strong,nonatomic) NSMutableArray *devices;
+
+@property (nonatomic, strong) NSMutableArray *dataArr;
 
 @property (strong,nonatomic) BLEManager *ble;
 
@@ -46,6 +47,25 @@
         self.ble = [[BLEManager alloc] init];
         self.ble.configModel = config;
         self.ble.delegate = self;
+    } else if ([self.type isEqualToString:@"体脂称"]) {
+        [self.dataArr removeAllObjects];
+        
+        BleScaningDecviceModel *bleModel1 = [[BleScaningDecviceModel alloc] init];
+        bleModel1.deviceName = @"F100";
+        bleModel1.uuid = @"F100";
+        [self.dataArr addObject:bleModel1];
+        
+        BleScaningDecviceModel *bleModel2 = [[BleScaningDecviceModel alloc] init];
+        bleModel2.deviceName = @"F200";
+        bleModel2.uuid = @"F200";
+        [self.dataArr addObject:bleModel2];
+        
+        BleScaningDecviceModel *bleModel3 = [[BleScaningDecviceModel alloc] init];
+        bleModel3.deviceName = @"F300";
+        bleModel3.uuid = @"F300";
+        [self.dataArr addObject:bleModel3];
+        
+        [self.tableView reloadData];
     }
     
 }
@@ -73,17 +93,21 @@
     return _devices;
 }
 
+- (NSMutableArray *)dataArr{
+    if (_dataArr == nil) {
+        _dataArr = [[NSMutableArray alloc] init];
+    }
+    return _dataArr;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.devices.count;
+    return self.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeviceCell *cell = [DeviceCell deviceCellWithTableView:tableView];
-    CBPeripheral *p = self.devices[indexPath.row];
-    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
-    bleModel.deviceName = p.name;
-    bleModel.uuid = p.identifier.UUIDString;
+    BleScaningDecviceModel *bleModel = self.dataArr[indexPath.row];
     cell.bleScaningDeviceModel = bleModel;
     return cell;
 }
@@ -102,9 +126,7 @@
 
 // 扫描回调
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    
     [SVProgressHUD dismiss];
-    
     BOOL replace = NO;
     // Match if we have this device from before
     for (int i=0; i < self.devices.count; i++) {
@@ -116,6 +138,16 @@
     }
     if (!replace) {
         [self.devices addObject:peripheral];
+        
+        // 添加设备
+        [self.dataArr removeAllObjects];
+        for (int i=0; i < self.devices.count; i++) {
+            CBPeripheral *p = self.devices[i];
+            BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
+            bleModel.deviceName = p.name;
+            bleModel.uuid = p.identifier.UUIDString;
+            [self.dataArr addObject:bleModel];
+        }
         [self.tableView reloadData];
     }
 }
