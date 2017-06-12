@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360461531EECE4E6007301CE /* BleScaningConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 360461521EECE4E6007301CE /* BleScaningConfigModel.m */; };
+		360461571EECEDD4007301CE /* DeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360461551EECEDD4007301CE /* DeviceCell.m */; };
+		360461581EECEDD4007301CE /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360461561EECEDD4007301CE /* DeviceCell.xib */; };
+		3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
 		366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B6B1EE7DE150090FB81 /* AppDelegate.m */; };
 		366A1B741EE7DE150090FB81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366A1B731EE7DE150090FB81 /* Assets.xcassets */; };
@@ -109,6 +113,13 @@
 /* Begin PBXFileReference section */
 		2420D5E3BDCE1B3654BE9BC5 /* Pods-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM/Pods-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		2EAC8727A889B4520C8992F4 /* Pods-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM/Pods-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
+		360461511EECE4E6007301CE /* BleScaningConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleScaningConfigModel.h; sourceTree = "<group>"; };
+		360461521EECE4E6007301CE /* BleScaningConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleScaningConfigModel.m; sourceTree = "<group>"; };
+		360461541EECEDD4007301CE /* DeviceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceCell.h; sourceTree = "<group>"; };
+		360461551EECEDD4007301CE /* DeviceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceCell.m; sourceTree = "<group>"; };
+		360461561EECEDD4007301CE /* DeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceCell.xib; sourceTree = "<group>"; };
+		360461591EECF05B007301CE /* BleScaningDecviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleScaningDecviceModel.h; sourceTree = "<group>"; };
+		3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleScaningDecviceModel.m; sourceTree = "<group>"; };
 		366A1B641EE7DE150090FB81 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		366A1B681EE7DE150090FB81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		366A1B6A1EE7DE150090FB81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -416,6 +427,9 @@
 			children = (
 				367FB2691EEB927B0051CA37 /* NoticePhotoSelectCell.h */,
 				367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */,
+				360461541EECEDD4007301CE /* DeviceCell.h */,
+				360461551EECEDD4007301CE /* DeviceCell.m */,
+				360461561EECEDD4007301CE /* DeviceCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -669,6 +683,10 @@
 				EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */,
 				EE6818991EEBA25600F8ABBD /* UserModel.h */,
 				EE68189A1EEBA25600F8ABBD /* UserModel.m */,
+				360461511EECE4E6007301CE /* BleScaningConfigModel.h */,
+				360461521EECE4E6007301CE /* BleScaningConfigModel.m */,
+				360461591EECF05B007301CE /* BleScaningDecviceModel.h */,
+				3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -843,6 +861,7 @@
 				EECEDE0C1EEBEAA400BF5955 /* history@2x.png in Resources */,
 				EECEDE111EEBEAA400BF5955 /* scan_net@2x.png in Resources */,
 				EECEDDE11EEBDA2A00BF5955 /* PersonalViewController.xib in Resources */,
+				360461581EECEDD4007301CE /* DeviceCell.xib in Resources */,
 				EECEDE1A1EEBEB9300BF5955 /* AboutViewController.xib in Resources */,
 				40C32B6D1EE93358008F653D /* Manage.storyboard in Resources */,
 			);
@@ -940,6 +959,7 @@
 				40C32BCE1EE9375D008F653D /* UIImage+Color.m in Sources */,
 				40C32BD21EE9375D008F653D /* UIView+Additional.m in Sources */,
 				40C32BCA1EE9375D008F653D /* UIColor+CustomColor.m in Sources */,
+				3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */,
 				40C32BC41EE9375D008F653D /* NSDate+TimeAgo.m in Sources */,
 				EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */,
 				40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */,
@@ -956,6 +976,7 @@
 				40C32BD91EE9375D008F653D /* UIWindow+Launch.m in Sources */,
 				40C32BE71EE939FF008F653D /* DiscoverViewController.m in Sources */,
 				40C32B731EE9371B008F653D /* TabBarItem.m in Sources */,
+				360461531EECE4E6007301CE /* BleScaningConfigModel.m in Sources */,
 				366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */,
 				40C32BCD1EE9375D008F653D /* UILabel+customLabel.m in Sources */,
 				EECEDE061EEBEAA400BF5955 /* HistoryTableViewController.m in Sources */,
@@ -967,6 +988,7 @@
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
 				EECEDE121EEBEAA400BF5955 /* XDScaningViewController.m in Sources */,
 				40C32BD51EE9375D008F653D /* UIView+MJExtension.m in Sources */,
+				360461571EECEDD4007301CE /* DeviceCell.m in Sources */,
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,
 				36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */,

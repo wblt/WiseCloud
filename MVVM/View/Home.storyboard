@@ -145,6 +145,9 @@
                             <constraint firstItem="Oin-WM-3iG" firstAttribute="leading" secondItem="fV3-SA-GzQ" secondAttribute="leading" id="uat-Ca-cko"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Oin-WM-3iG" id="lGW-oL-BrY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6c4-dA-til" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

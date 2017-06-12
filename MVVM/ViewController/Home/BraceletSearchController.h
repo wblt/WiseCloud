@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
+#import "BleScaningConfigModel.h"
+
 @interface BraceletSearchController : BaseViewController
+
+@property (nonatomic,strong) BleScaningConfigModel *configModel;
 
 @end
