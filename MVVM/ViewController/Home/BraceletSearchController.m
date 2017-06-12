@@ -16,6 +16,8 @@
 
 #import "DeviceCell.h"
 
+#import "ShouhuanViewController.h"
+
 @interface BraceletSearchController ()<UITableViewDataSource,UITableViewDelegate,BLEManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -76,15 +78,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeviceCell *cell = [DeviceCell deviceCellWithTableView:tableView];
-    BleScaningDecviceModel *bleModel = self.devices[indexPath.row];
+    CBPeripheral *p = self.devices[indexPath.row];
+    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
+    bleModel.deviceName = p.name;
     cell.bleScaningDeviceModel = bleModel;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
+    ShouhuanVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ShouhuanVC animated:YES];
+}
 
 
 // 扫描回调
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
+    
+    [SVProgressHUD dismiss];
+    
     BOOL replace = NO;
     // Match if we have this device from before
     for (int i=0; i < self.devices.count; i++) {
@@ -124,9 +137,6 @@
 -(void)BLEManager:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     
 }
-
-
-
 
 
 @end

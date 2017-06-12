@@ -177,7 +177,7 @@
 
 // 停止扫描
 - (void)startScan {
-    [self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:self.configModel.serviceUUID]]  options:@{CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+    [self.manager scanForPeripheralsWithServices:nil  options:nil];
 }
 
 // 连接

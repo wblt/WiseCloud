@@ -496,8 +496,6 @@
 				36305DB41EEEC43200D0399B /* BLEManager.m */,
 				EE2FC04B1EEEC5750097C712 /* ShouhuanViewController.h */,
 				EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */,
-
-2dc9b9cf4b70bd6998a38120e221883d9ab90d1c
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1152,7 +1150,7 @@
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dianliang.pingTaiYuYing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiwatch.healthmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1170,7 +1168,7 @@
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dianliang.pingTaiYuYing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiwatch.healthmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -12,6 +12,9 @@
 
 @interface DeviceCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *name;
+
+
 @property (nonatomic,strong) BleScaningDecviceModel *bleScaningDeviceModel;
 
 +(instancetype)deviceCellWithTableView:(UITableView *)tableView;

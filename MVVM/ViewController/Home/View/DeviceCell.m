@@ -25,10 +25,7 @@
 
 - (void)setBleScaningDeviceModel:(BleScaningDecviceModel *)bleScaningDeviceModel {
     _bleScaningDeviceModel = bleScaningDeviceModel;
-    
-    
-    
-    
+    self.name.text = bleScaningDeviceModel.deviceName;
 }
 
 - (void)awakeFromNib {

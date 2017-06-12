@@ -114,7 +114,9 @@
     // recommend to use SDWebImage lib to load web image
     //    [imageView setImageWithURL:[self.imageURLs objectAtIndex:index] placeholderImage:nil];
     NSURL *imageURL = [self.imageURLs objectAtIndex:index];
-    [imageView sd_setImageWithURL:imageURL placeholderImage:nil];
+    imageView.image = [UIImage imageNamed:@"bg1"];
+    
+//    [imageView sd_setImageWithURL:imageURL placeholderImage:nil];
 }
 
 - (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index
@@ -135,12 +137,16 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NoticePhotoSelectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NoticePhotoSelectCell" forIndexPath:indexPath];
     cell.delegate = self;
+    
     if (indexPath.row == self.dataArr.count) {
-        cell.imageView.image = [UIImage imageNamed:@"AlbumAddBtn.png"];
+        cell.imageView.image = [UIImage imageNamed:@"addnum.png"];
         cell.closeButton.hidden = YES;
     } else {
-        UIImage *img = [UIImage imageNamed:@"gndg10"];
-        cell.imageView.image = img;
+        NSString *title = self.dataArr[indexPath.row];
+        if ([title isEqualToString:@"手环"]) {
+            UIImage *img = [UIImage imageNamed:@"shouhuan"];
+            cell.imageView.image = img;
+        }
         cell.closeButton.hidden = NO;
     }
     return cell;
@@ -153,10 +159,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
-    ShouhuanVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ShouhuanVC animated:YES];
-    /*
+
+    
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
@@ -175,10 +179,8 @@
         BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
         BraceletVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:BraceletVC animated:YES];
-    }*/
+    }
 
-    
-    
 }
 
 - (NSMutableArray *)dataArr{
