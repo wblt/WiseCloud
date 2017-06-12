@@ -11,6 +11,10 @@
 		360461571EECEDD4007301CE /* DeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360461551EECEDD4007301CE /* DeviceCell.m */; };
 		360461581EECEDD4007301CE /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360461561EECEDD4007301CE /* DeviceCell.xib */; };
 		3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */; };
+		3608F36B1EEEFF0800106E87 /* WaterElementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3608F36A1EEEFF0800106E87 /* WaterElementController.m */; };
+		3608F3721EEF009900106E87 /* ZIncomeCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3608F3701EEF009900106E87 /* ZIncomeCircle.m */; };
+		3608F3731EEF009900106E87 /* ZIncomeCircle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3608F3711EEF009900106E87 /* ZIncomeCircle.xib */; };
+		3608F3761EEF00BD00106E87 /* CustomFooterBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3608F3751EEF00BD00106E87 /* CustomFooterBar.m */; };
 		36305DB51EEEC43200D0399B /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36305DB41EEEC43200D0399B /* BLEManager.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
 		366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B6B1EE7DE150090FB81 /* AppDelegate.m */; };
@@ -123,6 +127,13 @@
 		360461561EECEDD4007301CE /* DeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceCell.xib; sourceTree = "<group>"; };
 		360461591EECF05B007301CE /* BleScaningDecviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleScaningDecviceModel.h; sourceTree = "<group>"; };
 		3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleScaningDecviceModel.m; sourceTree = "<group>"; };
+		3608F3691EEEFF0800106E87 /* WaterElementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterElementController.h; sourceTree = "<group>"; };
+		3608F36A1EEEFF0800106E87 /* WaterElementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterElementController.m; sourceTree = "<group>"; };
+		3608F36F1EEF009900106E87 /* ZIncomeCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIncomeCircle.h; sourceTree = "<group>"; };
+		3608F3701EEF009900106E87 /* ZIncomeCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIncomeCircle.m; sourceTree = "<group>"; };
+		3608F3711EEF009900106E87 /* ZIncomeCircle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIncomeCircle.xib; sourceTree = "<group>"; };
+		3608F3741EEF00BD00106E87 /* CustomFooterBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFooterBar.h; sourceTree = "<group>"; };
+		3608F3751EEF00BD00106E87 /* CustomFooterBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFooterBar.m; sourceTree = "<group>"; };
 		36305DB31EEEC43200D0399B /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
 		36305DB41EEEC43200D0399B /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
 		366A1B641EE7DE150090FB81 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -434,11 +445,16 @@
 		367FB2681EEB926C0051CA37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3608F36F1EEF009900106E87 /* ZIncomeCircle.h */,
+				3608F3701EEF009900106E87 /* ZIncomeCircle.m */,
+				3608F3711EEF009900106E87 /* ZIncomeCircle.xib */,
 				367FB2691EEB927B0051CA37 /* NoticePhotoSelectCell.h */,
 				367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */,
 				360461541EECEDD4007301CE /* DeviceCell.h */,
 				360461551EECEDD4007301CE /* DeviceCell.m */,
 				360461561EECEDD4007301CE /* DeviceCell.xib */,
+				3608F3741EEF00BD00106E87 /* CustomFooterBar.h */,
+				3608F3751EEF00BD00106E87 /* CustomFooterBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -496,6 +512,8 @@
 				36305DB41EEEC43200D0399B /* BLEManager.m */,
 				EE2FC04B1EEEC5750097C712 /* ShouhuanViewController.h */,
 				EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */,
+				3608F3691EEEFF0800106E87 /* WaterElementController.h */,
+				3608F36A1EEEFF0800106E87 /* WaterElementController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -857,6 +875,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EECEDDF01EEBE67C00BF5955 /* AddDeviceViewController.xib in Resources */,
+				3608F3731EEF009900106E87 /* ZIncomeCircle.xib in Resources */,
 				40C32BF61EE94B62008F653D /* Login.storyboard in Resources */,
 				EECEDE081EEBEAA400BF5955 /* album@2x.png in Resources */,
 				EECEDE0F1EEBEAA400BF5955 /* return@2x.png in Resources */,
@@ -999,6 +1018,8 @@
 				36305DB51EEEC43200D0399B /* BLEManager.m in Sources */,
 				EECEDE061EEBEAA400BF5955 /* HistoryTableViewController.m in Sources */,
 				40C32BCB1EE9375D008F653D /* UIColor+Extend.m in Sources */,
+				3608F3721EEF009900106E87 /* ZIncomeCircle.m in Sources */,
+				3608F36B1EEEFF0800106E87 /* WaterElementController.m in Sources */,
 				40C32BD11EE9375D008F653D /* UIImage+Water.m in Sources */,
 				EECEDDE41EEBE1D100BF5955 /* MyDeviceViewController.m in Sources */,
 				40C32BC01EE9375D008F653D /* NSArray+Extend.m in Sources */,
@@ -1009,6 +1030,7 @@
 				360461571EECEDD4007301CE /* DeviceCell.m in Sources */,
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,
+				3608F3761EEF00BD00106E87 /* CustomFooterBar.m in Sources */,
 				36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */,
 				40C32BC61EE9375D008F653D /* NSString+Extend.m in Sources */,
 				EECEDDEB1EEBE35500BF5955 /* MyDeviceCell.m in Sources */,

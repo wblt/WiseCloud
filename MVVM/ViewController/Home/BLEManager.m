@@ -42,7 +42,6 @@
     NSLog(@"%@", [NSString stringWithFormat:@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.identifier, advertisementData]);
     self.peripheral = peripheral;
     [self.manager stopScan];
-    
     if ([self.delegate respondsToSelector:@selector(BLEManager: didDiscoverPeripheral: advertisementData: RSSI:)]) {
         [self.delegate BLEManager:central didDiscoverPeripheral:peripheral advertisementData:advertisementData RSSI:RSSI];
     }
@@ -127,7 +126,6 @@
         for(int i=0;i<[data length];i++) {
             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
         }
-        
         if ([self.delegate respondsToSelector:@selector(BLEManager: didUpdateValueForCharacteristic: error:)]) {
             [self.delegate BLEManager:peripheral didUpdateValueForCharacteristic:characteristic error:error];
         }

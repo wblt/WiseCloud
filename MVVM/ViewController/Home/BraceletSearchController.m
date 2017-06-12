@@ -18,6 +18,8 @@
 
 #import "ShouhuanViewController.h"
 
+#import "WaterElementController.h"
+
 @interface BraceletSearchController ()<UITableViewDataSource,UITableViewDelegate,BLEManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -66,8 +68,21 @@
         [self.dataArr addObject:bleModel3];
         
         [self.tableView reloadData];
+    } else if ([self.type isEqualToString:@"水分仪"]) {
+        // 水分仪配置
+        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
+        config.serviceUUID = UUID_SERVICE_ShouHuan;
+        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
+        config.characteristicReadUUID = UUID_READ_ShouHuan;
+        self.ble = [[BLEManager alloc] init];
+        self.ble.configModel = config;
+        self.ble.delegate = self;
     }
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
 }
 
 - (IBAction)stopSearching:(id)sender {
@@ -114,9 +129,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
-    ShouhuanVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ShouhuanVC animated:YES];
+    if ([self.type isEqualToString:@"手环"]) {
+        ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
+        ShouhuanVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:ShouhuanVC animated:YES];
+    } else if ([self.type isEqualToString:@"体脂称"]) {
+        // 进入体脂称的页面
+    } else if ([self.type isEqualToString:@"水分仪"]) {
+        WaterElementController *waterVC = [[WaterElementController alloc] init];
+        [self.navigationController pushViewController:waterVC animated:YES];
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
