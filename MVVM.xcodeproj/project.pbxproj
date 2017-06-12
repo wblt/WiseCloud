@@ -11,6 +11,7 @@
 		360461571EECEDD4007301CE /* DeviceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360461551EECEDD4007301CE /* DeviceCell.m */; };
 		360461581EECEDD4007301CE /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360461561EECEDD4007301CE /* DeviceCell.xib */; };
 		3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */; };
+		36305DB51EEEC43200D0399B /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36305DB41EEEC43200D0399B /* BLEManager.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
 		366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B6B1EE7DE150090FB81 /* AppDelegate.m */; };
 		366A1B741EE7DE150090FB81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366A1B731EE7DE150090FB81 /* Assets.xcassets */; };
@@ -122,6 +123,8 @@
 		360461561EECEDD4007301CE /* DeviceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceCell.xib; sourceTree = "<group>"; };
 		360461591EECF05B007301CE /* BleScaningDecviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleScaningDecviceModel.h; sourceTree = "<group>"; };
 		3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleScaningDecviceModel.m; sourceTree = "<group>"; };
+		36305DB31EEEC43200D0399B /* BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEManager.h; sourceTree = "<group>"; };
+		36305DB41EEEC43200D0399B /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
 		366A1B641EE7DE150090FB81 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		366A1B681EE7DE150090FB81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		366A1B6A1EE7DE150090FB81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -489,8 +492,12 @@
 				367FB26F1EEB99280051CA37 /* AddDeviceController.m */,
 				36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */,
 				36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */,
+				36305DB31EEEC43200D0399B /* BLEManager.h */,
+				36305DB41EEEC43200D0399B /* BLEManager.m */,
 				EE2FC04B1EEEC5750097C712 /* ShouhuanViewController.h */,
 				EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */,
+
+2dc9b9cf4b70bd6998a38120e221883d9ab90d1c
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -811,8 +818,8 @@
 				TargetAttributes = {
 					366A1B631EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NH8J3U8S77;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 3VHRG6J3L4;
+						ProvisioningStyle = Automatic;
 					};
 					366A1B7C1EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -991,6 +998,7 @@
 				360461531EECE4E6007301CE /* BleScaningConfigModel.m in Sources */,
 				366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */,
 				40C32BCD1EE9375D008F653D /* UILabel+customLabel.m in Sources */,
+				36305DB51EEEC43200D0399B /* BLEManager.m in Sources */,
 				EECEDE061EEBEAA400BF5955 /* HistoryTableViewController.m in Sources */,
 				40C32BCB1EE9375D008F653D /* UIColor+Extend.m in Sources */,
 				40C32BD11EE9375D008F653D /* UIImage+Water.m in Sources */,
@@ -1139,15 +1147,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NH8J3U8S77;
+				DEVELOPMENT_TEAM = 3VHRG6J3L4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dianliang.pingTaiYuYing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1d5e3078-f801-4cde-8552-c8b40fa37814";
-				PROVISIONING_PROFILE_SPECIFIER = yuying_dev_0519;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1156,16 +1164,16 @@
 			baseConfigurationReference = 2420D5E3BDCE1B3654BE9BC5 /* Pods-MVVM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = NH8J3U8S77;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3VHRG6J3L4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dianliang.pingTaiYuYing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e1a276c-394f-4f40-a313-440e73aaaab7";
-				PROVISIONING_PROFILE_SPECIFIER = yuying_dis_0519;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
