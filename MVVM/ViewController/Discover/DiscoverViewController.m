@@ -37,8 +37,6 @@
     [SVProgressHUD dismiss];
 }
 
-
-
 /*
 #pragma mark - Navigation
 

@@ -12,6 +12,4 @@
 
 @interface BraceletSearchController : BaseViewController
 
-@property (nonatomic,strong) BleScaningConfigModel *configModel;
-
 @end
