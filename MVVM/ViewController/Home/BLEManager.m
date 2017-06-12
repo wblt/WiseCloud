@@ -27,7 +27,6 @@
     switch (central.state) {
         case CBCentralManagerStatePoweredOn:
             NSLog(@"%@",@"蓝牙已打开,请扫描外设");
-            [SVProgressHUD showInfoWithStatus:@"蓝牙已打开,请扫描外设"];
             break;
         case CBCentralManagerStatePoweredOff:
             NSLog(@"%@",@"蓝牙没有打开,请先打开蓝牙");

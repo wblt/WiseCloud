@@ -145,6 +145,12 @@
         if ([title isEqualToString:@"手环"]) {
             UIImage *img = [UIImage imageNamed:@"shouhuan"];
             cell.imageView.image = img;
+        } else if ([title isEqualToString:@"体脂称"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg9"];
+            cell.imageView.image = img;
+        } else if ([title isEqualToString:@"水分仪"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg13dd"];
+            cell.imageView.image = img;
         }
         cell.closeButton.hidden = NO;
     }
@@ -158,8 +164,6 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
@@ -177,6 +181,7 @@
         //进入到一个新的界面
         BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
         BraceletVC.hidesBottomBarWhenPushed = YES;
+        BraceletVC.type = self.dataArr[indexPath.row];
         [self.navigationController pushViewController:BraceletVC animated:YES];
     }
 

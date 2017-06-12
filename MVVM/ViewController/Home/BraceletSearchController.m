@@ -37,15 +37,17 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    if ([self.type isEqualToString:@"手环"]) {
+        // 手环配置
+        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
+        config.serviceUUID = UUID_SERVICE_ShouHuan;
+        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
+        config.characteristicReadUUID = UUID_READ_ShouHuan;
+        self.ble = [[BLEManager alloc] init];
+        self.ble.configModel = config;
+        self.ble.delegate = self;
+    }
     
-    // 手环配置
-    BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-    config.serviceUUID = UUID_SERVICE_ShouHuan;
-    config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-    config.characteristicReadUUID = UUID_READ_ShouHuan;
-    self.ble = [[BLEManager alloc] init];
-    self.ble.configModel = config;
-    self.ble.delegate = self;
 }
 
 - (IBAction)stopSearching:(id)sender {
