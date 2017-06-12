@@ -13,6 +13,7 @@
 #import "MyDeviceViewController.h"
 #import "HelpViewController.h"
 #import "AboutViewController.h"
+#import "MessageViewController.h"
 @interface ManageViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *manageArr;
@@ -64,7 +65,9 @@
         about.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:about animated:YES];
     }else if (indexPath.row == 4) {
-        
+        MessageViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageViewController"];
+        ShouhuanVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:ShouhuanVC animated:YES];
     }
 }
 
