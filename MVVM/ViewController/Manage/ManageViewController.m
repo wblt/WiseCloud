@@ -14,6 +14,7 @@
 #import "HelpViewController.h"
 #import "AboutViewController.h"
 #import "MessageViewController.h"
+#import "RecordViewController.h"
 @interface ManageViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *manageArr;
@@ -47,6 +48,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    /*
     if (indexPath.row == 0) {
         PersonalViewController *personal = [[PersonalViewController alloc] init];
         personal.hidesBottomBarWhenPushed = YES;
@@ -68,11 +70,19 @@
         MessageViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageViewController"];
         ShouhuanVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:ShouhuanVC animated:YES];
-    }
+    }*/
+    
+    RecordViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RecordViewController"];
+    ShouhuanVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ShouhuanVC animated:YES];
 }
 
 - (IBAction)logoutAction:(UIButton *)sender {
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     LoginViewController *loginVC = [storyboad instantiateInitialViewController];

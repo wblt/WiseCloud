@@ -69,6 +69,9 @@
 		40C32BF41EE94B4E008F653D /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BF11EE94B4E008F653D /* ForgetPwdController.m */; };
 		40C32BF61EE94B62008F653D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C32BF51EE94B62008F653D /* Login.storyboard */; };
 		40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BFC1EE94FEE008F653D /* LoginViewModel.m */; };
+		40C5CECD1EEFCDB000822D82 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C5CECC1EEFCDB000822D82 /* RecordViewController.m */; };
+		40C5CED41EEFDE9900822D82 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C5CED21EEFDE9900822D82 /* DateCell.m */; };
+		40C5CED51EEFDE9900822D82 /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40C5CED31EEFDE9900822D82 /* DateCell.xib */; };
 		D9C6F5904BB24842D6AB2F94 /* libPods-MVVM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C377E169344DE7C1866D3C /* libPods-MVVM.a */; };
 		EE2FC04D1EEEC5750097C712 /* ShouhuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */; };
 		EE2FC0501EEED6D90097C712 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2FC04F1EEED6D90097C712 /* MessageViewController.m */; };
@@ -240,6 +243,11 @@
 		40C32BF51EE94B62008F653D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		40C32BFB1EE94FEE008F653D /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		40C32BFC1EE94FEE008F653D /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		40C5CECB1EEFCDB000822D82 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		40C5CECC1EEFCDB000822D82 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		40C5CED11EEFDE9900822D82 /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
+		40C5CED21EEFDE9900822D82 /* DateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCell.m; sourceTree = "<group>"; };
+		40C5CED31EEFDE9900822D82 /* DateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
 		B6C377E169344DE7C1866D3C /* libPods-MVVM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MVVM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2FC04B1EEEC5750097C712 /* ShouhuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShouhuanViewController.h; sourceTree = "<group>"; };
 		EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShouhuanViewController.m; sourceTree = "<group>"; };
@@ -666,6 +674,8 @@
 				EECEDE181EEBEB9300BF5955 /* AboutViewController.xib */,
 				EE2FC04E1EEED6D90097C712 /* MessageViewController.h */,
 				EE2FC04F1EEED6D90097C712 /* MessageViewController.m */,
+				40C5CECB1EEFCDB000822D82 /* RecordViewController.h */,
+				40C5CECC1EEFCDB000822D82 /* RecordViewController.m */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -729,6 +739,9 @@
 			children = (
 				EECEDDE91EEBE35500BF5955 /* MyDeviceCell.h */,
 				EECEDDEA1EEBE35500BF5955 /* MyDeviceCell.m */,
+				40C5CED11EEFDE9900822D82 /* DateCell.h */,
+				40C5CED21EEFDE9900822D82 /* DateCell.m */,
+				40C5CED31EEFDE9900822D82 /* DateCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -834,7 +847,7 @@
 				TargetAttributes = {
 					366A1B631EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 3VHRG6J3L4;
+						DevelopmentTeam = 59Q2E3377P;
 						ProvisioningStyle = Automatic;
 					};
 					366A1B7C1EE7DE150090FB81 = {
@@ -898,6 +911,7 @@
 				360461581EECEDD4007301CE /* DeviceCell.xib in Resources */,
 				EECEDE1A1EEBEB9300BF5955 /* AboutViewController.xib in Resources */,
 				40C32B6D1EE93358008F653D /* Manage.storyboard in Resources */,
+				40C5CED51EEFDE9900822D82 /* DateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,10 +984,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40C5CED41EEFDE9900822D82 /* DateCell.m in Sources */,
 				366A1BB71EE7DE830090FB81 /* Tools.m in Sources */,
 				40C32BC91EE9375D008F653D /* NSString+Regex.m in Sources */,
 				EECEDDDF1EEBD9EA00BF5955 /* PersonalViewController.m in Sources */,
 				367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */,
+				40C5CECD1EEFCDB000822D82 /* RecordViewController.m in Sources */,
 				40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */,
 				367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */,
 				EE2FC0501EEED6D90097C712 /* MessageViewController.m in Sources */,
@@ -1167,12 +1183,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3VHRG6J3L4;
+				DEVELOPMENT_TEAM = 59Q2E3377P;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hiwatch.healthmanagement;
+				PRODUCT_BUNDLE_IDENTIFIER = "-ThankYou-com.k12chn.ThankYou";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1185,12 +1201,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3VHRG6J3L4;
+				DEVELOPMENT_TEAM = 59Q2E3377P;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hiwatch.healthmanagement;
+				PRODUCT_BUNDLE_IDENTIFIER = "-ThankYou-com.k12chn.ThankYou";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

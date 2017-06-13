@@ -119,6 +119,10 @@
 - (IBAction)exitUser:(id)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     LoginViewController *loginVC = [storyboad instantiateInitialViewController];
