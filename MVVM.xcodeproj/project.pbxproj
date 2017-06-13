@@ -26,6 +26,7 @@
 		367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB2661EEB91600051CA37 /* UIView_extra.m */; };
 		367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */; };
 		367FB2701EEB99280051CA37 /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26F1EEB99280051CA37 /* AddDeviceController.m */; };
+		36CBDDBC1EEFCE6600D3B530 /* BalanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */; };
 		36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */; };
 		40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B541EE92D29008F653D /* BaseViewModel.m */; };
 		40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B5E1EE92D7F008F653D /* BaseNavigationController.m */; };
@@ -160,6 +161,8 @@
 		367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticePhotoSelectCell.m; sourceTree = "<group>"; };
 		367FB26E1EEB99280051CA37 /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
 		367FB26F1EEB99280051CA37 /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
+		36CBDDBA1EEFCE6600D3B530 /* BalanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceController.h; sourceTree = "<group>"; };
+		36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceController.m; sourceTree = "<group>"; };
 		36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraceletSearchController.h; sourceTree = "<group>"; };
 		36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BraceletSearchController.m; sourceTree = "<group>"; };
 		40C32B531EE92D29008F653D /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
@@ -514,6 +517,8 @@
 				EE2FC04C1EEEC5750097C712 /* ShouhuanViewController.m */,
 				3608F3691EEEFF0800106E87 /* WaterElementController.h */,
 				3608F36A1EEEFF0800106E87 /* WaterElementController.m */,
+				36CBDDBA1EEFCE6600D3B530 /* BalanceController.h */,
+				36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -930,7 +935,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7B62EFC3E44468A1B9823817 /* [CP] Copy Pods Resources */ = {
@@ -987,6 +992,7 @@
 				366A1BB61EE7DE830090FB81 /* NetRequestClass.m in Sources */,
 				40C32BD31EE9375D008F653D /* UIView+Extend.m in Sources */,
 				40C32BC21EE9375D008F653D /* NSDate+Extend.m in Sources */,
+				36CBDDBC1EEFCE6600D3B530 /* BalanceController.m in Sources */,
 				40C32BD61EE9375D008F653D /* UIView+UIViewController.m in Sources */,
 				40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */,
 				40C32BD81EE9375D008F653D /* UIWindow+Extension.m in Sources */,
