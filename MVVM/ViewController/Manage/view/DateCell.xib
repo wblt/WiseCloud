@@ -15,10 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="160" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hy-hU-q8V">
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hy-hU-q8V">
                         <rect key="frame" x="135" y="12" width="20" height="20"/>
                         <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -27,8 +27,8 @@
                         </constraints>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUz-eY-DAY">
-                        <rect key="frame" x="0.0" y="10" width="135" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <rect key="frame" x="0.0" y="12" width="135" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -47,6 +47,10 @@
             <connections>
                 <outlet property="budgeBtn" destination="9hy-hU-q8V" id="Sk7-FD-dCG"/>
                 <outlet property="date" destination="hUz-eY-DAY" id="4wi-hh-gGa"/>
+                <outlet property="height" destination="kIf-5T-LUg" id="zdY-9M-O0g"/>
+                <outlet property="left" destination="6Gf-LN-AqH" id="wDe-2l-SBX"/>
+                <outlet property="right" destination="ATb-xy-abB" id="l1I-ah-CZ4"/>
+                <outlet property="width" destination="PhB-fD-F7T" id="4Xh-nl-pV1"/>
             </connections>
         </tableViewCell>
     </objects>
