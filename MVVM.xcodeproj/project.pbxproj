@@ -30,6 +30,7 @@
 		36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BC7E891EF260ED00BA30DE /* BodyFatModel.m */; };
 		36CBDDBC1EEFCE6600D3B530 /* BalanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */; };
 		36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */; };
+		402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DA81A1EF22B8A00402707 /* RecordModel.m */; };
 		40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B541EE92D29008F653D /* BaseViewModel.m */; };
 		40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B5E1EE92D7F008F653D /* BaseNavigationController.m */; };
 		40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B601EE92D7F008F653D /* BaseViewController.m */; };
@@ -174,6 +175,8 @@
 		36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceController.m; sourceTree = "<group>"; };
 		36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraceletSearchController.h; sourceTree = "<group>"; };
 		36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BraceletSearchController.m; sourceTree = "<group>"; };
+		402DA8191EF22B8A00402707 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
+		402DA81A1EF22B8A00402707 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
 		40C32B531EE92D29008F653D /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		40C32B541EE92D29008F653D /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		40C32B5D1EE92D7F008F653D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -745,6 +748,8 @@
 				360461521EECE4E6007301CE /* BleScaningConfigModel.m */,
 				360461591EECF05B007301CE /* BleScaningDecviceModel.h */,
 				3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */,
+				402DA8191EF22B8A00402707 /* RecordModel.h */,
+				402DA81A1EF22B8A00402707 /* RecordModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1061,6 +1066,7 @@
 				36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */,
 				EECEDE121EEBEAA400BF5955 /* XDScaningViewController.m in Sources */,
 				40C32BD51EE9375D008F653D /* UIView+MJExtension.m in Sources */,
+				402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */,
 				360461571EECEDD4007301CE /* DeviceCell.m in Sources */,
 				40C32BCF1EE9375D008F653D /* UIImage+Cut.m in Sources */,
 				40C32BD01EE9375D008F653D /* UIImage+FixOrientation.m in Sources */,

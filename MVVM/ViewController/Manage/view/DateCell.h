@@ -11,4 +11,8 @@
 @interface DateCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *budgeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *right;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *left;
 @end
