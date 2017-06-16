@@ -20,6 +20,8 @@
 
 #import "WaterElementController.h"
 
+#import "RecordViewController.h"
+
 @interface BraceletSearchController ()<UITableViewDataSource,UITableViewDelegate,BLEManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -135,6 +137,10 @@
         [self.navigationController pushViewController:ShouhuanVC animated:YES];
     } else if ([self.type isEqualToString:@"体脂称"]) {
         // 进入体脂称的页面
+        UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Manage" bundle:nil];
+        RecordViewController *recordVC = [storyboad instantiateViewControllerWithIdentifier:@"RecordViewController"];
+        recordVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:recordVC animated:YES];
     } else if ([self.type isEqualToString:@"水分仪"]) {
         WaterElementController *waterVC = [[WaterElementController alloc] init];
         [self.navigationController pushViewController:waterVC animated:YES];

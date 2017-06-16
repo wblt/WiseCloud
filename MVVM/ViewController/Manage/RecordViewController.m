@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"历史记录";
     _dataArr = [NSMutableArray array];
     _dateTable.dataSource = self;
     _dateTable.delegate = self;
@@ -160,9 +161,10 @@
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (tableView == _deteilTable) {
-        UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-160, 70)];
+        UIView *view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-140, 70)];
         view.backgroundColor = [UIColor clearColor];
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(view.width-65, 10, 50, 50)];
+        btn.backgroundColor = [UIColor clearColor];
         [btn setImage:[UIImage imageNamed:@"复制"] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(cutScreen) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:btn];
@@ -177,6 +179,11 @@
 
 - (void)cutScreen
 {
+    [self performSelector:@selector(hh) withObject:nil afterDelay:0.5];
+}
+
+- (void)hh
+{
     UIWindow *screenWindow = [[UIApplication sharedApplication] keyWindow];
     
     UIGraphicsBeginImageContext(screenWindow.frame.size);
@@ -186,11 +193,11 @@
     UIImage* viewImage =UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
+    
     UIImageWriteToSavedPhotosAlbum(viewImage, self, nil, nil);
     [SVProgressHUD showSuccessWithStatus:@"截图已保存至手机相册"];
-    [SVProgressHUD dismissWithDelay:2];
+    [SVProgressHUD dismissWithDelay:1];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
