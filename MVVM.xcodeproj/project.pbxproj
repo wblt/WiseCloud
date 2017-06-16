@@ -26,6 +26,8 @@
 		367FB2671EEB91600051CA37 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB2661EEB91600051CA37 /* UIView_extra.m */; };
 		367FB26B1EEB927B0051CA37 /* NoticePhotoSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */; };
 		367FB2701EEB99280051CA37 /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 367FB26F1EEB99280051CA37 /* AddDeviceController.m */; };
+		36BC7E871EF2600C00BA30DE /* BodyFatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BC7E861EF2600C00BA30DE /* BodyFatCell.m */; };
+		36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BC7E891EF260ED00BA30DE /* BodyFatModel.m */; };
 		36CBDDBC1EEFCE6600D3B530 /* BalanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */; };
 		36E71C711EEBEB21008FCFB1 /* BraceletSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E71C701EEBEB21008FCFB1 /* BraceletSearchController.m */; };
 		402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DA81A1EF22B8A00402707 /* RecordModel.m */; };
@@ -165,6 +167,10 @@
 		367FB26A1EEB927B0051CA37 /* NoticePhotoSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticePhotoSelectCell.m; sourceTree = "<group>"; };
 		367FB26E1EEB99280051CA37 /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
 		367FB26F1EEB99280051CA37 /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
+		36BC7E851EF2600C00BA30DE /* BodyFatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyFatCell.h; sourceTree = "<group>"; };
+		36BC7E861EF2600C00BA30DE /* BodyFatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyFatCell.m; sourceTree = "<group>"; };
+		36BC7E881EF260ED00BA30DE /* BodyFatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyFatModel.h; sourceTree = "<group>"; };
+		36BC7E891EF260ED00BA30DE /* BodyFatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyFatModel.m; sourceTree = "<group>"; };
 		36CBDDBA1EEFCE6600D3B530 /* BalanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceController.h; sourceTree = "<group>"; };
 		36CBDDBB1EEFCE6600D3B530 /* BalanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceController.m; sourceTree = "<group>"; };
 		36E71C6F1EEBEB21008FCFB1 /* BraceletSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraceletSearchController.h; sourceTree = "<group>"; };
@@ -459,6 +465,8 @@
 		367FB2681EEB926C0051CA37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36BC7E851EF2600C00BA30DE /* BodyFatCell.h */,
+				36BC7E861EF2600C00BA30DE /* BodyFatCell.m */,
 				3608F36F1EEF009900106E87 /* ZIncomeCircle.h */,
 				3608F3701EEF009900106E87 /* ZIncomeCircle.m */,
 				3608F3711EEF009900106E87 /* ZIncomeCircle.xib */,
@@ -730,6 +738,8 @@
 		EE6818961EEBA24C00F8ABBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				36BC7E881EF260ED00BA30DE /* BodyFatModel.h */,
+				36BC7E891EF260ED00BA30DE /* BodyFatModel.m */,
 				EE6818971EEBA25600F8ABBD /* MyDeviceModel.h */,
 				EE6818981EEBA25600F8ABBD /* MyDeviceModel.m */,
 				EE6818991EEBA25600F8ABBD /* UserModel.h */,
@@ -1039,6 +1049,7 @@
 				40C32BD91EE9375D008F653D /* UIWindow+Launch.m in Sources */,
 				40C32BE71EE939FF008F653D /* DiscoverViewController.m in Sources */,
 				40C32B731EE9371B008F653D /* TabBarItem.m in Sources */,
+				36BC7E871EF2600C00BA30DE /* BodyFatCell.m in Sources */,
 				360461531EECE4E6007301CE /* BleScaningConfigModel.m in Sources */,
 				366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */,
 				40C32BCD1EE9375D008F653D /* UILabel+customLabel.m in Sources */,
@@ -1052,6 +1063,7 @@
 				40C32BC01EE9375D008F653D /* NSArray+Extend.m in Sources */,
 				40C32BE01EE93978008F653D /* HomeViewController.m in Sources */,
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
+				36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */,
 				EECEDE121EEBEAA400BF5955 /* XDScaningViewController.m in Sources */,
 				40C32BD51EE9375D008F653D /* UIView+MJExtension.m in Sources */,
 				402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */,

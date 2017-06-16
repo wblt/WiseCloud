@@ -7,8 +7,9 @@
 //
 
 #import "BalanceController.h"
-
-@interface BalanceController ()
+#import "BodyFatCell.h"
+#import "RecordViewController.h"
+@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;
 
@@ -24,11 +25,49 @@
 
 @implementation BalanceController {
     NSString *identify;
+    NSMutableArray *dataSouce;
+    NSString *currentWater;
+    NSString *currentWeight;
+    UILabel *titleLabel;
+    UILabel *bigWightLabel;
+    NSString *curretnValue;
+    UILabel *waterResult;
+    UILabel *bodyFatResult;
+    UILabel *bigGradeLabel;
+    UILabel *changeLabel;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    dataSouce = [NSMutableArray array];
+
+    [self initName];
+    [self initUnit];
+    
+    //创建表视图
+    identify = @"BodyFatCell";
+    
+    [self createTableView];
+    
+    UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+    [rightBtn setTitle:@"历史记录" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    rightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    [rightBtn addTarget:self action:@selector(historyRecorderList) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
+}
+
+- (void)historyRecorderList
+{
+    UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Manage" bundle:nil];
+    RecordViewController *recordVC = [storyboad instantiateViewControllerWithIdentifier:@"RecordViewController"];
+    recordVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recordVC animated:YES];
 }
 
 - (void)initName {
@@ -57,6 +96,222 @@
     [self.unitArray addObject:@"kg"];
 }
 
+- (void)createTableView {
+    self.cutableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    self.cutableView.dataSource = self;
+    self.cutableView.delegate = self;
+    //设置头视图
+    self.cutableView.tableHeaderView = [self createTableHeadView];
+    self.cutableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+    [self.view addSubview:self.cutableView];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.nameArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    BodyFatCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (cell == nil) {
+        cell = [[BodyFatCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+//    cell.nameLabel.text = self.nameArray[indexPath.row];
+//    cell.unitLabel.text = self.unitArray[indexPath.row];
+//    
+//    if (dataSouce.count) {
+//        cell.resultLabel.text = dataSouce[indexPath.row];
+//    }
+    return cell;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 0.1;
+    
+}
+
+- (UIView *)createTableHeadView {
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    //蓝牙未连接
+    titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"(YunChen)未连接";
+    [headView addSubview:titleLabel];
+    
+    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [testButton setTitle:@"测量" forState:UIControlStateNormal];
+    [testButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [testButton addTarget:self action:@selector(testAction:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:testButton];
+    
+    //大的圈圈
+    UIImageView *resultImgeView = [[UIImageView alloc] init];
+    resultImgeView.image = [UIImage imageNamed:@"tzbeijing"];
+    [headView addSubview:resultImgeView];
+    
+    //大圈圈的分数
+    bigGradeLabel = [[UILabel alloc] init];
+    bigGradeLabel.text = @"0.0分";
+    bigGradeLabel.textColor = [UIColor orangeColor];
+    bigGradeLabel.font = [UIFont systemFontOfSize:13];
+    bigGradeLabel.textAlignment = NSTextAlignmentCenter;
+    [headView addSubview:bigGradeLabel];
+    
+    //分割线
+    UIView *sepLine = [[UIView alloc] init];
+    sepLine.backgroundColor = [UIColor lightGrayColor];
+    [headView addSubview:sepLine];
+    
+    //大圈圈的结果
+    bigWightLabel = [[UILabel alloc] init];
+    currentWeight = @"0";
+    bigWightLabel.text = [NSString stringWithFormat:@"%@kg",currentWeight];
+    bigWightLabel.font = [UIFont systemFontOfSize:13];
+    bigWightLabel.textColor = [UIColor orangeColor];
+    bigWightLabel.textAlignment = NSTextAlignmentCenter;
+    [headView addSubview:bigWightLabel];
+    
+    //切换账号
+//    UserModel *userModel = [kUserConfig getAllInformation];
+    changeLabel = [[UILabel alloc] init];
+    changeLabel.text = @"测试";
+    [headView addSubview:changeLabel];
+    
+    UIButton *changeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [changeButton setTitle:@"切换" forState:UIControlStateNormal];
+    [changeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [changeButton addTarget:self action:@selector(changAction:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:changeButton];
+    
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(headView).with.offset(15);
+        make.top.equalTo(headView).with.offset(10);
+        
+    }];
+    
+    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(titleLabel.mas_bottom).with.offset(0);
+        make.centerX.equalTo(titleLabel);
+        make.left.equalTo(titleLabel);
+        make.right.equalTo(titleLabel);
+    }];
+    
+    
+    [resultImgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(headView);
+        make.centerY.equalTo(headView);
+    }];
+    
+    [changeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(headView).with.offset(-15);
+        make.top.equalTo(headView).with.offset(10);
+        
+    }];
+    
+    [changeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(changeLabel.mas_bottom).with.offset(0);
+        make.centerX.equalTo(changeLabel);
+        make.left.equalTo(changeLabel);
+        make.right.equalTo(changeLabel);
+        
+    }];
+    
+    UILabel *waterLabel = [[UILabel alloc] init];
+    waterLabel.text = @"体水分";
+    [headView addSubview:waterLabel];
+    
+    UIImageView *waterImageView = [[UIImageView alloc] init];
+    waterImageView.image = [UIImage imageNamed:@"tishuibeijing"];
+    [headView addSubview:waterImageView];
+    
+    waterResult = [[UILabel alloc] init];
+    waterResult.text = @"%0.0";
+    waterResult.font = [UIFont systemFontOfSize:13];
+    [headView addSubview:waterResult];
+    
+    [waterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.bottom.equalTo(headView).with.offset(-5);
+        make.left.equalTo(headView).with.offset(10);
+        
+    }];
+    
+    [waterImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.bottom.equalTo(waterLabel.mas_top).with.offset(-10);
+        make.centerX.equalTo(waterLabel);
+        
+    }];
+    
+    [waterResult mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(waterImageView);
+        make.centerY.equalTo(waterImageView);
+    }];
+    
+    
+    UILabel *bodyFatLabel = [[UILabel alloc] init];
+    bodyFatLabel.text = @"体脂率";
+    [headView addSubview:bodyFatLabel];
+    
+    
+    UIImageView *bodyFatImgeView = [[UIImageView alloc] init];
+    bodyFatImgeView.image = [UIImage imageNamed:@"tishuibeijing"];
+    [headView addSubview:bodyFatImgeView];
+    
+    bodyFatResult = [[UILabel alloc] init];
+    bodyFatResult.text = @"%0.0";
+    bodyFatResult.font = [UIFont systemFontOfSize:13];
+    [headView addSubview:bodyFatResult];
+    
+    [bodyFatLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(headView).with.offset(-5);
+        make.right.equalTo(headView).with.offset(-10);
+    }];
+    
+    [bodyFatImgeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(bodyFatLabel.mas_top).with.offset(-10);
+        make.centerX.equalTo(bodyFatLabel);
+    }];
+    
+    [bodyFatResult mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerX.equalTo(bodyFatImgeView);
+        make.centerY.equalTo(bodyFatImgeView);
+    }];
+    
+    
+    [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.equalTo(resultImgeView).with.offset(10);
+        make.centerY.equalTo(resultImgeView);
+        make.centerX.equalTo(resultImgeView);
+        make.right.equalTo(resultImgeView).with.offset(-10);
+        make.height.mas_equalTo(2);
+    }];
+    
+    [bigGradeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(sepLine);
+        make.bottom.equalTo(sepLine.mas_top).with.offset(-10);
+    }];
+    
+    
+    [bigWightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(sepLine);
+        make.top.equalTo(sepLine.mas_bottom).with.offset(10);
+    }];
+    return headView;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -82,4 +337,36 @@
     }
     return _unitArray;
 }
+
+#pragma mark - 测量响应方法
+- (void)testAction:(UIButton *)sender {
+    [SVProgressHUD showWithStatus:@"设备连接中..."];
+    titleLabel.text = [NSString stringWithFormat:@"(YunChen)连接中..."];
+    ;
+//    ScanBodyBalance *bady = [ScanBodyBalance sharedInstance];
+//    [bady connect];
+}
+
+#pragma mark - 切换账号
+- (void)changAction:(UIButton *)sender {
+//    ChangUserController *changVC = [[ChangUserController alloc] init];
+//    [self.navigationController pushViewController:changVC animated:YES];
+}
+
+/*
+- (NSString *)getBmi:(float)tz {
+//    UserModel *userModel = [kUserConfig getAllInformation];
+//    TestUserModel *testModel = userModel.testUserModel;
+//    CGFloat sgs = [testModel.height floatValue] / 100;
+//    NSInteger bmi = tz / (sgs * sgs);
+//    return [NSString stringWithFormat:@"%ld",bmi];
+}
+
+- (NSString *)yaotunbi {
+//    UserModel *userModel = [kUserConfig getAllInformation];
+//    TestUserModel *testModel = userModel.testUserModel;
+//    NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
+//    return [NSString stringWithFormat:@"%ld",bi];
+}
+ */
 @end
