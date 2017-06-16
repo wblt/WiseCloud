@@ -8,7 +8,7 @@
 
 #import "BalanceController.h"
 #import "BodyFatCell.h"
-
+#import "RecordViewController.h"
 @interface BalanceController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;
@@ -52,6 +52,22 @@
     identify = @"BodyFatCell";
     
     [self createTableView];
+    
+    UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+    [rightBtn setTitle:@"历史记录" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    rightBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    [rightBtn addTarget:self action:@selector(historyRecorderList) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
+}
+
+- (void)historyRecorderList
+{
+    UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Manage" bundle:nil];
+    RecordViewController *recordVC = [storyboad instantiateViewControllerWithIdentifier:@"RecordViewController"];
+    recordVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recordVC animated:YES];
 }
 
 - (void)initName {

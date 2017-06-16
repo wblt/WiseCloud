@@ -20,6 +20,8 @@
 
 #import "WaterElementController.h"
 
+#import "RecordViewController.h"
+
 #import "BalanceController.h"
 
 @interface BraceletSearchController ()<UITableViewDataSource,UITableViewDelegate,BLEManagerDelegate>
@@ -137,6 +139,7 @@
         [self.navigationController pushViewController:ShouhuanVC animated:YES];
     } else if ([self.type isEqualToString:@"体脂称"]) {
         // 进入体脂称的页面
+        
         BalanceController *balanceVC = [[BalanceController alloc] init];
         [self.navigationController pushViewController:balanceVC animated:YES];
     } else if ([self.type isEqualToString:@"水分仪"]) {
