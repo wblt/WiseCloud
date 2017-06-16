@@ -25,6 +25,8 @@
                       font:(CGFloat) fontSize;
 
 
+
+
 /**
  * 读取用户信息
  *
@@ -36,6 +38,7 @@
  *
  */
 + (void) writeUserModelToLocal:(UserModel *)userModel;
+
 
 
 

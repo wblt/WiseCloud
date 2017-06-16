@@ -9,6 +9,7 @@
 #import "BalanceController.h"
 #import "BodyFatCell.h"
 #import "RecordViewController.h"
+#import "ChangUserController.h"
 @interface BalanceController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;
@@ -355,8 +356,8 @@
 
 #pragma mark - 切换账号
 - (void)changAction:(UIButton *)sender {
-//    ChangUserController *changVC = [[ChangUserController alloc] init];
-//    [self.navigationController pushViewController:changVC animated:YES];
+    ChangUserController *changVC = [[ChangUserController alloc] init];
+    [self.navigationController pushViewController:changVC animated:YES];
 }
 
 /*

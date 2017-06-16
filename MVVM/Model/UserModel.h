@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-//#import "TestUserModel.h"
+#import "TestUserModel.h"
 
 @interface UserModel : NSObject
 
@@ -21,5 +21,7 @@
 @property (nonatomic,strong) NSMutableArray *deviceArray;
 
 @property (nonatomic,copy) NSString *defaultDeVice;
+
+@property (nonatomic,strong) TestUserModel *testUserModel;
 
 @end
