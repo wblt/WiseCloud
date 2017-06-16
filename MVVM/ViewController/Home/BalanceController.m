@@ -20,12 +20,13 @@
 
 @property (nonatomic,strong) NSMutableArray *unitArray;
 
+@property (nonatomic,strong) NSMutableArray *dataSouce;
+
 
 @end
 
 @implementation BalanceController {
     NSString *identify;
-    NSMutableArray *dataSouce;
     NSString *currentWater;
     NSString *currentWeight;
     UILabel *titleLabel;
@@ -43,8 +44,7 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    dataSouce = [NSMutableArray array];
-
+    
     [self initName];
     [self initUnit];
     
@@ -91,7 +91,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return self.nameArray.count;
 }
 
@@ -103,12 +102,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-//    cell.nameLabel.text = self.nameArray[indexPath.row];
-//    cell.unitLabel.text = self.unitArray[indexPath.row];
-//    
-//    if (dataSouce.count) {
-//        cell.resultLabel.text = dataSouce[indexPath.row];
-//    }
+    cell.nameLabel.text = self.nameArray[indexPath.row];
+    cell.unitLabel.text = self.unitArray[indexPath.row];
+    
+    if (self.dataSouce.count > 0) {
+        cell.resultLabel.text = self.dataSouce[indexPath.row];
+    }
     return cell;
     
 }
@@ -320,6 +319,13 @@
         _unitArray = [[NSMutableArray alloc] init];
     }
     return _unitArray;
+}
+
+- (NSMutableArray *)dataSouce{
+    if (_dataSouce == nil) {
+        _dataSouce = [[NSMutableArray alloc] init];
+    }
+    return _dataSouce;
 }
 
 #pragma mark - 测量响应方法
