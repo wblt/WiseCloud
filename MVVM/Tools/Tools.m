@@ -11,8 +11,6 @@
 @implementation Tools
 /**
  计算博文高度
- 
- @param text
  @return 高度
  */
 + (CGFloat)countTextHeight:(NSString *)text
@@ -41,7 +39,6 @@
     return nil;
 }
 
-
 /**
  * 写入用户信息
  *
@@ -49,6 +46,4 @@
 + (void) writeUserModelToLocal:(UserModel *)userModel {
     
 }
-
-
 @end

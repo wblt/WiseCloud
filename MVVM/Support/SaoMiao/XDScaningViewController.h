@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Config.h"
+#import "SaoMiaoConfig.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface XDScaningViewController : UIViewController

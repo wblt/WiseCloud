@@ -1,13 +1,13 @@
 //
-//  Config.h
-//  XDQRCode
+//  SaoMiaoConfig.h
+//  MVVM
 //
-//  Created by DINGYONGGANG on 15/9/27.
-//  Copyright (c) 2015年 DINGYONGGANG. All rights reserved.
+//  Created by wb on 2017/6/18.
+//  Copyright © 2017年 mac. All rights reserved.
 //
 
-#ifndef XDQRCode_Config_h
-#define XDQRCode_Config_h
+#ifndef SaoMiaoConfig_h
+#define SaoMiaoConfig_h
 
 typedef NS_ENUM(NSInteger, XDScaningViewCoverMode) {
     XDScaningViewCoverModeClear,
@@ -18,14 +18,14 @@ typedef NS_ENUM(NSInteger, XDScaningViewCoverMode) {
 typedef NS_ENUM(NSInteger, XDScaningViewShapeMode) {
     XDScaningViewShapeModeSquare, //默认
     XDScaningViewShapeModeRound,
-   
+    
 };
 
 typedef NS_ENUM(NSInteger, XDScaningLineMoveMode) {
     XDScaningLineMoveModeDown, //默认
     XDScaningLineMoveModeUpAndDown,
     XDScaningLineMoveModeNone,
- 
+    
 };
 
 typedef NS_ENUM(NSInteger, XDScaningLineMode) {
@@ -54,11 +54,11 @@ typedef NS_ENUM(NSInteger, XDScaningWarningTone) {
 
 
 /*
-    此处是配置扫描秒区域适配各种屏幕的大小
-    介于iPhone4和iPhone5的屏幕宽度一样，所以就归为一类
-    猿类们可以根据自己项目的要求设置在不同屏幕中显示的大小
-    不管怎么调整扫描区域在屏幕的位置始终是居中， 如果不想剧中则自行改代码去吧 
-*/
+ 此处是配置扫描秒区域适配各种屏幕的大小
+ 介于iPhone4和iPhone5的屏幕宽度一样，所以就归为一类
+ 猿类们可以根据自己项目的要求设置在不同屏幕中显示的大小
+ 不管怎么调整扫描区域在屏幕的位置始终是居中， 如果不想剧中则自行改代码去吧
+ */
 #define Iphone45ScanningSize_width 230
 #define Iphone45ScanningSize_height 230
 #define Iphone6ScanningSize_width 260
@@ -79,7 +79,6 @@ typedef NS_ENUM(NSInteger, XDScaningWarningTone) {
 
 
 /*************************************************************/
-#endif
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
+
+
+#endif /* SaoMiaoConfig_h */
