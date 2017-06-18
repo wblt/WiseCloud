@@ -52,7 +52,7 @@
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",userModel.userPhoneNum];
     [SVProgressHUD showWithStatus:@"加载中..."];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",data);
         NSArray *dataArray = (NSArray *)data;
@@ -229,7 +229,7 @@
     /*http://101.201.80.234:8080/watchclient/delMemberbinding.htm?phone=13620208169&deviceid=626010110252486*/
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     NSString *urlStr = [NSString stringWithFormat:@"delMemberbinding.htm?phone=%@&deviceid=%@",userModel.userPhoneNum,userModel.defaultDeVice];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         NSInteger num = [data integerValue];
         if (num == 0) {
             [SVProgressHUD showSuccessWithStatus:@"解绑成功"];

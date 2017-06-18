@@ -75,7 +75,7 @@
     
     NSString *urlStr = [NSString stringWithFormat:@"sendCode.htm?phone=%@&autograph=%@",self.userNameFiled.text,base64Name];
     [self countTimer];
-   [NetRequestClass requestURL:urlStr httpMethod:@"GET" params:nil successBlock:^(id returnValue) {
+   [NetRequestClass native_requestURL:urlStr httpMethod:@"GET" params:nil successBlock:^(id returnValue) {
         [SVProgressHUD showErrorWithStatus:@"验证码已发送,请稍后"];
     } failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"发送失败，请检测网络"];
@@ -108,7 +108,7 @@
         return;
     }
     [SVProgressHUD showWithStatus:@"注册中..."];
-    [NetRequestClass requestURL:urlStr httpMethod:@"GET" params:nil file:nil successBlock:^(id returnValue) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:@"GET" params:nil  successBlock:^(id returnValue) {
         [SVProgressHUD dismiss];
         NSInteger result = [returnValue integerValue];
         if (result == 0) {

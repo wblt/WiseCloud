@@ -38,7 +38,7 @@
     NSString *base64 = [GTMBase64 encodeBase64String:self.textView.text];
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     NSString *urlString = [NSString stringWithFormat:@"insertopinion.htm?username=%@&option=%@",userModel.userPhoneNum,base64];
-    [NetRequestClass requestURL:urlString httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlString httpMethod:kGET params:nil  successBlock:^(id data) {
 //        NSInteger value = [data integerValue];
         //if (value == 1) {
             [SVProgressHUD showSuccessWithStatus:@"提交成功"];

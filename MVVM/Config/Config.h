@@ -9,12 +9,6 @@
 #ifndef MVVMTest_Config_h
 #define MVVMTest_Config_h
 
-//定义返回请求数据的block类型
-typedef void (^ReturnValueBlock) (id returnValue);
-typedef void (^ErrorCodeBlock) (id errorCode);
-typedef void (^FailureBlock)();
-typedef void (^NetWorkBlock)(BOOL netConnetState);
-
 #define DDLog(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 //请求公共微博的网络接口
@@ -31,5 +25,5 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 //屏幕的宽度，屏幕的高度
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
-#define kGET @"GET"
+
 #endif

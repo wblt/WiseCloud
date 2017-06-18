@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Herxun. All rights reserved.
 //
 
-#import "UILabel+CustomLabel.h"
+#import "UILabel+customLabel.h"
 
 @implementation UILabel (customLabel)
 

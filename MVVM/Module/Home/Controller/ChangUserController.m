@@ -44,7 +44,7 @@
 - (void)loadData {
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     NSString *urlStr = [NSString stringWithFormat:@"selectQNuser.htm?phone=%@",userModel.userPhoneNum];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         NSLog(@"%@",data);
         dataSource = [NSMutableArray array];
         for (NSDictionary *dic in data) {

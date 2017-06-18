@@ -67,7 +67,7 @@
     NSString *md5Pass = [NSString md5_Encrypt:self.passwordFiled.text];
     NSString *urlStr = [NSString stringWithFormat:@"logmembers.htm?username=%@&password=%@",phoneNumber,md5Pass];
     [SVProgressHUD showWithStatus:@"登录中..."];
-    [NetRequestClass requestURL:urlStr httpMethod:@"GET" params:nil file:nil successBlock:^(id returnValue) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:@"GET" params:nil  successBlock:^(id returnValue) {
         [SVProgressHUD dismiss];
         NSLog(@"%@", returnValue);
         //创建用户模型对象
@@ -135,7 +135,7 @@
 
 - (void)getDeviceList {
     NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",self.phoneNumFiled.text];
-    [NetRequestClass requestURL:urlStr httpMethod:@"GET" params:nil file:nil successBlock:^(id returnValue) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:@"GET" params:nil  successBlock:^(id returnValue) {
         NSArray *dataArray = (NSArray *)returnValue;
         NSMutableArray *temp = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i++) {

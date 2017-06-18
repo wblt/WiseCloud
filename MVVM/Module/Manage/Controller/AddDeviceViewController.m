@@ -53,7 +53,7 @@
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     
     NSString *urlStr = [NSString stringWithFormat:@"hjkBindingEI.htm?phone=%@&deviceid=%@&nikename=%@&phonenumber%@",userModel.userPhoneNum,self.deviceNum.text,md5Pname,self.SIMNum.text];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         NSInteger num = [data integerValue];
         if (num == 0) {
             [SVProgressHUD showSuccessWithStatus:@"绑定成功"];

@@ -79,7 +79,7 @@
     
     NSString *urlStr = [NSString stringWithFormat:@"addQNuser.htm?phone=%@&qnuser=%@",userModel.userPhoneNum,myString];
 
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil successBlock:^(id data) {
         
         [self.navigationController popViewControllerAnimated:YES];
         

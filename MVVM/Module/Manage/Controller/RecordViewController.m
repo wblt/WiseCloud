@@ -47,7 +47,7 @@
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     NSString *urlStr = [NSString stringWithFormat:@"selectbodyfat.htm?loginname=%@&identity=39",userModel.userPhoneNum];
     [SVProgressHUD showWithStatus:@"加载中..."];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         [SVProgressHUD dismiss];
         NSArray *dataArray = (NSArray *)data;
         for (int i = 0; i < dataArray.count; i++) {

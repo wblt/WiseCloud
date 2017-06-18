@@ -48,7 +48,7 @@
     [self.headImg addGestureRecognizer:tap];
 
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
-    [NetRequestClass requestURL:[NSString stringWithFormat:@"seeMemberByLoginname.htm?phone=%@",userModel.userPhoneNum] httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:[NSString stringWithFormat:@"seeMemberByLoginname.htm?phone=%@",userModel.userPhoneNum] httpMethod:kGET params:nil  successBlock:^(id data) {
         //创建用户模型对象
         if ([data isKindOfClass:[NSArray class]]) {
             NSArray *arr = data;
@@ -61,7 +61,7 @@
     } failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"请检查网络"];
     }];
-    [NetRequestClass requestURL:[NSString stringWithFormat:@"getMemberImg.htm?deviceid=%@",userModel.userPhoneNum] httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:[NSString stringWithFormat:@"getMemberImg.htm?deviceid=%@",userModel.userPhoneNum] httpMethod:kGET params:nil  successBlock:^(id data) {
         //创建用户模型对象
         
         if ([data isKindOfClass:[NSString class]]) {
@@ -95,7 +95,7 @@
     //确认修改接口
     if ([self.nickField.text length]>0&&[self.ageField.text length]>0) {
         NSString *urlStr = [NSString stringWithFormat:@"updateMember.htm?phone=%@&nikename=%@&sex=%@&age=%@",_telLabel.text,base64Name,_manBtn.selected?@"0":@"1",_ageField.text];
-        [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+        [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil successBlock:^(id data) {
             //创建用户模型对象
             NSInteger num = [data integerValue];
             if (num == 0) {

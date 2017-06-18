@@ -66,7 +66,7 @@
         return;
     }
     NSString *urlStr = [NSString stringWithFormat:@"sendCode.htm?phone=%@&autograph=5oOg5YGl5bq3%%0A",phoneNumber];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         [SVProgressHUD showSuccessWithStatus:@"验证码已发送,请稍后"];
         
     } failureBlock:^(NSError *error) {
@@ -106,7 +106,7 @@
     [SVProgressHUD showWithStatus:@"修改中..."];
     
     NSString *urlStr = [NSString stringWithFormat:@"setNewPwd.htm?phone=%@&idCode=%@&password=%@",phoneNumber,self.smsCodeFiled.text,md5Pass];
-    [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil  successBlock:^(id data) {
         [SVProgressHUD dismiss];
         NSInteger result = [data integerValue];
         if (result == 0) {
