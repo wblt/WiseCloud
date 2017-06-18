@@ -60,8 +60,8 @@
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                     if (!error) {
                                                         dispatch_async(dispatch_get_main_queue(), ^{
-                                                            //上传成功
-                                                            if (successBlock) {
+                                                            
+                                                        if (successBlock) {
                                                                 successBlock(data);
                                                             }
                                                             

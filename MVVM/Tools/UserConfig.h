@@ -56,7 +56,6 @@
  */
 - (void)alterViewShow:(NSString *)msg;
 
-
 /**
  @brief 根据文件路径来创建文件夹
  @param path 要创建文件夹的路径

@@ -7,11 +7,6 @@
 //
 
 #import "RegisterViewController.h"
-//#import "NetworkSingleton.h"
-//#import "NSString+MD5.h"
-//#import "UserConfig.h"
-//#import "UIViewController+HUD.h"
-//#import "LoginViewController.h"
 
 
 @interface RegisterViewController ()
