@@ -10,12 +10,6 @@
 
 static  UserConfig *instance = nil;
 
-//用户ID
-#define UDKEY_LOGINUSERID @"UDKEY_LOGINUSERID"
-
-//标志这个app是否已经登录了
-#define kIsLogin @"kIsLogin"
-
 @implementation UserConfig
 
 /**
@@ -52,11 +46,6 @@ static  UserConfig *instance = nil;
  *  @param userModel 用户数据模型
  */
 - (void)setAllInformation:(UserModel *)userModel {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:YES forKey:kIsLogin];
-    //以用户ID为键值来存储登陆的用户
-    [userDefaults synchronize];
-    
     //将账号归档
     NSString *localFilePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"LocalFileDirectory"];
     NSString *localDir = [self createFileDirectory:localFilePath];
@@ -93,10 +82,7 @@ static  UserConfig *instance = nil;
  *  退出登陆
  */
 - (void)logout {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:NO forKey:kIsLogin];
-    [userDefaults removeObjectForKey:UDKEY_LOGINUSERID];
-    [userDefaults synchronize];
+
 }
 
 #pragma mark - 验证相关方法
