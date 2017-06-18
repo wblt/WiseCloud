@@ -15,7 +15,6 @@
 #import "BaseNavigationController.h"
 #import "MyDeviceModel.h"
 #import "UserModel.h"
-//#import "JPUSHService.h"
 
 @interface LoginViewController ()
 
@@ -27,27 +26,11 @@
     [super viewDidLoad];
     [_phoneNumFiled addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];
     //设置数据
-    ;
-    self.phoneNumFiled.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"];
-    self.passwordFiled.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    self.phoneNumFiled.text = userModel.userPhoneNum;
+    self.passwordFiled.text = userModel.userPassword;
 }
 
-//- (void)createViewModel {
-//    PublicWeiboViewModel *publicViewModel = [[PublicWeiboViewModel alloc] init];
-//    [publicViewModel setBlockWithReturnBlock:^(id returnValue) {
-//        [SVProgressHUD dismiss];
-//        _publicModelArray = returnValue;
-//        [self.tableView reloadData];
-//        DDLog(@"%@",_publicModelArray);
-//    } WithErrorBlock:^(id errorCode) {
-//        [SVProgressHUD dismiss];
-//    } WithFailureBlock:^{
-//        [SVProgressHUD dismiss];
-//    }];
-//    
-//    [publicViewModel fetchPublicWeiBo];
-//    [SVProgressHUD showWithStatus:@"正在获取用户信息……" maskType:SVProgressHUDMaskTypeBlack];
-//}
 
 // textField 长度限制
 - (void)textFieldDidChanged:(UITextField *)textField
@@ -62,9 +45,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+
     //设置数据
-    self.phoneNumFiled.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"];
-    self.passwordFiled.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPassword"];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    self.phoneNumFiled.text = userModel.userPhoneNum;
+    self.passwordFiled.text = userModel.userPassword;
+
 }
 
 #pragma mark - 登陆
@@ -87,15 +73,19 @@
         //创建用户模型对象
         NSInteger num = [returnValue longValue];
         if (num == 0) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"无" forKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults] setObject:phoneNumber forKey:@"userPhoneNum"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.passwordFiled.text forKey:@"userPassword"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+        
+            UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+            if (userModel == nil) {
+                userModel = [[UserModel alloc] init];
+            }
+            userModel.userPhoneNum = self.phoneNumFiled.text;
+            userModel.userPassword = self.passwordFiled.text;
+            userModel.userName = @"无";
+            [[UserConfig shareInstace] setAllInformation:userModel];
+            
+            // 保存登录状态
+            [[UserConfig shareInstace] setLoginStatus:YES];
+            
             //登陆成功，跳转至首页
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.window.rootViewController = [[TabBarViewController alloc] init];
@@ -108,14 +98,6 @@
             
             //这里来添加一个请求设备的列表
             [self getDeviceList];
-            
-//            NSSet *set = [NSSet setWithObject:self.phoneNumFiled.text];
-//            
-//            /**<设置JPush别名*/
-//            [JPUSHService setTags:set alias:userModel.userPhoneNum fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
-//                NSLog(@"%d----%@---",iResCode,iAlias);
-//            }];
-            
         }
         else if (num == -1) {
             //弹出提示框提示
@@ -160,21 +142,16 @@
             MyDeviceModel *model = [MyDeviceModel mj_objectWithKeyValues:dataArray[i]];
             [temp addObject:model];
         }
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"deviceArray"];
-        //[[NSUserDefaults standardUserDefaults] setObject:[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:temp options:NSJSONWritingPrettyPrinted error:nil]  encoding:NSUTF8StringEncoding] forKey:@"deviceArray"];
-//    [@"" dataUsingEncoding:NSUTF8StringEncoding]
-//        id jsonObject = [NSJSONSerialization JSONObjectWithData:aData options:NSJSONReadingAllowFragments error:nil];
-//        NSArray *array = (NSArray *)jsonObject;
-        NSString *defaultDeVice = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultDeVice"];
-        if (defaultDeVice.length == 0) {
-            MyDeviceModel *tempModel = [temp firstObject];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
-            [[NSUserDefaults standardUserDefaults] setObject:tempModel.deviceid forKey:@"defaultDeVice"];
+        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+        userModel.deviceArray = [temp copy];
+        if (userModel.defaultDeVice.length == 0) {
+            MyDeviceModel *tempModel = [userModel.deviceArray firstObject];
+            userModel.defaultDeVice = tempModel.deviceid;
         }
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-    } failureBlock:^{
-        
+        //保存
+        [[UserConfig shareInstace] setAllInformation:userModel];
+        } failureBlock:^{
+
     }];
 
 }

@@ -13,17 +13,6 @@
 #pragma 监测网络的可链接性
 +(BOOL)netWorkReachabilityWithURLString:(NSString *) strUrl;
 
-#pragma POST请求
-+(void)NetRequestPOSTWithRequestURL:(NSString *) requestURLString
-                      WithParameter:(NSDictionary *) parameter
-               WithReturnValeuBlock:(ReturnValueBlock) block
-                   WithFailureBlock:(FailureBlock) failureBlock;
-
-#pragma GET请求
-+(void)NetRequestGETWithRequestURL:(NSString *) requestURLString
-                     WithParameter:(NSDictionary *) parameter
-              WithReturnValeuBlock:(ReturnValueBlock) block
-                  WithFailureBlock:(FailureBlock) failureBlock;
 
 + (void)requestURL:(NSString *)urlString httpMethod:(NSString *)method
             params:(NSMutableDictionary *)parmas

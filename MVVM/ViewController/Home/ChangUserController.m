@@ -42,9 +42,8 @@
 }
 
 - (void)loadData {
-    
-    NSString *userPhoneNum = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"];
-    NSString *urlStr = [NSString stringWithFormat:@"selectQNuser.htm?phone=%@",userPhoneNum];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlStr = [NSString stringWithFormat:@"selectQNuser.htm?phone=%@",userModel.userPhoneNum];
     [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         NSLog(@"%@",data);
         dataSource = [NSMutableArray array];
@@ -53,13 +52,11 @@
             [dataSource addObject:model];
         }
         
-        /*
         if (dataSource.count && userModel.testUserModel == nil) {
             TestUserModel *model = [dataSource firstObject];
             userModel.testUserModel = model;
             [[UserConfig shareInstace] setAllInformation:userModel];
         }
-         */
         
         [cuTableView reloadData];
         

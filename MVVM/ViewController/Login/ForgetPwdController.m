@@ -7,10 +7,6 @@
 //
 
 #import "ForgetPwdController.h"
-//#import "NetworkSingleton.h"
-//#import "UserConfig.h"
-//#import "NSString+MD5.h"
-
 
 @interface ForgetPwdController ()
 
@@ -114,16 +110,14 @@
         [SVProgressHUD dismiss];
         NSInteger result = [data integerValue];
         if (result == 0) {
+            UserModel *userModel = [[UserModel alloc] init];
+            userModel.userPhoneNum = phoneNumber;
+            userModel.userPassword = self.passwordFiled.text;
+            userModel.userName = @"无";
+            [[UserConfig shareInstace] setAllInformation:userModel];
             
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"无" forKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.passwordFiled.text forKey:@"userPassword"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.phoneNum.text forKey:@"userPhoneNum"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[UserConfig shareInstace] setLoginStatus:YES];
+        
             //注册成功，跳转到登陆页码
             if (self.forgetBackBlock) {
                 self.forgetBackBlock(phoneNumber,self.passwordFiled.text);

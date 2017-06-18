@@ -49,13 +49,13 @@
 }
 
 - (void)getDeviceList {
-    NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"]];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",userModel.userPhoneNum];
     [SVProgressHUD showWithStatus:@"加载中..."];
     [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",data);
         NSArray *dataArray = (NSArray *)data;
-        
         if (dataArray.count == 0) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您未绑定设备,请点右上角添加设备" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
             
@@ -63,21 +63,19 @@
             
             return ;
         }
-        
         NSMutableArray *temp = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i++) {
             MyDeviceModel *model = [MyDeviceModel mj_objectWithKeyValues:dataArray[i]];
             [temp addObject:model];
         }
         _deviceArr = [temp copy];
-        NSString *defaultDeVice = [[NSUserDefaults standardUserDefaults] objectForKey:@"defaultDeVice"];
-        if (defaultDeVice.length == 0) {
-            MyDeviceModel *tempModel = [temp firstObject];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
-            [[NSUserDefaults standardUserDefaults] setObject:tempModel.deviceid forKey:@"defaultDeVice"];
+        userModel.deviceArray = [temp copy];
+        if (userModel.defaultDeVice.length == 0) {
+            MyDeviceModel *tempModel = [userModel.deviceArray firstObject];
+            userModel.defaultDeVice = tempModel.deviceid;
         }
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
+        //保存
+        [[UserConfig shareInstace] setAllInformation:userModel];
         [cuTableView reloadData];
         
     } failureBlock:^(NSError *error) {
@@ -187,13 +185,10 @@
     
     UIAlertController *alterVC = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *qureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
-        [[NSUserDefaults standardUserDefaults] setObject:model.deviceid forKey:@"defaultDeVice"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
+        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+        userModel.defaultDeVice = model.deviceid;
+        [[UserConfig shareInstace] setAllInformation:userModel];
         [cuTableView reloadData];
-        
     }];
     
 
@@ -232,7 +227,8 @@
 - (void)deletCurrentDevice {
     MyDeviceModel *tempModel = dataSouce[_currentEditingIndexthPath.row];
     /*http://101.201.80.234:8080/watchclient/delMemberbinding.htm?phone=13620208169&deviceid=626010110252486*/
-    NSString *urlStr = [NSString stringWithFormat:@"delMemberbinding.htm?phone=%@&deviceid=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"],[[NSUserDefaults standardUserDefaults] objectForKey:@"defaultDeVice"]];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlStr = [NSString stringWithFormat:@"delMemberbinding.htm?phone=%@&deviceid=%@",userModel.userPhoneNum,userModel.defaultDeVice];
     [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         NSInteger num = [data integerValue];
         if (num == 0) {

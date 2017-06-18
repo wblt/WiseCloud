@@ -36,9 +36,10 @@
 - (IBAction)commitAction:(id)sender {
     [self.textView resignFirstResponder];
     NSString *base64 = [GTMBase64 encodeBase64String:self.textView.text];
-    NSString *urlString = [NSString stringWithFormat:@"insertopinion.htm?username=%@&option=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"],base64];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlString = [NSString stringWithFormat:@"insertopinion.htm?username=%@&option=%@",userModel.userPhoneNum,base64];
     [NetRequestClass requestURL:urlString httpMethod:kGET params:nil file:nil successBlock:^(id data) {
-        NSInteger value = [data integerValue];
+//        NSInteger value = [data integerValue];
         //if (value == 1) {
             [SVProgressHUD showSuccessWithStatus:@"提交成功"];
             [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:@(YES) afterDelay:2];

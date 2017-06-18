@@ -44,7 +44,8 @@
 
 - (void)requestData
 {
-    NSString *urlStr = [NSString stringWithFormat:@"selectbodyfat.htm?loginname=%@&identity=39",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"]];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlStr = [NSString stringWithFormat:@"selectbodyfat.htm?loginname=%@&identity=39",userModel.userPhoneNum];
     [SVProgressHUD showWithStatus:@"加载中..."];
     [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         [SVProgressHUD dismiss];
@@ -58,7 +59,6 @@
         [_deteilTable reloadData];
         NSIndexPath * path = [NSIndexPath indexPathForItem:0 inSection:0];
         [self tableView:_dateTable didSelectRowAtIndexPath:path];
-        
     } failureBlock:^(NSError *error) {
         [SVProgressHUD dismiss];
         NSLog(@"%@",error);

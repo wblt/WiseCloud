@@ -12,7 +12,6 @@
 
 @interface UserConfig : NSObject
 
-
 @property (nonatomic) int index;
 /**
  *  创建单例对象
@@ -65,5 +64,10 @@
  */
 - (NSString *)createFileDirectory:(NSString *)path;
 
+// 获取登录状态
+- (BOOL) getLoginStatus;
+
+// 设置登录状态
+- (void) setLoginStatus:(BOOL)status;
 
 @end

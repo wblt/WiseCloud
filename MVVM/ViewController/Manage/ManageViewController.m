@@ -76,12 +76,7 @@
 }
 
 - (IBAction)logoutAction:(UIButton *)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLogin"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserConfig shareInstace] logout];
     UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     LoginViewController *loginVC = [storyboad instantiateInitialViewController];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -93,14 +88,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -50,7 +50,9 @@
     
     NSString *md5Pname = [GTMBase64 stringByEncodingData:[self.name.text dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSString *urlStr = [NSString stringWithFormat:@"hjkBindingEI.htm?phone=%@&deviceid=%@&nikename=%@&phonenumber%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"],self.deviceNum.text,md5Pname,self.SIMNum.text];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"hjkBindingEI.htm?phone=%@&deviceid=%@&nikename=%@&phonenumber%@",userModel.userPhoneNum,self.deviceNum.text,md5Pname,self.SIMNum.text];
     [NetRequestClass requestURL:urlStr httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         NSInteger num = [data integerValue];
         if (num == 0) {

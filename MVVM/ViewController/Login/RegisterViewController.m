@@ -112,15 +112,15 @@
         [SVProgressHUD dismiss];
         NSInteger result = [returnValue integerValue];
         if (result == 0) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"无" forKey:@"userName"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.passwordFiled.text forKey:@"userPassword"];
-            [[NSUserDefaults standardUserDefaults] setObject:self.userNameFiled.text forKey:@"userPhoneNum"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLogin"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            UserModel *userModel = [[UserModel alloc] init];
+            userModel.userPhoneNum = phoneNumber;
+            userModel.userPassword = self.passwordFiled.text;
+            userModel.userName = @"无";
+            [[UserConfig shareInstace] setAllInformation:userModel];
+            
+            // 设置登录状态
+            [[UserConfig shareInstace] setLoginStatus:YES];
+            
             //注册成功，跳转到登陆页码
             if (self.registerBackBlock) {
                 self.registerBackBlock(phoneNumber,self.passwordFiled.text);

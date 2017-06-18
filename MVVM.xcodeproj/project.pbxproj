@@ -77,7 +77,6 @@
 		40C32BEA1EE93A12008F653D /* ManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BE91EE93A12008F653D /* ManageViewController.m */; };
 		40C32BF41EE94B4E008F653D /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BF11EE94B4E008F653D /* ForgetPwdController.m */; };
 		40C32BF61EE94B62008F653D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C32BF51EE94B62008F653D /* Login.storyboard */; };
-		40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32BFC1EE94FEE008F653D /* LoginViewModel.m */; };
 		40C5CECD1EEFCDB000822D82 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C5CECC1EEFCDB000822D82 /* RecordViewController.m */; };
 		40C5CED41EEFDE9900822D82 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C5CED21EEFDE9900822D82 /* DateCell.m */; };
 		40C5CED51EEFDE9900822D82 /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40C5CED31EEFDE9900822D82 /* DateCell.xib */; };
@@ -267,8 +266,6 @@
 		40C32BF01EE94B4E008F653D /* ForgetPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdController.h; sourceTree = "<group>"; };
 		40C32BF11EE94B4E008F653D /* ForgetPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdController.m; sourceTree = "<group>"; };
 		40C32BF51EE94B62008F653D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		40C32BFB1EE94FEE008F653D /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
-		40C32BFC1EE94FEE008F653D /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		40C5CECB1EEFCDB000822D82 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
 		40C5CECC1EEFCDB000822D82 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		40C5CED11EEFDE9900822D82 /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
@@ -378,7 +375,6 @@
 				EE6818961EEBA24C00F8ABBD /* Model */,
 				366A1BA91EE7DE830090FB81 /* View */,
 				366A1BAC1EE7DE830090FB81 /* ViewController */,
-				366A1BB11EE7DE830090FB81 /* ViewModel */,
 				366A1B6A1EE7DE150090FB81 /* AppDelegate.h */,
 				366A1B6B1EE7DE150090FB81 /* AppDelegate.m */,
 				366A1B671EE7DE150090FB81 /* Supporting Files */,
@@ -469,15 +465,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		366A1BB11EE7DE830090FB81 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				40C32BFA1EE94FEE008F653D /* Login */,
-				40C32B751EE93728008F653D /* Home */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		367FB2681EEB926C0051CA37 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,13 +514,6 @@
 				40C32B721EE9371B008F653D /* TabBarViewController.m */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		40C32B751EE93728008F653D /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		40C32B791EE93733008F653D /* Home */ = {
@@ -726,15 +706,6 @@
 				EE6818811EEBA0F900F8ABBD /* RegisterViewController.m */,
 				40C32BF01EE94B4E008F653D /* ForgetPwdController.h */,
 				40C32BF11EE94B4E008F653D /* ForgetPwdController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		40C32BFA1EE94FEE008F653D /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				40C32BFB1EE94FEE008F653D /* LoginViewModel.h */,
-				40C32BFC1EE94FEE008F653D /* LoginViewModel.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1051,7 +1022,6 @@
 				40C32BC21EE9375D008F653D /* NSDate+Extend.m in Sources */,
 				36CBDDBC1EEFCE6600D3B530 /* BalanceController.m in Sources */,
 				40C32BD61EE9375D008F653D /* UIView+UIViewController.m in Sources */,
-				40C32BFD1EE94FEE008F653D /* LoginViewModel.m in Sources */,
 				40C32BD81EE9375D008F653D /* UIWindow+Extension.m in Sources */,
 				EECEDE191EEBEB9300BF5955 /* AboutViewController.m in Sources */,
 				36605C141EF388C000FDB857 /* UserConfig.m in Sources */,

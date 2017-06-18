@@ -22,14 +22,13 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     // 设置窗口的根控制器
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"]) {
+    if ([[UserConfig shareInstace] getLoginStatus]) {
         self.window.rootViewController = [[TabBarViewController alloc] init];
     }else {
         UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
         LoginViewController *loginVC = [storyboad instantiateInitialViewController];
         self.window.rootViewController = loginVC;
     }
-    
     
     // 显示窗口
     [self.window makeKeyAndVisible];

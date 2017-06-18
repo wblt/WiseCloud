@@ -47,21 +47,21 @@
     self.headImg.userInteractionEnabled = YES;
     [self.headImg addGestureRecognizer:tap];
 
-    [NetRequestClass requestURL:[NSString stringWithFormat:@"seeMemberByLoginname.htm?phone=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"]] httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    [NetRequestClass requestURL:[NSString stringWithFormat:@"seeMemberByLoginname.htm?phone=%@",userModel.userPhoneNum] httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         //创建用户模型对象
         if ([data isKindOfClass:[NSArray class]]) {
             NSArray *arr = data;
             NSDictionary *dic = arr[0];
-            _telLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"];
+            _telLabel.text = userModel.userPhoneNum;
             _nikeName.text = [NSString stringWithFormat:@"%@",dic[@"nikename"]];
             _nameLabel.text = [NSString stringWithFormat:@"%@  %@岁",[dic[@"sex"] integerValue]==0?@"男":@"女",dic[@"age"]];
         }else {
-//            [self showError:@"服务器错误"];
         }
     } failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"请检查网络"];
     }];
-    [NetRequestClass requestURL:[NSString stringWithFormat:@"getMemberImg.htm?deviceid=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNum"]] httpMethod:kGET params:nil file:nil successBlock:^(id data) {
+    [NetRequestClass requestURL:[NSString stringWithFormat:@"getMemberImg.htm?deviceid=%@",userModel.userPhoneNum] httpMethod:kGET params:nil file:nil successBlock:^(id data) {
         //创建用户模型对象
         
         if ([data isKindOfClass:[NSString class]]) {
@@ -117,13 +117,7 @@
     self.ageField.text = nil;
 }
 - (IBAction)exitUser:(id)sender {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLogin"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userName"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNum"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPassword"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"defaultDeVice"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserConfig shareInstace] logout];
     UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     LoginViewController *loginVC = [storyboad instantiateInitialViewController];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

@@ -195,4 +195,16 @@ static  UserConfig *instance = nil;
     
     return path;
 }
+
+// 获取登录状态
+- (BOOL) getLoginStatus {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLogin"];
+}
+
+// 设置登录状态
+- (void) setLoginStatus:(BOOL)status {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] setBool:status forKey:@"isLogin"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

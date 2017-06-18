@@ -78,8 +78,10 @@
     nameLabel.text = [NSString stringWithFormat:@"名称:%@",model.weixinnickname];
     
     numberLabel.text = [NSString stringWithFormat:@"手表设备号:%@",model.deviceid];
+    
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
 
-    if ([model.deviceid isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"defaultDeVice"]]) {
+    if ([model.deviceid isEqualToString:userModel.defaultDeVice]) {
         flageLabel.text = @"此设备是否是默认设备:是";
     }
     else {
