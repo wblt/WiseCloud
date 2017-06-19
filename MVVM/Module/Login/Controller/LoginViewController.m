@@ -150,6 +150,7 @@
         }
         //保存
         [[UserConfig shareInstace] setAllInformation:userModel];
+        
         } failureBlock:^{
 
     }];

@@ -99,22 +99,16 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
-        
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-
     }
-    
-    /*
     TestUserModel *model = dataSource[indexPath.row];
-    UserModel *userModel = [kUserConfig getAllInformation];
-    
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     if ([userModel.testUserModel.careID isEqualToString:model.careID]) {
         cell.textLabel.text = [NSString stringWithFormat:@"(当前用户)%@",model.name];
     }
     else {
         cell.textLabel.text = [NSString stringWithFormat:@"%@",model.name];
     }
-     */
     return cell;
 }
 
@@ -147,17 +141,13 @@
     }];
     
     UIAlertAction *qureAction = [UIAlertAction actionWithTitle:@"切换" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        /*
         TestUserModel *model = dataSource[indexPath.row];
-        UserModel *userModel = [kUserConfig getAllInformation];
+        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
         userModel.testUserModel = model;
         [[UserConfig shareInstace] setAllInformation:userModel];
-         */
         [cuTableView reloadData];
     }];
-    
     [alertVC addAction:cancelAction];
-    
     [alertVC addAction:qureAction];
     
     [self presentViewController:alertVC animated:YES completion:nil];
