@@ -10,6 +10,6 @@
 
 @implementation MyDeviceModel
 
-//MJCodingImplementation // MJ归档协议
+MJExtensionCodingImplementation // MJ归档协议
 
 @end
