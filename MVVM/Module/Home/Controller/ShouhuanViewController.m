@@ -9,6 +9,10 @@
 #import "ShouhuanViewController.h"
 
 @interface ShouhuanViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridX;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
 
 @end
 
@@ -16,7 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.width.constant = kScreenWidth*4;
+    self.secondX.constant = kScreenWidth;
+    self.thridX.constant = kScreenWidth*2;
+    self.fourX.constant = kScreenWidth*3;
 }
 
 - (void)didReceiveMemoryWarning {
