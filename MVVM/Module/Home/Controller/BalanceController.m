@@ -10,19 +10,16 @@
 #import "BodyFatCell.h"
 #import "RecordViewController.h"
 #import "ChangUserController.h"
-@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource>
+#import "BLEManager.h"
+
+@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;
-
-
 @property (nonatomic,strong) UITableView *cutableView;
-
 @property (nonatomic,strong) NSMutableArray *nameArray;
-
 @property (nonatomic,strong) NSMutableArray *unitArray;
-
 @property (nonatomic,strong) NSMutableArray *dataSouce;
-
+@property (nonatomic,strong) BLEManager *ble;
 
 @end
 
@@ -42,18 +39,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    
     [self initName];
     [self initUnit];
-    
     //创建表视图
     identify = @"BodyFatCell";
-    
     [self createTableView];
+    [self initRightBtn];
     
+    // 获取蓝牙信息
+    self.ble = [BLEManager sharedInstance];
+    self.ble.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    changeLabel.text = userModel.testUserModel.name;
+}
+
+- (void)initRightBtn {
     UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     [rightBtn setTitle:@"历史记录" forState:UIControlStateNormal];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -180,9 +185,9 @@
     [headView addSubview:bigWightLabel];
     
     //切换账号
-//    UserModel *userModel = [kUserConfig getAllInformation];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     changeLabel = [[UILabel alloc] init];
-    changeLabel.text = @"测试";
+    changeLabel.text = userModel.testUserModel.name;
     [headView addSubview:changeLabel];
     
     UIButton *changeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -217,12 +222,10 @@
     }];
     
     [changeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.top.equalTo(changeLabel.mas_bottom).with.offset(0);
         make.centerX.equalTo(changeLabel);
         make.left.equalTo(changeLabel);
         make.right.equalTo(changeLabel);
-        
     }];
     
     UILabel *waterLabel = [[UILabel alloc] init];
@@ -239,17 +242,13 @@
     [headView addSubview:waterResult];
     
     [waterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.bottom.equalTo(headView).with.offset(-5);
         make.left.equalTo(headView).with.offset(10);
-        
     }];
     
     [waterImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.bottom.equalTo(waterLabel.mas_top).with.offset(-10);
         make.centerX.equalTo(waterLabel);
-        
     }];
     
     [waterResult mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -314,7 +313,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 - (NSMutableDictionary *)dic{
@@ -349,9 +348,6 @@
 - (void)testAction:(UIButton *)sender {
     [SVProgressHUD showWithStatus:@"设备连接中..."];
     titleLabel.text = [NSString stringWithFormat:@"(YunChen)连接中..."];
-    ;
-//    ScanBodyBalance *bady = [ScanBodyBalance sharedInstance];
-//    [bady connect];
 }
 
 #pragma mark - 切换账号
@@ -360,20 +356,19 @@
     [self.navigationController pushViewController:changVC animated:YES];
 }
 
-/*
+
 - (NSString *)getBmi:(float)tz {
-//    UserModel *userModel = [kUserConfig getAllInformation];
-//    TestUserModel *testModel = userModel.testUserModel;
-//    CGFloat sgs = [testModel.height floatValue] / 100;
-//    NSInteger bmi = tz / (sgs * sgs);
-//    return [NSString stringWithFormat:@"%ld",bmi];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    TestUserModel *testModel = userModel.testUserModel;
+    CGFloat sgs = [testModel.height floatValue] / 100;
+    NSInteger bmi = tz / (sgs * sgs);
+    return [NSString stringWithFormat:@"%ld",(long)bmi];
 }
 
 - (NSString *)yaotunbi {
-//    UserModel *userModel = [kUserConfig getAllInformation];
-//    TestUserModel *testModel = userModel.testUserModel;
-//    NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
-//    return [NSString stringWithFormat:@"%ld",bi];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    TestUserModel *testModel = userModel.testUserModel;
+    NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
+    return [NSString stringWithFormat:@"%ld",(long)bi];
 }
- */
 @end

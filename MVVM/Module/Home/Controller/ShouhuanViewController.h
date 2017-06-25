@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "BleScaningDecviceModel.h"
 
 @interface ShouhuanViewController : BaseViewController
-
+@property (nonatomic,copy) BleScaningDecviceModel *bleModel;
 @end

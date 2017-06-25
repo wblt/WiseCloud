@@ -37,19 +37,25 @@
 @end
 
 @interface BLEManager : NSObject<CBCentralManagerDelegate, CBPeripheralDelegate>
+
 @property (nonatomic,strong) BleScaningConfigModel *configModel;
-
-@property (nonatomic, strong) CBCentralManager *manager;
-
-@property (nonatomic, strong) CBPeripheral *peripheral;
-
-@property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
 
 @property (nonatomic,assign) id<BLEManagerDelegate> delegate;
 
++ (id)sharedInstance;
+
+// 停止扫描
 - (void)stopScan;
 
+// 开始扫描
 - (void)startScan;
 
-- (void)connecting;
+// 连接
+- (void)connecting:(CBPeripheral *)peripheral;
+
+// 断开连接
+- (void)disConnecting:(CBPeripheral *)peripheral;
+
+// 写数据
+- (void)writeData;
 @end

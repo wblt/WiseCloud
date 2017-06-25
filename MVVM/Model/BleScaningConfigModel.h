@@ -18,6 +18,12 @@
 #define UUID_WRITE_ShouHuan @"C3E6FEA1-E966-1000-8000-BE99C223DF6A"
 // =================手环==================
 
+// =================体脂==================
+#define SERIAL_RATE 0.6
+#define UUID_SERVICE @"0000fff0-0000-1000-8000-00805f9b34fb"
+#define UUID_READ @"0000fff4-0000-1000-8000-00805f9b34fb"
+#define UUID_WRITE @"0000fff1-0000-1000-8000-00805f9b34fb"
+// =================体脂==================
 
 @interface BleScaningConfigModel : NSObject
 

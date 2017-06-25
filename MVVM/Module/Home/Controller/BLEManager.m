@@ -8,7 +8,22 @@
 
 #import "BLEManager.h"
 
+@interface BLEManager ()
+@property (nonatomic, strong) CBCentralManager *manager;
+@property (nonatomic, strong) CBPeripheral *peripheral;
+@property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
+@end
+
 @implementation BLEManager
+
++ (id)sharedInstance {
+    static BLEManager *userInfoDB;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        userInfoDB = [[BLEManager alloc]init];
+    });
+    return userInfoDB;
+}
 
 - (instancetype)init {
     self = [super init];
@@ -41,19 +56,18 @@
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSLog(@"%@", [NSString stringWithFormat:@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.identifier, advertisementData]);
     self.peripheral = peripheral;
-    [self.manager stopScan];
     if ([self.delegate respondsToSelector:@selector(BLEManager: didDiscoverPeripheral: advertisementData: RSSI:)]) {
         [self.delegate BLEManager:central didDiscoverPeripheral:peripheral advertisementData:advertisementData RSSI:RSSI];
     }
 }
 
-
 // （3）连接外设后的处理 //连接外设成功，开始发现服务
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     NSLog(@"%@", [NSString stringWithFormat:@"成功连接 peripheral: %@ with UUID: %@",peripheral,peripheral.identifier]);
+    // 重新赋值
+    self.peripheral = peripheral;
     [self.peripheral setDelegate:self];
     [self.peripheral discoverServices:nil];
-    
     if ([self.delegate respondsToSelector:@selector(BLEManager: didConnectPeripheral:)]) {
         [self.delegate BLEManager:central didConnectPeripheral:peripheral];
     }
@@ -86,12 +100,12 @@
         NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
         [peripheral discoverCharacteristics:nil forService:s];
         if ([s.UUID isEqual:[CBUUID UUIDWithString:self.configModel.serviceUUID]]) {
+            
         }
-        
     }
 }
 
-//已搜索到Characteristics
+// 已搜索到Characteristics
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
     NSLog(@"%@",[NSString stringWithFormat:@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID]);
     for (CBCharacteristic *c in service.characteristics) {
@@ -103,10 +117,9 @@
             [_peripheral readValueForCharacteristic:c];
             [_peripheral setNotifyValue:YES forCharacteristic:c];
         }
-    
+        
     }
 }
-
 
 // 断开连接
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
@@ -140,14 +153,12 @@
     // Notification has started
     if (characteristic.isNotifying) {
         [peripheral readValueForCharacteristic:characteristic];
-        
     } else { // Notification has stopped
         // so disconnect from the peripheral
         NSLog(@"Notification stopped on %@.  Disconnecting", characteristic);
         NSLog(@"%@",[NSString stringWithFormat:@"Notification stopped on %@.  Disconnecting", characteristic]);
         [self.manager cancelPeripheralConnection:self.peripheral];
     }
-    
 }
 
 //用于检测中心向外设写数据是否成功
@@ -158,27 +169,39 @@
     }else{
         NSLog(@"发送数据成功");
     }
-    /* When a write occurs, need to set off a re-read of the local CBCharacteristic to update its value */
     [peripheral readValueForCharacteristic:characteristic];
-    
     if ([self.delegate respondsToSelector:@selector(BLEManager: didWriteValueForCharacteristic: error:)]) {
         [self.delegate BLEManager:peripheral didWriteValueForCharacteristic:characteristic error:error];
     }
 }
 
-// 扫描
+// 停止扫描
 - (void)stopScan {
      [self.manager stopScan];
 }
 
-// 停止扫描
+// 扫描
 - (void)startScan {
     [self.manager scanForPeripheralsWithServices:nil  options:nil];
 }
 
 // 连接
-- (void)connecting {
+- (void)connecting:(CBPeripheral *)peripheral {
     // 连接外设
-    [self.manager connectPeripheral:_peripheral options:nil];
+    [self.manager connectPeripheral:peripheral options:nil];
 }
+
+// 断开连接
+- (void)disConnecting:(CBPeripheral *)peripheral {
+    [self.manager cancelPeripheralConnection:peripheral];
+}
+
+// 写数据
+- (void)writeData {
+    Byte byte[] = {2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
+    if (self.peripheral.state == CBPeripheralStateConnected) {
+        [self.peripheral writeValue:[NSData dataWithBytes:byte length:17] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
+    }
+}
+
 @end

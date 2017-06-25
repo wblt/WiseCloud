@@ -50,12 +50,12 @@
         config.serviceUUID = UUID_SERVICE_ShouHuan;
         config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
         config.characteristicReadUUID = UUID_READ_ShouHuan;
-        self.ble = [[BLEManager alloc] init];
+        self.ble = [BLEManager sharedInstance];
         self.ble.configModel = config;
         self.ble.delegate = self;
+        
     } else if ([self.type isEqualToString:@"体脂称"]) {
         [self.dataArr removeAllObjects];
-        
         BleScaningDecviceModel *bleModel1 = [[BleScaningDecviceModel alloc] init];
         bleModel1.deviceName = @"F100";
         bleModel1.uuid = @"F100";
@@ -72,13 +72,22 @@
         [self.dataArr addObject:bleModel3];
         
         [self.tableView reloadData];
+        
+        // 配置信息
+        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
+        config.serviceUUID = UUID_SERVICE_ShouHuan;
+        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
+        config.characteristicReadUUID = UUID_READ_ShouHuan;
+        self.ble = [BLEManager sharedInstance];
+        self.ble.configModel = config;
+        self.ble.delegate = self;
     } else if ([self.type isEqualToString:@"水分仪"]) {
         // 水分仪配置
         BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
         config.serviceUUID = UUID_SERVICE_ShouHuan;
         config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
         config.characteristicReadUUID = UUID_READ_ShouHuan;
-        self.ble = [[BLEManager alloc] init];
+        self.ble = [BLEManager sharedInstance];
         self.ble.configModel = config;
         self.ble.delegate = self;
     }
@@ -120,7 +129,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return self.dataArr.count;
 }
 
@@ -136,11 +144,12 @@
     if ([self.type isEqualToString:@"手环"]) {
         ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
         ShouhuanVC.hidesBottomBarWhenPushed = YES;
+        ShouhuanVC.bleModel = self.dataArr[indexPath.row];
         [self.navigationController pushViewController:ShouhuanVC animated:YES];
     } else if ([self.type isEqualToString:@"体脂称"]) {
         // 进入体脂称的页面
-        
         BalanceController *balanceVC = [[BalanceController alloc] init];
+        balanceVC.bleModel = self.dataArr[indexPath.row];
         [self.navigationController pushViewController:balanceVC animated:YES];
     } else if ([self.type isEqualToString:@"水分仪"]) {
         WaterElementController *waterVC = [[WaterElementController alloc] init];
@@ -153,10 +162,8 @@
     return 80;
 }
 
-
 // 扫描回调
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    [SVProgressHUD dismiss];
     BOOL replace = NO;
     // Match if we have this device from before
     for (int i=0; i < self.devices.count; i++) {
@@ -168,7 +175,6 @@
     }
     if (!replace) {
         [self.devices addObject:peripheral];
-        
         // 添加设备
         [self.dataArr removeAllObjects];
         for (int i=0; i < self.devices.count; i++) {
@@ -202,10 +208,8 @@
     
 }
 
-//用于检测中心向外设写数据是否成功
+// 用于检测中心向外设写数据是否成功
 -(void)BLEManager:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     
 }
-
-
 @end
