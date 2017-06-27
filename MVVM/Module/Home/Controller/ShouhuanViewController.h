@@ -10,5 +10,5 @@
 #import "BleScaningDecviceModel.h"
 
 @interface ShouhuanViewController : BaseViewController
-@property (nonatomic,copy) BleScaningDecviceModel *bleModel;
+@property (nonatomic,strong) BleScaningDecviceModel *bleModel;
 @end

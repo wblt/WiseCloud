@@ -173,7 +173,7 @@
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     //蓝牙未连接
     titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"(YunChen)未连接";
+    titleLabel.text = @"----";
     [headView addSubview:titleLabel];
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -369,10 +369,10 @@
     return _dataSouce;
 }
 
-#pragma mark - 测量响应方法
+#pragma mark - 测量
 - (void)testAction:(UIButton *)sender {
     [SVProgressHUD showWithStatus:@"设备连接中..."];
-    titleLabel.text = [NSString stringWithFormat:@"(YunChen)连接中..."];
+    titleLabel.text = [NSString stringWithFormat:@"%@", self.bleModel.deviceName];
 }
 
 #pragma mark - 切换账号
@@ -380,7 +380,6 @@
     ChangUserController *changVC = [[ChangUserController alloc] init];
     [self.navigationController pushViewController:changVC animated:YES];
 }
-
 
 - (NSString *)getBmi:(float)tz {
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];

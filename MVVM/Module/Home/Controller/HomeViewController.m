@@ -111,11 +111,7 @@
 
 - (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index
 {
-    // recommend to use SDWebImage lib to load web image
-    //    [imageView setImageWithURL:[self.imageURLs objectAtIndex:index] placeholderImage:nil];
-//    NSURL *imageURL = [self.imageURLs objectAtIndex:index];
     imageView.image = [UIImage imageNamed:@"bg1"];
-//    [imageView sd_setImageWithURL:imageURL placeholderImage:nil];
 }
 
 - (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index
@@ -125,7 +121,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark UICollectionView
@@ -225,14 +220,5 @@
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
