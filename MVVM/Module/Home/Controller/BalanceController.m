@@ -11,6 +11,7 @@
 #import "RecordViewController.h"
 #import "ChangUserController.h"
 #import "BLEManager.h"
+#import "TargetViewController.h"
 
 @interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate,sendDelegate>
 
@@ -187,6 +188,13 @@
     resultImgeView.image = [UIImage imageNamed:@"tzbeijing"];
     [headView addSubview:resultImgeView];
     
+    resultImgeView.userInteractionEnabled = YES;//打开用户交互
+    //初始化一个手势
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapAction:)];
+    //为图片添加手势
+    [resultImgeView addGestureRecognizer:singleTap];
+
+
     //大圈圈的分数
     bigGradeLabel = [[UILabel alloc] init];
     bigGradeLabel.text = @"0.0分";
@@ -394,6 +402,16 @@
     TestUserModel *testModel = userModel.testUserModel;
     NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
     return [NSString stringWithFormat:@"%ld",(long)bi];
+}
+
+// 结果点击相应事件
+-(void)singleTapAction:(UIGestureRecognizer *)ges {
+    NSLog(@"点击了");
+    //具体的实现
+    UIStoryboard *story=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
+    TargetViewController *BraceletVC = [story instantiateViewControllerWithIdentifier:@"TargetViewController"];
+    BraceletVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:BraceletVC animated:YES];
 }
 
 // ++++++++++++++++++++++++辛睿智代理方法+++++++++++++++++++++++++++++
