@@ -99,6 +99,8 @@
         i ++ ;
         NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
         [peripheral discoverCharacteristics:nil forService:s];
+        
+        // 判断服务ID
         if ([s.UUID isEqual:[CBUUID UUIDWithString:self.configModel.serviceUUID]]) {
             
         }

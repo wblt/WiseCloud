@@ -64,16 +64,18 @@
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSLog(@"%@",[NSString stringWithFormat:@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.identifier, advertisementData]);
     if ([peripheral.name isEqualToString:@"Y2"]) {
-        [SVProgressHUD dismiss];
         [SVProgressHUD showWithStatus:@"设备连接中。。"];
         [self.ble stopScan];
         self.peripheral = peripheral;
+        [self.ble connecting:peripheral];
     }
 }
 
 // 连接成功
 - (void)BLEManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    
+    self.peripheral = peripheral;
+    [SVProgressHUD showWithStatus:@"设备连接成功"];
+    [SVProgressHUD dismiss];
 }
 
 // 连接失败
@@ -83,7 +85,6 @@
 
 // 断开连接
 - (void)BLEManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
