@@ -32,6 +32,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
+
 @property (strong,nonatomic) BLEManager *ble;
 
 @end
@@ -94,7 +95,8 @@
     
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+
+- (void)viewWillDisappear:(BOOL)animated {
     [SVProgressHUD dismiss];
 }
 
@@ -128,6 +130,8 @@
     return _dataArr;
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArr.count;
 }
@@ -145,7 +149,6 @@
         ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
         ShouhuanVC.hidesBottomBarWhenPushed = YES;
         ShouhuanVC.bleModel = self.dataArr[indexPath.row];
-        
         [self.navigationController pushViewController:ShouhuanVC animated:YES];
     } else if ([self.type isEqualToString:@"体脂称"]) {
         // 进入体脂称的页面
@@ -167,6 +170,7 @@
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     BOOL replace = NO;
     // Match if we have this device from before
+    
     for (int i=0; i < self.devices.count; i++) {
         CBPeripheral *p = [self.devices objectAtIndex:i];
         if ([p isEqual:peripheral]) {
@@ -175,11 +179,15 @@
         }
     }
     if (!replace) {
+        
         [self.devices addObject:peripheral];
+        
         // 添加设备
         if (![self.type isEqualToString:@"体脂称"]) {
             [self.dataArr removeAllObjects];
         }
+        
+        
         for (int i=0; i < self.devices.count; i++) {
             CBPeripheral *p = self.devices[i];
             if ([self.type isEqualToString:@"体脂称"]) {
@@ -193,6 +201,7 @@
                 } else {
                     bleModel.deviceName = p.name;
                 }
+                
                 bleModel.uuid = p.identifier.UUIDString;
                 [self.dataArr addObject:bleModel];
             } else if([self.type isEqualToString:@"手环"]) {
@@ -200,6 +209,7 @@
                     BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = p.name;
                     bleModel.uuid = p.identifier.UUIDString;
+                
                     [self.dataArr addObject:bleModel];
                 }
             }
