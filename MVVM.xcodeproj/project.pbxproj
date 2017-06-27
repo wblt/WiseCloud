@@ -94,6 +94,8 @@
 		36C04E131EF647E200A69B63 /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E0E1EF647E200A69B63 /* ForgetPwdController.m */; };
 		36C04E141EF647E200A69B63 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E101EF647E200A69B63 /* LoginViewController.m */; };
 		36C04E151EF647E200A69B63 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E121EF647E200A69B63 /* RegisterViewController.m */; };
+		4005AD531F01F00F00A08F99 /* TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4005AD521F01F00F00A08F99 /* TargetViewController.m */; };
+		4005AD551F01F8DC00A08F99 /* TargetHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */; };
 		36FBDBD71F01F46C00FD012F /* BTLinker_SingleConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */; };
 		36FBDBD91F01F4A400FD012F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBD81F01F4A400FD012F /* libz.tbd */; };
 		36FBDBDB1F01F4B500FD012F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */; };
@@ -105,6 +107,11 @@
 		36FBDBEB1F01F70900FD012F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBEA1F01F70900FD012F /* MobileCoreServices.framework */; };
 		36FBDBED1F01F71500FD012F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */; };
 		402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DA81A1EF22B8A00402707 /* RecordModel.m */; };
+		408E89431F0205AD006ABE83 /* TargetSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408E89421F0205AD006ABE83 /* TargetSectionView.xib */; };
+		408E89461F0209EB006ABE83 /* TargetHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408E89451F0209EB006ABE83 /* TargetHeadView.m */; };
+		408E89491F020A15006ABE83 /* TargetSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408E89481F020A15006ABE83 /* TargetSectionView.m */; };
+		408E894D1F020A71006ABE83 /* TargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 408E894B1F020A71006ABE83 /* TargetCell.m */; };
+		408E894E1F020A71006ABE83 /* TargetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408E894C1F020A71006ABE83 /* TargetCell.xib */; };
 		40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B541EE92D29008F653D /* BaseViewModel.m */; };
 		40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B5E1EE92D7F008F653D /* BaseNavigationController.m */; };
 		40C32B621EE92D7F008F653D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B601EE92D7F008F653D /* BaseViewController.m */; };
@@ -302,6 +309,9 @@
 		36C04E101EF647E200A69B63 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		36C04E111EF647E200A69B63 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		36C04E121EF647E200A69B63 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		4005AD511F01F00F00A08F99 /* TargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetViewController.h; sourceTree = "<group>"; };
+		4005AD521F01F00F00A08F99 /* TargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetViewController.m; sourceTree = "<group>"; };
+		4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetHeadView.xib; sourceTree = "<group>"; };
 		36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BTLinker_SingleConnection.framework; sourceTree = "<group>"; };
 		36FBDBD81F01F4A400FD012F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -317,6 +327,14 @@
 		36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		402DA8191EF22B8A00402707 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
 		402DA81A1EF22B8A00402707 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
+		408E89421F0205AD006ABE83 /* TargetSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetSectionView.xib; sourceTree = "<group>"; };
+		408E89441F0209EB006ABE83 /* TargetHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetHeadView.h; sourceTree = "<group>"; };
+		408E89451F0209EB006ABE83 /* TargetHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetHeadView.m; sourceTree = "<group>"; };
+		408E89471F020A15006ABE83 /* TargetSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetSectionView.h; sourceTree = "<group>"; };
+		408E89481F020A15006ABE83 /* TargetSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetSectionView.m; sourceTree = "<group>"; };
+		408E894A1F020A71006ABE83 /* TargetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetCell.h; sourceTree = "<group>"; };
+		408E894B1F020A71006ABE83 /* TargetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetCell.m; sourceTree = "<group>"; };
+		408E894C1F020A71006ABE83 /* TargetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetCell.xib; sourceTree = "<group>"; };
 		40C32B531EE92D29008F653D /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		40C32B541EE92D29008F653D /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		40C32B5D1EE92D7F008F653D /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -733,6 +751,8 @@
 				36C04DED1EF647C600A69B63 /* TestUserViewController.xib */,
 				36C04DEE1EF647C600A69B63 /* WaterElementController.h */,
 				36C04DEF1EF647C600A69B63 /* WaterElementController.m */,
+				4005AD511F01F00F00A08F99 /* TargetViewController.h */,
+				4005AD521F01F00F00A08F99 /* TargetViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -752,6 +772,15 @@
 				36C04E031EF647D300A69B63 /* ZIncomeCircle.h */,
 				36C04E041EF647D300A69B63 /* ZIncomeCircle.m */,
 				36C04E051EF647D300A69B63 /* ZIncomeCircle.xib */,
+				408E89441F0209EB006ABE83 /* TargetHeadView.h */,
+				408E89451F0209EB006ABE83 /* TargetHeadView.m */,
+				4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */,
+				408E89471F020A15006ABE83 /* TargetSectionView.h */,
+				408E89481F020A15006ABE83 /* TargetSectionView.m */,
+				408E89421F0205AD006ABE83 /* TargetSectionView.xib */,
+				408E894A1F020A71006ABE83 /* TargetCell.h */,
+				408E894B1F020A71006ABE83 /* TargetCell.m */,
+				408E894C1F020A71006ABE83 /* TargetCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -963,7 +992,7 @@
 				TargetAttributes = {
 					366A1B631EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = HR6HGC9SU2;
+						DevelopmentTeam = 59Q2E3377P;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1015,6 +1044,7 @@
 				36C04DA21EF6351600A69B63 /* return@2x.png in Resources */,
 				36C04DF81EF647C600A69B63 /* TestUserViewController.xib in Resources */,
 				36C04DA41EF6351600A69B63 /* scan_net@2x.png in Resources */,
+				4005AD551F01F8DC00A08F99 /* TargetHeadView.xib in Resources */,
 				36C04D9F1EF6351600A69B63 /* history@2x.png in Resources */,
 				36C04DD81EF647A600A69B63 /* DateCell.xib in Resources */,
 				36C04D831EF6351600A69B63 /* NSDateTimeAgo.bundle in Resources */,
@@ -1032,8 +1062,10 @@
 				40C32B641EE93005008F653D /* Home.storyboard in Resources */,
 				36C04DA01EF6351600A69B63 /* line@2x.png in Resources */,
 				40C32BDD1EE93822008F653D /* Main.storyboard in Resources */,
+				408E89431F0205AD006ABE83 /* TargetSectionView.xib in Resources */,
 				40C32B6D1EE93358008F653D /* Manage.storyboard in Resources */,
 				36C04DA11EF6351600A69B63 /* myctrip_line_scan@3x.png in Resources */,
+				408E894E1F020A71006ABE83 /* TargetCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1155,6 +1187,7 @@
 				36C04DCE1EF6479800A69B63 /* MyDeviceViewController.m in Sources */,
 				40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */,
 				36C04D931EF6351600A69B63 /* UIView+MJExtension.m in Sources */,
+				408E89491F020A15006ABE83 /* TargetSectionView.m in Sources */,
 				36C04D811EF6351600A69B63 /* NSDate+Helper.m in Sources */,
 				36C04DF31EF647C600A69B63 /* BraceletSearchController.m in Sources */,
 				36C04DC71EF6479800A69B63 /* AboutViewController.m in Sources */,
@@ -1165,13 +1198,16 @@
 				36C04DA51EF6351600A69B63 /* XDScaningViewController.m in Sources */,
 				36C04D8A1EF6351600A69B63 /* UIFont+customFont.m in Sources */,
 				36C04D951EF6351600A69B63 /* UIView_extra.m in Sources */,
+				4005AD531F01F00F00A08F99 /* TargetViewController.m in Sources */,
 				36C04D841EF6351600A69B63 /* NSString+Extend.m in Sources */,
+				408E894D1F020A71006ABE83 /* TargetCell.m in Sources */,
 				36C04DF41EF647C600A69B63 /* ChangUserController.m in Sources */,
 				36C04D891EF6351600A69B63 /* UIColor+Extend.m in Sources */,
 				36C04E0B1EF647D300A69B63 /* ZIncomeCircle.m in Sources */,
 				36C04DCB1EF6479800A69B63 /* HelpViewController.m in Sources */,
 				36C04D991EF6351600A69B63 /* HistoryTableViewController.m in Sources */,
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
+				408E89461F0209EB006ABE83 /* TargetHeadView.m in Sources */,
 				36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */,
 				36C04E081EF647D300A69B63 /* DeviceCell.m in Sources */,
 				36C04D981EF6351600A69B63 /* UIWindow+Launch.m in Sources */,
@@ -1312,6 +1348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 59Q2E3377P;
 				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1338,6 +1375,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 59Q2E3377P;
 				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

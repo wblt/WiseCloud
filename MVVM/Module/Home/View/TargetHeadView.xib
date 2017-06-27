@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TargetHeadView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aUg-ed-Cyo">
+                    <rect key="frame" x="15" y="30" width="120" height="120"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="McN-0W-0Th"/>
+                        <constraint firstAttribute="height" constant="120" id="g68-we-bDp"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="60"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年06月22日 22:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0v7-z5-1Zw">
+                    <rect key="frame" x="145" y="82" width="140" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跟着节奏运动起来！！！傻逼，哈哈哈" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olj-LY-G2u">
+                    <rect key="frame" x="145" y="113" width="220" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70.5分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rf-RO-fmN">
+                    <rect key="frame" x="145" y="31" width="91" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="6Rf-RO-fmN" firstAttribute="leading" secondItem="aUg-ed-Cyo" secondAttribute="trailing" constant="10" id="1qy-sa-5gi"/>
+                <constraint firstItem="Olj-LY-G2u" firstAttribute="leading" secondItem="aUg-ed-Cyo" secondAttribute="trailing" constant="10" id="3hq-fq-8Hm"/>
+                <constraint firstItem="Olj-LY-G2u" firstAttribute="top" secondItem="0v7-z5-1Zw" secondAttribute="bottom" constant="15" id="9K4-h0-UZY"/>
+                <constraint firstItem="0v7-z5-1Zw" firstAttribute="leading" secondItem="aUg-ed-Cyo" secondAttribute="trailing" constant="10" id="9NK-MF-8sn"/>
+                <constraint firstItem="0v7-z5-1Zw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BMW-LV-O0z"/>
+                <constraint firstItem="0v7-z5-1Zw" firstAttribute="top" secondItem="6Rf-RO-fmN" secondAttribute="bottom" constant="15" id="EXo-e1-q7E"/>
+                <constraint firstItem="aUg-ed-Cyo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JEZ-b9-gOT"/>
+                <constraint firstItem="aUg-ed-Cyo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="oSb-VE-OFY"/>
+                <constraint firstAttribute="trailing" secondItem="Olj-LY-G2u" secondAttribute="trailing" constant="10" id="ueJ-TP-KsP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="54"/>
+        </view>
+    </objects>
+</document>
