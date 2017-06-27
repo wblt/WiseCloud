@@ -69,6 +69,21 @@
     [self switchBle];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
+    // 判断电子称
+    if ([self.bleModel.deviceName rangeOfString:@"F100"].location != NSNotFound) {
+        // 青牛电子称
+        [self QingNiuDisconnect];
+    } else if ([self.bleModel.deviceName rangeOfString:@"F200"].location != NSNotFound) {
+        // 云称
+        [self.ble disConnecting:self.peripheral];
+    } else if ([self.bleModel.deviceName rangeOfString:@"F300"].location != NSNotFound) {
+        // 兴瑞智
+        [self.send disconnectDevice];
+    }
+}
+
 - (void)switchBle {
     // 判断电子称
     if ([self.bleModel.deviceName rangeOfString:@"F100"].location != NSNotFound) {
