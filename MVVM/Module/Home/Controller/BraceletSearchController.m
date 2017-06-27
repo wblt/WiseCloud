@@ -47,12 +47,7 @@
     self.tableView.delegate = self;
     if ([self.type isEqualToString:@"手环"]) {
         // 手环配置
-        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-        config.serviceUUID = UUID_SERVICE_ShouHuan;
-        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-        config.characteristicReadUUID = UUID_READ_ShouHuan;
         self.ble = [BLEManager sharedInstance];
-        self.ble.configModel = config;
         self.ble.delegate = self;
         
     } else if ([self.type isEqualToString:@"体脂称"]) {
@@ -74,22 +69,11 @@
         
         [self.tableView reloadData];
         
-        // 配置信息
-        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-        config.serviceUUID = UUID_SERVICE_ShouHuan;
-        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-        config.characteristicReadUUID = UUID_READ_ShouHuan;
         self.ble = [BLEManager sharedInstance];
-        self.ble.configModel = config;
         self.ble.delegate = self;
     } else if ([self.type isEqualToString:@"水分仪"]) {
         // 水分仪配置
-        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-        config.serviceUUID = UUID_SERVICE_ShouHuan;
-        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-        config.characteristicReadUUID = UUID_READ_ShouHuan;
         self.ble = [BLEManager sharedInstance];
-        self.ble.configModel = config;
         self.ble.delegate = self;
     }
     

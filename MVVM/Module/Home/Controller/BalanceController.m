@@ -13,6 +13,16 @@
 #import "BLEManager.h"
 #import "TargetViewController.h"
 
+// =================体脂==================
+#define SERIAL_RATE 0.6
+
+#define UUID_SERVICE @"0000fff0-0000-1000-8000-00805f9b34fb"
+
+#define UUID_READ @"0000fff4-0000-1000-8000-00805f9b34fb"
+
+#define UUID_WRITE @"0000fff1-0000-1000-8000-00805f9b34fb"
+// =================体脂==================
+
 @interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate,sendDelegate>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;

@@ -56,7 +56,7 @@
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSLog(@"%@", [NSString stringWithFormat:@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.identifier, advertisementData]);
     self.peripheral = peripheral;
-    if ([self.delegate respondsToSelector:@selector(BLEManager: didDiscoverPeripheral: advertisementData: RSSI:)]) {
+    if ([_delegate respondsToSelector:@selector(BLEManager: didDiscoverPeripheral: advertisementData: RSSI:)]) {
         [self.delegate BLEManager:central didDiscoverPeripheral:peripheral advertisementData:advertisementData RSSI:RSSI];
     }
 }
@@ -68,7 +68,7 @@
     self.peripheral = peripheral;
     [self.peripheral setDelegate:self];
     [self.peripheral discoverServices:nil];
-    if ([self.delegate respondsToSelector:@selector(BLEManager: didConnectPeripheral:)]) {
+    if ([_delegate respondsToSelector:@selector(BLEManager: didConnectPeripheral:)]) {
         [self.delegate BLEManager:central didConnectPeripheral:peripheral];
     }
 }
@@ -77,7 +77,7 @@
 -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"%@",error);
-    if ([self.delegate respondsToSelector:@selector(BLEManager: didFailToConnectPeripheral: error:)]) {
+    if ([_delegate respondsToSelector:@selector(BLEManager: didFailToConnectPeripheral: error:)]) {
         [self.delegate BLEManager:central didFailToConnectPeripheral:peripheral error:error];
     }
 }
@@ -98,12 +98,14 @@
     for (CBService *s in peripheral.services) {
         i ++ ;
         NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
-        [peripheral discoverCharacteristics:nil forService:s];
         
+        // 这里应该回调到调用者来判断
+        /*
+        [peripheral discoverCharacteristics:nil forService:s];
         // 判断服务ID
         if ([s.UUID isEqual:[CBUUID UUIDWithString:self.configModel.serviceUUID]]) {
-            
         }
+         */
     }
 }
 
@@ -112,6 +114,9 @@
     NSLog(@"%@",[NSString stringWithFormat:@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID]);
     for (CBCharacteristic *c in service.characteristics) {
         NSLog(@"%@",[NSString stringWithFormat:@"特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
+        
+        // 这里应该回调出去让调用者来判断
+        /*
         if ([c.UUID isEqual:[CBUUID UUIDWithString:self.configModel.characteristicWriteUUID]]) {
             self.writeCharacteristic = c;
         }
@@ -119,6 +124,7 @@
             [_peripheral readValueForCharacteristic:c];
             [_peripheral setNotifyValue:YES forCharacteristic:c];
         }
+         */
         
     }
 }
@@ -126,25 +132,28 @@
 // 断开连接
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     NSLog(@"%@",[NSString stringWithFormat:@"已断开与设备:[%@]的连接", peripheral.name]);
-    if ([self.delegate respondsToSelector:@selector(BLEManager: didDisconnectPeripheral: error:)]) {
+    if ([_delegate respondsToSelector:@selector(BLEManager: didDisconnectPeripheral:error:)]) {
         [self.delegate BLEManager:central didDisconnectPeripheral:peripheral error:error];
     }
-    
 }
 
 //（5）获取外设发来的数据 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
+    
+    // 这里应该回调出去让调用这来判断数据
+    /*
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:self.configModel.characteristicReadUUID]]) {
         NSData * data = characteristic.value;
         Byte * resultByte = (Byte *)[data bytes];
         for(int i=0;i<[data length];i++) {
             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
         }
-        if ([self.delegate respondsToSelector:@selector(BLEManager: didUpdateValueForCharacteristic: error:)]) {
+        if ([_delegate respondsToSelector:@selector(BLEManager: didUpdateValueForCharacteristic: error:)]) {
             [self.delegate BLEManager:peripheral didUpdateValueForCharacteristic:characteristic error:error];
         }
     }
+     */
     
 }
 
@@ -172,7 +181,7 @@
         NSLog(@"发送数据成功");
     }
     [peripheral readValueForCharacteristic:characteristic];
-    if ([self.delegate respondsToSelector:@selector(BLEManager: didWriteValueForCharacteristic: error:)]) {
+    if ([_delegate respondsToSelector:@selector(BLEManager: didWriteValueForCharacteristic: error:)]) {
         [self.delegate BLEManager:peripheral didWriteValueForCharacteristic:characteristic error:error];
     }
 }

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BleScaningConfigModel.h"
 
 #import <CoreBluetooth/CoreBluetooth.h>
 
@@ -37,8 +36,6 @@
 @end
 
 @interface BLEManager : NSObject<CBCentralManagerDelegate, CBPeripheralDelegate>
-
-@property (nonatomic,strong) BleScaningConfigModel *configModel;
 
 @property (nonatomic,assign) id<BLEManagerDelegate> delegate;
 

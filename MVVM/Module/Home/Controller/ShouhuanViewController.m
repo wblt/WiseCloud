@@ -9,6 +9,14 @@
 #import "ShouhuanViewController.h"
 #import "BLEManager.h"
 
+// =================手环==================
+#define UUID_SERVICE_ShouHuan @"C3E6FEA0-E966-1000-8000-BE99C223DF6A"
+
+#define UUID_READ_ShouHuan @"C3E6FEA2-E966-1000-8000-BE99C223DF6A"
+
+#define UUID_WRITE_ShouHuan @"C3E6FEA1-E966-1000-8000-BE99C223DF6A"
+// =================手环==================
+
 @interface ShouhuanViewController ()<BLEManagerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
@@ -39,6 +47,11 @@
     [SVProgressHUD showWithStatus:@"发现设备中.."];
     // 重新扫描
     [self.ble startScan];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
+    [self.ble disConnecting:self.peripheral];
 }
 
 // 断开连接
@@ -85,6 +98,7 @@
 
 // 断开连接
 - (void)BLEManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    [SVProgressHUD showErrorWithStatus:@"已断开设备连接"];
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
