@@ -101,7 +101,6 @@
 
 // 已搜索到Characteristics
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-//    NSLog(@"%@",[NSString stringWithFormat:@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID]);
     if ([_delegate respondsToSelector:@selector(BLEManager: didDiscoverCharacteristicsForService:error:)]) {
         [self.delegate BLEManager:peripheral didDiscoverCharacteristicsForService:service error:error];
     }
@@ -126,33 +125,16 @@
     
 }
 
-- (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    if (error) {
-        NSLog(@"Error changing notification state: %@", error.localizedDescription);
-    }
-    // Notification has started
-    if (characteristic.isNotifying) {
-        [peripheral readValueForCharacteristic:characteristic];
-    } else { // Notification has stopped
-        // so disconnect from the peripheral
-        NSLog(@"Notification stopped on %@.  Disconnecting", characteristic);
-        NSLog(@"%@",[NSString stringWithFormat:@"Notification stopped on %@.  Disconnecting", characteristic]);
-        [self.manager cancelPeripheralConnection:self.peripheral];
-    }
-}
 
 //用于检测中心向外设写数据是否成功
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     if (error) {
-        NSLog(@"=======%@",error.userInfo);
-    }else{
-        NSLog(@"发送数据成功");
+        NSLog(@"Error writing characteristic value: %@",
+              [error localizedDescription]);
+        return;
     }
-    [peripheral readValueForCharacteristic:characteristic];
-    if ([_delegate respondsToSelector:@selector(BLEManager: didWriteValueForCharacteristic: error:)]) {
-        [self.delegate BLEManager:peripheral didWriteValueForCharacteristic:characteristic error:error];
-    }
+    NSLog(@"写入%@成功",characteristic);
 }
 
 // 停止扫描

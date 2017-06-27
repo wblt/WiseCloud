@@ -77,7 +77,9 @@
         [self QingNiuDisconnect];
     } else if ([self.bleModel.deviceName rangeOfString:@"F200"].location != NSNotFound) {
         // 云称
-        [self.ble disConnecting:self.peripheral];
+        if (self.peripheral) {
+            [self.ble disConnecting:self.peripheral];
+        }
     } else if ([self.bleModel.deviceName rangeOfString:@"F300"].location != NSNotFound) {
         // 兴瑞智
         [self.send disconnectDevice];
@@ -395,6 +397,13 @@
 
 #pragma mark - 测量
 - (void)testAction:(UIButton *)sender {
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    TestUserModel *testModel = userModel.testUserModel;
+    // 先检测test用户
+    if (testModel == nil) {
+        [SVProgressHUD showErrorWithStatus:@"请选择测量用户"];
+        return;
+    }
     [SVProgressHUD showWithStatus:@"设备连接中..."];
     titleLabel.text = [NSString stringWithFormat:@"%@", self.bleModel.deviceName];
     // 判断电子称
@@ -531,7 +540,7 @@
 // 扫描回调
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSLog(@"%@",[NSString stringWithFormat:@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.identifier, advertisementData]);
-    if ([peripheral.name isEqualToString:@"Y2"]) {
+    if ([peripheral.name isEqualToString:@"YunChen"]) {
         [SVProgressHUD showWithStatus:@"设备连接中。。"];
         [self.ble stopScan];
         self.peripheral = peripheral;
@@ -741,10 +750,26 @@
 
 // 发现服务
 -(void)BLEManager:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+    NSArray *services = nil;
+    if (peripheral != self.peripheral) {
+        NSLog(@"Wrong Peripheral.\n");
+        return ;
+    }
+    
+    if (error != nil) {
+        NSLog(@"Error %@\n", error);
+        return ;
+    }
+    services = [peripheral services];
+    if (!services || ![services count]) {
+        NSLog(@"No Services");
+        return ;
+    }
     int i=0;
-    for (CBService *s in peripheral.services) {
+    for (CBService *s in services) {
         if ([s.UUID isEqual:[CBUUID UUIDWithString:UUID_SERVICE]]) {
             NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
+            self.peripheral = peripheral;
             [peripheral discoverCharacteristics:nil forService:s];
         }
     }
@@ -752,13 +777,24 @@
 
 // 发现服务下的特征回调
 -(void)BLEManager:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+    NSLog(@"characteristics:%@",[service characteristics]);
+    if (peripheral != self.peripheral) {
+        NSLog(@"Wrong Peripheral.\n");
+        return ;
+    }
+    if (error != nil) {
+        NSLog(@"Error %@\n", error);
+        return ;
+    }
     for (CBCharacteristic *characteristic in [service characteristics]) {
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ]]) {
             self.ReadCharacteristic = characteristic;
+            self.peripheral = peripheral;
             [self.ble setNotifyValue:peripheral forCharacteristic:self.ReadCharacteristic];
         }
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_WRITE]]) {
             self.WriteCharacteristic = characteristic;
+            self.peripheral = peripheral;
             [self.ble setNotifyValue:peripheral forCharacteristic:self.WriteCharacteristic];
             self.is_mode_loite = YES;
             [self writeChar];
@@ -825,8 +861,10 @@
             }
         }
         NSLog(@"stopped");
-        // 断开连接了
-        titleLabel.text = [NSString stringWithFormat:@"(YunChen)已断开"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 断开连接了
+            titleLabel.text = [NSString stringWithFormat:@"(YunChen)已断开"];
+        });
     });
 }
 
@@ -835,7 +873,6 @@
         return @"";
     }
     NSMutableString *string = [[NSMutableString alloc] initWithCapacity:[data length]];
-    
     [data enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange,BOOL *stop) {
         unsigned char *dataBytes = (unsigned char*)bytes;
         for (NSInteger i =0; i < byteRange.length; i++) {
