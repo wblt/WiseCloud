@@ -12,7 +12,7 @@
 #import "ChangUserController.h"
 #import "BLEManager.h"
 
-@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate>
+@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate,sendDelegate>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;
 @property (nonatomic,strong) UITableView *cutableView;
@@ -20,6 +20,7 @@
 @property (nonatomic,strong) NSMutableArray *unitArray;
 @property (nonatomic,strong) NSMutableArray *dataSouce;
 @property (nonatomic,strong) BLEManager *ble;
+@property (nonatomic,strong) SendDataToDevice *send;
 
 @end
 
@@ -47,10 +48,34 @@
     [self createTableView];
     [self initRightBtn];
     
-    // 获取蓝牙信息
-    self.ble = [BLEManager sharedInstance];
-    self.ble.delegate = self;
+    // 切换电子称
+    [self switchBle];
 }
+
+- (void)switchBle {
+    // 判断电子称
+    if ([self.bleModel.deviceName isEqualToString:@"F100_1"]) {
+        // 青牛电子称
+        
+        
+    } else if ([self.bleModel.deviceName isEqualToString:@"F200_1"]) {
+        // yunchen
+        // 获取蓝牙信息
+        self.ble = [BLEManager sharedInstance];
+        self.ble.delegate = self;
+    } else if ([self.bleModel.deviceName isEqualToString:@"F300_1"]) {
+        // 鑫睿智
+        self.send = [SendDataToDevice getSendDataToDeviceInstance];
+        self.send.delegate = self;
+        [self.send myInit];
+    } else {
+        // 获取蓝牙信息
+        self.ble = [BLEManager sharedInstance];
+        self.ble.delegate = self;
+    }
+}
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -371,4 +396,9 @@
     NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
     return [NSString stringWithFormat:@"%ld",(long)bi];
 }
+
+// ++++++++++++++++++++++++辛睿智代理方法+++++++++++++++++++++++++++++
+
+
+// ++++++++++++++++++++++++辛睿智代理方法+++++++++++++++++++++++++++++
 @end

@@ -180,7 +180,15 @@
         for (int i=0; i < self.devices.count; i++) {
             CBPeripheral *p = self.devices[i];
             BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
-            bleModel.deviceName = p.name;
+            if ([p.name isEqualToString:@"BTL03001@H@Bwwws"]) {
+                bleModel.deviceName = @"F300_1";
+            } else if([p.name isEqualToString:@"QN_Scale"]) {
+                bleModel.deviceName = @"F100_1";
+            } else if ([p.name isEqualToString:@"YunChen"]) {
+                bleModel.deviceName = @"F200_1";
+            } else {
+                bleModel.deviceName = p.name;
+            }
             bleModel.uuid = p.identifier.UUIDString;
             [self.dataArr addObject:bleModel];
         }

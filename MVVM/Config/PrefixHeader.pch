@@ -23,4 +23,8 @@
 #import "UIView_extra.h"
 #import "Masonry.h"
 #import "UserConfig.h"
+#import <BTLinker_SingleConnection/SendDataToDevice.h>
+#import "QingNiuSDK.h"
+#import "QingNiuDevice.h"
+#import "QingNiuUser.h"
 #endif

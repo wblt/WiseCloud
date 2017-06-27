@@ -94,6 +94,16 @@
 		36C04E131EF647E200A69B63 /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E0E1EF647E200A69B63 /* ForgetPwdController.m */; };
 		36C04E141EF647E200A69B63 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E101EF647E200A69B63 /* LoginViewController.m */; };
 		36C04E151EF647E200A69B63 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E121EF647E200A69B63 /* RegisterViewController.m */; };
+		36FBDBD71F01F46C00FD012F /* BTLinker_SingleConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */; };
+		36FBDBD91F01F4A400FD012F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBD81F01F4A400FD012F /* libz.tbd */; };
+		36FBDBDB1F01F4B500FD012F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */; };
+		36FBDBDD1F01F4C000FD012F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBDC1F01F4C000FD012F /* MediaPlayer.framework */; };
+		36FBDBDF1F01F4CD00FD012F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBDE1F01F4CD00FD012F /* AVFoundation.framework */; };
+		36FBDBE11F01F4DC00FD012F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBE01F01F4DC00FD012F /* CoreGraphics.framework */; };
+		36FBDBE71F01F6C600FD012F /* libQingNiuSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBE31F01F6C600FD012F /* libQingNiuSDK.a */; };
+		36FBDBE91F01F6F800FD012F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBE81F01F6F800FD012F /* SystemConfiguration.framework */; };
+		36FBDBEB1F01F70900FD012F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBEA1F01F70900FD012F /* MobileCoreServices.framework */; };
+		36FBDBED1F01F71500FD012F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */; };
 		402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DA81A1EF22B8A00402707 /* RecordModel.m */; };
 		40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B541EE92D29008F653D /* BaseViewModel.m */; };
 		40C32B611EE92D7F008F653D /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C32B5E1EE92D7F008F653D /* BaseNavigationController.m */; };
@@ -292,6 +302,19 @@
 		36C04E101EF647E200A69B63 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		36C04E111EF647E200A69B63 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		36C04E121EF647E200A69B63 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BTLinker_SingleConnection.framework; sourceTree = "<group>"; };
+		36FBDBD81F01F4A400FD012F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		36FBDBDC1F01F4C000FD012F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		36FBDBDE1F01F4CD00FD012F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		36FBDBE01F01F4DC00FD012F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		36FBDBE31F01F6C600FD012F /* libQingNiuSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libQingNiuSDK.a; sourceTree = "<group>"; };
+		36FBDBE41F01F6C600FD012F /* QingNiuDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QingNiuDevice.h; sourceTree = "<group>"; };
+		36FBDBE51F01F6C600FD012F /* QingNiuSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QingNiuSDK.h; sourceTree = "<group>"; };
+		36FBDBE61F01F6C600FD012F /* QingNiuUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QingNiuUser.h; sourceTree = "<group>"; };
+		36FBDBE81F01F6F800FD012F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		36FBDBEA1F01F70900FD012F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		402DA8191EF22B8A00402707 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
 		402DA81A1EF22B8A00402707 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
 		40C32B531EE92D29008F653D /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
@@ -322,7 +345,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36FBDBED1F01F71500FD012F /* CoreBluetooth.framework in Frameworks */,
+				36FBDBEB1F01F70900FD012F /* MobileCoreServices.framework in Frameworks */,
+				36FBDBE91F01F6F800FD012F /* SystemConfiguration.framework in Frameworks */,
+				36FBDBE11F01F4DC00FD012F /* CoreGraphics.framework in Frameworks */,
+				36FBDBDF1F01F4CD00FD012F /* AVFoundation.framework in Frameworks */,
+				36FBDBE71F01F6C600FD012F /* libQingNiuSDK.a in Frameworks */,
+				36FBDBDD1F01F4C000FD012F /* MediaPlayer.framework in Frameworks */,
+				36FBDBDB1F01F4B500FD012F /* libsqlite3.0.tbd in Frameworks */,
+				36FBDBD91F01F4A400FD012F /* libz.tbd in Frameworks */,
 				D9C6F5904BB24842D6AB2F94 /* libPods-MVVM.a in Frameworks */,
+				36FBDBD71F01F46C00FD012F /* BTLinker_SingleConnection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +489,7 @@
 		36C04D2D1EF634F300A69B63 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				36FBDBE21F01F6C600FD012F /* QingNiuSDK */,
 				36C04D2E1EF6351600A69B63 /* Category */,
 				36C04D6C1EF6351600A69B63 /* SaoMiao */,
 			);
@@ -776,6 +810,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		36FBDBE21F01F6C600FD012F /* QingNiuSDK */ = {
+			isa = PBXGroup;
+			children = (
+				36FBDBE31F01F6C600FD012F /* libQingNiuSDK.a */,
+				36FBDBE41F01F6C600FD012F /* QingNiuDevice.h */,
+				36FBDBE51F01F6C600FD012F /* QingNiuSDK.h */,
+				36FBDBE61F01F6C600FD012F /* QingNiuUser.h */,
+			);
+			path = QingNiuSDK;
+			sourceTree = "<group>";
+		};
 		40C32B521EE92D29008F653D /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +858,15 @@
 		E4E98DA95081F9CA7D92DE49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */,
+				36FBDBEA1F01F70900FD012F /* MobileCoreServices.framework */,
+				36FBDBE81F01F6F800FD012F /* SystemConfiguration.framework */,
+				36FBDBE01F01F4DC00FD012F /* CoreGraphics.framework */,
+				36FBDBDE1F01F4CD00FD012F /* AVFoundation.framework */,
+				36FBDBDC1F01F4C000FD012F /* MediaPlayer.framework */,
+				36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */,
+				36FBDBD81F01F4A400FD012F /* libz.tbd */,
+				36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */,
 				B6C377E169344DE7C1866D3C /* libPods-MVVM.a */,
 			);
 			name = Frameworks;
@@ -1254,10 +1308,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HR6HGC9SU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MVVM/Support/QingNiuSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-ThankYou-com.k12chn.ThankYou";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1272,10 +1334,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HR6HGC9SU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MVVM/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MVVM/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MVVM/Support/QingNiuSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-ThankYou-com.k12chn.ThankYou";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
