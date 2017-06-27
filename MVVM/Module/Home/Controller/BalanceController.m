@@ -54,16 +54,18 @@
 
 - (void)switchBle {
     // 判断电子称
-    if ([self.bleModel.deviceName isEqualToString:@"F100_1"]) {
+    if ([self.bleModel.deviceName rangeOfString:@"F100_1"].location != NSNotFound) {
         // 青牛电子称
-        
-        
-    } else if ([self.bleModel.deviceName isEqualToString:@"F200_1"]) {
+        // 验证APP
+        [QingNiuSDK registerApp:@"123456789"/*@"123456asdfg" */registerAppBlock:^(QingNiuRegisterAppState qingNiuRegisterAppState) {
+            NSLog(@"%ld",(long)qingNiuRegisterAppState);
+        }];
+    } else if ([self.bleModel.deviceName rangeOfString:@"F200_1"].location != NSNotFound) {
         // yunchen
         // 获取蓝牙信息
         self.ble = [BLEManager sharedInstance];
         self.ble.delegate = self;
-    } else if ([self.bleModel.deviceName isEqualToString:@"F300_1"]) {
+    } else if ([self.bleModel.deviceName rangeOfString:@"F300_1"].location != NSNotFound) {
         // 鑫睿智
         self.send = [SendDataToDevice getSendDataToDeviceInstance];
         self.send.delegate = self;
@@ -74,8 +76,6 @@
         self.ble.delegate = self;
     }
 }
-
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

@@ -176,7 +176,9 @@
     if (!replace) {
         [self.devices addObject:peripheral];
         // 添加设备
-        [self.dataArr removeAllObjects];
+        if (![self.type isEqualToString:@"体脂称"]) {
+            [self.dataArr removeAllObjects];
+        }
         for (int i=0; i < self.devices.count; i++) {
             CBPeripheral *p = self.devices[i];
             BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
