@@ -10,8 +10,10 @@
 
 @interface BleScaningDecviceModel : NSObject
 
-@property (nonatomic,strong) NSString *deviceName;
+@property (nonatomic,copy) NSString *deviceName;
 
-@property (nonatomic,strong) NSString *uuid;
+@property (nonatomic,copy) NSString *realName;
+
+@property (nonatomic,copy) NSString *uuid;
 
 @end

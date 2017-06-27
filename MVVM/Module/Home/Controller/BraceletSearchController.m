@@ -78,7 +78,6 @@
     
 }
 
-
 - (void)viewWillDisappear:(BOOL)animated {
     [SVProgressHUD dismiss];
 }
@@ -112,7 +111,6 @@
     }
     return _dataArr;
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -161,38 +159,35 @@
             replace = YES;
         }
     }
+    
     if (!replace) {
-        
         [self.devices addObject:peripheral];
-        
         // 添加设备
-        if (![self.type isEqualToString:@"体脂称"]) {
-            [self.dataArr removeAllObjects];
-        }
-        
-        
+        [self.dataArr removeAllObjects];
         for (int i=0; i < self.devices.count; i++) {
             CBPeripheral *p = self.devices[i];
             if ([self.type isEqualToString:@"体脂称"]) {
-                BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                 if ([p.name isEqualToString:@"BTL03001@H@Bwwws"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F300_1";
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
                 } else if([p.name isEqualToString:@"QN_Scale"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F100_1";
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
                 } else if ([p.name isEqualToString:@"YunChen"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F200_1";
-                } else {
-                    bleModel.deviceName = p.name;
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
                 }
-                
-                bleModel.uuid = p.identifier.UUIDString;
-                [self.dataArr addObject:bleModel];
             } else if([self.type isEqualToString:@"手环"]) {
                 if ([p.name isEqualToString:@"Y2"]) {
                     BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = p.name;
                     bleModel.uuid = p.identifier.UUIDString;
-                
                     [self.dataArr addObject:bleModel];
                 }
             }

@@ -94,11 +94,9 @@
 
 // (4）发现服务和搜索到的Characteristice //已发现服务
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-    
     if ([_delegate respondsToSelector:@selector(BLEManager:didDiscoverServices:)]) {
         [self.delegate BLEManager:peripheral didDiscoverServices:error];
     }
-    
 }
 
 // 已搜索到Characteristics
@@ -179,10 +177,10 @@
 }
 
 // 写数据
-- (void)peripheralWriteData:(CBPeripheral *)peripheral toCharacteristic:(CBCharacteristic *)characteristic {
-    Byte byte[] = {2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
+- (void)peripheral:(CBPeripheral *)peripheral writeData:(NSData *)data toCharacteristic:(CBCharacteristic *)characteristic {
+//    Byte byte[] = {2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
     if (peripheral.state == CBPeripheralStateConnected) {
-        [peripheral writeValue:[NSData dataWithBytes:byte length:17] forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+        [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
     }
 }
 
@@ -193,7 +191,10 @@
 
 // 注册读的通知
 - (void)setNotifyValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic {
-    [peripheral readValueForCharacteristic:characteristic];
     [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+}
+
+- (void)readValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic {
+    [peripheral readValueForCharacteristic:characteristic];
 }
 @end

@@ -63,9 +63,11 @@
 // 注册通知
 - (void)setNotifyValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic;
 
+- (void)readValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic;
+
 // 断开连接
 - (void)disConnecting:(CBPeripheral *)peripheral;
 
 // 写数据
-- (void)peripheralWriteData:(CBPeripheral *)peripheral toCharacteristic:(CBCharacteristic *)characteristic;
+- (void)peripheral:(CBPeripheral *)peripheral writeData:(NSData *)data toCharacteristic:(CBCharacteristic *)characteristic;
 @end

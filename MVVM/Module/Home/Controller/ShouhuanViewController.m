@@ -91,7 +91,6 @@
 }
 
 
-
 // 连接失败
 -(void)BLEManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
     [SVProgressHUD showErrorWithStatus:@"连接失败"];
@@ -118,10 +117,12 @@
          if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_WRITE_ShouHuan]]) {
              NSLog(@"%@",[NSString stringWithFormat:@"写特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
              self.writeCharacteristic = c;
+             [self.ble setNotifyValue:peripheral forCharacteristic:c];
          }
          
          if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
              NSLog(@"%@",[NSString stringWithFormat:@"读特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
+             [self.ble readValue:peripheral forCharacteristic:c];
              [self.ble setNotifyValue:peripheral forCharacteristic:c];
          }
      }
