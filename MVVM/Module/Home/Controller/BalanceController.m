@@ -12,7 +12,7 @@
 #import "ChangUserController.h"
 #import "BLEManager.h"
 
-@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate>
+@interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate,sendDelegate>
 
 @property (nonatomic,strong) NSMutableDictionary *dic;
 @property (nonatomic,strong) UITableView *cutableView;
@@ -20,6 +20,7 @@
 @property (nonatomic,strong) NSMutableArray *unitArray;
 @property (nonatomic,strong) NSMutableArray *dataSouce;
 @property (nonatomic,strong) BLEManager *ble;
+@property (nonatomic,strong) SendDataToDevice *send;
 
 @end
 
@@ -47,9 +48,33 @@
     [self createTableView];
     [self initRightBtn];
     
-    // 获取蓝牙信息
-    self.ble = [BLEManager sharedInstance];
-    self.ble.delegate = self;
+    // 切换电子称
+    [self switchBle];
+}
+
+- (void)switchBle {
+    // 判断电子称
+    if ([self.bleModel.deviceName rangeOfString:@"F100_1"].location != NSNotFound) {
+        // 青牛电子称
+        // 验证APP
+        [QingNiuSDK registerApp:@"123456789"/*@"123456asdfg" */registerAppBlock:^(QingNiuRegisterAppState qingNiuRegisterAppState) {
+            NSLog(@"%ld",(long)qingNiuRegisterAppState);
+        }];
+    } else if ([self.bleModel.deviceName rangeOfString:@"F200_1"].location != NSNotFound) {
+        // yunchen
+        // 获取蓝牙信息
+        self.ble = [BLEManager sharedInstance];
+        self.ble.delegate = self;
+    } else if ([self.bleModel.deviceName rangeOfString:@"F300_1"].location != NSNotFound) {
+        // 鑫睿智
+        self.send = [SendDataToDevice getSendDataToDeviceInstance];
+        self.send.delegate = self;
+        [self.send myInit];
+    } else {
+        // 获取蓝牙信息
+        self.ble = [BLEManager sharedInstance];
+        self.ble.delegate = self;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -148,7 +173,7 @@
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     //蓝牙未连接
     titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"(YunChen)未连接";
+    titleLabel.text = @"----";
     [headView addSubview:titleLabel];
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -344,10 +369,10 @@
     return _dataSouce;
 }
 
-#pragma mark - 测量响应方法
+#pragma mark - 测量
 - (void)testAction:(UIButton *)sender {
     [SVProgressHUD showWithStatus:@"设备连接中..."];
-    titleLabel.text = [NSString stringWithFormat:@"(YunChen)连接中..."];
+    titleLabel.text = [NSString stringWithFormat:@"%@", self.bleModel.deviceName];
 }
 
 #pragma mark - 切换账号
@@ -355,7 +380,6 @@
     ChangUserController *changVC = [[ChangUserController alloc] init];
     [self.navigationController pushViewController:changVC animated:YES];
 }
-
 
 - (NSString *)getBmi:(float)tz {
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
@@ -371,4 +395,9 @@
     NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
     return [NSString stringWithFormat:@"%ld",(long)bi];
 }
+
+// ++++++++++++++++++++++++辛睿智代理方法+++++++++++++++++++++++++++++
+
+
+// ++++++++++++++++++++++++辛睿智代理方法+++++++++++++++++++++++++++++
 @end

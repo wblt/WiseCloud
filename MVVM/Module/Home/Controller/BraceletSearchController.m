@@ -145,6 +145,7 @@
         ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
         ShouhuanVC.hidesBottomBarWhenPushed = YES;
         ShouhuanVC.bleModel = self.dataArr[indexPath.row];
+        
         [self.navigationController pushViewController:ShouhuanVC animated:YES];
     } else if ([self.type isEqualToString:@"体脂称"]) {
         // 进入体脂称的页面
@@ -176,13 +177,32 @@
     if (!replace) {
         [self.devices addObject:peripheral];
         // 添加设备
-        [self.dataArr removeAllObjects];
+        if (![self.type isEqualToString:@"体脂称"]) {
+            [self.dataArr removeAllObjects];
+        }
         for (int i=0; i < self.devices.count; i++) {
             CBPeripheral *p = self.devices[i];
-            BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
-            bleModel.deviceName = p.name;
-            bleModel.uuid = p.identifier.UUIDString;
-            [self.dataArr addObject:bleModel];
+            if ([self.type isEqualToString:@"体脂称"]) {
+                BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
+                if ([p.name isEqualToString:@"BTL03001@H@Bwwws"]) {
+                    bleModel.deviceName = @"F300_1";
+                } else if([p.name isEqualToString:@"QN_Scale"]) {
+                    bleModel.deviceName = @"F100_1";
+                } else if ([p.name isEqualToString:@"YunChen"]) {
+                    bleModel.deviceName = @"F200_1";
+                } else {
+                    bleModel.deviceName = p.name;
+                }
+                bleModel.uuid = p.identifier.UUIDString;
+                [self.dataArr addObject:bleModel];
+            } else if([self.type isEqualToString:@"手环"]) {
+                if ([p.name isEqualToString:@"Y2"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
+                    bleModel.deviceName = p.name;
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
+                }
+            }
         }
         [self.tableView reloadData];
     }
