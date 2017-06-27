@@ -24,8 +24,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
-
-
+@property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
 @end
 
 @implementation ShouhuanViewController
@@ -91,8 +90,41 @@
     [SVProgressHUD dismiss];
 }
 
+
+
 // 连接失败
 -(void)BLEManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    [SVProgressHUD showErrorWithStatus:@"连接失败"];
+}
+
+
+// 发现服务
+-(void)BLEManager:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+     int i=0;
+     for (CBService *s in peripheral.services) {
+     if ([s.UUID isEqual:[CBUUID UUIDWithString:UUID_SERVICE_ShouHuan]]) {
+             NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
+             [peripheral discoverCharacteristics:nil forService:s];
+         }
+     }
+    
+}
+
+// 发现服务下的特征回调
+-(void)BLEManager:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+     for (CBCharacteristic *c in service.characteristics) {
+         
+         // 设置读的特征
+         if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_WRITE_ShouHuan]]) {
+             NSLog(@"%@",[NSString stringWithFormat:@"写特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
+             self.writeCharacteristic = c;
+         }
+         
+         if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
+             NSLog(@"%@",[NSString stringWithFormat:@"读特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
+             [self.ble setNotifyValue:peripheral forCharacteristic:c];
+         }
+     }
     
 }
 
@@ -103,7 +135,13 @@
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)BLEManager:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    
+     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
+         NSData * data = characteristic.value;
+         Byte * resultByte = (Byte *)[data bytes];
+         for(int i=0;i<[data length];i++) {
+             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
+         }
+     }
 }
 
 // 用于检测中心向外设写数据是否成功

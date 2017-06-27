@@ -49,7 +49,6 @@
         // 手环配置
         self.ble = [BLEManager sharedInstance];
         self.ble.delegate = self;
-        
     } else if ([self.type isEqualToString:@"体脂称"]) {
         [self.dataArr removeAllObjects];
         BleScaningDecviceModel *bleModel1 = [[BleScaningDecviceModel alloc] init];

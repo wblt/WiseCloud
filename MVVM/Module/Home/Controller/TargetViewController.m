@@ -63,13 +63,26 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TargetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TargetCell" forIndexPath:indexPath];
-    
+    cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%ld",indexPath.section+1]];
+    //cell.cyan.frame
+    //cell.lable.text
+    if (indexPath.section == 4 || indexPath.section == 11) {
+        cell.img.hidden = YES;
+    }else {
+        cell.img.hidden = NO;
+    }
     return cell;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //cell.lable.text   height
+//    if (indexPath.section == 4 || indexPath.section == 11) {
+//        return height;
+//    }else {
+//        return height + 70;
+//    }
     return 120;
 }
 

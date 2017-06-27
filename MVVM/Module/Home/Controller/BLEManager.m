@@ -93,40 +93,21 @@
 
 
 // (4）发现服务和搜索到的Characteristice //已发现服务
--(void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-    int i=0;
-    for (CBService *s in peripheral.services) {
-        i ++ ;
-        NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
-        
-        // 这里应该回调到调用者来判断
-        /*
-        [peripheral discoverCharacteristics:nil forService:s];
-        // 判断服务ID
-        if ([s.UUID isEqual:[CBUUID UUIDWithString:self.configModel.serviceUUID]]) {
-        }
-         */
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
+    
+    if ([_delegate respondsToSelector:@selector(BLEManager:didDiscoverServices:)]) {
+        [self.delegate BLEManager:peripheral didDiscoverServices:error];
     }
+    
 }
 
 // 已搜索到Characteristics
 -(void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-    NSLog(@"%@",[NSString stringWithFormat:@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID]);
-    for (CBCharacteristic *c in service.characteristics) {
-        NSLog(@"%@",[NSString stringWithFormat:@"特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
-        
-        // 这里应该回调出去让调用者来判断
-        /*
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:self.configModel.characteristicWriteUUID]]) {
-            self.writeCharacteristic = c;
-        }
-        if ([c.UUID isEqual:[CBUUID UUIDWithString:self.configModel.characteristicReadUUID]]) {
-            [_peripheral readValueForCharacteristic:c];
-            [_peripheral setNotifyValue:YES forCharacteristic:c];
-        }
-         */
-        
+//    NSLog(@"%@",[NSString stringWithFormat:@"发现特征的服务:%@ (%@)",service.UUID.data ,service.UUID]);
+    if ([_delegate respondsToSelector:@selector(BLEManager: didDiscoverCharacteristicsForService:error:)]) {
+        [self.delegate BLEManager:peripheral didDiscoverCharacteristicsForService:service error:error];
     }
+    
 }
 
 // 断开连接
@@ -141,19 +122,9 @@
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     
-    // 这里应该回调出去让调用这来判断数据
-    /*
-    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:self.configModel.characteristicReadUUID]]) {
-        NSData * data = characteristic.value;
-        Byte * resultByte = (Byte *)[data bytes];
-        for(int i=0;i<[data length];i++) {
-            printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
-        }
-        if ([_delegate respondsToSelector:@selector(BLEManager: didUpdateValueForCharacteristic: error:)]) {
-            [self.delegate BLEManager:peripheral didUpdateValueForCharacteristic:characteristic error:error];
-        }
+    if ([_delegate respondsToSelector:@selector(BLEManager: didUpdateValueForCharacteristic: error:)]) {
+        [self.delegate BLEManager:peripheral didUpdateValueForCharacteristic:characteristic error:error];
     }
-     */
     
 }
 
@@ -208,11 +179,21 @@
 }
 
 // 写数据
-- (void)writeData {
+- (void)peripheralWriteData:(CBPeripheral *)peripheral toCharacteristic:(CBCharacteristic *)characteristic {
     Byte byte[] = {2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
-    if (self.peripheral.state == CBPeripheralStateConnected) {
-        [self.peripheral writeValue:[NSData dataWithBytes:byte length:17] forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithoutResponse];
+    if (peripheral.state == CBPeripheralStateConnected) {
+        [peripheral writeValue:[NSData dataWithBytes:byte length:17] forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
     }
 }
 
+// 发现服务下的特征
+- (void)peripheralDiscoverCharacteristics:(CBPeripheral *)peripheral forService:(CBService *)service {
+    [peripheral discoverCharacteristics:nil forService:service];
+}
+
+// 注册读的通知
+- (void)setNotifyValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic {
+    [peripheral readValueForCharacteristic:characteristic];
+    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+}
 @end
