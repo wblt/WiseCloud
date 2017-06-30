@@ -80,6 +80,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [SVProgressHUD dismiss];
+    [self.ble stopScan];
 }
 
 - (IBAction)stopSearching:(id)sender {

@@ -36,11 +36,8 @@
     [_tableview addSubview:pende];
     
     [_tableview registerNib:[UINib nibWithNibName:@"TargetCell" bundle:nil] forCellReuseIdentifier:@"TargetCell"];
-
     dataArr = @[@"体重",@"体水分",@"体脂率",@"去脂体重",@"BMI",@"基础代谢量",@"皮下脂肪率",@"内脏脂肪等级",@"骨骼肌率",@"骨量",@"蛋白质",@"体年龄",@"肌肉量"];
-    
     isOpenArr = [NSMutableArray array];
-    
     for (int i =0; i< dataArr.count; i++) {
         
         [isOpenArr addObject:@"0"];
@@ -63,7 +60,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TargetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TargetCell" forIndexPath:indexPath];
-    cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%ld",indexPath.section+1]];
+    cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%d",indexPath.section+1]];
     //cell.cyan.frame
     //cell.lable.text
     if (indexPath.section == 4 || indexPath.section == 11) {
@@ -77,7 +74,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //cell.lable.text   height
+//cell.lable.text   height
 //    if (indexPath.section == 4 || indexPath.section == 11) {
 //        return height;
 //    }else {

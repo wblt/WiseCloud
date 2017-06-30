@@ -57,6 +57,7 @@
     // Do any additional setup after loading the view.
     dicData = [NSMutableDictionary dictionary];
     dataSouce = [NSMutableArray array];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initName];
     [self initUnit];
@@ -158,9 +159,9 @@
     [self.unitArray addObject:@"级"];
     [self.unitArray addObject:@"kg"];
     [self.unitArray addObject:@"%"];
+    [self.unitArray addObject:@"kg"];
     [self.unitArray addObject:@"岁"];
     [self.unitArray addObject:@""];
-    [self.unitArray addObject:@"kg"];
 }
 
 - (void)createTableView {
@@ -446,11 +447,18 @@
 // 结果点击相应事件
 -(void)singleTapAction:(UIGestureRecognizer *)ges {
     NSLog(@"点击了");
-    //具体的实现
-    UIStoryboard *story=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
-    TargetViewController *BraceletVC = [story instantiateViewControllerWithIdentifier:@"TargetViewController"];
-    BraceletVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:BraceletVC animated:YES];
+    // 判断分数
+    if ([bigGradeLabel.text isEqualToString:@"0.0分"]) {
+        [SVProgressHUD showInfoWithStatus:@"请先测量你的体重"];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
+    } else {
+        //具体的实现
+        UIStoryboard *story=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
+        TargetViewController *BraceletVC = [story instantiateViewControllerWithIdentifier:@"TargetViewController"];
+        BraceletVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:BraceletVC animated:YES];
+
+    }
 }
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<青牛代理方法<<<<<<<<<<<<<<<<<<<<
@@ -569,7 +577,6 @@
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ]]) {
         NSString *newString = [self convertDataToHexStr:characteristic.value];
         NSLog(@"%@",newString);
-        
         if (newString.length == 40) {
             NSLog(@"%@",characteristic);
             NSString *temp = @"";
@@ -585,23 +592,18 @@
                 temp = [temp stringByAppendingFormat:@"|%@",zhuangtai];
             }
             
-            [dicData setValue:zhuangtai forKey:@"zhuangtai"];
-            
             //脂肪
             NSString *zhifang = [newString substringWithRange:NSMakeRange(8,4)];
             
             zhifang = [NSString stringWithFormat:@"%.2f",strtoul([zhifang UTF8String],0,16)/10.0];
             
+            // 体脂率
             bodyFatResult.text = [NSString stringWithFormat:@"%%%@",zhifang];
             
             if (zhifang.length != 0) {
                 temp = [temp stringByAppendingFormat:@"|%@",zhifang];
             }
-            
             NSLog(@"%@",zhifang);
-            
-            [dicData setValue:zhifang forKey:@"zhifang"];
-            
             //重量
             NSString *zl = [newString substringWithRange:NSMakeRange(4,4)];
             zl = [NSString stringWithFormat:@"%.2f",strtoul([zl UTF8String],0,16)/100.0];
@@ -611,9 +613,7 @@
             }
             
             NSLog(@"%@",zl);
-            
-            [dicData setValue:zl forKey:@"zl"];
-            
+        
             //体水分
             NSString *sf = [newString substringWithRange:NSMakeRange(16,4)];
             sf = [NSString stringWithFormat:@"%.2f",strtoul([sf UTF8String],0,16)/10.0];
@@ -625,8 +625,6 @@
             NSLog(@"%@",sf);
             
             
-            [dicData setValue:sf forKey:@"sf"];
-            
             //肌肉
             NSString *jr = [newString substringWithRange:NSMakeRange(20,4)];
             jr = [NSString stringWithFormat:@"%.2f",strtoul([jr UTF8String],0,16)/10.0];
@@ -637,8 +635,7 @@
             
             NSLog(@"%@",jr);
             
-            [dicData setValue:jr forKey:@"jr"];
-            
+    
             //骨骼
             NSString *gg = [newString substringWithRange:NSMakeRange(24,4)];
             gg = [NSString stringWithFormat:@"%.2f",strtoul([gg UTF8String],0,16)/10.0];
@@ -648,9 +645,6 @@
             }
             
             NSLog(@"%@",gg);
-            
-            
-            [dicData setValue:gg forKey:@"gg"];
             
             //新陈代谢
             NSString *kaluli = [newString substringWithRange:NSMakeRange(28,4)];
@@ -662,8 +656,6 @@
             
             NSLog(@"%@",kaluli);
             
-            [dicData setValue:kaluli forKey:@"kaluli"];
-            
             //内脏等级
             NSString *neizhang = [newString substringWithRange:NSMakeRange(32,2)];
             neizhang = [NSString stringWithFormat:@"%.2f",strtoul([neizhang UTF8String],0,16)/10.0];
@@ -673,8 +665,7 @@
             
             NSLog(@"%@",neizhang);
             
-            [dicData setValue:neizhang forKey:@"neizhang"];
-            
+
             //体年龄
             NSString *tiage = [newString substringWithRange:NSMakeRange(34,2)];
             tiage = [NSString stringWithFormat:@"%ld",strtoul([tiage UTF8String],0,16)];
@@ -684,58 +675,61 @@
             }
             
             NSLog(@"%@",tiage);
-            
-            [dicData setValue:tiage forKey:@"tiage"];
-            
-            
             NSString *str = [NSString stringWithFormat:@"源:%@,解析:%@",characteristic,temp];
             
             curretnValue = str;
-            
             NSLog(@"@@@@%@",curretnValue);
             //体重
             NSString *r1 = zl;
-            
             currentWeight = r1;
             bigWightLabel.text = [NSString stringWithFormat:@"%@kg",currentWeight];
             //去脂体重
             [dataSouce addObject:r1];
+            [dicData setValue:r1 forKey:@"去脂体重"];
             //bmi
             NSString *r2 = [self getBmi:[zl floatValue]];
             [dataSouce addObject:r2];
+            [dicData setValue:r2 forKey:@"BMI"];
             //基础代谢
             NSString *r3 = kaluli;
             [dataSouce addObject:r3];
+            [dicData setValue:r3 forKey:@"基础代谢量"];
             //皮下脂肪
             NSString *r4 = zhifang;
             [dataSouce addObject:r4];
+            [dicData setValue:r4 forKey:@"皮下脂肪量"];
             //内脏
             NSString *r5 = neizhang;
             [dataSouce addObject:r5];
+            [dicData setValue:r5 forKey:@"内脏脂肪等级"];
             //肌肉
             NSString *r6 = jr;
             [dataSouce addObject:r6];
-            
+            [dicData setValue:r6 forKey:@"肌肉量"];
             //骨骼
             NSString *r7 = gg;
             [dataSouce addObject:r7];
-            
+            [dicData setValue:r7 forKey:@"骨骼肌率"];
             //骨量
             NSString *r8 = gg;
-            
             [dataSouce addObject:r8];
-            
-            //体水
+            [dicData setValue:r8 forKey:@"骨量"];
+            //体水分
             currentWater = sf;
-            
             waterResult.text = [NSString stringWithFormat:@"%%%@",sf];
-            NSString *yaotunbi = [self yaotunbi];
+            [dicData setValue:waterResult.text forKey:@"体水分"];
+            // 体年龄
             [dataSouce addObject:tiage];
+            [dicData setValue:tiage forKey:@"体年龄"];
+            // 腰臀比
+            NSString *yaotunbi = [self yaotunbi];
+            [dicData setValue:yaotunbi forKey:@"腰臀比"];
             [dataSouce addObject:yaotunbi];
-            //分数
+            //大圈圈的分数
             if (tiage.length != 0) {
                 NSInteger value = arc4random() % 30 + 50;
                 bigGradeLabel.text = [NSString stringWithFormat:@"%ld",(long)value];
+                [dicData setValue:bigGradeLabel.text forKey:@"分数"];
             }
             [self.cutableView reloadData];
             NSLog(@"%@",dicData);
