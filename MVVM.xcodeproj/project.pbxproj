@@ -1342,8 +1342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 59Q2E3377P;
-				DEVELOPMENT_TEAM = HR6HGC9SU2; ea3deae1b5b09f170c45ed9f92267f527927c8ab
+				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1369,8 +1368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 59Q2E3377P;
-				DEVELOPMENT_TEAM = HR6HGC9SU2; ea3deae1b5b09f170c45ed9f92267f527927c8ab
+				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
