@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BleScaningConfigModel.h"
 
 #import <CoreBluetooth/CoreBluetooth.h>
 
@@ -34,11 +33,16 @@
 //用于检测中心向外设写数据是否成功
 -(void)BLEManager:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error;
 
+
+// 发现服务
+-(void)BLEManager:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error;
+
+// 发现服务下的特征回调
+-(void)BLEManager:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error;
+
 @end
 
 @interface BLEManager : NSObject<CBCentralManagerDelegate, CBPeripheralDelegate>
-
-@property (nonatomic,strong) BleScaningConfigModel *configModel;
 
 @property (nonatomic,assign) id<BLEManagerDelegate> delegate;
 
@@ -53,9 +57,17 @@
 // 连接
 - (void)connecting:(CBPeripheral *)peripheral;
 
+// 发现服务下的特征
+- (void)peripheralDiscoverCharacteristics:(CBPeripheral *)peripheral forService:(CBService *)service;
+
+// 注册通知
+- (void)setNotifyValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic;
+
+- (void)readValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic;
+
 // 断开连接
 - (void)disConnecting:(CBPeripheral *)peripheral;
 
 // 写数据
-- (void)writeData;
+- (void)peripheral:(CBPeripheral *)peripheral writeData:(NSData *)data toCharacteristic:(CBCharacteristic *)characteristic;
 @end

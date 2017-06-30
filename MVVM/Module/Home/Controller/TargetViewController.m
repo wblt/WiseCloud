@@ -25,6 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"指标标准";
+    
+    // 初始化数据
+    [self initData];
+    
     _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate =self;
@@ -36,16 +40,22 @@
     [_tableview addSubview:pende];
     
     [_tableview registerNib:[UINib nibWithNibName:@"TargetCell" bundle:nil] forCellReuseIdentifier:@"TargetCell"];
-
     dataArr = @[@"体重",@"体水分",@"体脂率",@"去脂体重",@"BMI",@"基础代谢量",@"皮下脂肪率",@"内脏脂肪等级",@"骨骼肌率",@"骨量",@"蛋白质",@"体年龄",@"肌肉量"];
-    
     isOpenArr = [NSMutableArray array];
-    
     for (int i =0; i< dataArr.count; i++) {
         
         [isOpenArr addObject:@"0"];
     }
     
+}
+
+// 初始化数据
+- (void)initData {
+    // 去脂体重
+    NSString *weight = [self.dicData objectForKey:@"体重"];
+    [self.dicData setValue:weight forKey:@"去脂体重"];
+    // 蛋白质
+    [self.dicData setValue:@"" forKey:@"蛋白质"];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -63,13 +73,26 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TargetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TargetCell" forIndexPath:indexPath];
-    
+    cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%d",indexPath.section+1]];
+    //cell.cyan.frame
+    //cell.lable.text
+    if (indexPath.section == 4 || indexPath.section == 11) {
+        cell.img.hidden = YES;
+    }else {
+        cell.img.hidden = NO;
+    }
     return cell;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//cell.lable.text   height
+//    if (indexPath.section == 4 || indexPath.section == 11) {
+//        return height;
+//    }else {
+//        return height + 70;
+//    }
     return 120;
 }
 
@@ -87,8 +110,21 @@
 {
     TargetSectionView *view  = [[NSBundle mainBundle] loadNibNamed:@"TargetSectionView" owner:nil options:nil].lastObject;
     view.lable1.text = dataArr[section];
-    view.lable2.text = @"57kg";
+    if (nil != self.dicData) {
+        NSString *result = [self.dicData objectForKey:dataArr[section]];
+        if (nil == result || result.length == 0) {
+            view.lable2.text = @"--";
+        } else {
+            view.lable2.text = [self.dicData objectForKey:dataArr[section]];
+        }
+        
+    } else {
+       view.lable2.text = @"--";
+    }
+    
+    // 这里应该加一个方法来判断
     view.lable3.text = @"标准";
+    
     if ([isOpenArr[section] isEqualToString:@"1"]) {
         view.btn.selected = YES;
         view.line.hidden = YES;

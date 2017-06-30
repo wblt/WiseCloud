@@ -47,14 +47,8 @@
     self.tableView.delegate = self;
     if ([self.type isEqualToString:@"手环"]) {
         // 手环配置
-        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-        config.serviceUUID = UUID_SERVICE_ShouHuan;
-        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-        config.characteristicReadUUID = UUID_READ_ShouHuan;
         self.ble = [BLEManager sharedInstance];
-        self.ble.configModel = config;
         self.ble.delegate = self;
-        
     } else if ([self.type isEqualToString:@"体脂称"]) {
         [self.dataArr removeAllObjects];
         BleScaningDecviceModel *bleModel1 = [[BleScaningDecviceModel alloc] init];
@@ -74,30 +68,19 @@
         
         [self.tableView reloadData];
         
-        // 配置信息
-        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-        config.serviceUUID = UUID_SERVICE_ShouHuan;
-        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-        config.characteristicReadUUID = UUID_READ_ShouHuan;
         self.ble = [BLEManager sharedInstance];
-        self.ble.configModel = config;
         self.ble.delegate = self;
     } else if ([self.type isEqualToString:@"水分仪"]) {
         // 水分仪配置
-        BleScaningConfigModel *config = [[BleScaningConfigModel alloc] init];
-        config.serviceUUID = UUID_SERVICE_ShouHuan;
-        config.characteristicWriteUUID = UUID_WRITE_ShouHuan;
-        config.characteristicReadUUID = UUID_READ_ShouHuan;
         self.ble = [BLEManager sharedInstance];
-        self.ble.configModel = config;
         self.ble.delegate = self;
     }
     
 }
 
-
 - (void)viewWillDisappear:(BOOL)animated {
     [SVProgressHUD dismiss];
+    [self.ble stopScan];
 }
 
 - (IBAction)stopSearching:(id)sender {
@@ -129,7 +112,6 @@
     }
     return _dataArr;
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -178,38 +160,35 @@
             replace = YES;
         }
     }
+    
     if (!replace) {
-        
         [self.devices addObject:peripheral];
-        
         // 添加设备
-        if (![self.type isEqualToString:@"体脂称"]) {
-            [self.dataArr removeAllObjects];
-        }
-        
-        
+        [self.dataArr removeAllObjects];
         for (int i=0; i < self.devices.count; i++) {
             CBPeripheral *p = self.devices[i];
             if ([self.type isEqualToString:@"体脂称"]) {
-                BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                 if ([p.name isEqualToString:@"BTL03001@H@Bwwws"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F300_1";
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
                 } else if([p.name isEqualToString:@"QN_Scale"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F100_1";
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
                 } else if ([p.name isEqualToString:@"YunChen"]) {
+                    BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F200_1";
-                } else {
-                    bleModel.deviceName = p.name;
+                    bleModel.uuid = p.identifier.UUIDString;
+                    [self.dataArr addObject:bleModel];
                 }
-                
-                bleModel.uuid = p.identifier.UUIDString;
-                [self.dataArr addObject:bleModel];
             } else if([self.type isEqualToString:@"手环"]) {
                 if ([p.name isEqualToString:@"Y2"]) {
                     BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = p.name;
                     bleModel.uuid = p.identifier.UUIDString;
-                
                     [self.dataArr addObject:bleModel];
                 }
             }

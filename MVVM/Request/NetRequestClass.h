@@ -24,7 +24,6 @@ typedef void(^ProgressBlock)(CGFloat progress);
 #pragma 监测网络的可链接性
 +(BOOL)netWorkReachabilityWithURLString:(NSString *) strUrl;
 
-
 // 原生请求
 + (void)native_requestURL:(NSString *)urlString httpMethod:(NSString *)method
             params:(NSMutableDictionary *)parmas

@@ -9,6 +9,14 @@
 #import "ShouhuanViewController.h"
 #import "BLEManager.h"
 
+// =================手环==================
+#define UUID_SERVICE_ShouHuan @"C3E6FEA0-E966-1000-8000-BE99C223DF6A"
+
+#define UUID_READ_ShouHuan @"C3E6FEA2-E966-1000-8000-BE99C223DF6A"
+
+#define UUID_WRITE_ShouHuan @"C3E6FEA1-E966-1000-8000-BE99C223DF6A"
+// =================手环==================
+
 @interface ShouhuanViewController ()<BLEManagerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
@@ -16,8 +24,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
-
-
+@property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
 @end
 
 @implementation ShouhuanViewController
@@ -39,6 +46,11 @@
     [SVProgressHUD showWithStatus:@"发现设备中.."];
     // 重新扫描
     [self.ble startScan];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [SVProgressHUD dismiss];
+    [self.ble disConnecting:self.peripheral];
 }
 
 // 断开连接
@@ -64,31 +76,73 @@
 -(void)BLEManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     NSLog(@"%@",[NSString stringWithFormat:@"已发现 peripheral: %@ rssi: %@, UUID: %@ advertisementData: %@ ", peripheral, RSSI, peripheral.identifier, advertisementData]);
     if ([peripheral.name isEqualToString:@"Y2"]) {
-        [SVProgressHUD dismiss];
         [SVProgressHUD showWithStatus:@"设备连接中。。"];
         [self.ble stopScan];
         self.peripheral = peripheral;
+        [self.ble connecting:peripheral];
     }
 }
 
 // 连接成功
 - (void)BLEManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    
+    self.peripheral = peripheral;
+    [SVProgressHUD showWithStatus:@"设备连接成功"];
+    [SVProgressHUD dismiss];
 }
+
 
 // 连接失败
 -(void)BLEManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+    [SVProgressHUD showErrorWithStatus:@"连接失败"];
+}
+
+
+// 发现服务
+-(void)BLEManager:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
+     int i=0;
+     for (CBService *s in peripheral.services) {
+     if ([s.UUID isEqual:[CBUUID UUIDWithString:UUID_SERVICE_ShouHuan]]) {
+             NSLog(@"%@",[NSString stringWithFormat:@"%d :服务 UUID: %@(%@)",i,s.UUID.data,s.UUID]);
+             [peripheral discoverCharacteristics:nil forService:s];
+         }
+     }
+    
+}
+
+// 发现服务下的特征回调
+-(void)BLEManager:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+     for (CBCharacteristic *c in service.characteristics) {
+         
+         // 设置读的特征
+         if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_WRITE_ShouHuan]]) {
+             NSLog(@"%@",[NSString stringWithFormat:@"写特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
+             self.writeCharacteristic = c;
+             [self.ble setNotifyValue:peripheral forCharacteristic:c];
+         }
+         
+         if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
+             NSLog(@"%@",[NSString stringWithFormat:@"读特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
+             [self.ble readValue:peripheral forCharacteristic:c];
+             [self.ble setNotifyValue:peripheral forCharacteristic:c];
+         }
+     }
     
 }
 
 // 断开连接
 - (void)BLEManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    
+    [SVProgressHUD showErrorWithStatus:@"已断开设备连接"];
 }
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)BLEManager:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
-    
+     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
+         NSData * data = characteristic.value;
+         Byte * resultByte = (Byte *)[data bytes];
+         for(int i=0;i<[data length];i++) {
+             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
+         }
+     }
 }
 
 // 用于检测中心向外设写数据是否成功

@@ -8,11 +8,7 @@
 
 #import "BaseViewController.h"
 
-#import "BleScaningConfigModel.h"
-
 @interface BraceletSearchController : BaseViewController
-
 // 类型 体脂称  水分子检测 手环
 @property (nonatomic,strong) NSString *type;
-
 @end
