@@ -10,4 +10,5 @@
 
 @interface TargetViewController : BaseViewController
 
+@property (nonatomic,strong) NSMutableDictionary *dicData;
 @end

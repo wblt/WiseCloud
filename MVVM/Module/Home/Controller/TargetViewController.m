@@ -25,6 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"指标标准";
+    
+    // 初始化数据
+    [self initData];
+    
     _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate =self;
@@ -43,6 +47,15 @@
         [isOpenArr addObject:@"0"];
     }
     
+}
+
+// 初始化数据
+- (void)initData {
+    // 去脂体重
+    NSString *weight = [self.dicData objectForKey:@"体重"];
+    [self.dicData setValue:weight forKey:@"去脂体重"];
+    // 蛋白质
+    [self.dicData setValue:@"" forKey:@"蛋白质"];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -97,8 +110,15 @@
 {
     TargetSectionView *view  = [[NSBundle mainBundle] loadNibNamed:@"TargetSectionView" owner:nil options:nil].lastObject;
     view.lable1.text = dataArr[section];
-    view.lable2.text = @"57kg";
+    if (nil != self.dicData) {
+        view.lable2.text = [self.dicData objectForKey:dataArr[section]];
+    } else {
+       view.lable2.text = @"--";
+    }
+    
+    // 这里应该加一个方法来判断
     view.lable3.text = @"标准";
+    
     if ([isOpenArr[section] isEqualToString:@"1"]) {
         view.btn.selected = YES;
         view.line.hidden = YES;
