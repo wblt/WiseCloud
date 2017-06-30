@@ -94,8 +94,6 @@
 		36C04E131EF647E200A69B63 /* ForgetPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E0E1EF647E200A69B63 /* ForgetPwdController.m */; };
 		36C04E141EF647E200A69B63 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E101EF647E200A69B63 /* LoginViewController.m */; };
 		36C04E151EF647E200A69B63 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04E121EF647E200A69B63 /* RegisterViewController.m */; };
-		4005AD531F01F00F00A08F99 /* TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4005AD521F01F00F00A08F99 /* TargetViewController.m */; };
-		4005AD551F01F8DC00A08F99 /* TargetHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */; };
 		36FBDBD71F01F46C00FD012F /* BTLinker_SingleConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */; };
 		36FBDBD91F01F4A400FD012F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBD81F01F4A400FD012F /* libz.tbd */; };
 		36FBDBDB1F01F4B500FD012F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */; };
@@ -106,6 +104,8 @@
 		36FBDBE91F01F6F800FD012F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBE81F01F6F800FD012F /* SystemConfiguration.framework */; };
 		36FBDBEB1F01F70900FD012F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBEA1F01F70900FD012F /* MobileCoreServices.framework */; };
 		36FBDBED1F01F71500FD012F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */; };
+		4005AD531F01F00F00A08F99 /* TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4005AD521F01F00F00A08F99 /* TargetViewController.m */; };
+		4005AD551F01F8DC00A08F99 /* TargetHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */; };
 		402DA81B1EF22B8A00402707 /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 402DA81A1EF22B8A00402707 /* RecordModel.m */; };
 		408E89431F0205AD006ABE83 /* TargetSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408E89421F0205AD006ABE83 /* TargetSectionView.xib */; };
 		408E89461F0209EB006ABE83 /* TargetHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 408E89451F0209EB006ABE83 /* TargetHeadView.m */; };
@@ -309,9 +309,6 @@
 		36C04E101EF647E200A69B63 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		36C04E111EF647E200A69B63 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		36C04E121EF647E200A69B63 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		4005AD511F01F00F00A08F99 /* TargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetViewController.h; sourceTree = "<group>"; };
-		4005AD521F01F00F00A08F99 /* TargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetViewController.m; sourceTree = "<group>"; };
-		4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetHeadView.xib; sourceTree = "<group>"; };
 		36FBDBD61F01F46C00FD012F /* BTLinker_SingleConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BTLinker_SingleConnection.framework; sourceTree = "<group>"; };
 		36FBDBD81F01F4A400FD012F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		36FBDBDA1F01F4B500FD012F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -325,6 +322,9 @@
 		36FBDBE81F01F6F800FD012F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		36FBDBEA1F01F70900FD012F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		36FBDBEC1F01F71500FD012F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4005AD511F01F00F00A08F99 /* TargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetViewController.h; sourceTree = "<group>"; };
+		4005AD521F01F00F00A08F99 /* TargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetViewController.m; sourceTree = "<group>"; };
+		4005AD541F01F8DC00A08F99 /* TargetHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetHeadView.xib; sourceTree = "<group>"; };
 		402DA8191EF22B8A00402707 /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
 		402DA81A1EF22B8A00402707 /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
 		408E89421F0205AD006ABE83 /* TargetSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetSectionView.xib; sourceTree = "<group>"; };
@@ -1349,7 +1349,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 59Q2E3377P;
-				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1376,7 +1375,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 59Q2E3377P;
-				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
