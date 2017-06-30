@@ -16,7 +16,6 @@
     NSMutableArray *isOpenArr;
     
 }
-//@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end
 
@@ -78,8 +77,10 @@
     //cell.lable.text
     if (indexPath.section == 4 || indexPath.section == 11) {
         cell.img.hidden = YES;
+        cell.cyan.hidden = YES;
     }else {
         cell.img.hidden = NO;
+        cell.cyan.hidden = NO;
     }
     return cell;
     
