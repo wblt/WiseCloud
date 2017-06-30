@@ -36,7 +36,6 @@
     [_tableview addSubview:pende];
     
     [_tableview registerNib:[UINib nibWithNibName:@"TargetCell" bundle:nil] forCellReuseIdentifier:@"TargetCell"];
-    
     dataArr = @[@"体重",@"体水分",@"体脂率",@"去脂体重",@"BMI",@"基础代谢量",@"皮下脂肪率",@"内脏脂肪等级",@"骨骼肌率",@"骨量",@"蛋白质",@"体年龄",@"肌肉量"];
     isOpenArr = [NSMutableArray array];
     for (int i =0; i< dataArr.count; i++) {
@@ -115,14 +114,11 @@
         } else {
             view.lable2.text = [self.dicData objectForKey:dataArr[section]];
         }
-        
     } else {
        view.lable2.text = @"--";
     }
-    
     // 这里应该加一个方法来判断
     view.lable3.text = @"标准";
-    
     if ([isOpenArr[section] isEqualToString:@"1"]) {
         view.btn.selected = YES;
         view.line.hidden = YES;
@@ -133,7 +129,6 @@
     //添加点击手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(topgesture:)];
     [view addGestureRecognizer:tap];
-    
     view.tag = section;
     return view;
     
@@ -142,17 +137,20 @@
 -(void)topgesture:(UITapGestureRecognizer*)tap
 {
     NSInteger index = tap.view.tag;
-    
     if ([isOpenArr[index] isEqualToString:@"1"]) {
-        
         [isOpenArr replaceObjectAtIndex:index withObject:@"0"];
-        
     }else{
         [isOpenArr replaceObjectAtIndex:index withObject:@"1"];
-       
     }
     [_tableview reloadData];
     
+    // 判断是否是最后一个
+    if ([isOpenArr[index] isEqualToString:@"1"]) {
+        if (index == (dataArr.count - 1)) {
+            [_tableview scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
+    
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
