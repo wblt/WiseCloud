@@ -24,11 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"指标标准";
-    
     // 初始化数据
-    [self initData];
-    
-    _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate =self;
     _tableview.dataSource = self;
@@ -39,13 +36,13 @@
     [_tableview addSubview:pende];
     
     [_tableview registerNib:[UINib nibWithNibName:@"TargetCell" bundle:nil] forCellReuseIdentifier:@"TargetCell"];
+    
     dataArr = @[@"体重",@"体水分",@"体脂率",@"去脂体重",@"BMI",@"基础代谢量",@"皮下脂肪率",@"内脏脂肪等级",@"骨骼肌率",@"骨量",@"蛋白质",@"体年龄",@"肌肉量"];
     isOpenArr = [NSMutableArray array];
     for (int i =0; i< dataArr.count; i++) {
-        
         [isOpenArr addObject:@"0"];
     }
-    
+    [self initData];
 }
 
 // 初始化数据
