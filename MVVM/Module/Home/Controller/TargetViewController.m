@@ -111,7 +111,13 @@
     TargetSectionView *view  = [[NSBundle mainBundle] loadNibNamed:@"TargetSectionView" owner:nil options:nil].lastObject;
     view.lable1.text = dataArr[section];
     if (nil != self.dicData) {
-        view.lable2.text = [self.dicData objectForKey:dataArr[section]];
+        NSString *result = [self.dicData objectForKey:dataArr[section]];
+        if (nil == result || result.length == 0) {
+            view.lable2.text = @"--";
+        } else {
+            view.lable2.text = [self.dicData objectForKey:dataArr[section]];
+        }
+        
     } else {
        view.lable2.text = @"--";
     }
