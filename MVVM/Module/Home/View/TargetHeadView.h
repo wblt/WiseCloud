@@ -10,4 +10,12 @@
 
 @interface TargetHeadView : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView *headImg;
+
+@property (weak, nonatomic) IBOutlet UILabel *time;
+
+@property (weak, nonatomic) IBOutlet UILabel *headTitle;
+
+@property (weak, nonatomic) IBOutlet UILabel *headFengshu;
+
 @end

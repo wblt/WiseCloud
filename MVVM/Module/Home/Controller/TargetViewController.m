@@ -24,7 +24,7 @@
 
 @property (nonatomic,strong) NSMutableDictionary *contentDic;
 
-
+@property (nonatomic,strong) UIView *headView;
 
 @end
 
@@ -158,9 +158,10 @@
     _tableview.dataSource = self;
     _tableview.contentInset = UIEdgeInsetsMake(180, 0, 0, 0);
     [self.view addSubview:_tableview];
-    UIView* pende = [[NSBundle mainBundle] loadNibNamed:@"TargetHeadView" owner:nil options:nil].lastObject;
-    pende.frame = CGRectMake(0, -180, kScreenWidth, 180);
-    [_tableview addSubview:pende];
+    UIView* headView = [[NSBundle mainBundle] loadNibNamed:@"TargetHeadView" owner:nil options:nil].lastObject;
+    self.headView = headView;
+    headView.frame = CGRectMake(0, -180, kScreenWidth, 180);
+    [_tableview addSubview:headView];
     [_tableview registerNib:[UINib nibWithNibName:@"TargetCell" bundle:nil] forCellReuseIdentifier:@"TargetCell"];
 }
 

@@ -61,6 +61,12 @@
                 <constraint firstAttribute="trailing" secondItem="Olj-LY-G2u" secondAttribute="trailing" constant="10" id="ueJ-TP-KsP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headFengshu" destination="6Rf-RO-fmN" id="nLa-OD-d2g"/>
+                <outlet property="headImg" destination="aUg-ed-Cyo" id="8gH-ef-QYz"/>
+                <outlet property="headTitle" destination="Olj-LY-G2u" id="j0J-pc-m0h"/>
+                <outlet property="time" destination="0v7-z5-1Zw" id="Z2E-Qs-HXm"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="54"/>
         </view>
     </objects>
