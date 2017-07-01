@@ -26,7 +26,7 @@
 @interface BalanceController ()<UITableViewDelegate,UITableViewDataSource,BLEManagerDelegate,sendDelegate>
 @property (nonatomic,strong) UITableView *cutableView;
 @property (nonatomic,strong) NSMutableArray *nameArray;
-@property (nonatomic,strong) NSMutableArray *unitArray;
+@property (nonatomic,strong) NSMutableDictionary *unitDic;
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic,strong) SendDataToDevice *send;
 @property (nonatomic,strong) QingNiuDevice *qingNiuDevice;
@@ -35,6 +35,7 @@
 @property (nonatomic,strong) CBCharacteristic *ReadCharacteristic;
 @property (nonatomic,assign) BOOL is_mode_loite;
 @property (nonatomic,assign) BOOL flag;
+@property (nonatomic,strong) NSMutableDictionary *dicData;
 
 @end
 
@@ -49,24 +50,22 @@
     UILabel *bodyFatResult;
     UILabel *bigGradeLabel;
     UILabel *changeLabel;
-    NSMutableDictionary *dicData;
-    NSMutableArray *dataSouce;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    dicData = [NSMutableDictionary dictionary];
-    dataSouce = [NSMutableArray array];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initName];
     [self initUnit];
+    
     //创建表视图
     identify = @"BodyFatCell";
     [self createTableView];
     [self initRightBtn];
-    
+    // 设置电子称的名称
+    titleLabel.text = self.bleModel.deviceName;
     // 切换电子称
     [self switchBle];
 }
@@ -89,8 +88,10 @@
 }
 
 - (void)switchBle {
+    
     // 判断电子称
     if ([self.bleModel.deviceName rangeOfString:@"F100"].location != NSNotFound) {
+        
         // 设置真实的蓝牙名称
         self.bleModel.realName = @"QN-Scale";
         // 青牛电子称
@@ -141,6 +142,19 @@
     [self.navigationController pushViewController:recordVC animated:YES];
 }
 
+- (void)initDicData {
+    [self.dicData setValue:@"--" forKey:@"体重"];
+    [self.dicData setValue:@"--" forKey:@"BMI"];
+    [self.dicData setValue:@"--" forKey:@"基础代谢量"];
+    [self.dicData setValue:@"--" forKey:@"皮下脂肪量"];
+    [self.dicData setValue:@"--" forKey:@"内脏脂肪等级"];
+    [self.dicData setValue:@"--" forKey:@"肌肉量"];
+    [self.dicData setValue:@"--" forKey:@"骨骼肌率"];
+    [self.dicData setValue:@"--" forKey:@"骨量"];
+    [self.dicData setValue:@"--" forKey:@"体年龄"];
+    [self.dicData setValue:@"--" forKey:@"腰臀比"];
+}
+
 - (void)initName {
     [self.nameArray addObject:@"体重"];
     [self.nameArray addObject:@"BMI"];
@@ -155,16 +169,24 @@
 }
 
 - (void)initUnit {
-    [self.unitArray addObject:@"kg"];
-    [self.unitArray addObject:@""];
-    [self.unitArray addObject:@"kcal"];
-    [self.unitArray addObject:@"%"];
-    [self.unitArray addObject:@"级"];
-    [self.unitArray addObject:@"kg"];
-    [self.unitArray addObject:@"%"];
-    [self.unitArray addObject:@"kg"];
-    [self.unitArray addObject:@"岁"];
-    [self.unitArray addObject:@""];
+    [self.unitDic setObject:@"kg" forKey:@"体重"];
+    [self.unitDic setObject:@"" forKey:@"BMI"];
+    [self.unitDic setObject:@"kcal" forKey:@"基础代谢量"];
+    [self.unitDic setObject:@"%" forKey:@"皮下脂肪量"];
+    [self.unitDic setObject:@"级" forKey:@"内脏脂肪等级"];
+    [self.unitDic setObject:@"kg" forKey:@"肌肉量"];
+    [self.unitDic setObject:@"%" forKey:@"骨骼肌率"];
+    [self.unitDic setObject:@"kg" forKey:@"骨量"];
+    [self.unitDic setObject:@"岁" forKey:@"体年龄"];
+    [self.unitDic setObject:@"" forKey:@"腰臀比"];
+}
+
+// 初始化结果数据
+- (NSMutableDictionary *)dicData {
+    if (_dicData == nil) {
+        _dicData = [NSMutableDictionary dictionary];
+    }
+    return _dicData;
 }
 
 - (void)createTableView {
@@ -173,7 +195,7 @@
     self.cutableView.delegate = self;
     //设置头视图
     self.cutableView.tableHeaderView = [self createTableHeadView];
-    self.cutableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+    self.cutableView.contentInset = UIEdgeInsetsMake(0, 0, 69, 0);
     [self.view addSubview:self.cutableView];
 }
 
@@ -189,11 +211,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    cell.nameLabel.text = self.nameArray[indexPath.row];
-    cell.unitLabel.text = self.unitArray[indexPath.row];
+    NSString *name = self.nameArray[indexPath.row];
+    cell.nameLabel.text = name;
+    cell.unitLabel.text = self.unitDic[name];
     
-    if (dataSouce.count > 0) {
-        cell.resultLabel.text = dataSouce[indexPath.row];
+    if (self.dicData.count > 0) {
+        cell.resultLabel.text = self.dicData[name];
     }
     return cell;
     
@@ -391,11 +414,11 @@
     return _nameArray;
 }
 
-- (NSMutableArray *)unitArray{
-    if (_unitArray == nil) {
-        _unitArray = [[NSMutableArray alloc] init];
+- (NSMutableDictionary *)unitDic{
+    if (_unitDic == nil) {
+        _unitDic = [[NSMutableDictionary alloc] init];
     }
-    return _unitArray;
+    return _unitDic;
 }
 
 
@@ -458,7 +481,7 @@
         //具体的实现
         UIStoryboard *story=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
         TargetViewController *BraceletVC = [story instantiateViewControllerWithIdentifier:@"TargetViewController"];
-        BraceletVC.dicData = dicData;
+        BraceletVC.dicData = self.dicData;
         BraceletVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:BraceletVC animated:YES];
 
@@ -489,7 +512,6 @@
         }
     } scanFailBlock:^(QingNiuScanDeviceFail qingNiuScanDeviceFail) {
         NSLog(@"%ld",(long)qingNiuScanDeviceFail);
-        
     }];
 }
 
@@ -588,7 +610,6 @@
         if (newString.length == 40) {
             NSLog(@"%@",characteristic);
             NSString *temp = @"";
-            dataSouce = [NSMutableArray array];
             //状态
             NSString *zhuangtai = [newString substringWithRange:NSMakeRange(2,2)];
             
@@ -692,55 +713,45 @@
             currentWeight = r1;
             bigWightLabel.text = [NSString stringWithFormat:@"%@kg",currentWeight];
             //去脂体重
-            [dataSouce addObject:r1];
-            [dicData setValue:[r1 stringByAppendingString:@"kg"] forKey:@"体重"];
+            [self.dicData setValue:r1 forKey:@"体重"];
             //bmi
             NSString *r2 = [self getBmi:[zl floatValue]];
-            [dataSouce addObject:r2];
-            [dicData setValue:r2 forKey:@"BMI"];
+            [self.dicData setValue:r2 forKey:@"BMI"];
             //基础代谢
             NSString *r3 = kaluli;
-            [dataSouce addObject:r3];
-            [dicData setValue:[r3 stringByAppendingString:@"kcal"] forKey:@"基础代谢量"];
+            [self.dicData setValue:r3 forKey:@"基础代谢量"];
             //皮下脂肪
             NSString *r4 = zhifang;
-            [dataSouce addObject:r4];
-            [dicData setValue:[NSString stringWithFormat:@"%%%@",r4] forKey:@"皮下脂肪量"];
+            [self.dicData setValue:r4 forKey:@"皮下脂肪量"];
             //内脏
             NSString *r5 = neizhang;
-            [dataSouce addObject:r5];
-            [dicData setValue:[r5 stringByAppendingString:@"级"] forKey:@"内脏脂肪等级"];
+            [self.dicData setValue:r5 forKey:@"内脏脂肪等级"];
             //肌肉
             NSString *r6 = jr;
-            [dataSouce addObject:r6];
-            [dicData setValue:[r6 stringByAppendingString:@"kg"] forKey:@"肌肉量"];
+            [self.dicData setValue:r6 forKey:@"肌肉量"];
             //骨骼
             NSString *r7 = gg;
-            [dataSouce addObject:r7];
-            [dicData setValue:[NSString stringWithFormat:@"%%%@",r7] forKey:@"骨骼肌率"];
+            [self.dicData setValue:r7 forKey:@"骨骼肌率"];
             //骨量
             NSString *r8 = gg;
-            [dataSouce addObject:r8];
-            [dicData setValue:[r8 stringByAppendingString:@"kg"] forKey:@"骨量"];
+            [self.dicData setValue:r8 forKey:@"骨量"];
             //体水分
             currentWater = sf;
             waterResult.text = [NSString stringWithFormat:@"%%%@",sf];
-            [dicData setValue:waterResult.text forKey:@"体水分"];
+            [self.dicData setValue:waterResult.text forKey:@"体水分"];
             // 体年龄
-            [dataSouce addObject:tiage];
-            [dicData setValue:[tiage stringByAppendingString:@"岁"] forKey:@"体年龄"];
+            [self.dicData setValue:tiage forKey:@"体年龄"];
             // 腰臀比
             NSString *yaotunbi = [self yaotunbi];
-            [dicData setValue:yaotunbi forKey:@"腰臀比"];
-            [dataSouce addObject:yaotunbi];
+            [self.dicData setValue:yaotunbi forKey:@"腰臀比"];
             //大圈圈的分数
             if (tiage.length != 0) {
                 NSInteger value = arc4random() % 30 + 50;
                 bigGradeLabel.text = [NSString stringWithFormat:@"%ld",(long)value];
-                [dicData setValue:bigGradeLabel.text forKey:@"分数"];
+                [self.dicData setValue:bigGradeLabel.text forKey:@"分数"];
             }
             [self.cutableView reloadData];
-            NSLog(@"%@",dicData);
+            NSLog(@"%@",self.dicData);
         }
     }
 }
