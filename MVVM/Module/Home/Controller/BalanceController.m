@@ -71,6 +71,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
     // 判断电子称
     if ([self.bleModel.deviceName rangeOfString:@"F100"].location != NSNotFound) {
@@ -729,7 +730,7 @@
             //肌肉
             NSString *r6 = jr;
             [self.dicData setValue:r6 forKey:@"肌肉量"];
-            //骨骼
+            //骨骼肌率
             NSString *r7 = gg;
             [self.dicData setValue:r7 forKey:@"骨骼肌率"];
             //骨量
@@ -871,14 +872,73 @@
     
     // 解析数据
     if ([dic[@"head"] isEqualToString:@"02"]) {
-        NSNumber *number = [self numberHexString:dic[@"LockWeight"]];
-        float weight = [number floatValue] / 10;
+        
+        // 得到体重
+        CGFloat number = [self numberHexString:dic[@"LockWeight"]];
+        float weight = number / 10;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",weight] forKey:@"体重"];
+        
+        // 设备BMI
+        NSString *r2 = [self getBmi:weight];
+        [self.dicData setValue:r2 forKey:@"BMI"];
+
+        // 皮下脂肪量
+        number = [self numberHexString:dic[@"FatContent"]];
+        float FatContent = number / 10;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",FatContent] forKey:@"皮下脂肪量"];
+        
+        // 设置体脂率
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",FatContent] forKey:@"体脂率"];
         
         
+        // 体水分
+        number = [self numberHexString:dic[@"WaterContent"]];
+        float WaterContent = number / 10;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",WaterContent] forKey:@"体水分"];
         
-        NSLog(@"%f",weight);
+        // 肌肉量
+        number = [self numberHexString:dic[@"MuscleContent"]];
+        float MuscleContent = number / 10;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",MuscleContent] forKey:@"肌肉量"];
+        
+        // 基础代谢
+        number = [self numberHexString:dic[@"Metabolism"]];
+        float Metabolism = number / 10;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",Metabolism] forKey:@"基础代谢量"];
+        
+        // 骨量
+        number = [self numberHexString:dic[@"BoneWeight"]];
+        float BoneWeight = number;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BoneWeight] forKey:@"骨量"];
+        
+        // 设置骨骼肌率
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BoneWeight] forKey:@"骨骼肌率"];
+        
+        // 体年龄
+        number = [self numberHexString:dic[@"BodyAge"]];
+        float BodyAge = number / 10;
+        
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BodyAge] forKey:@"体年龄"];
+        
+        // 内脏脂肪等级
+        number = [self numberHexString:dic[@"VisceralFat"]];
+        float VisceralFat = number / 10;
+        [self.dicData setValue:[NSString stringWithFormat:@"%.2f",VisceralFat] forKey:@"内脏脂肪等级"];
+        
+        // 主线程
+        dispatch_async(dispatch_get_main_queue(), ^{
+            waterResult.text = [NSString stringWithFormat:@"%%%.2f",WaterContent];
+            bodyFatResult.text = [NSString stringWithFormat:@"%%%.2f",FatContent];
+            bigWightLabel.text = [NSString stringWithFormat:@"%.2fkg",weight];
+            
+            NSInteger value = arc4random() % 30 + 50;
+            bigGradeLabel.text = [NSString stringWithFormat:@"%ld",(long)value];
+            [self.dicData setValue:bigGradeLabel.text forKey:@"分数"];
+            
+            [self.cutableView reloadData];
+        });
+        NSLog(@"%@",self.dicData);
     }
-    
 
 }
 
@@ -946,18 +1006,18 @@
 }
 
 // 16进制转10进制
-- (NSNumber *) numberHexString:(NSString *)aHexString
+- (CGFloat) numberHexString:(NSString *)aHexString
 {
     // 为空,直接返回.
     if (nil == aHexString)
     {
-        return nil;
+        return 0.0;
     }
     NSScanner * scanner = [NSScanner scannerWithString:aHexString];
     unsigned long long longlongValue;
     [scanner scanHexLongLong:&longlongValue];
     //将整数转换为NSNumber,存储到数组中,并返回.
     NSNumber * hexNumber = [NSNumber numberWithLongLong:longlongValue];
-    return hexNumber;
+    return [hexNumber floatValue];
 }
 @end
