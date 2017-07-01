@@ -9,6 +9,7 @@
 #import "TargetViewController.h"
 #import "TargetCell.h"
 #import "TargetSectionView.h"
+#import "TargetHeadView.h"
 @interface TargetViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_tableview;
@@ -24,7 +25,7 @@
 
 @property (nonatomic,strong) NSMutableDictionary *contentDic;
 
-@property (nonatomic,strong) UIView *headView;
+@property (nonatomic,strong) TargetHeadView *headView;
 
 @end
 
@@ -106,7 +107,7 @@
     [self.dataArr addObject:@"去脂体重"];
     [self.dataArr addObject:@"BMI"];
     [self.dataArr addObject:@"基础代谢量"];
-    [self.dataArr addObject:@"皮下脂肪率"];
+    [self.dataArr addObject:@"皮下脂肪量"];
     [self.dataArr addObject:@"内脏脂肪等级"];
     [self.dataArr addObject:@"骨骼肌率"];
     [self.dataArr addObject:@"骨量"];
@@ -159,7 +160,8 @@
     _tableview.contentInset = UIEdgeInsetsMake(180, 0, 0, 0);
     [self.view addSubview:_tableview];
     UIView* headView = [[NSBundle mainBundle] loadNibNamed:@"TargetHeadView" owner:nil options:nil].lastObject;
-    self.headView = headView;
+    self.headView = (TargetHeadView *)headView;
+    self.headView.headFengshu.text = [NSString stringWithFormat:@"%@分",self.dicData[@"分数"]];
     headView.frame = CGRectMake(0, -180, kScreenWidth, 180);
     [_tableview addSubview:headView];
     [_tableview registerNib:[UINib nibWithNibName:@"TargetCell" bundle:nil] forCellReuseIdentifier:@"TargetCell"];

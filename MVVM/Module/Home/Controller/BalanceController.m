@@ -474,7 +474,7 @@
 -(void)singleTapAction:(UIGestureRecognizer *)ges {
     NSLog(@"点击了");
     // 判断分数
-    if (![bigGradeLabel.text isEqualToString:@"0.0分"]) {
+    if ([bigGradeLabel.text isEqualToString:@"0.0分"]) {
         [SVProgressHUD showInfoWithStatus:@"请先测量你的体重"];
         [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
     } else {
@@ -628,6 +628,7 @@
             
             // 体脂率
             bodyFatResult.text = [NSString stringWithFormat:@"%%%@",zhifang];
+            [self.dicData setObject:zhifang forKey:@"体脂率"];
             
             if (zhifang.length != 0) {
                 temp = [temp stringByAppendingFormat:@"|%@",zhifang];
@@ -656,15 +657,11 @@
             
             //肌肉
             NSString *jr = [newString substringWithRange:NSMakeRange(20,4)];
-            jr = [NSString stringWithFormat:@"%.2f",strtoul([jr UTF8String],0,16)/10.0];
-            
+            jr = [NSString stringWithFormat:@"%.2f",strtoul([jr UTF8String],0,16)/10.0 - 20];
             if (jr.length != 0) {
                 temp = [temp stringByAppendingFormat:@"|%@",jr];
             }
-            
             NSLog(@"%@",jr);
-            
-    
             //骨骼
             NSString *gg = [newString substringWithRange:NSMakeRange(24,4)];
             gg = [NSString stringWithFormat:@"%.2f",strtoul([gg UTF8String],0,16)/10.0];
@@ -738,7 +735,7 @@
             //体水分
             currentWater = sf;
             waterResult.text = [NSString stringWithFormat:@"%%%@",sf];
-            [self.dicData setValue:waterResult.text forKey:@"体水分"];
+            [self.dicData setValue:sf forKey:@"体水分"];
             // 体年龄
             [self.dicData setValue:tiage forKey:@"体年龄"];
             // 腰臀比
