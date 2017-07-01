@@ -467,8 +467,8 @@
 - (NSString *)yaotunbi {
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     TestUserModel *testModel = userModel.testUserModel;
-    NSInteger bi = [testModel.waist floatValue] / [testModel.hip floatValue];
-    return [NSString stringWithFormat:@"%ld",(long)bi];
+    CGFloat bi = [testModel.waist floatValue] / [testModel.hip floatValue];
+    return [NSString stringWithFormat:@"%.2f",bi];
 }
 
 // 结果点击相应事件
@@ -492,7 +492,6 @@
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<青牛代理方法<<<<<<<<<<<<<<<<<<<<
 - (void)QingNiuRegisterAPP
 {
-    
     [QingNiuSDK registerApp:@"123456789"/*@"123456asdfg" */registerAppBlock:^(QingNiuRegisterAppState qingNiuRegisterAppState) {
         NSLog(@"%ld",(long)qingNiuRegisterAppState);
     }];
@@ -841,8 +840,7 @@
     }
     else if(State==0) {
         //断开连接
-        [SVProgressHUD showWithStatus:@"断开连接"];
-        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2.0];
+        NSLog(@"已经断开连接")
     }
 }
 
@@ -910,6 +908,10 @@
         number = [self numberHexString:dic[@"BoneWeight"]];
         float BoneWeight = number;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BoneWeight] forKey:@"骨量"];
+        
+        // 腰臀比
+        NSString *yaotunbi = [self yaotunbi];
+        [self.dicData setValue:yaotunbi forKey:@"腰臀比"];
         
         // 设置骨骼肌率
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BoneWeight] forKey:@"骨骼肌率"];
