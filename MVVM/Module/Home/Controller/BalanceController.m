@@ -34,6 +34,7 @@
 @property (nonatomic,strong) CBCharacteristic *WriteCharacteristic;
 @property (nonatomic,strong) CBCharacteristic *ReadCharacteristic;
 @property (nonatomic,assign) BOOL is_mode_loite;
+@property (nonatomic,assign) BOOL flag;
 
 @end
 
@@ -91,10 +92,10 @@
     // 判断电子称
     if ([self.bleModel.deviceName rangeOfString:@"F100"].location != NSNotFound) {
         // 设置真实的蓝牙名称
-        self.bleModel.realName = @"QN_Scale";
+        self.bleModel.realName = @"QN-Scale";
         // 青牛电子称
         // 验证APP
-        [QingNiuSDK registerApp:@"123456789"/*@"123456asdfg" */registerAppBlock:^(QingNiuRegisterAppState qingNiuRegisterAppState) {
+        [QingNiuSDK registerApp:@"123456asdfg" registerAppBlock:^(QingNiuRegisterAppState qingNiuRegisterAppState) {
             NSLog(@"%ld",(long)qingNiuRegisterAppState);
         }];
     } else if ([self.bleModel.deviceName rangeOfString:@"F200"].location != NSNotFound) {
@@ -107,6 +108,8 @@
     } else if ([self.bleModel.deviceName rangeOfString:@"F300"].location != NSNotFound) {
         // 设置真实的蓝牙名称
         self.bleModel.realName = @"BTL03001@H@Bwwws";
+        // 配置用户参数标志
+        self.flag = NO;
         // 鑫睿智
         self.send = [SendDataToDevice getSendDataToDeviceInstance];
         self.send.delegate = self;
@@ -465,6 +468,7 @@
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<青牛代理方法<<<<<<<<<<<<<<<<<<<<
 - (void)QingNiuRegisterAPP
 {
+    
     [QingNiuSDK registerApp:@"123456789"/*@"123456asdfg" */registerAppBlock:^(QingNiuRegisterAppState qingNiuRegisterAppState) {
         NSLog(@"%ld",(long)qingNiuRegisterAppState);
     }];
@@ -506,6 +510,7 @@
     [QingNiuSDK connectDevice:_qingNiuDevice user:user connectSuccessBlock:^(NSMutableDictionary *deviceData, QingNiuDeviceConnectState qingNiuDeviceConnectState) {
         if (qingNiuDeviceConnectState == QingNiuDeviceConnectStateConnectedSuccess) {
             [SVProgressHUD showWithStatus:@"连接成功"];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
             NSLog(@"连接成功%@",deviceData);
         }
         else if (qingNiuDeviceConnectState == QingNiuDeviceConnectStateIsWeighting) {
@@ -519,10 +524,12 @@
         }else if (qingNiuDeviceConnectState == QingNiuDeviceConnectStateDisConnected) {
             NSLog(@"自动断开连接%@",deviceData);
             [SVProgressHUD showWithStatus:@"连接失败"];
+            [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
         }
     } connectFailBlock:^(QingNiuDeviceConnectState qingNiuDeviceConnectState) {
         NSLog(@"%ld",(long)qingNiuDeviceConnectState);
         [SVProgressHUD showWithStatus:@"连接失败"];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:1.0];
     }];
 }
 
@@ -818,21 +825,52 @@
     if (State==1) {
         //已经连接
         [SVProgressHUD showWithStatus:@"连接成功"];
-        [SVProgressHUD dismiss];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2.0];
     }
     else if(State==0) {
         //断开连接
         [SVProgressHUD showWithStatus:@"断开连接"];
-        [SVProgressHUD dismiss];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2.0];
     }
 }
+
+// 数据返回
 -(void)getBluetoothDataForScale:(NSDictionary*)dic {
     NSLog(@"数据源1：dic==%@",dic);
-}
--(void)getBluetoothData:(NSDictionary*)bluethoothDataDic {
-    NSLog(@"数据源2：dic==%@",bluethoothDataDic);
+    if ([dic[@"head"] isEqualToString:@"83"]) {
+        NSString *result = dic[@"result"];
+        if ([result isEqualToString:@"00"]) {
+            // 代表已经设置了用户参数
+            self.flag = YES;
+        } else {
+            self.flag = NO;
+        }
+    }
+    
+    // 配置用户参数
+    for (NSString *key in [dic allKeys]) {
+        NSString *value = [dic objectForKey:key];
+        if ([key isEqualToString:@"head"] && [value isEqualToString:@"01"]) {
+            if (!self.flag) {
+                NSLog(@"配置用户参数");
+                [self.send ElectronicScalesSetupParameter:20 :20 :0: 170];
+            }
+        }
+    }
+    
+    // 解析数据
+    if ([dic[@"head"] isEqualToString:@"02"]) {
+        NSNumber *number = [self numberHexString:dic[@"LockWeight"]];
+        float weight = [number floatValue] / 10;
+        
+        
+        
+        NSLog(@"%f",weight);
+    }
+    
 
 }
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>辛睿智代理方法>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 #pragma mark 写数据
@@ -894,6 +932,22 @@
         [data appendBytes:&intValue length:1];
     }
     return data;
+}
+
+// 16进制转10进制
+- (NSNumber *) numberHexString:(NSString *)aHexString
+{
+    // 为空,直接返回.
+    if (nil == aHexString)
+    {
+        return nil;
+    }
+    NSScanner * scanner = [NSScanner scannerWithString:aHexString];
+    unsigned long long longlongValue;
+    [scanner scanHexLongLong:&longlongValue];
+    //将整数转换为NSNumber,存储到数组中,并返回.
+    NSNumber * hexNumber = [NSNumber numberWithLongLong:longlongValue];
+    return hexNumber;
 }
 
 @end

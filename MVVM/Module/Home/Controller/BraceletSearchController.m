@@ -173,7 +173,7 @@
                     bleModel.deviceName = @"F300_1";
                     bleModel.uuid = p.identifier.UUIDString;
                     [self.dataArr addObject:bleModel];
-                } else if([p.name isEqualToString:@"QN_Scale"]) {
+                } else if([p.name isEqualToString:@"QN-Scale"]) {
                     BleScaningDecviceModel *bleModel = [[BleScaningDecviceModel alloc] init];
                     bleModel.deviceName = @"F100_1";
                     bleModel.uuid = p.identifier.UUIDString;
