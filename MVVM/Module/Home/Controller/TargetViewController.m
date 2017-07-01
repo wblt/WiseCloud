@@ -13,6 +13,7 @@
 {
     UITableView *_tableview;
     NSMutableArray *isOpenArr;
+    
 }
 
 @property(nonatomic,strong) NSMutableArray *dataArr;
@@ -22,6 +23,8 @@
 @property(nonatomic,strong) NSMutableDictionary *unitDic;
 
 @property (nonatomic,strong) NSMutableDictionary *contentDic;
+
+
 
 @end
 
@@ -43,7 +46,7 @@
     
     [self initStandardDic];
     
-    
+    [self initContentDic];
     
     // 初始化表视图
     [self initTableView];
@@ -196,14 +199,18 @@
 {
     TargetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TargetCell" forIndexPath:indexPath];
     cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%d",indexPath.section+1]];
+    
+    NSString *name = self.dataArr[indexPath.section];
     //cell.cyan.frame
-    //cell.lable.text
+    cell.lable.text = self.contentDic[name];
     if (indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 11) {
         cell.img.hidden = YES;
         cell.cyan.hidden = YES;
+        cell.heightConstraint.constant = 0;
     }else {
         cell.img.hidden = NO;
         cell.cyan.hidden = NO;
+        cell.heightConstraint.constant = 60;
     }
     return cell;
     
@@ -211,15 +218,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-//cell.lable.text   height
-//    if (indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 11) {
-//        return height;
-//    }else {
-//        return height + 70;
-//    }
-    return 120;
+    NSString *name = self.dataArr[indexPath.section];
+    NSString *content = self.contentDic[name];
+    CGFloat height = [Tools heightForString:content andWidth:(kScreenWidth - 40)];
+    if (indexPath.section == 3 || indexPath.section == 4 || indexPath.section == 11) {
+        return height;
+    }else {
+        return height + 70;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

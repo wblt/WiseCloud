@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lable;
 @property (weak, nonatomic) IBOutlet UIImageView *cyan;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @end

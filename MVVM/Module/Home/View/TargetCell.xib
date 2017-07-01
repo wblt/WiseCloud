@@ -50,6 +50,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="cyan" destination="UTD-NV-f9j" id="uv0-wy-ZZL"/>
+                <outlet property="heightConstraint" destination="BHr-u0-jdC" id="TcX-KS-rjQ"/>
                 <outlet property="img" destination="yFB-fb-A6Y" id="KEN-3L-qeg"/>
                 <outlet property="lable" destination="cGz-Oi-lDq" id="R24-Jd-Tnu"/>
             </connections>

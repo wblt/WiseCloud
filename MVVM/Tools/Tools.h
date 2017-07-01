@@ -25,6 +25,14 @@
                       font:(CGFloat) fontSize;
 
 /**
+ @method 获取指定宽度width,字体大小fontSize,字符串value的高度
+ @param value 待计算的字符串
+ @result float 返回的高度
+ */
++ (float) heightForString:(NSString *)value andWidth:(float)width;
+
+
+/**
  * 读取用户信息
  *
  */
