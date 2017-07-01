@@ -149,17 +149,26 @@
 
 // 连接
 - (void)connecting:(CBPeripheral *)peripheral {
+    if (peripheral == nil) {
+        return;
+    }
     // 连接外设
     [self.manager connectPeripheral:peripheral options:nil];
 }
 
 // 断开连接
 - (void)disConnecting:(CBPeripheral *)peripheral {
+    if (peripheral == nil) {
+        return;
+    }
     [self.manager cancelPeripheralConnection:peripheral];
 }
 
 // 写数据
 - (void)peripheral:(CBPeripheral *)peripheral writeData:(NSData *)data toCharacteristic:(CBCharacteristic *)characteristic {
+    if (peripheral == nil) {
+        return;
+    }
 //    Byte byte[] = {2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
     if (peripheral.state == CBPeripheralStateConnected) {
         [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
@@ -168,15 +177,24 @@
 
 // 发现服务下的特征
 - (void)peripheralDiscoverCharacteristics:(CBPeripheral *)peripheral forService:(CBService *)service {
+    if (peripheral == nil) {
+        return;
+    }
     [peripheral discoverCharacteristics:nil forService:service];
 }
 
 // 注册读的通知
 - (void)setNotifyValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic {
+    if (peripheral == nil) {
+        return;
+    }
     [peripheral setNotifyValue:YES forCharacteristic:characteristic];
 }
 
 - (void)readValue:(CBPeripheral *)peripheral forCharacteristic:(CBCharacteristic *)characteristic {
+    if (peripheral == nil) {
+        return;
+    }
     [peripheral readValueForCharacteristic:characteristic];
 }
 @end
