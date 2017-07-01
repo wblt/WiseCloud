@@ -651,13 +651,16 @@
             if (sf.length != 0) {
                 temp = [temp stringByAppendingFormat:@"|%@",sf];
             }
-            
             NSLog(@"%@",sf);
             
-            
             //肌肉
+            
             NSString *jr = [newString substringWithRange:NSMakeRange(20,4)];
-            jr = [NSString stringWithFormat:@"%.2f",strtoul([jr UTF8String],0,16)/10.0 - 20];
+            if (strtoul([jr UTF8String],0,16)/10.0 > 20) {
+                jr = [NSString stringWithFormat:@"%.2f",strtoul([jr UTF8String],0,16)/10.0 - 20];
+            } else {
+                jr = [NSString stringWithFormat:@"%.2f",strtoul([jr UTF8String],0,16)/10.0];
+            }
             if (jr.length != 0) {
                 temp = [temp stringByAppendingFormat:@"|%@",jr];
             }
@@ -957,5 +960,4 @@
     NSNumber * hexNumber = [NSNumber numberWithLongLong:longlongValue];
     return hexNumber;
 }
-
 @end

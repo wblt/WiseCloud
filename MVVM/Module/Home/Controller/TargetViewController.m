@@ -114,6 +114,8 @@
     [self.dataArr addObject:@"蛋白质"];
     [self.dataArr addObject:@"体年龄"];
     [self.dataArr addObject:@"肌肉量"];
+    [self.dataArr addObject:@"腰臀比"];
+    
 }
 
 // 初始化标准
@@ -131,6 +133,7 @@
     [self.standardDic setValue:@"标准" forKey:@"蛋白质"];
     [self.standardDic setValue:@"标准" forKey:@"体年龄"];
     [self.standardDic setValue:@"标准" forKey:@"肌肉量"];
+    [self.standardDic setValue:@"标准" forKey:@"腰臀比"];
 }
 
 // 初始化单位
@@ -148,6 +151,7 @@
     [self.unitDic setValue:@"kcal" forKey:@"蛋白质"];
     [self.unitDic setValue:@"岁" forKey:@"体年龄"];
     [self.unitDic setValue:@"kg" forKey:@"肌肉量"];
+    [self.unitDic setValue:@"" forKey:@"腰臀比"];
 }
 
 // 初始化表视图
