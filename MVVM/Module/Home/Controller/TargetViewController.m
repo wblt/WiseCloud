@@ -124,7 +124,7 @@
     [self.standardDic setValue:@"标准" forKey:@"去脂体重"];
     [self.standardDic setValue:@"标准" forKey:@"BMI"];
     [self.standardDic setValue:@"标准" forKey:@"基础代谢量"];
-    [self.standardDic setValue:@"标准" forKey:@"皮下脂肪率"];
+    [self.standardDic setValue:@"标准" forKey:@"皮下脂肪量"];
     [self.standardDic setValue:@"标准" forKey:@"内脏脂肪等级"];
     [self.standardDic setValue:@"标准" forKey:@"骨骼肌率"];
     [self.standardDic setValue:@"标准" forKey:@"骨量"];
@@ -141,7 +141,7 @@
     [self.unitDic setValue:@"kg" forKey:@"去脂体重"];
     [self.unitDic setValue:@"" forKey:@"BMI"];
     [self.unitDic setValue:@"kcal" forKey:@"基础代谢量"];
-    [self.unitDic setValue:@"%" forKey:@"皮下脂肪率"];
+    [self.unitDic setValue:@"%" forKey:@"皮下脂肪量"];
     [self.unitDic setValue:@"级" forKey:@"内脏脂肪等级"];
     [self.unitDic setValue:@"%" forKey:@"骨骼肌率"];
     [self.unitDic setValue:@"kg" forKey:@"骨量"];
@@ -201,7 +201,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TargetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TargetCell" forIndexPath:indexPath];
-    cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%d",indexPath.section+1]];
+    cell.img.image = [UIImage imageNamed:[NSString stringWithFormat:@"wb_%ld",indexPath.section+1]];
     
     NSString *name = self.dataArr[indexPath.section];
     //cell.cyan.frame
@@ -251,7 +251,10 @@
         if (nil == result || result.length == 0) {
             view.lable2.text = @"--";
         } else {
-            view.lable2.text = [self.dicData objectForKey:self.dataArr[section]];
+            NSString *result = [self.dicData objectForKey:name];
+            NSString *unit = [self.unitDic objectForKey:name];
+            NSString *lable2Str = [NSString stringWithFormat:@"%@%@",result,unit];
+            view.lable2.text = lable2Str;
         }
     } else {
        view.lable2.text = @"--";
