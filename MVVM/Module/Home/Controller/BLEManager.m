@@ -82,15 +82,14 @@
     }
 }
 
--(void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
-{
+- (void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(NSError *)error {
     NSLog(@"%s,%@",__PRETTY_FUNCTION__,peripheral);
-    int rssi = abs([peripheral.RSSI intValue]);
+    int rssi = abs([RSSI intValue]);
     CGFloat ci = (rssi - 49) / (10 * 4.);
     NSString *length = [NSString stringWithFormat:@"发现BLT4.0热点:%@,距离:%.1fm",_peripheral,pow(10,ci)];
     NSLog(@"%@",[NSString stringWithFormat:@"距离：%@", length]);
-}
 
+}
 
 // (4）发现服务和搜索到的Characteristice //已发现服务
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
