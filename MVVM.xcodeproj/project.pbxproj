@@ -988,7 +988,7 @@
 					366A1B631EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = HR6HGC9SU2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1341,8 +1341,10 @@
 			baseConfigurationReference = 2EAC8727A889B4520C8992F4 /* Pods-MVVM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Qing Wu (KP39D8A33J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qing Wu (KP39D8A33J)";
 				DEVELOPMENT_TEAM = HR6HGC9SU2;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1355,10 +1357,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MVVM/Support/QingNiuSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-ThankYou-com.k12chn.ThankYou";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiwatch.healthmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1788ea3c-685c-4986-a5a3-5bc5f3406f35";
+				PROVISIONING_PROFILE_SPECIFIER = wecare_dev;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=*]" = wecare_dev;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1367,8 +1371,10 @@
 			baseConfigurationReference = 2420D5E3BDCE1B3654BE9BC5 /* Pods-MVVM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Welcare (Shenzhen) Technologies Co., Ltd. (HR6HGC9SU2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Welcare (Shenzhen) Technologies Co., Ltd. (HR6HGC9SU2)";
 				DEVELOPMENT_TEAM = HR6HGC9SU2;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1381,10 +1387,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MVVM/Support/QingNiuSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-ThankYou-com.k12chn.ThankYou";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiwatch.healthmanagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "cd9df59a-40b1-4716-bad5-cde8b6dbfd82";
+				PROVISIONING_PROFILE_SPECIFIER = wecare_dis;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
