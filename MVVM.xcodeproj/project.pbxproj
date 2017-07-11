@@ -50,6 +50,7 @@
 		366D4D731F14C4A800AF875B /* 数字-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D691F14C4A800AF875B /* 数字-2.png */; };
 		366D4D741F14C4A800AF875B /* 数字-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D6A1F14C4A800AF875B /* 数字-3.png */; };
 		366D4D751F14C4A800AF875B /* 数字-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D6B1F14C4A800AF875B /* 数字-4.png */; };
+		367162391F152D5A00661BCC /* BraceletInstructions.m in Sources */ = {isa = PBXBuildFile; fileRef = 367162381F152D5A00661BCC /* BraceletInstructions.m */; };
 		36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BC7E891EF260ED00BA30DE /* BodyFatModel.m */; };
 		36C04D7E1EF6351600A69B63 /* NSArray+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04D311EF6351600A69B63 /* NSArray+Extend.m */; };
 		36C04D7F1EF6351600A69B63 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04D341EF6351600A69B63 /* GTMBase64.m */; };
@@ -238,6 +239,8 @@
 		366D4D691F14C4A800AF875B /* 数字-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-2.png"; sourceTree = "<group>"; };
 		366D4D6A1F14C4A800AF875B /* 数字-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-3.png"; sourceTree = "<group>"; };
 		366D4D6B1F14C4A800AF875B /* 数字-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-4.png"; sourceTree = "<group>"; };
+		367162371F152D5A00661BCC /* BraceletInstructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraceletInstructions.h; sourceTree = "<group>"; };
+		367162381F152D5A00661BCC /* BraceletInstructions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BraceletInstructions.m; sourceTree = "<group>"; };
 		36BC7E881EF260ED00BA30DE /* BodyFatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyFatModel.h; sourceTree = "<group>"; };
 		36BC7E891EF260ED00BA30DE /* BodyFatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyFatModel.m; sourceTree = "<group>"; };
 		36C04D301EF6351600A69B63 /* NSArray+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extend.h"; sourceTree = "<group>"; };
@@ -640,6 +643,8 @@
 			children = (
 				366D4D401F1485B800AF875B /* ShouhuanViewController.h */,
 				366D4D411F1485B800AF875B /* ShouhuanViewController.m */,
+				367162371F152D5A00661BCC /* BraceletInstructions.h */,
+				367162381F152D5A00661BCC /* BraceletInstructions.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1323,6 +1328,7 @@
 				40C32B741EE9371B008F653D /* TabBarViewController.m in Sources */,
 				36C04DD71EF647A600A69B63 /* DateCell.m in Sources */,
 				EE68189C1EEBA25600F8ABBD /* UserModel.m in Sources */,
+				367162391F152D5A00661BCC /* BraceletInstructions.m in Sources */,
 				36C04D8F1EF6351600A69B63 /* UIImage+Water.m in Sources */,
 				36C04DD91EF647A600A69B63 /* MyDeviceCell.m in Sources */,
 				366D4D591F14C36700AF875B /* LocationModel.m in Sources */,
