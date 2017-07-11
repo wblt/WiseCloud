@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
+
+@property (weak, nonatomic) IBOutlet UILabel *heatValue;
+
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
@@ -46,6 +49,14 @@
     [SVProgressHUD showWithStatus:@"发现设备中.."];
     // 重新扫描
     [self.ble startScan];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 禁用返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -112,7 +123,6 @@
 // 发现服务下的特征回调
 -(void)BLEManager:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
      for (CBCharacteristic *c in service.characteristics) {
-         
          // 设置读的特征
          if ([c.UUID isEqual:[CBUUID UUIDWithString:UUID_WRITE_ShouHuan]]) {
              NSLog(@"%@",[NSString stringWithFormat:@"写特征 UUID: %@ (%@)",c.UUID.data,c.UUID]);
@@ -137,11 +147,18 @@
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)BLEManager:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
      if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
+         NSString *newString = [Tools convertDataToHexStr:characteristic.value];
+         NSLog(@"收到的数据：%@",newString);
+         NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
+         heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
+         NSLog(@"%@",heatvalue);
+         self.heatValue.text = heatvalue;
          NSData * data = characteristic.value;
-         Byte * resultByte = (Byte *)[data bytes];
+         Byte *resultByte = (Byte *)[data bytes];
          for(int i=0;i<[data length];i++) {
              printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
          }
+         
      }
 }
 
@@ -150,5 +167,6 @@
     
 }
 // ===========================蓝牙代理======================
+
 
 @end

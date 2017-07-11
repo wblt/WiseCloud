@@ -32,17 +32,14 @@
 + (float) heightForString:(NSString *)value andWidth:(float)width;
 
 
-/**
- * 读取用户信息
- *
- */
-+ (UserModel *) readUserModelFromLocal;
+// data 转16进制数据
++ (NSString *)convertDataToHexStr:(NSData *)data;
 
-/**
- * 写入用户信息
- *
- */
-+ (void) writeUserModelToLocal:(UserModel *)userModel;
+// 16进制数据转byte
++ (NSData*)hexToBytes:(NSString *)str;
+
+//16进制转10进制
++ (CGFloat) numberHexString:(NSString *)aHexString;
 
 
 @end

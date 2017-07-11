@@ -604,8 +604,9 @@
 
 //获取外设发来的数据，不论是read和notify,获取数据都是从这个方法中读取。
 - (void)BLEManager:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ]]) {
-        NSString *newString = [self convertDataToHexStr:characteristic.value];
+        NSString *newString = [Tools convertDataToHexStr:characteristic.value];
         NSLog(@"%@",newString);
         if (newString.length == 40) {
             NSLog(@"%@",characteristic);
@@ -872,7 +873,7 @@
     if ([dic[@"head"] isEqualToString:@"02"]) {
         
         // 得到体重
-        CGFloat number = [self numberHexString:dic[@"LockWeight"]];
+        CGFloat number = [Tools numberHexString:dic[@"LockWeight"]];
         float weight = number / 10;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",weight] forKey:@"体重"];
         
@@ -881,7 +882,7 @@
         [self.dicData setValue:r2 forKey:@"BMI"];
 
         // 皮下脂肪量
-        number = [self numberHexString:dic[@"FatContent"]];
+        number = [Tools numberHexString:dic[@"FatContent"]];
         float FatContent = number / 10;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",FatContent] forKey:@"皮下脂肪量"];
         
@@ -890,22 +891,22 @@
         
         
         // 体水分
-        number = [self numberHexString:dic[@"WaterContent"]];
+        number = [Tools numberHexString:dic[@"WaterContent"]];
         float WaterContent = number / 10;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",WaterContent] forKey:@"体水分"];
         
         // 肌肉量
-        number = [self numberHexString:dic[@"MuscleContent"]];
+        number = [Tools numberHexString:dic[@"MuscleContent"]];
         float MuscleContent = number / 10;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",MuscleContent] forKey:@"肌肉量"];
         
         // 基础代谢
-        number = [self numberHexString:dic[@"Metabolism"]];
+        number = [Tools numberHexString:dic[@"Metabolism"]];
         float Metabolism = number / 10;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",Metabolism] forKey:@"基础代谢量"];
         
         // 骨量
-        number = [self numberHexString:dic[@"BoneWeight"]];
+        number = [Tools numberHexString:dic[@"BoneWeight"]];
         float BoneWeight = number;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BoneWeight] forKey:@"骨量"];
         
@@ -917,13 +918,13 @@
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BoneWeight] forKey:@"骨骼肌率"];
         
         // 体年龄
-        number = [self numberHexString:dic[@"BodyAge"]];
+        number = [Tools numberHexString:dic[@"BodyAge"]];
         float BodyAge = number / 10;
         
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",BodyAge] forKey:@"体年龄"];
         
         // 内脏脂肪等级
-        number = [self numberHexString:dic[@"VisceralFat"]];
+        number = [Tools numberHexString:dic[@"VisceralFat"]];
         float VisceralFat = number / 10;
         [self.dicData setValue:[NSString stringWithFormat:@"%.2f",VisceralFat] forKey:@"内脏脂肪等级"];
         
@@ -951,7 +952,7 @@
 {
     //获取到特征 发送值
     NSString *ss = @"A50019AF505A19";
-    NSData *dd = [self hexToBytes:ss];
+    NSData *dd = [Tools hexToBytes:ss];
     NSLog(@"peripheral did connect");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         NSLog(@"%d", self.is_mode_loite);
@@ -972,54 +973,5 @@
             titleLabel.text = [NSString stringWithFormat:@"(YunChen)已断开"];
         });
     });
-}
-
-- (NSString *)convertDataToHexStr:(NSData *)data {
-    if (!data || [data length] == 0) {
-        return @"";
-    }
-    NSMutableString *string = [[NSMutableString alloc] initWithCapacity:[data length]];
-    [data enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange,BOOL *stop) {
-        unsigned char *dataBytes = (unsigned char*)bytes;
-        for (NSInteger i =0; i < byteRange.length; i++) {
-            NSString *hexStr = [NSString stringWithFormat:@"%x", (dataBytes[i]) &0xff];
-            if ([hexStr length] == 2) {
-                [string appendString:hexStr];
-            } else {
-                [string appendFormat:@"0%@", hexStr];
-            }
-        }
-    }];
-    return string;
-}
-
--(NSData*)hexToBytes:(NSString *)str {
-    NSMutableData* data = [NSMutableData data];
-    int idx;
-    for (idx = 0; idx+2 <= str.length; idx+=2) {
-        NSRange range = NSMakeRange(idx, 2);
-        NSString* hexStr = [str substringWithRange:range];
-        NSScanner* scanner = [NSScanner scannerWithString:hexStr];
-        unsigned int intValue;
-        [scanner scanHexInt:&intValue];
-        [data appendBytes:&intValue length:1];
-    }
-    return data;
-}
-
-// 16进制转10进制
-- (CGFloat) numberHexString:(NSString *)aHexString
-{
-    // 为空,直接返回.
-    if (nil == aHexString)
-    {
-        return 0.0;
-    }
-    NSScanner * scanner = [NSScanner scannerWithString:aHexString];
-    unsigned long long longlongValue;
-    [scanner scanHexLongLong:&longlongValue];
-    //将整数转换为NSNumber,存储到数组中,并返回.
-    NSNumber * hexNumber = [NSNumber numberWithLongLong:longlongValue];
-    return [hexNumber floatValue];
 }
 @end

@@ -52,20 +52,53 @@
 
 
 
-/**
- * 读取用户信息
- *
- */
-+ (UserModel *) readUserModelFromLocal {
-    
-    return nil;
++ (NSString *)convertDataToHexStr:(NSData *)data {
+    if (!data || [data length] == 0) {
+        return @"";
+    }
+    NSMutableString *string = [[NSMutableString alloc] initWithCapacity:[data length]];
+    [data enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange,BOOL *stop) {
+        unsigned char *dataBytes = (unsigned char*)bytes;
+        for (NSInteger i =0; i < byteRange.length; i++) {
+            NSString *hexStr = [NSString stringWithFormat:@"%x", (dataBytes[i]) &0xff];
+            if ([hexStr length] == 2) {
+                [string appendString:hexStr];
+            } else {
+                [string appendFormat:@"0%@", hexStr];
+            }
+        }
+    }];
+    return string;
 }
 
-/**
- * 写入用户信息
- *
- */
-+ (void) writeUserModelToLocal:(UserModel *)userModel {
-    
++ (NSData*)hexToBytes:(NSString *)str {
+    NSMutableData* data = [NSMutableData data];
+    int idx;
+    for (idx = 0; idx+2 <= str.length; idx+=2) {
+        NSRange range = NSMakeRange(idx, 2);
+        NSString* hexStr = [str substringWithRange:range];
+        NSScanner* scanner = [NSScanner scannerWithString:hexStr];
+        unsigned int intValue;
+        [scanner scanHexInt:&intValue];
+        [data appendBytes:&intValue length:1];
+    }
+    return data;
 }
+
+// 16进制转10进制
++ (CGFloat) numberHexString:(NSString *)aHexString
+{
+    // 为空,直接返回.
+    if (nil == aHexString)
+    {
+        return 0.0;
+    }
+    NSScanner * scanner = [NSScanner scannerWithString:aHexString];
+    unsigned long long longlongValue;
+    [scanner scanHexLongLong:&longlongValue];
+    //将整数转换为NSNumber,存储到数组中,并返回.
+    NSNumber * hexNumber = [NSNumber numberWithLongLong:longlongValue];
+    return [hexNumber floatValue];
+}
+
 @end
