@@ -9,4 +9,5 @@ target 'MVVM' do
   pod 'Masonry'
   pod 'MJRefresh'
   pod 'MJExtension', '~> 3.0.13'
+  pod 'BaiduMapKit' #百度地图SDK
 end

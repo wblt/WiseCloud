@@ -109,7 +109,7 @@
         else {
             [SVProgressHUD showErrorWithStatus:@"参数错误"];
         }
-    } failureBlock:^{
+    } failureBlock:^(NSError *error){
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"登陆失败,请检测账号和密码"];
     }];
@@ -151,7 +151,7 @@
         //保存
         [[UserConfig shareInstace] setAllInformation:userModel];
         
-        } failureBlock:^{
+        } failureBlock:^(NSError *error){
 
     }];
 

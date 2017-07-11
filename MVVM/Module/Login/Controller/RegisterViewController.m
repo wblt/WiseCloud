@@ -131,7 +131,7 @@
         }else if (result == 4) {
             [SVProgressHUD showErrorWithStatus:@"验证码失败"];
         }
-    } failureBlock:^{
+    } failureBlock:^(NSError *error){
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"注册失败"];
     }];

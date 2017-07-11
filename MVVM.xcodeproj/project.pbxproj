@@ -37,6 +37,19 @@
 		366D4D491F14BC5A00AF875B /* ZIncomeCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D471F14BC5A00AF875B /* ZIncomeCircle.m */; };
 		366D4D4A1F14BC5A00AF875B /* ZIncomeCircle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D481F14BC5A00AF875B /* ZIncomeCircle.xib */; };
 		366D4D4D1F14BC7C00AF875B /* CustomFooterBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D4C1F14BC7C00AF875B /* CustomFooterBar.m */; };
+		366D4D561F14C33600AF875B /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D551F14C33600AF875B /* LocationViewController.m */; };
+		366D4D591F14C36700AF875B /* LocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D581F14C36700AF875B /* LocationModel.m */; };
+		366D4D5C1F14C46B00AF875B /* MyAnimatedAnnotationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D5B1F14C46B00AF875B /* MyAnimatedAnnotationVC.m */; };
+		366D4D6C1F14C4A800AF875B /* CFFuncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D5F1F14C4A800AF875B /* CFFuncModel.m */; };
+		366D4D6D1F14C4A800AF875B /* CFFuncTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D611F14C4A800AF875B /* CFFuncTableViewCell.m */; };
+		366D4D6E1F14C4A800AF875B /* CFFuncTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D621F14C4A800AF875B /* CFFuncTableViewCell.xib */; };
+		366D4D6F1F14C4A800AF875B /* CFPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D641F14C4A800AF875B /* CFPopView.m */; };
+		366D4D701F14C4A800AF875B /* CFPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D651F14C4A800AF875B /* CFPopView.xib */; };
+		366D4D711F14C4A800AF875B /* 数字-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D671F14C4A800AF875B /* 数字-0.png */; };
+		366D4D721F14C4A800AF875B /* 数字-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D681F14C4A800AF875B /* 数字-1.png */; };
+		366D4D731F14C4A800AF875B /* 数字-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D691F14C4A800AF875B /* 数字-2.png */; };
+		366D4D741F14C4A800AF875B /* 数字-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D6A1F14C4A800AF875B /* 数字-3.png */; };
+		366D4D751F14C4A800AF875B /* 数字-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 366D4D6B1F14C4A800AF875B /* 数字-4.png */; };
 		36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BC7E891EF260ED00BA30DE /* BodyFatModel.m */; };
 		36C04D7E1EF6351600A69B63 /* NSArray+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04D311EF6351600A69B63 /* NSArray+Extend.m */; };
 		36C04D7F1EF6351600A69B63 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C04D341EF6351600A69B63 /* GTMBase64.m */; };
@@ -206,6 +219,25 @@
 		366D4D481F14BC5A00AF875B /* ZIncomeCircle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZIncomeCircle.xib; sourceTree = "<group>"; };
 		366D4D4B1F14BC7C00AF875B /* CustomFooterBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFooterBar.h; sourceTree = "<group>"; };
 		366D4D4C1F14BC7C00AF875B /* CustomFooterBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFooterBar.m; sourceTree = "<group>"; };
+		366D4D541F14C33600AF875B /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		366D4D551F14C33600AF875B /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		366D4D571F14C36700AF875B /* LocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModel.h; sourceTree = "<group>"; };
+		366D4D581F14C36700AF875B /* LocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModel.m; sourceTree = "<group>"; };
+		366D4D5A1F14C46B00AF875B /* MyAnimatedAnnotationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimatedAnnotationVC.h; sourceTree = "<group>"; };
+		366D4D5B1F14C46B00AF875B /* MyAnimatedAnnotationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimatedAnnotationVC.m; sourceTree = "<group>"; };
+		366D4D5E1F14C4A800AF875B /* CFFuncModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFFuncModel.h; sourceTree = "<group>"; };
+		366D4D5F1F14C4A800AF875B /* CFFuncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFFuncModel.m; sourceTree = "<group>"; };
+		366D4D601F14C4A800AF875B /* CFFuncTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFFuncTableViewCell.h; sourceTree = "<group>"; };
+		366D4D611F14C4A800AF875B /* CFFuncTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFFuncTableViewCell.m; sourceTree = "<group>"; };
+		366D4D621F14C4A800AF875B /* CFFuncTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFFuncTableViewCell.xib; sourceTree = "<group>"; };
+		366D4D631F14C4A800AF875B /* CFPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFPopView.h; sourceTree = "<group>"; };
+		366D4D641F14C4A800AF875B /* CFPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFPopView.m; sourceTree = "<group>"; };
+		366D4D651F14C4A800AF875B /* CFPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFPopView.xib; sourceTree = "<group>"; };
+		366D4D671F14C4A800AF875B /* 数字-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-0.png"; sourceTree = "<group>"; };
+		366D4D681F14C4A800AF875B /* 数字-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-1.png"; sourceTree = "<group>"; };
+		366D4D691F14C4A800AF875B /* 数字-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-2.png"; sourceTree = "<group>"; };
+		366D4D6A1F14C4A800AF875B /* 数字-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-3.png"; sourceTree = "<group>"; };
+		366D4D6B1F14C4A800AF875B /* 数字-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字-4.png"; sourceTree = "<group>"; };
 		36BC7E881EF260ED00BA30DE /* BodyFatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyFatModel.h; sourceTree = "<group>"; };
 		36BC7E891EF260ED00BA30DE /* BodyFatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyFatModel.m; sourceTree = "<group>"; };
 		36C04D301EF6351600A69B63 /* NSArray+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extend.h"; sourceTree = "<group>"; };
@@ -612,9 +644,65 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		366D4D4E1F14C11900AF875B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				366D4D4F1F14C13100AF875B /* View */,
+				366D4D501F14C13100AF875B /* Controller */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		366D4D4F1F14C13100AF875B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		366D4D501F14C13100AF875B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				366D4D5A1F14C46B00AF875B /* MyAnimatedAnnotationVC.h */,
+				366D4D5B1F14C46B00AF875B /* MyAnimatedAnnotationVC.m */,
+				366D4D541F14C33600AF875B /* LocationViewController.h */,
+				366D4D551F14C33600AF875B /* LocationViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		366D4D5D1F14C4A800AF875B /* DropView */ = {
+			isa = PBXGroup;
+			children = (
+				366D4D5E1F14C4A800AF875B /* CFFuncModel.h */,
+				366D4D5F1F14C4A800AF875B /* CFFuncModel.m */,
+				366D4D601F14C4A800AF875B /* CFFuncTableViewCell.h */,
+				366D4D611F14C4A800AF875B /* CFFuncTableViewCell.m */,
+				366D4D621F14C4A800AF875B /* CFFuncTableViewCell.xib */,
+				366D4D631F14C4A800AF875B /* CFPopView.h */,
+				366D4D641F14C4A800AF875B /* CFPopView.m */,
+				366D4D651F14C4A800AF875B /* CFPopView.xib */,
+				366D4D661F14C4A800AF875B /* icons */,
+			);
+			path = DropView;
+			sourceTree = "<group>";
+		};
+		366D4D661F14C4A800AF875B /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				366D4D671F14C4A800AF875B /* 数字-0.png */,
+				366D4D681F14C4A800AF875B /* 数字-1.png */,
+				366D4D691F14C4A800AF875B /* 数字-2.png */,
+				366D4D6A1F14C4A800AF875B /* 数字-3.png */,
+				366D4D6B1F14C4A800AF875B /* 数字-4.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
 		36C04D2D1EF634F300A69B63 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				366D4D5D1F14C4A800AF875B /* DropView */,
 				36FBDBE21F01F6C600FD012F /* QingNiuSDK */,
 				36C04D2E1EF6351600A69B63 /* Category */,
 				36C04D6C1EF6351600A69B63 /* SaoMiao */,
@@ -773,6 +861,7 @@
 		36C04DA71EF645B400A69B63 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				366D4D4E1F14C11900AF875B /* Location */,
 				366D4CE61F14833100AF875B /* BLE */,
 				366D4CE71F14833100AF875B /* Bracelet */,
 				366D4CE81F14833100AF875B /* ElectronicScale */,
@@ -981,6 +1070,8 @@
 		EE6818961EEBA24C00F8ABBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				366D4D571F14C36700AF875B /* LocationModel.h */,
+				366D4D581F14C36700AF875B /* LocationModel.m */,
 				36605C0A1EF3846800FDB857 /* TestUserModel.h */,
 				36605C0B1EF3846800FDB857 /* TestUserModel.m */,
 				36BC7E881EF260ED00BA30DE /* BodyFatModel.h */,
@@ -1124,12 +1215,15 @@
 				36C04DD81EF647A600A69B63 /* DateCell.xib in Resources */,
 				36C04D831EF6351600A69B63 /* NSDateTimeAgo.bundle in Resources */,
 				40C32B6B1EE93334008F653D /* Discover.storyboard in Resources */,
+				366D4D721F14C4A800AF875B /* 数字-1.png in Resources */,
 				36C04D9A1EF6351600A69B63 /* album.png in Resources */,
 				36C04E091EF647D300A69B63 /* DeviceCell.xib in Resources */,
+				366D4D751F14C4A800AF875B /* 数字-4.png in Resources */,
 				36C04DD01EF6479800A69B63 /* PersonalViewController.xib in Resources */,
 				36C04DA31EF6351600A69B63 /* scan.wav in Resources */,
 				36C04D9D1EF6351600A69B63 /* flash_on@2x.png in Resources */,
 				40C32BDC1EE93822008F653D /* LaunchScreen.storyboard in Resources */,
+				366D4D731F14C4A800AF875B /* 数字-2.png in Resources */,
 				366A1B741EE7DE150090FB81 /* Assets.xcassets in Resources */,
 				36C04DC81EF6479800A69B63 /* AboutViewController.xib in Resources */,
 				366D4D3B1F14856D00AF875B /* TargetHeadView.xib in Resources */,
@@ -1137,10 +1231,14 @@
 				40C32B641EE93005008F653D /* Home.storyboard in Resources */,
 				366D4D391F14856D00AF875B /* TargetCell.xib in Resources */,
 				366D4D4A1F14BC5A00AF875B /* ZIncomeCircle.xib in Resources */,
+				366D4D701F14C4A800AF875B /* CFPopView.xib in Resources */,
 				36C04DA01EF6351600A69B63 /* line@2x.png in Resources */,
+				366D4D6E1F14C4A800AF875B /* CFFuncTableViewCell.xib in Resources */,
 				40C32BDD1EE93822008F653D /* Main.storyboard in Resources */,
 				40C32B6D1EE93358008F653D /* Manage.storyboard in Resources */,
 				36C04DA11EF6351600A69B63 /* myctrip_line_scan@3x.png in Resources */,
+				366D4D711F14C4A800AF875B /* 数字-0.png in Resources */,
+				366D4D741F14C4A800AF875B /* 数字-3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,10 +1325,12 @@
 				EE68189C1EEBA25600F8ABBD /* UserModel.m in Sources */,
 				36C04D8F1EF6351600A69B63 /* UIImage+Water.m in Sources */,
 				36C04DD91EF647A600A69B63 /* MyDeviceCell.m in Sources */,
+				366D4D591F14C36700AF875B /* LocationModel.m in Sources */,
 				36C04D901EF6351600A69B63 /* UIView+Additional.m in Sources */,
 				36C04D7E1EF6351600A69B63 /* NSArray+Extend.m in Sources */,
 				36C04E0A1EF647D300A69B63 /* NoticePhotoSelectCell.m in Sources */,
 				366D4D3A1F14856D00AF875B /* TargetHeadView.m in Sources */,
+				366D4D5C1F14C46B00AF875B /* MyAnimatedAnnotationVC.m in Sources */,
 				366A1BB61EE7DE830090FB81 /* NetRequestClass.m in Sources */,
 				36C04DCC1EF6479800A69B63 /* ManageViewController.m in Sources */,
 				36C04DF51EF647C600A69B63 /* HomeViewController.m in Sources */,
@@ -1240,7 +1340,9 @@
 				366D4D491F14BC5A00AF875B /* ZIncomeCircle.m in Sources */,
 				36C04D971EF6351600A69B63 /* UIWindow+Extension.m in Sources */,
 				366D4D381F14856D00AF875B /* TargetCell.m in Sources */,
+				366D4D6F1F14C4A800AF875B /* CFPopView.m in Sources */,
 				366D4D421F1485B800AF875B /* ShouhuanViewController.m in Sources */,
+				366D4D6C1F14C4A800AF875B /* CFFuncModel.m in Sources */,
 				366D4D311F14856D00AF875B /* AddDeviceController.m in Sources */,
 				36C04D961EF6351600A69B63 /* UIViewExt.m in Sources */,
 				36C04D8E1EF6351600A69B63 /* UIImage+FixOrientation.m in Sources */,
@@ -1249,6 +1351,7 @@
 				EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */,
 				366D4D4D1F14BC7C00AF875B /* CustomFooterBar.m in Sources */,
 				40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */,
+				366D4D6D1F14C4A800AF875B /* CFFuncTableViewCell.m in Sources */,
 				36C04D821EF6351600A69B63 /* NSDate+TimeAgo.m in Sources */,
 				36C04DC91EF6479800A69B63 /* AddDeviceViewController.m in Sources */,
 				36C04DDC1EF647B200A69B63 /* DiscoverViewController.m in Sources */,
@@ -1271,6 +1374,7 @@
 				36C04D8A1EF6351600A69B63 /* UIFont+customFont.m in Sources */,
 				36C04D951EF6351600A69B63 /* UIView_extra.m in Sources */,
 				36C04D841EF6351600A69B63 /* NSString+Extend.m in Sources */,
+				366D4D561F14C33600AF875B /* LocationViewController.m in Sources */,
 				366D4D371F14856D00AF875B /* BodyFatCell.m in Sources */,
 				366D4D331F14856D00AF875B /* ChangUserController.m in Sources */,
 				366D4D451F14BC3100AF875B /* WaterElementController.m in Sources */,
