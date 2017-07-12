@@ -165,18 +165,16 @@
 - (void)BLEManager:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
      if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
          NSString *newString = [Tools convertDataToHexStr:characteristic.value];
-         
          // 数据解析
          [self analysisData:newString];
-//         NSData * data = characteristic.value;
-//         Byte *resultByte = (Byte *)[data bytes];
-//         for(int i=0;i<[data length];i++) {
-//             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
-//         }
-         
+         NSData * data = characteristic.value;
+         Byte *resultByte = (Byte *)[data bytes];
+         for(int i=0;i<[data length];i++) {
+             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
+         }
          if (self.firstFlag == NO) {
              // 首次发送获取运动的数据
-             NSString *str = [BraceletInstructions getPedometerTestInstructions:YES];
+             NSString *str = [BraceletInstructions getUnbundingInstructions];
              NSLog(@"运动数据：%@",str);
              [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
              self.firstFlag = YES;
@@ -226,7 +224,6 @@
             }
             case 3:
             {
-                
                 // 发送血氧指令
                 NSString *str = [BraceletInstructions getHeartRateInstructions];
                 NSLog(@"心率数据：%@",str);

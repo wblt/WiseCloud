@@ -48,4 +48,12 @@
 /**获取计步器测试指令
  */
 +(NSString *)getPedometerTestInstructions:(BOOL)state;
+
+/**获取查找手环测试指令
+ */
++(NSString *)getFindBraceletInstructions;
+
+/**获取解除绑定测试指令
+ */
++(NSString *)getUnbundingInstructions;
 @end

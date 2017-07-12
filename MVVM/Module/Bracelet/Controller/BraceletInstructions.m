@@ -200,7 +200,7 @@
             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
         }
         
-        for(int i = 1;i<sizeof(myByte);i++)
+        for(int i = 1;i<bytes.length;i++)
         {
             bb += myByte[i];
             printf("bb:%d,%d",bb,myByte[i]);
@@ -227,7 +227,7 @@
     if(myByte!=nil)
     {
         Byte bb = myByte[0];
-        for(int i = 1;i<sizeof(myByte);i++)
+        for(int i = 1;i<mData.length;i++)
         {
             bb+=myByte[i];
         }
@@ -253,7 +253,7 @@
     if(myByte!=nil)
     {
         Byte bb =myByte[0];
-        for(int i = 1;i<sizeof(myByte);i++)
+        for(int i = 1;i<data.length;i++)
         {
             bb+=myByte[i];
         }
@@ -306,6 +306,18 @@
     return [self getOneLenthInstructions:INSTRUCTIONS_PEDOMETER_TEST withData:s];
 }
 
+
+/**获取查找手环测试指令
+ */
++(NSString *)getFindBraceletInstructions {
+    return [self getZeroLenthInstructions:INSTRUCTIONS_FIND_BRACELET];
+}
+
+/**获取解除绑定测试指令
+ */
++(NSString *)getUnbundingInstructions {
+    return [self getZeroLenthInstructions:INSTRUCTIONS_UNBUNDING];
+}
 
 
 @end
