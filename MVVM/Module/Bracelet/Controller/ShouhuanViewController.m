@@ -16,6 +16,7 @@
 #define UUID_READ_ShouHuan @"C3E6FEA2-E966-1000-8000-BE99C223DF6A"
 
 #define UUID_WRITE_ShouHuan @"C3E6FEA1-E966-1000-8000-BE99C223DF6A"
+
 // =================手环==================
 
 @interface ShouhuanViewController ()<BLEManagerDelegate,UIScrollViewDelegate>
@@ -26,10 +27,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *heatValue;
 
+@property (weak, nonatomic) IBOutlet UILabel *heatLowValue;
+
+@property (weak, nonatomic) IBOutlet UILabel *heatHighValue;
+
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (assign,nonatomic) NSInteger lastIndex;
-
 @property (assign,nonatomic) BOOL firstFlag;
 
 
@@ -161,16 +165,14 @@
 - (void)BLEManager:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
      if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_READ_ShouHuan]]) {
          NSString *newString = [Tools convertDataToHexStr:characteristic.value];
-         NSLog(@"收到的数据：%@",newString);
-         NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
-         heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
-         NSLog(@"%@",heatvalue);
-         self.heatValue.text = heatvalue;
-         NSData * data = characteristic.value;
-         Byte *resultByte = (Byte *)[data bytes];
-         for(int i=0;i<[data length];i++) {
-             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
-         }
+         
+         // 数据解析
+         [self analysisData:newString];
+//         NSData * data = characteristic.value;
+//         Byte *resultByte = (Byte *)[data bytes];
+//         for(int i=0;i<[data length];i++) {
+//             printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
+//         }
          
          if (self.firstFlag == NO) {
              // 首次发送获取运动的数据
@@ -193,10 +195,54 @@
     NSInteger index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
     if (self.lastIndex != index) {
         NSLog(@"滑动至%d,该发送命令",index);
+        switch (index) {
+            case 0:
+            {
+                // 发送运动指令
+                NSString *str = [BraceletInstructions getMotionInstructions];
+                NSLog(@"运动数据：%@",str);
+                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
+                
+                break;
+            }
+            case 1:
+            {
+        
+                // 发送心率指令
+                
+                
+                break;
+            }
+            case 2:
+            {
+                
+                // 发送血压指令
+                
+                break;
+            }
+            case 3:
+            {
+                
+                // 发送血氧指令
+                
+                break;
+            }
+            default:
+                break;
+        }
     } else {
         NSLog(@"滑动至%d",index);
     }
     self.lastIndex = index;
+}
+
+// 数据解析
+- (void)analysisData:(NSString *)newString {
+    NSLog(@"收到的数据：%@",newString);
+    NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
+    heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
+    NSLog(@"%@",heatvalue);
+    self.heatValue.text = heatvalue;
 }
 
 @end

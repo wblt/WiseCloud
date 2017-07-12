@@ -188,7 +188,7 @@
 /**计算校验码
  **/
 +(NSString *)calculationCRC:(NSString *)val{
-    NSData* bytes = [val dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* bytes = [Tools hexToBytes:val];
     Byte *myByte = (Byte *)[bytes bytes];
     NSString *crc = @"";
     if(myByte != nil)
@@ -206,13 +206,12 @@
         crc = [@"0" stringByAppendingString:crc];
     }
     return crc;
- 
 }
 
 /**计算校验码
  */
 +(NSString *)calculationCRC:(NSString *)val withData:(NSData *)adata{
-    NSData* bdata = [val dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* bdata = [Tools hexToBytes:val];
     NSString *crc = @"";
     NSMutableData *mData = [[NSMutableData alloc] init];
     [mData appendData:adata];
@@ -242,7 +241,7 @@
     NSString *s = [val substringWithRange:NSMakeRange(0,(val.length - 2))];
     NSString *crc = [val substringFromIndex:(val.length -2)];
     NSString *temp = @"";
-    NSData* data = [s dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* data = [Tools hexToBytes:s];
     Byte *myByte = (Byte *)[data bytes];
     if(myByte!=nil)
     {
@@ -258,6 +257,7 @@
             temp = [@"0" stringByAppendingString:temp];
         }
     }
+    NSLog(@"校对一下:%@\ncrc:%@\n%@",val,temp,crc);
     if([crc isEqualToString:temp])
     {
         return true;
@@ -270,6 +270,8 @@
 +(NSString *)getMotionInstructions {
     return [self getZeroLenthInstructions:INSTRUCTIONS_MOTION];
 }
+
+
 
 
 @end

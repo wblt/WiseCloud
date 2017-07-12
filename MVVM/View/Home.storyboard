@@ -1042,6 +1042,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="fourX" destination="hIU-PQ-lsU" id="TkS-90-De7"/>
+                        <outlet property="heatHighValue" destination="XFs-y3-MgB" id="Stf-sA-lxX"/>
+                        <outlet property="heatLowValue" destination="2wU-cd-KQa" id="iXK-GF-Ei1"/>
                         <outlet property="heatValue" destination="sMk-us-Hqk" id="7ob-cm-wsh"/>
                         <outlet property="scrollView" destination="WIp-u9-fiA" id="PQy-g8-8Af"/>
                         <outlet property="secondX" destination="yOU-41-KkY" id="wP2-OT-RiA"/>

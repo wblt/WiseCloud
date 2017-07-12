@@ -128,6 +128,7 @@
 //用于检测中心向外设写数据是否成功
 -(void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
+    
     if (error) {
         NSLog(@"Error writing characteristic value: %@",
               [error localizedDescription]);
@@ -168,10 +169,10 @@
     if (peripheral == nil) {
         return;
     }
-    NSString *str = [Tools convertDataToHexStr:data];
-    NSLog(@"发送的指令：%@",str);
     if (peripheral.state == CBPeripheralStateConnected) {
-        [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
+        NSString *str = [Tools convertDataToHexStr:data];
+        NSLog(@"发送的指令：%@",str);
+        [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
     }
 }
 
