@@ -264,4 +264,12 @@
     }
     return false;
 }
+
+/**获取运动指令
+ */
++(NSString *)getMotionInstructions {
+    return [self getZeroLenthInstructions:INSTRUCTIONS_MOTION];
+}
+
+
 @end

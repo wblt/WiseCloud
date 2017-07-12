@@ -32,4 +32,8 @@
 /**校对校验码
 */
 +(BOOL)proofreadingCRC:(NSString *)val;
+
+/**获取运动指令
+ */
++(NSString *)getMotionInstructions;
 @end

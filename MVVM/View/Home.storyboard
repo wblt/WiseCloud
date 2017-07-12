@@ -1043,6 +1043,7 @@
                     <connections>
                         <outlet property="fourX" destination="hIU-PQ-lsU" id="TkS-90-De7"/>
                         <outlet property="heatValue" destination="sMk-us-Hqk" id="7ob-cm-wsh"/>
+                        <outlet property="scrollView" destination="WIp-u9-fiA" id="PQy-g8-8Af"/>
                         <outlet property="secondX" destination="yOU-41-KkY" id="wP2-OT-RiA"/>
                         <outlet property="thridX" destination="aU4-Dr-08Q" id="yjX-47-Fgi"/>
                         <outlet property="width" destination="NcH-CT-9f1" id="Nyx-Wb-kDM"/>

@@ -168,7 +168,8 @@
     if (peripheral == nil) {
         return;
     }
-//    Byte byte[] = {2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8};
+    NSString *str = [Tools convertDataToHexStr:data];
+    NSLog(@"发送的指令：%@",str);
     if (peripheral.state == CBPeripheralStateConnected) {
         [peripheral writeValue:data forCharacteristic:characteristic type:CBCharacteristicWriteWithoutResponse];
     }

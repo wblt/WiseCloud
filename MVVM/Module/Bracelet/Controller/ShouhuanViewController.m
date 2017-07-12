@@ -8,6 +8,7 @@
 
 #import "ShouhuanViewController.h"
 #import "BLEManager.h"
+#import "BraceletInstructions.h"
 
 // =================手环==================
 #define UUID_SERVICE_ShouHuan @"C3E6FEA0-E966-1000-8000-BE99C223DF6A"
@@ -17,13 +18,20 @@
 #define UUID_WRITE_ShouHuan @"C3E6FEA1-E966-1000-8000-BE99C223DF6A"
 // =================手环==================
 
-@interface ShouhuanViewController ()<BLEManagerDelegate>
+@interface ShouhuanViewController ()<BLEManagerDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
 
 @property (weak, nonatomic) IBOutlet UILabel *heatValue;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (assign,nonatomic) NSInteger lastIndex;
+
+@property (assign,nonatomic) BOOL firstFlag;
+
 
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
@@ -39,6 +47,9 @@
     self.thridX.constant = kScreenWidth*2;
     self.fourX.constant = kScreenWidth*3;
     
+    self.scrollView.delegate = self;
+    self.lastIndex = 255;
+    self.firstFlag = NO;
     self.ble = [BLEManager sharedInstance];
     self.ble.delegate = self;
     
@@ -137,6 +148,8 @@
          }
      }
     
+    
+    
 }
 
 // 断开连接
@@ -159,6 +172,14 @@
              printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
          }
          
+         if (self.firstFlag == NO) {
+             // 首次发送获取运动的数据
+             NSString *str = [BraceletInstructions getMotionInstructions];
+             NSLog(@"运动数据：%@",str);
+             [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
+             self.firstFlag = YES;
+         }
+         
      }
 }
 
@@ -168,5 +189,14 @@
 }
 // ===========================蓝牙代理======================
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSInteger index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
+    if (self.lastIndex != index) {
+        NSLog(@"滑动至%d,该发送命令",index);
+    } else {
+        NSLog(@"滑动至%d",index);
+    }
+    self.lastIndex = index;
+}
 
 @end
