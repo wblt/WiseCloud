@@ -207,9 +207,10 @@
             }
             case 1:
             {
-        
                 // 发送心率指令
-                
+                NSString *str = [BraceletInstructions getHeartRateInstructions];
+                NSLog(@"心率数据：%@",str);
+                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
                 
                 break;
             }
@@ -217,6 +218,9 @@
             {
                 
                 // 发送血压指令
+                NSString *str = [BraceletInstructions getHeartRateInstructions];
+                NSLog(@"心率数据：%@",str);
+                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
                 
                 break;
             }
@@ -224,6 +228,9 @@
             {
                 
                 // 发送血氧指令
+                NSString *str = [BraceletInstructions getHeartRateInstructions];
+                NSLog(@"心率数据：%@",str);
+                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
                 
                 break;
             }

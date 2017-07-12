@@ -271,7 +271,10 @@
     return [self getZeroLenthInstructions:INSTRUCTIONS_MOTION];
 }
 
-
-
+/**获取心率指令
+  */
++(NSString *)getHeartRateInstructions {
+    return [self getZeroLenthInstructions:INSTRUCTIONS_HEART_RATE];
+}
 
 @end

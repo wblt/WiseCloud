@@ -36,4 +36,8 @@
 /**获取运动指令
  */
 +(NSString *)getMotionInstructions;
+
+/**获取心率指令
+ */
++(NSString *)getHeartRateInstructions;
 @end
