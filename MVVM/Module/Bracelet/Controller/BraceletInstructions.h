@@ -26,7 +26,7 @@
 
 /**计算校验码
 */
-+(NSString *)calculationCRC:(NSString *)val withByte:(Byte[])byte;
++(NSString *)calculationCRC:(NSString *)val withData:(NSData *)adata;
 
 
 /**校对校验码

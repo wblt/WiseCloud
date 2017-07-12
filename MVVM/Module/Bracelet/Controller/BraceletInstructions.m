@@ -199,7 +199,7 @@
             bb += myByte[i];
         }
         int s =  (bb&0xFF);
-        crc = [[NSString alloc] initWithFormat:@"%d",s];
+        crc = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",s]];
     }
     if(crc.length<2)
     {
@@ -211,15 +211,57 @@
 
 /**计算校验码
  */
-+(NSString *)calculationCRC:(NSString *)val withByte:(Byte[])byte{
-    
-    return nil;
++(NSString *)calculationCRC:(NSString *)val withData:(NSData *)adata{
+    NSData* bdata = [val dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *crc = @"";
+    NSMutableData *mData = [[NSMutableData alloc] init];
+    [mData appendData:adata];
+    [mData appendData:bdata];
+    Byte *myByte = (Byte *)[mData bytes];
+    if(myByte!=nil)
+    {
+        Byte bb = myByte[0];
+        for(int i = 1;i<sizeof(myByte);i++)
+        {
+            bb+=myByte[i];
+        }
+        int s =  (bb&0xFF);
+        crc = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",s]];
+    }
+    if(crc.length<2)
+    {
+        crc = [@"0" stringByAppendingString:crc];
+    }
+    return crc;
 }
 
 
 /**校对校验码
  */
 +(BOOL)proofreadingCRC:(NSString *)val{
+    NSString *s = [val substringWithRange:NSMakeRange(0,(val.length - 2))];
+    NSString *crc = [val substringFromIndex:(val.length -2)];
+    NSString *temp = @"";
+    NSData* data = [s dataUsingEncoding:NSUTF8StringEncoding];
+    Byte *myByte = (Byte *)[data bytes];
+    if(myByte!=nil)
+    {
+        Byte bb =myByte[0];
+        for(int i = 1;i<sizeof(myByte);i++)
+        {
+            bb+=myByte[i];
+        }
+        int num =  (bb&0xFF);
+        temp = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",num]];
+        if(temp.length<2)
+        {
+            temp = [@"0" stringByAppendingString:temp];
+        }
+    }
+    if([crc isEqualToString:temp])
+    {
+        return true;
+    }
     return false;
 }
 @end
