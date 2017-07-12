@@ -194,9 +194,16 @@
     if(myByte != nil)
     {
         Byte bb = myByte[0];
+        
+        Byte *resultByte = (Byte *)[bytes bytes];
+        for(int i=0;i<[bytes length];i++) {
+            printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
+        }
+        
         for(int i = 1;i<sizeof(myByte);i++)
         {
             bb += myByte[i];
+            printf("bb:%d,%d",bb,myByte[i]);
         }
         int s =  (bb&0xFF);
         crc = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",s]];
@@ -276,5 +283,29 @@
 +(NSString *)getHeartRateInstructions {
     return [self getZeroLenthInstructions:INSTRUCTIONS_HEART_RATE];
 }
+
+/**获取心率测试指令
+ */
++(NSString *)getHeartRateTestInstructions:(BOOL)state {
+    NSString *s = @"01";
+    if(!state)
+    {
+        s = @"00";
+    }
+    return [self getOneLenthInstructions:INSTRUCTIONS_HEART_RATE_TEST withData:s];
+}
+
+/**获取计步器测试指令
+ */
++(NSString *)getPedometerTestInstructions:(BOOL)state{
+    NSString *s = @"01";
+    if(!state)
+    {
+        s = @"00";
+    }
+    return [self getOneLenthInstructions:INSTRUCTIONS_PEDOMETER_TEST withData:s];
+}
+
+
 
 @end

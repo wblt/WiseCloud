@@ -40,4 +40,12 @@
 /**获取心率指令
  */
 +(NSString *)getHeartRateInstructions;
+
+/**获取心率测试指令
+ */
++(NSString *)getHeartRateTestInstructions:(BOOL)state;
+
+/**获取计步器测试指令
+ */
++(NSString *)getPedometerTestInstructions:(BOOL)state;
 @end

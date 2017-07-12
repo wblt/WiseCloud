@@ -176,7 +176,7 @@
          
          if (self.firstFlag == NO) {
              // 首次发送获取运动的数据
-             NSString *str = [BraceletInstructions getMotionInstructions];
+             NSString *str = [BraceletInstructions getPedometerTestInstructions:YES];
              NSLog(@"运动数据：%@",str);
              [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
              self.firstFlag = YES;
@@ -208,7 +208,7 @@
             case 1:
             {
                 // 发送心率指令
-                NSString *str = [BraceletInstructions getHeartRateInstructions];
+                NSString *str = [BraceletInstructions getHeartRateTestInstructions:YES];
                 NSLog(@"心率数据：%@",str);
                 [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
                 
@@ -245,11 +245,18 @@
 
 // 数据解析
 - (void)analysisData:(NSString *)newString {
-    NSLog(@"收到的数据：%@",newString);
-    NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
-    heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
-    NSLog(@"%@",heatvalue);
-    self.heatValue.text = heatvalue;
+    NSString *cmd = [newString substringWithRange:NSMakeRange(2,2)];
+    NSLog(@"收到的数据：%@\n指令：%@",newString,cmd);
+    if ([cmd isEqualToString:@"f3"]) {
+        NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
+        heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
+        NSLog(@"%@",heatvalue);
+        self.heatValue.text = heatvalue;
+        self.heatLowValue.text = heatvalue;
+        self.heatHighValue.text = heatvalue;
+    } else {
+        
+        
+    }
 }
-
 @end
