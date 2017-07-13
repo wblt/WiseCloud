@@ -33,6 +33,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *xueya1;
+@property (weak, nonatomic) IBOutlet UIView *xueya2;
 @property (assign,nonatomic) NSInteger lastIndex;
 @property (assign,nonatomic) BOOL firstFlag;
 
@@ -256,4 +258,20 @@
         
     }
 }
+
+- (IBAction)xueyaStudy:(id)sender {
+    self.xueya1.hidden = YES;
+    self.xueya2.hidden = NO;
+}
+
+- (IBAction)settingXueya:(id)sender {
+    
+}
+
+- (IBAction)cancle:(id)sender {
+    self.xueya1.hidden = NO;
+    self.xueya2.hidden = YES;
+}
+
+
 @end
