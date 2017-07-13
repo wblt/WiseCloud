@@ -96,7 +96,7 @@
     __weak typeof(self) weakSelf = self;
     self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 加载数据
-        
+        [weakSelf loadData];
     }];
 }
 
@@ -221,6 +221,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
@@ -235,11 +236,18 @@
         [self.navigationController pushViewController:addDev animated:YES];
     }
     else {
-        //进入到一个新的界面
-        BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
-        BraceletVC.hidesBottomBarWhenPushed = YES;
-        BraceletVC.type = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:BraceletVC animated:YES];
+        NSString *ss = self.dataArr[indexPath.row];
+        if ([ss isEqualToString:@"手环"]) {
+            ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
+            ShouhuanVC.hidesBottomBarWhenPushed = YES;
+            //        ShouhuanVC.bleModel = self.dataArr[indexPath.row];
+            [self.navigationController pushViewController:ShouhuanVC animated:YES];
+        }
+//        //进入到一个新的界面
+//        BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
+//        BraceletVC.hidesBottomBarWhenPushed = YES;
+//        BraceletVC.type = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:BraceletVC animated:YES];
     }
 
 }
@@ -273,8 +281,88 @@
 // 显示功能列表
 - (void)showFunctionList:(WristFunctionModel *)functionModel {
     
+    if ([functionModel.bloodpressure isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.heartrate isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+
+    
+    if ([functionModel.ecg isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
     
     
+    if ([functionModel.sleep isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.Bloodglucose isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.position isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.sport isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.oxygen isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.status isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.temperature isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    
+    if ([functionModel.bodyFat isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    
+    if ([functionModel.water isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.y2bracelet isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+
 }
 
 

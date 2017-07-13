@@ -57,7 +57,7 @@
     self.ble = [BLEManager sharedInstance];
     self.ble.delegate = self;
     
-    [self bleConnecting];
+//    [self bleConnecting];
 }
 
 - (void)bleConnecting {

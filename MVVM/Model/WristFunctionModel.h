@@ -36,5 +36,7 @@
 @property(nonatomic,copy)NSString *oxygen;
 @property(nonatomic,copy)NSString *status;
 @property(nonatomic,copy)NSString *temperature;
+@property(nonatomic,copy)NSString *bodyFat;
+@property(nonatomic,copy)NSString *water;
 @property(nonatomic,copy)NSString *y2bracelet;
 @end
