@@ -41,5 +41,10 @@
 //16进制转10进制
 + (CGFloat) numberHexString:(NSString *)aHexString;
 
+// 获取当前的时间
++ (NSString *)getCurrentTime;
+
+
+
 
 @end

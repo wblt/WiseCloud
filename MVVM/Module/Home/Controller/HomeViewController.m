@@ -258,7 +258,7 @@
             LineViewController *line = [[LineViewController alloc] init];
             UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
             NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
-            NSString *time = [self getCurrentTime];
+            NSString *time = [Tools getCurrentTime];
             line.navigationItem.title = @"血压";
             NSString *urlStr = [NSString stringWithFormat:@"seeBloodpressureDay.htm?deviceid=%@&time=%@", deviceid, time];
             line.urlStr = urlStr;
@@ -270,7 +270,7 @@
             LineViewController *line = [[LineViewController alloc] init];
             UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
             NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
-            NSString *time = [self getCurrentTime];
+            NSString *time = [Tools getCurrentTime];
             line.navigationItem.title = @"心率";
             NSString *urlStr = [NSString stringWithFormat:@"seeHeartrateDay.htm?deviceid=%@&time=%@", deviceid, time];
             line.urlStr = urlStr;
@@ -288,7 +288,7 @@
             LineViewController *line = [[LineViewController alloc] init];
             UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
             NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
-            NSString *time = [self getCurrentTime];
+            NSString *time = [Tools getCurrentTime];
             line.navigationItem.title = @"睡眠";
             NSString *urlStr = [NSString stringWithFormat:@"seeSleepDay.htm?deviceid=%@&time=%@", deviceid, time];
             line.urlStr = urlStr;
@@ -300,7 +300,7 @@
             LineViewController *line = [[LineViewController alloc] init];
             UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
             NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
-            NSString *time = [self getCurrentTime];
+            NSString *time = [Tools getCurrentTime];
             line.navigationItem.title = @"血糖";
             NSString *urlStr = [NSString stringWithFormat:@"seeBloodglucoseDay.htm?deviceid=%@&time=%@", deviceid, time];
             line.urlStr = urlStr;
@@ -318,7 +318,7 @@
             LineViewController *line = [[LineViewController alloc] init];
             UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
             NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
-            NSString *time = [self getCurrentTime];
+            NSString *time = [Tools getCurrentTime];
             line.navigationItem.title = @"运动";
             NSString *urlStr = [NSString stringWithFormat:@"seeSportDay.htm?deviceid=%@&time=%@", deviceid, time];
             line.urlStr = urlStr;
@@ -511,10 +511,4 @@
     return false;
 }
 
-- (NSString *)getCurrentTime {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
-    return dateTime;
-}
 @end

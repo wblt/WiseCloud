@@ -101,6 +101,12 @@
     return [hexNumber floatValue];
 }
 
-
+// 获取当前的时间
++ (NSString *)getCurrentTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    return dateTime;
+}
 
 @end
