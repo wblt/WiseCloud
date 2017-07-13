@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */; };
+		360DA3881F175CAD009E503C /* WristFunctionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3871F175CAD009E503C /* WristFunctionModel.m */; };
+		360DA38B1F175F27009E503C /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA38A1F175F27009E503C /* AddDeviceController.m */; };
 		36605C0C1EF3846800FDB857 /* TestUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C0B1EF3846800FDB857 /* TestUserModel.m */; };
 		36605C141EF388C000FDB857 /* UserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C131EF388C000FDB857 /* UserConfig.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
@@ -19,7 +21,6 @@
 		366A1BB71EE7DE830090FB81 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1BA81EE7DE830090FB81 /* Tools.m */; };
 		366D4CEE1F14837800AF875B /* BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4CEB1F14837800AF875B /* BLEManager.m */; };
 		366D4CEF1F14837800AF875B /* BraceletSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4CED1F14837800AF875B /* BraceletSearchController.m */; };
-		366D4D311F14856D00AF875B /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D1B1F14856D00AF875B /* AddDeviceController.m */; };
 		366D4D321F14856D00AF875B /* BalanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D1D1F14856D00AF875B /* BalanceController.m */; };
 		366D4D331F14856D00AF875B /* ChangUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D1F1F14856D00AF875B /* ChangUserController.m */; };
 		366D4D341F14856D00AF875B /* TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 366D4D211F14856D00AF875B /* TargetViewController.m */; };
@@ -163,6 +164,10 @@
 		2EAC8727A889B4520C8992F4 /* Pods-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM/Pods-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		360461591EECF05B007301CE /* BleScaningDecviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BleScaningDecviceModel.h; sourceTree = "<group>"; };
 		3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BleScaningDecviceModel.m; sourceTree = "<group>"; };
+		360DA3861F175CAD009E503C /* WristFunctionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WristFunctionModel.h; sourceTree = "<group>"; };
+		360DA3871F175CAD009E503C /* WristFunctionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WristFunctionModel.m; sourceTree = "<group>"; };
+		360DA3891F175F27009E503C /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
+		360DA38A1F175F27009E503C /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
 		36605C0A1EF3846800FDB857 /* TestUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUserModel.h; sourceTree = "<group>"; };
 		36605C0B1EF3846800FDB857 /* TestUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUserModel.m; sourceTree = "<group>"; };
 		36605C121EF388C000FDB857 /* UserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfig.h; sourceTree = "<group>"; };
@@ -189,8 +194,6 @@
 		366D4CEB1F14837800AF875B /* BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEManager.m; sourceTree = "<group>"; };
 		366D4CEC1F14837800AF875B /* BraceletSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraceletSearchController.h; sourceTree = "<group>"; };
 		366D4CED1F14837800AF875B /* BraceletSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BraceletSearchController.m; sourceTree = "<group>"; };
-		366D4D1A1F14856D00AF875B /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
-		366D4D1B1F14856D00AF875B /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
 		366D4D1C1F14856D00AF875B /* BalanceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceController.h; sourceTree = "<group>"; };
 		366D4D1D1F14856D00AF875B /* BalanceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceController.m; sourceTree = "<group>"; };
 		366D4D1E1F14856D00AF875B /* ChangUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangUserController.h; sourceTree = "<group>"; };
@@ -598,8 +601,6 @@
 		366D4D191F14856D00AF875B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				366D4D1A1F14856D00AF875B /* AddDeviceController.h */,
-				366D4D1B1F14856D00AF875B /* AddDeviceController.m */,
 				366D4D1C1F14856D00AF875B /* BalanceController.h */,
 				366D4D1D1F14856D00AF875B /* BalanceController.m */,
 				366D4D1E1F14856D00AF875B /* ChangUserController.h */,
@@ -938,6 +939,8 @@
 		36C04DAE1EF646C400A69B63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				360DA3891F175F27009E503C /* AddDeviceController.h */,
+				360DA38A1F175F27009E503C /* AddDeviceController.m */,
 				36C04DE71EF647C600A69B63 /* HomeViewController.h */,
 				36C04DE81EF647C600A69B63 /* HomeViewController.m */,
 			);
@@ -1089,6 +1092,8 @@
 				3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */,
 				402DA8191EF22B8A00402707 /* RecordModel.h */,
 				402DA81A1EF22B8A00402707 /* RecordModel.m */,
+				360DA3861F175CAD009E503C /* WristFunctionModel.h */,
+				360DA3871F175CAD009E503C /* WristFunctionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1331,6 +1336,7 @@
 				367162391F152D5A00661BCC /* BraceletInstructions.m in Sources */,
 				36C04D8F1EF6351600A69B63 /* UIImage+Water.m in Sources */,
 				36C04DD91EF647A600A69B63 /* MyDeviceCell.m in Sources */,
+				360DA3881F175CAD009E503C /* WristFunctionModel.m in Sources */,
 				366D4D591F14C36700AF875B /* LocationModel.m in Sources */,
 				36C04D901EF6351600A69B63 /* UIView+Additional.m in Sources */,
 				36C04D7E1EF6351600A69B63 /* NSArray+Extend.m in Sources */,
@@ -1349,7 +1355,6 @@
 				366D4D6F1F14C4A800AF875B /* CFPopView.m in Sources */,
 				366D4D421F1485B800AF875B /* ShouhuanViewController.m in Sources */,
 				366D4D6C1F14C4A800AF875B /* CFFuncModel.m in Sources */,
-				366D4D311F14856D00AF875B /* AddDeviceController.m in Sources */,
 				36C04D961EF6351600A69B63 /* UIViewExt.m in Sources */,
 				36C04D8E1EF6351600A69B63 /* UIImage+FixOrientation.m in Sources */,
 				36605C141EF388C000FDB857 /* UserConfig.m in Sources */,
@@ -1362,6 +1367,7 @@
 				36C04DC91EF6479800A69B63 /* AddDeviceViewController.m in Sources */,
 				36C04DDC1EF647B200A69B63 /* DiscoverViewController.m in Sources */,
 				36C04D801EF6351600A69B63 /* NSDate+Extend.m in Sources */,
+				360DA38B1F175F27009E503C /* AddDeviceController.m in Sources */,
 				36C04D7F1EF6351600A69B63 /* GTMBase64.m in Sources */,
 				36C04DCF1EF6479800A69B63 /* PersonalViewController.m in Sources */,
 				36C04D871EF6351600A69B63 /* NSString+Regex.m in Sources */,

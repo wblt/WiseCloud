@@ -27,4 +27,5 @@
 #import "QingNiuSDK.h"
 #import "QingNiuDevice.h"
 #import "QingNiuUser.h"
+#import "MJRefresh.h"
 #endif

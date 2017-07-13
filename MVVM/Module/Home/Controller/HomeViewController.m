@@ -19,11 +19,18 @@
 #import "ShouhuanViewController.h"
 
 #import "TargetViewController.h"
+
+#import "WristFunctionModel.h"
+
 @interface HomeViewController ()<ImagePlayerViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CXXPhotoCellDelegate>
 
-@property (weak, nonatomic) IBOutlet ImagePlayerView *imgPlayerView;
+@property (nonatomic,strong) UIScrollView *scrollView;
+
+@property (nonatomic,strong) ImagePlayerView *imgPlayerView;
 
 @property (nonatomic, strong) NSArray *imageURLs;
+
+@property (nonatomic,strong) WristFunctionModel *functionModel;
 
 /** 最大可选择图片个数 */
 @property (nonatomic, assign) NSInteger maxImageCount;
@@ -43,15 +50,62 @@
     [super viewDidLoad];
     self.title = @"首页";
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self loadData];
+    
     self.maxImageCount = 9;
+    
+    [self initScrollView];
     
     // 初始化 师徒
     [self initBannerView];
     
     //初始化collectionView
     [self initCollectionView];
+    
 }
 
+// 加载数据
+- (void)loadData {
+    [SVProgressHUD showWithStatus:@"数据加载中"];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlStr = [NSString stringWithFormat:@"getWristWatchFunction.htm?deviceid=%@&phone=%@",userModel.defaultDeVice,userModel.userPhoneNum];
+    [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil successBlock:^(id returnValue) {
+        [SVProgressHUD dismiss];
+        if (![returnValue isKindOfClass:[NSDictionary class]]) {
+            return ;
+        }
+        NSDictionary *dicData = (NSDictionary *)returnValue;
+        self.functionModel = [WristFunctionModel mj_objectWithKeyValues:dicData];
+        NSLog(@"%@",self.functionModel);
+    } failureBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
+// 添加滑动视图
+- (void)initScrollView {
+    // 1.创建UIScrollView
+    self.scrollView = [[UIScrollView alloc] init];
+    self.scrollView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    // frame中的size指UIScrollView的可视范围
+    self.scrollView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.scrollView];
+    __weak typeof(self) weakSelf = self;
+    self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 加载数据
+        [weakSelf loadData];
+    }];
+}
+
+#pragma mark - 下拉刷新
+- (void)headRefresh{
+    
+ 
+    
+}
 
 - (void)initCollectionView {
     _collectionView = [self.view viewWithTag:201];
@@ -62,7 +116,7 @@
         layout.itemSize = CGSizeMake(_itemWH, _itemWH);
         layout.minimumInteritemSpacing = _margin;
         layout.minimumLineSpacing = _margin;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(_margin, 160, self.view.frame.size.width - 2 * _margin, self.view.frame.size.height - 150) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(_margin, 110, self.view.frame.size.width - 2 * _margin, self.view.frame.size.height - 150) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.contentInset = UIEdgeInsetsMake(4, 0, 0, 2);
         _collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, -2);
@@ -74,7 +128,7 @@
         
         _collectionView.height = height + 4;
         
-        [self.view addSubview:_collectionView];
+        [self.scrollView addSubview:_collectionView];
         
         [_collectionView registerClass:[NoticePhotoSelectCell class] forCellWithReuseIdentifier:@"NoticePhotoSelectCell"];
     }
@@ -82,12 +136,16 @@
 
 
 - (void)initBannerView {
+    
+    self.imgPlayerView = [[ImagePlayerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
+    [self.scrollView addSubview:self.imgPlayerView];
+    
     self.imageURLs = @[[NSURL URLWithString:@"http://sudasuta.com/wp-content/uploads/2013/10/10143181686_375e063f2c_z.jpg"],
                        [NSURL URLWithString:@"http://img01.taopic.com/150920/240455-1509200H31810.jpg"],
                        [NSURL URLWithString:@"http://img.taopic.com/uploads/allimg/110906/1382-110Z611025585.jpg"]];
     
     self.imgPlayerView.imagePlayerViewDelegate = self;
-    
+
     // set auto scroll interval to x seconds
     self.imgPlayerView.scrollInterval = 1.0f;
     
@@ -113,6 +171,8 @@
 
 - (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index
 {
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     imageView.image = [UIImage imageNamed:@"bg1"];
 }
 
@@ -161,6 +221,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
@@ -175,11 +236,18 @@
         [self.navigationController pushViewController:addDev animated:YES];
     }
     else {
-        //进入到一个新的界面
-        BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
-        BraceletVC.hidesBottomBarWhenPushed = YES;
-        BraceletVC.type = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:BraceletVC animated:YES];
+        NSString *ss = self.dataArr[indexPath.row];
+        if ([ss isEqualToString:@"手环"]) {
+            ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
+            ShouhuanVC.hidesBottomBarWhenPushed = YES;
+            //        ShouhuanVC.bleModel = self.dataArr[indexPath.row];
+            [self.navigationController pushViewController:ShouhuanVC animated:YES];
+        }
+//        //进入到一个新的界面
+//        BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
+//        BraceletVC.hidesBottomBarWhenPushed = YES;
+//        BraceletVC.type = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:BraceletVC animated:YES];
     }
 
 }
@@ -210,6 +278,93 @@
     _collectionView.contentSize = CGSizeMake(0, ((self.dataArr.count + 2) / 3 ) * (_margin + _itemWH));
 }
 
+// 显示功能列表
+- (void)showFunctionList:(WristFunctionModel *)functionModel {
+    
+    if ([functionModel.bloodpressure isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.heartrate isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+
+    
+    if ([functionModel.ecg isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    
+    if ([functionModel.sleep isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.Bloodglucose isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.position isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.sport isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.oxygen isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.status isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.temperature isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    
+    if ([functionModel.bodyFat isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    
+    if ([functionModel.water isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+    
+    if ([functionModel.y2bracelet isEqualToString:@"true"]) {
+        
+    } else {
+        
+    }
+
+}
+
 
 /**
  * 检测是否有这个数据
@@ -220,7 +375,4 @@
     }
     return false;
 }
-
-
-
 @end

@@ -59,7 +59,7 @@
     self.ble = [BLEManager sharedInstance];
     self.ble.delegate = self;
     
-    [self bleConnecting];
+//    [self bleConnecting];
 }
 
 - (void)bleConnecting {
@@ -194,7 +194,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
     if (self.lastIndex != index) {
-        NSLog(@"滑动至%d,该发送命令",index);
+        NSLog(@"滑动至%ld,该发送命令",(long)index);
         switch (index) {
             case 0:
             {
@@ -237,7 +237,7 @@
                 break;
         }
     } else {
-        NSLog(@"滑动至%d",index);
+        NSLog(@"滑动至%ld",(long)index);
     }
     self.lastIndex = index;
 }
