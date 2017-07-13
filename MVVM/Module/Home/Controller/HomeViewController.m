@@ -22,6 +22,12 @@
 
 #import "WristFunctionModel.h"
 
+#import "LineViewController.h"
+
+#import "LocationViewController.h"
+
+#import "ECGViewController.h"
+
 @interface HomeViewController ()<ImagePlayerViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CXXPhotoCellDelegate>
 
 @property (nonatomic,strong) UIScrollView *scrollView;
@@ -224,7 +230,6 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.row == self.dataArr.count) {
         AddDeviceController *addDev = [self.storyboard instantiateViewControllerWithIdentifier:@"AddDeviceController"];
         addDev.returnBlock = ^(NSString *returnValue) {
@@ -245,40 +250,90 @@
             ShouhuanVC.hidesBottomBarWhenPushed = YES;
             // ShouhuanVC.bleModel = self.dataArr[indexPath.row];
             [self.navigationController pushViewController:ShouhuanVC animated:YES];
-            
 //            BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
 //            BraceletVC.hidesBottomBarWhenPushed = YES;
 //            BraceletVC.type = self.dataArr[indexPath.row];
 //            [self.navigationController pushViewController:BraceletVC animated:YES];
         } else if([title isEqualToString:@"血压"]) {
-            
+            LineViewController *line = [[LineViewController alloc] init];
+            UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+            NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
+            NSString *time = [self getCurrentTime];
+            line.navigationItem.title = @"血压";
+            NSString *urlStr = [NSString stringWithFormat:@"seeBloodpressureDay.htm?deviceid=%@&time=%@", deviceid, time];
+            line.urlStr = urlStr;
+            line.unitStr = @"mmHg";
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:line animated:YES];
         }
         else if([title isEqualToString:@"心率"]) {
+            LineViewController *line = [[LineViewController alloc] init];
+            UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+            NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
+            NSString *time = [self getCurrentTime];
+            line.navigationItem.title = @"心率";
+            NSString *urlStr = [NSString stringWithFormat:@"seeHeartrateDay.htm?deviceid=%@&time=%@", deviceid, time];
+            line.urlStr = urlStr;
+            line.unitStr = @"BMP";
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:line animated:YES];
             
         }
         else if([title isEqualToString:@"心电图"]) {
-            
+            ECGViewController *ecgVC = [[ECGViewController alloc] init];
+            ecgVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:ecgVC animated:YES];
         }
         else if([title isEqualToString:@"睡眠"]) {
-            
+            LineViewController *line = [[LineViewController alloc] init];
+            UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+            NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
+            NSString *time = [self getCurrentTime];
+            line.navigationItem.title = @"睡眠";
+            NSString *urlStr = [NSString stringWithFormat:@"seeSleepDay.htm?deviceid=%@&time=%@", deviceid, time];
+            line.urlStr = urlStr;
+            line.unitStr = @"Minute";
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:line animated:YES];
         }
         else if([title isEqualToString:@"血糖"]) {
-            
+            LineViewController *line = [[LineViewController alloc] init];
+            UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+            NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
+            NSString *time = [self getCurrentTime];
+            line.navigationItem.title = @"血糖";
+            NSString *urlStr = [NSString stringWithFormat:@"seeBloodglucoseDay.htm?deviceid=%@&time=%@", deviceid, time];
+            line.urlStr = urlStr;
+            line.unitStr = @"mmOl/L";
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:line animated:YES];
         }
         else if([title isEqualToString:@"位置"]) {
-            
+            LocationViewController *locationVC = [[LocationViewController alloc] init];
+            locationVC.navigationItem.title = @"设备定位";
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:locationVC animated:YES];
         }
         else if([title isEqualToString:@"运动"]) {
-            
+            LineViewController *line = [[LineViewController alloc] init];
+            UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+            NSString *deviceid = userModel.defaultDeVice;//@"626010120000388";
+            NSString *time = [self getCurrentTime];
+            line.navigationItem.title = @"运动";
+            NSString *urlStr = [NSString stringWithFormat:@"seeSportDay.htm?deviceid=%@&time=%@", deviceid, time];
+            line.urlStr = urlStr;
+            line.unitStr = @"步数";
+            self.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:line animated:YES];
         }
         else if([title isEqualToString:@"氧气"]) {
-            
+            // 未做
         }
         else if([title isEqualToString:@"状态"]) {
-            
+            // 未做
         }
         else if([title isEqualToString:@"体温"]) {
-            
+            // 位置
         }
         else if([title isEqualToString:@"体脂称"]) {
             BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
@@ -454,5 +509,12 @@
         return YES;
     }
     return false;
+}
+
+- (NSString *)getCurrentTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    return dateTime;
 }
 @end
