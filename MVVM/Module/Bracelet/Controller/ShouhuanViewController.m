@@ -19,7 +19,10 @@
 
 // =================手环==================
 
-@interface ShouhuanViewController ()<BLEManagerDelegate,UIScrollViewDelegate>
+@interface ShouhuanViewController ()<BLEManagerDelegate,UIScrollViewDelegate, UIPickerViewDataSource,UIPickerViewDelegate>
+{
+    NSArray *arr1;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridX;
@@ -33,6 +36,10 @@
 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *xueya1;
+@property (weak, nonatomic) IBOutlet UIView *xueya2;
+@property (weak, nonatomic) IBOutlet UIView *pickerView;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (assign,nonatomic) NSInteger lastIndex;
 @property (assign,nonatomic) BOOL firstFlag;
 
@@ -46,6 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    arr1 = @[@[@"50",@"60",@"70",@"80",@"90",@"100",@"110"],@[@"60",@"70",@"80",@"90",@"100",@"110",@"120",@"130"]];
     self.width.constant = kScreenWidth*4;
     self.secondX.constant = kScreenWidth;
     self.thridX.constant = kScreenWidth*2;
@@ -256,4 +264,56 @@
         
     }
 }
+
+- (IBAction)xueyaStudy:(id)sender {
+    self.xueya1.hidden = YES;
+    self.xueya2.hidden = NO;
+}
+
+- (IBAction)settingXueya:(id)sender {
+    self.pickerView.hidden = NO;
+}
+
+- (IBAction)cancle:(id)sender {
+    self.xueya1.hidden = NO;
+    self.xueya2.hidden = YES;
+}
+
+- (IBAction)pickeCancle:(id)sender {
+    self.pickerView.hidden = YES;
+}
+
+- (IBAction)pickerCentian:(id)sender {
+    self.pickerView.hidden = YES;
+}
+//列
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return arr1.count;
+}
+
+// 返回第component有多少行
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    NSArray *arayM= arr1[component];
+    return arayM.count;
+}
+
+//每列每行对应显示的数据是什么
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    //1.获取当前的列
+    NSArray *arayM= arr1[component];
+    //2.获取当前列对应的行的数据
+    NSString *name=arayM[row];
+    return name;
+}
+
+//select
+ -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+
+}
+
 @end
