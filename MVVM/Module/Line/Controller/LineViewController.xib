@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LineViewController">
+            <connections>
+                <outlet property="noData" destination="cq8-LF-vCk" id="6Fo-PU-OiG"/>
+                <outlet property="scrollView" destination="lw6-j4-bcx" id="M1x-Oy-jro"/>
+                <outlet property="titleLabel" destination="7Zy-03-UaS" id="p1P-9H-VaX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_bg" translatesAutoresizingMaskIntoConstraints="NO" id="9JS-Ow-O6c">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-j4-bcx">
+                    <rect key="frame" x="0.0" y="111" width="320" height="299"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="lw6-j4-bcx" secondAttribute="height" multiplier="375:350" id="RSJ-kf-ky7"/>
+                    </constraints>
+                </scrollView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_logo" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-AX-63u">
+                    <rect key="frame" x="110" y="446" width="102" height="14"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="趋势图" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zy-03-UaS">
+                    <rect key="frame" x="138" y="78" width="45" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq8-LF-vCk">
+                    <rect key="frame" x="0.0" y="111" width="320" height="299"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7Zy-03-UaS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4cK-Us-49o"/>
+                <constraint firstItem="lw6-j4-bcx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5kR-RA-MeY"/>
+                <constraint firstItem="8Ku-AX-63u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="5tU-Uj-WTk"/>
+                <constraint firstAttribute="bottom" secondItem="9JS-Ow-O6c" secondAttribute="bottom" id="8OP-VD-YcS"/>
+                <constraint firstAttribute="bottom" secondItem="8Ku-AX-63u" secondAttribute="bottom" constant="20" id="BKh-hV-qAV"/>
+                <constraint firstItem="cq8-LF-vCk" firstAttribute="top" secondItem="lw6-j4-bcx" secondAttribute="top" id="I56-yh-Ema"/>
+                <constraint firstItem="cq8-LF-vCk" firstAttribute="bottom" secondItem="lw6-j4-bcx" secondAttribute="bottom" id="K6k-eU-Kjw"/>
+                <constraint firstItem="cq8-LF-vCk" firstAttribute="trailing" secondItem="lw6-j4-bcx" secondAttribute="trailing" id="ORB-q8-XQe"/>
+                <constraint firstItem="cq8-LF-vCk" firstAttribute="leading" secondItem="lw6-j4-bcx" secondAttribute="leading" id="Oh1-2J-hiW"/>
+                <constraint firstItem="9JS-Ow-O6c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TaZ-xl-OHv"/>
+                <constraint firstItem="lw6-j4-bcx" firstAttribute="top" secondItem="7Zy-03-UaS" secondAttribute="bottom" constant="15" id="U10-dZ-Ku0"/>
+                <constraint firstItem="9JS-Ow-O6c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Yk6-Sp-Ezl"/>
+                <constraint firstAttribute="trailing" secondItem="9JS-Ow-O6c" secondAttribute="trailing" id="chD-s5-Olv"/>
+                <constraint firstAttribute="trailing" secondItem="lw6-j4-bcx" secondAttribute="trailing" id="hta-Zr-OcK"/>
+                <constraint firstItem="lw6-j4-bcx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="20" id="rva-Mn-HXx"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="454.5" y="408.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="register_bg" width="360" height="640"/>
+        <image name="register_logo" width="102" height="14"/>
+    </resources>
+</document>

@@ -10,6 +10,17 @@
 		3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3604615A1EECF05B007301CE /* BleScaningDecviceModel.m */; };
 		360DA3881F175CAD009E503C /* WristFunctionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3871F175CAD009E503C /* WristFunctionModel.m */; };
 		360DA38B1F175F27009E503C /* AddDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA38A1F175F27009E503C /* AddDeviceController.m */; };
+		360DA3921F177252009E503C /* LineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3901F177252009E503C /* LineViewController.m */; };
+		360DA3931F177252009E503C /* LineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360DA3911F177252009E503C /* LineViewController.xib */; };
+		360DA39D1F17729C009E503C /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3961F17729C009E503C /* PopoverView.m */; };
+		360DA39E1F17729C009E503C /* SHLineGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA39A1F17729C009E503C /* SHLineGraphView.m */; };
+		360DA39F1F17729C009E503C /* SHPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA39C1F17729C009E503C /* SHPlot.m */; };
+		360DA3A21F1772DF009E503C /* XinLvModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3A11F1772DF009E503C /* XinLvModel.m */; };
+		360DA3A81F177566009E503C /* ECGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3A71F177566009E503C /* ECGViewController.m */; };
+		360DA3AB1F17769B009E503C /* HealthReportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3AA1F17769B009E503C /* HealthReportController.m */; };
+		360DA3AE1F1776CD009E503C /* HealthReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3AD1F1776CD009E503C /* HealthReportCell.m */; };
+		360DA3B11F1776FF009E503C /* HealthReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3B01F1776FF009E503C /* HealthReportModel.m */; };
+		360DA3B71F1777F9009E503C /* DNADetectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3B61F1777F9009E503C /* DNADetectController.m */; };
 		36605C0C1EF3846800FDB857 /* TestUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C0B1EF3846800FDB857 /* TestUserModel.m */; };
 		36605C141EF388C000FDB857 /* UserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C131EF388C000FDB857 /* UserConfig.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
@@ -168,6 +179,29 @@
 		360DA3871F175CAD009E503C /* WristFunctionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WristFunctionModel.m; sourceTree = "<group>"; };
 		360DA3891F175F27009E503C /* AddDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceController.h; sourceTree = "<group>"; };
 		360DA38A1F175F27009E503C /* AddDeviceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceController.m; sourceTree = "<group>"; };
+		360DA38F1F177252009E503C /* LineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineViewController.h; sourceTree = "<group>"; };
+		360DA3901F177252009E503C /* LineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineViewController.m; sourceTree = "<group>"; };
+		360DA3911F177252009E503C /* LineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineViewController.xib; sourceTree = "<group>"; };
+		360DA3951F17729C009E503C /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		360DA3961F17729C009E503C /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		360DA3971F17729C009E503C /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
+		360DA3981F17729C009E503C /* PopoverViewCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCompatibility.h; sourceTree = "<group>"; };
+		360DA3991F17729C009E503C /* SHLineGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHLineGraphView.h; sourceTree = "<group>"; };
+		360DA39A1F17729C009E503C /* SHLineGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHLineGraphView.m; sourceTree = "<group>"; };
+		360DA39B1F17729C009E503C /* SHPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHPlot.h; sourceTree = "<group>"; };
+		360DA39C1F17729C009E503C /* SHPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHPlot.m; sourceTree = "<group>"; };
+		360DA3A01F1772DF009E503C /* XinLvModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XinLvModel.h; sourceTree = "<group>"; };
+		360DA3A11F1772DF009E503C /* XinLvModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XinLvModel.m; sourceTree = "<group>"; };
+		360DA3A61F177566009E503C /* ECGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGViewController.h; sourceTree = "<group>"; };
+		360DA3A71F177566009E503C /* ECGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECGViewController.m; sourceTree = "<group>"; };
+		360DA3A91F17769B009E503C /* HealthReportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthReportController.h; sourceTree = "<group>"; };
+		360DA3AA1F17769B009E503C /* HealthReportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReportController.m; sourceTree = "<group>"; };
+		360DA3AC1F1776CD009E503C /* HealthReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthReportCell.h; sourceTree = "<group>"; };
+		360DA3AD1F1776CD009E503C /* HealthReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReportCell.m; sourceTree = "<group>"; };
+		360DA3AF1F1776FF009E503C /* HealthReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthReportModel.h; sourceTree = "<group>"; };
+		360DA3B01F1776FF009E503C /* HealthReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReportModel.m; sourceTree = "<group>"; };
+		360DA3B51F1777F9009E503C /* DNADetectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNADetectController.h; sourceTree = "<group>"; };
+		360DA3B61F1777F9009E503C /* DNADetectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNADetectController.m; sourceTree = "<group>"; };
 		36605C0A1EF3846800FDB857 /* TestUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUserModel.h; sourceTree = "<group>"; };
 		36605C0B1EF3846800FDB857 /* TestUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUserModel.m; sourceTree = "<group>"; };
 		36605C121EF388C000FDB857 /* UserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfig.h; sourceTree = "<group>"; };
@@ -429,6 +463,101 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360DA38C1F177216009E503C /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				360DA38D1F17722F009E503C /* View */,
+				360DA38E1F17722F009E503C /* Controller */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		360DA38D1F17722F009E503C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		360DA38E1F17722F009E503C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				360DA38F1F177252009E503C /* LineViewController.h */,
+				360DA3901F177252009E503C /* LineViewController.m */,
+				360DA3911F177252009E503C /* LineViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		360DA3941F17729C009E503C /* SHLineGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				360DA3951F17729C009E503C /* PopoverView.h */,
+				360DA3961F17729C009E503C /* PopoverView.m */,
+				360DA3971F17729C009E503C /* PopoverView_Configuration.h */,
+				360DA3981F17729C009E503C /* PopoverViewCompatibility.h */,
+				360DA3991F17729C009E503C /* SHLineGraphView.h */,
+				360DA39A1F17729C009E503C /* SHLineGraphView.m */,
+				360DA39B1F17729C009E503C /* SHPlot.h */,
+				360DA39C1F17729C009E503C /* SHPlot.m */,
+			);
+			path = SHLineGraphView;
+			sourceTree = "<group>";
+		};
+		360DA3A31F17754A009E503C /* Ecg */ = {
+			isa = PBXGroup;
+			children = (
+				360DA3A41F17755D009E503C /* View */,
+				360DA3A51F17755D009E503C /* Controller */,
+			);
+			path = Ecg;
+			sourceTree = "<group>";
+		};
+		360DA3A41F17755D009E503C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				360DA3AC1F1776CD009E503C /* HealthReportCell.h */,
+				360DA3AD1F1776CD009E503C /* HealthReportCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		360DA3A51F17755D009E503C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				360DA3A91F17769B009E503C /* HealthReportController.h */,
+				360DA3AA1F17769B009E503C /* HealthReportController.m */,
+				360DA3A61F177566009E503C /* ECGViewController.h */,
+				360DA3A71F177566009E503C /* ECGViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		360DA3B21F1777DF009E503C /* DNADetech */ = {
+			isa = PBXGroup;
+			children = (
+				360DA3B31F1777EF009E503C /* View */,
+				360DA3B41F1777EF009E503C /* Controller */,
+			);
+			path = DNADetech;
+			sourceTree = "<group>";
+		};
+		360DA3B31F1777EF009E503C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		360DA3B41F1777EF009E503C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				360DA3B51F1777F9009E503C /* DNADetectController.h */,
+				360DA3B61F1777F9009E503C /* DNADetectController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		366A1B5B1EE7DE150090FB81 = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +837,7 @@
 		36C04D2D1EF634F300A69B63 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				360DA3941F17729C009E503C /* SHLineGraphView */,
 				366D4D5D1F14C4A800AF875B /* DropView */,
 				36FBDBE21F01F6C600FD012F /* QingNiuSDK */,
 				36C04D2E1EF6351600A69B63 /* Category */,
@@ -867,6 +997,9 @@
 		36C04DA71EF645B400A69B63 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				360DA3B21F1777DF009E503C /* DNADetech */,
+				360DA3A31F17754A009E503C /* Ecg */,
+				360DA38C1F177216009E503C /* Line */,
 				366D4D4E1F14C11900AF875B /* Location */,
 				366D4CE61F14833100AF875B /* BLE */,
 				366D4CE71F14833100AF875B /* Bracelet */,
@@ -1078,6 +1211,10 @@
 		EE6818961EEBA24C00F8ABBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				360DA3AF1F1776FF009E503C /* HealthReportModel.h */,
+				360DA3B01F1776FF009E503C /* HealthReportModel.m */,
+				360DA3A01F1772DF009E503C /* XinLvModel.h */,
+				360DA3A11F1772DF009E503C /* XinLvModel.m */,
 				366D4D571F14C36700AF875B /* LocationModel.h */,
 				366D4D581F14C36700AF875B /* LocationModel.m */,
 				36605C0A1EF3846800FDB857 /* TestUserModel.h */,
@@ -1241,6 +1378,7 @@
 				40C32B641EE93005008F653D /* Home.storyboard in Resources */,
 				366D4D391F14856D00AF875B /* TargetCell.xib in Resources */,
 				366D4D4A1F14BC5A00AF875B /* ZIncomeCircle.xib in Resources */,
+				360DA3931F177252009E503C /* LineViewController.xib in Resources */,
 				366D4D701F14C4A800AF875B /* CFPopView.xib in Resources */,
 				36C04DA01EF6351600A69B63 /* line@2x.png in Resources */,
 				366D4D6E1F14C4A800AF875B /* CFFuncTableViewCell.xib in Resources */,
@@ -1342,15 +1480,19 @@
 				36C04D7E1EF6351600A69B63 /* NSArray+Extend.m in Sources */,
 				36C04E0A1EF647D300A69B63 /* NoticePhotoSelectCell.m in Sources */,
 				366D4D3A1F14856D00AF875B /* TargetHeadView.m in Sources */,
+				360DA3921F177252009E503C /* LineViewController.m in Sources */,
 				366D4D5C1F14C46B00AF875B /* MyAnimatedAnnotationVC.m in Sources */,
 				366A1BB61EE7DE830090FB81 /* NetRequestClass.m in Sources */,
 				36C04DCC1EF6479800A69B63 /* ManageViewController.m in Sources */,
 				36C04DF51EF647C600A69B63 /* HomeViewController.m in Sources */,
 				36C04D921EF6351600A69B63 /* UIView+firstResponder.m in Sources */,
 				36605C0C1EF3846800FDB857 /* TestUserModel.m in Sources */,
+				360DA39D1F17729C009E503C /* PopoverView.m in Sources */,
 				36C04D8C1EF6351600A69B63 /* UIImage+Color.m in Sources */,
 				366D4D491F14BC5A00AF875B /* ZIncomeCircle.m in Sources */,
 				36C04D971EF6351600A69B63 /* UIWindow+Extension.m in Sources */,
+				360DA3A81F177566009E503C /* ECGViewController.m in Sources */,
+				360DA3A21F1772DF009E503C /* XinLvModel.m in Sources */,
 				366D4D381F14856D00AF875B /* TargetCell.m in Sources */,
 				366D4D6F1F14C4A800AF875B /* CFPopView.m in Sources */,
 				366D4D421F1485B800AF875B /* ShouhuanViewController.m in Sources */,
@@ -1361,6 +1503,7 @@
 				3604615B1EECF05B007301CE /* BleScaningDecviceModel.m in Sources */,
 				EE68189B1EEBA25600F8ABBD /* MyDeviceModel.m in Sources */,
 				366D4D4D1F14BC7C00AF875B /* CustomFooterBar.m in Sources */,
+				360DA3AB1F17769B009E503C /* HealthReportController.m in Sources */,
 				40C32B551EE92D29008F653D /* BaseViewModel.m in Sources */,
 				366D4D6D1F14C4A800AF875B /* CFFuncTableViewCell.m in Sources */,
 				36C04D821EF6351600A69B63 /* NSDate+TimeAgo.m in Sources */,
@@ -1371,6 +1514,7 @@
 				36C04D7F1EF6351600A69B63 /* GTMBase64.m in Sources */,
 				36C04DCF1EF6479800A69B63 /* PersonalViewController.m in Sources */,
 				36C04D871EF6351600A69B63 /* NSString+Regex.m in Sources */,
+				360DA3AE1F1776CD009E503C /* HealthReportCell.m in Sources */,
 				36C04D911EF6351600A69B63 /* UIView+Extend.m in Sources */,
 				36C04D8D1EF6351600A69B63 /* UIImage+Cut.m in Sources */,
 				36C04DCE1EF6479800A69B63 /* MyDeviceViewController.m in Sources */,
@@ -1387,6 +1531,8 @@
 				36C04D951EF6351600A69B63 /* UIView_extra.m in Sources */,
 				36C04D841EF6351600A69B63 /* NSString+Extend.m in Sources */,
 				366D4D561F14C33600AF875B /* LocationViewController.m in Sources */,
+				360DA3B71F1777F9009E503C /* DNADetectController.m in Sources */,
+				360DA39E1F17729C009E503C /* SHLineGraphView.m in Sources */,
 				366D4D371F14856D00AF875B /* BodyFatCell.m in Sources */,
 				366D4D331F14856D00AF875B /* ChangUserController.m in Sources */,
 				366D4D451F14BC3100AF875B /* WaterElementController.m in Sources */,
@@ -1395,9 +1541,11 @@
 				36C04D891EF6351600A69B63 /* UIColor+Extend.m in Sources */,
 				366D4CEE1F14837800AF875B /* BLEManager.m in Sources */,
 				36C04DCB1EF6479800A69B63 /* HelpViewController.m in Sources */,
+				360DA39F1F17729C009E503C /* SHPlot.m in Sources */,
 				36C04D991EF6351600A69B63 /* HistoryTableViewController.m in Sources */,
 				366A1B691EE7DE150090FB81 /* main.m in Sources */,
 				366D4D351F14856D00AF875B /* TestUserViewController.m in Sources */,
+				360DA3B11F1776FF009E503C /* HealthReportModel.m in Sources */,
 				36BC7E8A1EF260ED00BA30DE /* BodyFatModel.m in Sources */,
 				36C04E081EF647D300A69B63 /* DeviceCell.m in Sources */,
 				36C04D981EF6351600A69B63 /* UIWindow+Launch.m in Sources */,
