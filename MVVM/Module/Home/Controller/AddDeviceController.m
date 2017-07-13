@@ -58,6 +58,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     cell.textLabel.text = self.dataArr[indexPath.row];
+    
     return cell;
 }
 
