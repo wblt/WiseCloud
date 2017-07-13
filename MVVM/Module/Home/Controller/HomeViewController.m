@@ -238,18 +238,59 @@
         [self.navigationController pushViewController:addDev animated:YES];
     }
     else {
-        NSString *ss = self.dataArr[indexPath.row];
-        if ([ss isEqualToString:@"手环"]) {
+        NSString *title = self.dataArr[indexPath.row];
+        if ([title isEqualToString:@"手环"]) {
             ShouhuanViewController *ShouhuanVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ShouhuanViewController"];
             ShouhuanVC.hidesBottomBarWhenPushed = YES;
-            //        ShouhuanVC.bleModel = self.dataArr[indexPath.row];
+            // ShouhuanVC.bleModel = self.dataArr[indexPath.row];
             [self.navigationController pushViewController:ShouhuanVC animated:YES];
+            
+//            BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
+//            BraceletVC.hidesBottomBarWhenPushed = YES;
+//            BraceletVC.type = self.dataArr[indexPath.row];
+//            [self.navigationController pushViewController:BraceletVC animated:YES];
+        } else if([title isEqualToString:@"血压"]) {
+            
         }
-//        //进入到一个新的界面
-//        BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
-//        BraceletVC.hidesBottomBarWhenPushed = YES;
-//        BraceletVC.type = self.dataArr[indexPath.row];
-//        [self.navigationController pushViewController:BraceletVC animated:YES];
+        else if([title isEqualToString:@"心率"]) {
+            
+        }
+        else if([title isEqualToString:@"心电图"]) {
+            
+        }
+        else if([title isEqualToString:@"睡眠"]) {
+            
+        }
+        else if([title isEqualToString:@"血糖"]) {
+            
+        }
+        else if([title isEqualToString:@"位置"]) {
+            
+        }
+        else if([title isEqualToString:@"运动"]) {
+            
+        }
+        else if([title isEqualToString:@"氧气"]) {
+            
+        }
+        else if([title isEqualToString:@"状态"]) {
+            
+        }
+        else if([title isEqualToString:@"体温"]) {
+            
+        }
+        else if([title isEqualToString:@"体脂称"]) {
+            BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
+            BraceletVC.hidesBottomBarWhenPushed = YES;
+            BraceletVC.type = self.dataArr[indexPath.row];
+            [self.navigationController pushViewController:BraceletVC animated:YES];
+        }
+        else if([title isEqualToString:@"水分仪"]) {
+            BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];
+            BraceletVC.hidesBottomBarWhenPushed = YES;
+            BraceletVC.type = self.dataArr[indexPath.row];
+            [self.navigationController pushViewController:BraceletVC animated:YES];
+        }
     }
 
 }
