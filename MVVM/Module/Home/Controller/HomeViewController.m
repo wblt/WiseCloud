@@ -208,6 +208,12 @@
         } else if ([title isEqualToString:@"水分仪"]) {
             UIImage *img = [UIImage imageNamed:@"gndg13dd"];
             cell.imageView.image = img;
+        } else if([title isEqualToString:@"位置"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg3"];
+            cell.imageView.image = img;
+        } else {
+            UIImage *img = [UIImage imageNamed:@"gndg15-2"];
+            cell.imageView.image = img;
         }
         cell.closeButton.hidden = NO;
     }
@@ -280,87 +286,121 @@
 
 // 显示功能列表
 - (void)showFunctionList:(WristFunctionModel *)functionModel {
-    
+    // 血压
     if ([functionModel.bloodpressure isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"血压"];
     } else {
-        
+        if ([self detechItem:@"血压"]) {
+            [self.dataArr removeObject:@"血压"];
+        }
     }
     
+    // 心率
     if ([functionModel.heartrate isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"心率"];
     } else {
-        
+        if ([self detechItem:@"心率"]) {
+            [self.dataArr removeObject:@"心率"];
+        }
     }
 
-    
+    // 心电图
     if ([functionModel.ecg isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"心电图"];
     } else {
-        
+        if ([self detechItem:@"心电图"]) {
+            [self.dataArr removeObject:@"心电图"];
+        }
     }
     
-    
+    // 睡眠
     if ([functionModel.sleep isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"睡眠"];
     } else {
-        
+        if ([self detechItem:@"睡眠"]) {
+            [self.dataArr removeObject:@"睡眠"];
+        }
     }
     
+    // 血糖
     if ([functionModel.Bloodglucose isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"血糖"];
     } else {
-        
+        if ([self detechItem:@"血糖"]) {
+            [self.dataArr removeObject:@"血糖"];
+        }
     }
     
+    // 位置
     if ([functionModel.position isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"位置"];
     } else {
-        
+        if ([self detechItem:@"位置"]) {
+            [self.dataArr removeObject:@"位置"];
+        }
     }
     
+    // 运动
     if ([functionModel.sport isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"运动"];
     } else {
-        
+        if ([self detechItem:@"运动"]) {
+            [self.dataArr removeObject:@"运动"];
+        }
     }
     
+    // 氧气
     if ([functionModel.oxygen isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"氧气"];
     } else {
-        
+        if ([self detechItem:@"氧气"]) {
+            [self.dataArr removeObject:@"氧气"];
+        }
     }
     
+    // 状态
     if ([functionModel.status isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"状态"];
     } else {
-        
+        if ([self detechItem:@"状态"]) {
+            [self.dataArr removeObject:@"状态"];
+        }
     }
     
+    // 体温
     if ([functionModel.temperature isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"体温"];
     } else {
-        
+        if ([self detechItem:@"体温"]) {
+            [self.dataArr removeObject:@"体温"];
+        }
     }
     
-    
+    // 体脂秤
     if ([functionModel.bodyFat isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"体脂秤"];
     } else {
-        
+        if ([self detechItem:@"体脂秤"]) {
+            [self.dataArr removeObject:@"体脂秤"];
+        }
     }
     
-    
+    // 水分子
     if ([functionModel.water isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"水分仪"];
     } else {
-        
+        if ([self detechItem:@"水分仪"]) {
+            [self.dataArr removeObject:@"水分仪"];
+        }
     }
     
+    // Y2
     if ([functionModel.y2bracelet isEqualToString:@"true"]) {
-        
+        [self.dataArr addObject:@"手环"];
     } else {
-        
+        if ([self detechItem:@"手环"]) {
+            [self.dataArr removeObject:@"手环"];
+        }
     }
 
 }
