@@ -78,6 +78,7 @@
         }
         NSDictionary *dicData = (NSDictionary *)returnValue;
         self.functionModel = [WristFunctionModel mj_objectWithKeyValues:dicData];
+        [self.dataArr removeAllObjects];
         NSLog(@"%@",self.functionModel);
         [self.scrollView.mj_header endRefreshing];
         [self showFunctionList:self.functionModel];
