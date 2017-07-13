@@ -53,7 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    arr1 = @[@[@"1",@"2",@"2",@"2",@"2",@"2",@"2"],@[@"1",@"2",@"2",@"2",@"2",@"2",@"2",@"1",@"2",@"2",@"2",@"2",@"2",@"2"]];
+    arr1 = @[@[@"50",@"60",@"70",@"80",@"90",@"100",@"110"],@[@"60",@"70",@"80",@"90",@"100",@"110",@"120",@"130"]];
     self.width.constant = kScreenWidth*4;
     self.secondX.constant = kScreenWidth;
     self.thridX.constant = kScreenWidth*2;
