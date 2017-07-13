@@ -79,8 +79,11 @@
         NSDictionary *dicData = (NSDictionary *)returnValue;
         self.functionModel = [WristFunctionModel mj_objectWithKeyValues:dicData];
         NSLog(@"%@",self.functionModel);
+        [self.scrollView.mj_header endRefreshing];
+        [self showFunctionList:self.functionModel];
     } failureBlock:^(NSError *error) {
-        
+        [SVProgressHUD showWithStatus:@"加载失败"];
+        [SVProgressHUD performSelector:@selector(dismiss) withObject:nil afterDelay:2];
     }];
     
 }
@@ -98,13 +101,6 @@
         // 加载数据
         [weakSelf loadData];
     }];
-}
-
-#pragma mark - 下拉刷新
-- (void)headRefresh{
-    
- 
-    
 }
 
 - (void)initCollectionView {
@@ -376,12 +372,12 @@
         }
     }
     
-    // 体脂秤
+    // 体脂称
     if ([functionModel.bodyFat isEqualToString:@"true"]) {
-        [self.dataArr addObject:@"体脂秤"];
+        [self.dataArr addObject:@"体脂称"];
     } else {
-        if ([self detechItem:@"体脂秤"]) {
-            [self.dataArr removeObject:@"体脂秤"];
+        if ([self detechItem:@"体脂称"]) {
+            [self.dataArr removeObject:@"体脂称"];
         }
     }
     
@@ -402,7 +398,9 @@
             [self.dataArr removeObject:@"手环"];
         }
     }
-
+    
+    // 刷新显示
+    [self reloadData];
 }
 
 
