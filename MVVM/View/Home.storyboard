@@ -1420,6 +1420,7 @@
                         <outlet property="pickerView" destination="blB-T9-w5r" id="3G3-Ek-T02"/>
                         <outlet property="scrollView" destination="WIp-u9-fiA" id="PQy-g8-8Af"/>
                         <outlet property="secondX" destination="yOU-41-KkY" id="wP2-OT-RiA"/>
+                        <outlet property="thrid2X" destination="95X-cE-EJg" id="2jH-J8-KqW"/>
                         <outlet property="thridX" destination="aU4-Dr-08Q" id="yjX-47-Fgi"/>
                         <outlet property="width" destination="NcH-CT-9f1" id="Nyx-Wb-kDM"/>
                         <outlet property="xueya1" destination="nHb-53-zNE" id="Bse-T2-PJX"/>

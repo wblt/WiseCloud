@@ -26,9 +26,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridX;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thrid2X;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
 
 @property (weak, nonatomic) IBOutlet UILabel *heatValue;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *heatLowValue;
 
@@ -57,6 +59,7 @@
     self.width.constant = kScreenWidth*4;
     self.secondX.constant = kScreenWidth;
     self.thridX.constant = kScreenWidth*2;
+    self.thrid2X.constant = kScreenWidth*2;
     self.fourX.constant = kScreenWidth*3;
     
     self.scrollView.delegate = self;
