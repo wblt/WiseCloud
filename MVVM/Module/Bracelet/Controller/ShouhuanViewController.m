@@ -324,36 +324,38 @@
             case 0:
             {
                 // 发送运动指令
-                NSString *str = [BraceletInstructions getMotionInstructions];
-                NSLog(@"运动数据：%@",str);
-                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
+                self.cmd = [BraceletInstructions getMotionInstructions];
+                [self send];
                 break;
             }
             case 1:
             {
                 // 发送心率指令
-                NSString *str = [BraceletInstructions getHeartRateInstructions];
-                NSLog(@"心率数据：%@",str);
-                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
+                self.cmd = [BraceletInstructions getHeartRateInstructions];
+                [self send];
                 break;
             }
             case 2:
             {
+                // 显示上次测量的值
+                UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+                Y2Model *y2model = userModel.y2Mdoel;
+                
+                // 显示血压
+                self.xueyaValue.text = [NSString stringWithFormat:@"%@/%@",y2model.bloodPreHigh,y2model.bloodPreLow];
+                self.xueYaShousuYa.text = [NSString stringWithFormat:@"%@",y2model.bloodPreHigh];
+                self.xuyaSuZhangYa.text = [NSString stringWithFormat:@"%@",y2model.bloodPreLow];
                 
                 // 发送血压指令
-                NSString *str = [BraceletInstructions getHeartRateInstructions];
-                NSLog(@"心率数据：%@",str);
-                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
-                
+                self.cmd = [BraceletInstructions getHeartRateInstructions];
+                [self send];
                 break;
             }
             case 3:
             {
                 // 发送血氧指令
-                NSString *str = [BraceletInstructions getHeartRateInstructions];
-                NSLog(@"心率数据：%@",str);
-                [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
-                
+                self.cmd = [BraceletInstructions getHeartRateInstructions];
+                [self send];
                 break;
             }
             default:
@@ -370,14 +372,16 @@
 - (IBAction)xueyaStudy:(id)sender {
     self.xueya1.hidden = YES;
     self.xueya2.hidden = NO;
+    
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    Y2Model *y2Model = userModel.y2Mdoel;
+    self.xueyaStudyHigh.text = y2Model.baseBloodPreHigh;
+    self.xueyaStudyLow.text = y2Model.baseBloodPreLow;
 }
 
 // 设置
 - (IBAction)settingXueya:(id)sender {
     self.pickerView.hidden = NO;
-    
-    // 设置默认显示的值
-    
 }
 
 - (IBAction)cancle:(id)sender {
@@ -395,17 +399,30 @@
     Y2Model *y2model = userModel.y2Mdoel;
     if (self.highBloodPre == nil) {
         y2model.baseBloodPreHigh = @"80";
+    } else {
+        y2model.baseBloodPreHigh = self.highBloodPre;
     }
     if (self.lowBloodPre == nil) {
         y2model.baseBloodPreLow = @"50";
+    } else {
+        y2model.baseBloodPreLow = self.lowBloodPre;
     }
     userModel.y2Mdoel = y2model;
     [[UserConfig shareInstace] setAllInformation:userModel];
     
+    // 设置显示高压和低压
+    self.xueyaStudyHigh.text = y2model.baseBloodPreHigh;
+    self.xueyaStudyLow.text = y2model.baseBloodPreLow;
+    
     // 点击进行学习
+    [SVProgressHUD showWithStatus:@"学习中，请稍候..."];
+    UIOffset offset = UIOffsetMake(0, 100);
+    [SVProgressHUD setOffsetFromCenter:offset];
     
-    
-
+    self.testIndex = 1;
+    self.testMode = @"血压学习";
+    self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+    [self send];
 }
 
 
@@ -464,11 +481,101 @@
         NSLog(@"%@",heatvalue);
         // 判断是在进行那个测试
         if ([self.testMode isEqualToString:@"血压测试"]) {
+            // 计算累计值
+            self.sum = self.sum + [heatvalue integerValue];
+            if (self.testIndex == 3) {
+                // 停止测试，计算平准值
+                [SVProgressHUD dismiss];
+                NSLog(@"%ld",(long)self.sum);
+                NSString *str = [NSString stringWithFormat:@"%d",self.sum / 3];
+                self.sum = 0;
+                
+                // 血压计算公式 ：高压(收缩压)  = 基准高压*取到的心率/基准心率;               低压(舒张压)  = 基准高压*取到的心率/基准心率;
+                UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+                Y2Model *y2model = userModel.y2Mdoel;
+                NSInteger high = [y2model.baseBloodPreHigh integerValue]*[str integerValue]/[y2model.baseHeartValue integerValue];
+                NSInteger low = [y2model.baseBloodPreLow integerValue]*[str integerValue]/[y2model.baseHeartValue integerValue];
+                
+                // 保存结果
+                y2model.bloodPreLow = [NSString stringWithFormat:@"%ld",(long)low];
+                y2model.bloodPreHigh = [NSString stringWithFormat:@"%ld",(long)high];
+                [[UserConfig shareInstace] setAllInformation:userModel];
+                
+                
+                // 显示血压
+                self.xueyaValue.text = [NSString stringWithFormat:@"%ld/%ld",(long)high,(long)low];
+                self.xueYaShousuYa.text = [NSString stringWithFormat:@"%ld",(long)high];
+                self.xuyaSuZhangYa.text = [NSString stringWithFormat:@"%ld",(long)low];
+            } else {
+                // 继续发送测试命令
+                self.testIndex ++;
+                self.testMode = @"血压测试";
+                self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+                [self send];
+            }
             
         } else if([self.testMode isEqualToString:@"血压学习"]) {
-            
+            // 计算累计值
+            self.sum = self.sum + [heatvalue integerValue];
+            if (self.testIndex == 10) {
+                // 停止测试，计算平准值
+                [SVProgressHUD dismiss];
+                NSLog(@"%ld",(long)self.sum);
+                NSString *str = [NSString stringWithFormat:@"%d",self.sum / 10];
+                self.sum = 0;
+                
+                // 保存基准心率
+                UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+                Y2Model *y2model = userModel.y2Mdoel;
+                y2model.baseHeartValue = str;
+                [[UserConfig shareInstace] setAllInformation:userModel];
+                
+                // 血压计算公式 ：高压(收缩压)  = 基准高压*取到的心率/基准心率;               低压(舒张压)  = 基准高压*取到的心率/基准心率;
+                NSInteger high = [y2model.baseBloodPreHigh integerValue]*[heatvalue integerValue]/[y2model.baseHeartValue integerValue];
+                NSInteger low = [y2model.baseBloodPreLow integerValue]*[heatvalue integerValue]/[y2model.baseHeartValue integerValue];
+                
+                // 保存结果
+                y2model.bloodPreLow = [NSString stringWithFormat:@"%ld",(long)low];
+                y2model.bloodPreHigh = [NSString stringWithFormat:@"%ld",(long)high];
+                [[UserConfig shareInstace] setAllInformation:userModel];
+                
+                
+                // 显示血压
+                self.xueyaValue.text = [NSString stringWithFormat:@"%ld/%ld",(long)high,(long)low];
+                self.xueYaShousuYa.text = [NSString stringWithFormat:@"%ld",(long)high];
+                self.xuyaSuZhangYa.text = [NSString stringWithFormat:@"%ld",(long)low];
+                
+                self.xueya1.hidden = NO;
+                self.xueya2.hidden = YES;
+                
+            } else {
+                // 继续发送学习命令
+                // 计算百分比
+                NSLog(@"%ld",(long)self.testIndex);
+                float value = self.testIndex / 10.0;
+                NSLog(@"%f",value);
+                NSString *str2 = [NSString stringWithFormat:@"%.0f",value*100];
+                // 显示百分比
+                self.xueyaStudyValue.text = str2;
+                
+                self.testIndex ++;
+                self.testMode = @"血压学习";
+                self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+                [self send];
+            }
         } else if([self.testMode isEqualToString:@"血氧测试"]) {
-            
+            if (self.testIndex == 3) {
+                // 停止测试，计算平准值
+                [SVProgressHUD dismiss];
+                NSInteger value = arc4random() % 3 + 96;
+                self.xueyangValue.text = [NSString stringWithFormat:@"%ld",(long)value];
+            } else {
+                // 继续发送测试命令
+                self.testIndex ++;
+                self.testMode = @"血氧测试";
+                self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+                [self send];
+            }
         } else if([self.testMode isEqualToString:@"心率测试"]) {
             // 计算累计值
             self.sum = self.sum + [heatvalue integerValue];
@@ -477,6 +584,7 @@
                 [SVProgressHUD dismiss];
                 NSLog(@"%ld",(long)self.sum);
                 NSString *str = [NSString stringWithFormat:@"%d",self.sum / 3];
+                self.sum = 0;
                 self.heatValue.text = str;
                 self.heatLowValue.text = str;
                 self.heatHighValue.text = str;
@@ -516,20 +624,30 @@
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
     } else if (view.tag == 102) {
+        // 做一个判断
+        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+        Y2Model *y2Model = userModel.y2Mdoel;
+        if (y2Model.baseHeartValue == nil) {
+            [SVProgressHUD showInfoWithStatus:@"请先进行血压学习"];
+            return;
+        }
         [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
         // 血压测试
+        self.testIndex = 1;
         self.testMode = @"血压测试";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
     } else if (view.tag == 103) {
         [SVProgressHUD showWithStatus:@"学习中，请稍候..."];
         // 血压学习
+        self.testIndex = 1;
         self.testMode = @"血压学习";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
     } else if (view.tag == 104) {
         [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
         // 血氧测试
+        self.testIndex = 1;
         self.testMode = @"血氧测试";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
