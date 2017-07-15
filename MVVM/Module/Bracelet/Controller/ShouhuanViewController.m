@@ -82,18 +82,10 @@
 @property (assign,nonatomic) NSInteger lastIndex;
 @property (assign,nonatomic) BOOL firstFlag;
 @property (nonatomic,strong) NSMutableArray *arry;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *heartRing;
-
 @property (weak, nonatomic) IBOutlet UIImageView *xueyanRingTest;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *xueyaRingStudy;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *xueyangRing;
-
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
@@ -446,4 +438,6 @@
     }
     return _arry;
 }
+
+
 @end
