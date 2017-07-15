@@ -340,12 +340,17 @@
                 // 显示上次测量的值
                 UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
                 Y2Model *y2model = userModel.y2Mdoel;
-                
-                // 显示血压
-                self.xueyaValue.text = [NSString stringWithFormat:@"%@/%@",y2model.bloodPreHigh,y2model.bloodPreLow];
-                self.xueYaShousuYa.text = [NSString stringWithFormat:@"%@",y2model.bloodPreHigh];
-                self.xuyaSuZhangYa.text = [NSString stringWithFormat:@"%@",y2model.bloodPreLow];
-                
+                if (y2model.bloodPreLow == nil || y2model.bloodPreHigh == nil) {
+                    // 显示血压
+                    self.xueyaValue.text = [NSString stringWithFormat:@"%@/%@",@"0",@"0"];
+                    self.xueYaShousuYa.text = @"0";
+                    self.xuyaSuZhangYa.text = @"0";
+                } else {
+                    // 显示血压
+                    self.xueyaValue.text = [NSString stringWithFormat:@"%@/%@",y2model.bloodPreHigh,y2model.bloodPreLow];
+                    self.xueYaShousuYa.text = [NSString stringWithFormat:@"%@",y2model.bloodPreHigh];
+                    self.xuyaSuZhangYa.text = [NSString stringWithFormat:@"%@",y2model.bloodPreLow];
+                }
                 // 发送血压指令
                 self.cmd = [BraceletInstructions getHeartRateInstructions];
                 [self send];
@@ -353,6 +358,16 @@
             }
             case 3:
             {
+                // 显示上次的值
+                UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+                Y2Model *y2Model = userModel.y2Mdoel;
+                
+                if (y2Model.xueyangValue == nil) {
+                    self.xueyangValue.text = @"0";
+                } else {
+                    self.xueyangValue.text = y2Model.xueyangValue;
+                }
+                
                 // 发送血氧指令
                 self.cmd = [BraceletInstructions getHeartRateInstructions];
                 [self send];
@@ -569,6 +584,12 @@
                 [SVProgressHUD dismiss];
                 NSInteger value = arc4random() % 3 + 96;
                 self.xueyangValue.text = [NSString stringWithFormat:@"%ld",(long)value];
+                
+                // 保存值
+                UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+                Y2Model *y2Model = userModel.y2Mdoel;
+                y2Model.xueyangValue = [NSString stringWithFormat:@"%ld",(long)value];
+                [[UserConfig shareInstace] setAllInformation:userModel];
             } else {
                 // 继续发送测试命令
                 self.testIndex ++;
