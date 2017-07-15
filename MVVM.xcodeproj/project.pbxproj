@@ -24,7 +24,7 @@
 		36605C0C1EF3846800FDB857 /* TestUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C0B1EF3846800FDB857 /* TestUserModel.m */; };
 		36605C141EF388C000FDB857 /* UserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C131EF388C000FDB857 /* UserConfig.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
-		366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B6B1EE7DE150090FB81 /* AppDelegate.m */; };
+		366A1B6C1EE7DE150090FB81 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B6B1EE7DE150090FB81 /* AppDelegate.mm */; };
 		366A1B741EE7DE150090FB81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366A1B731EE7DE150090FB81 /* Assets.xcassets */; };
 		366A1B821EE7DE150090FB81 /* MVVMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B811EE7DE150090FB81 /* MVVMTests.m */; };
 		366A1B8D1EE7DE150090FB81 /* MVVMUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B8C1EE7DE150090FB81 /* MVVMUITests.m */; };
@@ -209,7 +209,7 @@
 		366A1B641EE7DE150090FB81 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		366A1B681EE7DE150090FB81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		366A1B6A1EE7DE150090FB81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		366A1B6B1EE7DE150090FB81 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		366A1B6B1EE7DE150090FB81 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		366A1B731EE7DE150090FB81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		366A1B781EE7DE150090FB81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		366A1B7D1EE7DE150090FB81 /* MVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVVMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -592,7 +592,7 @@
 				EE6818961EEBA24C00F8ABBD /* Model */,
 				366A1BA91EE7DE830090FB81 /* View */,
 				366A1B6A1EE7DE150090FB81 /* AppDelegate.h */,
-				366A1B6B1EE7DE150090FB81 /* AppDelegate.m */,
+				366A1B6B1EE7DE150090FB81 /* AppDelegate.mm */,
 				366A1B671EE7DE150090FB81 /* Supporting Files */,
 			);
 			path = MVVM;
@@ -1305,7 +1305,7 @@
 				TargetAttributes = {
 					366A1B631EE7DE150090FB81 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 59Q2E3377P;
+						DevelopmentTeam = HR6HGC9SU2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1524,7 +1524,7 @@
 				36C04DC71EF6479800A69B63 /* AboutViewController.m in Sources */,
 				40C32B731EE9371B008F653D /* TabBarItem.m in Sources */,
 				366D4D341F14856D00AF875B /* TargetViewController.m in Sources */,
-				366A1B6C1EE7DE150090FB81 /* AppDelegate.m in Sources */,
+				366A1B6C1EE7DE150090FB81 /* AppDelegate.mm in Sources */,
 				36C04DCD1EF6479800A69B63 /* MessageViewController.m in Sources */,
 				36C04DA51EF6351600A69B63 /* XDScaningViewController.m in Sources */,
 				36C04D8A1EF6351600A69B63 /* UIFont+customFont.m in Sources */,
@@ -1687,7 +1687,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 59Q2E3377P;
+				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1717,7 +1717,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 59Q2E3377P;
+				DEVELOPMENT_TEAM = HR6HGC9SU2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

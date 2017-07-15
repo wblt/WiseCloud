@@ -28,6 +28,8 @@
 
 #import "ECGViewController.h"
 
+#import "MyDeviceModel.h"
+
 @interface HomeViewController ()<ImagePlayerViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,CXXPhotoCellDelegate>
 
 @property (nonatomic,strong) UIScrollView *scrollView;
@@ -58,8 +60,9 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self loadData];
-    
+    //这里来添加一个请求设备的列表
+    [self getDeviceList];
+
     self.maxImageCount = 9;
     
     [self initScrollView];
@@ -72,9 +75,36 @@
     
 }
 
+- (void)getDeviceList {
+    [SVProgressHUD showWithStatus:@"数据加载中"];
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",userModel.userPhoneNum];
+    [NetRequestClass afn_requestURL:urlStr httpMethod:@"GET" params:nil  successBlock:^(id returnValue) {
+        NSArray *dataArray = (NSArray *)returnValue;
+        NSMutableArray *temp = [NSMutableArray array];
+        for (int i = 0; i < dataArray.count; i++) {
+            MyDeviceModel *model = [MyDeviceModel mj_objectWithKeyValues:dataArray[i]];
+            [temp addObject:model];
+        }
+        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+        userModel.deviceArray = [temp copy];
+        if (userModel.defaultDeVice.length == 0) {
+            MyDeviceModel *tempModel = [userModel.deviceArray firstObject];
+            userModel.defaultDeVice = tempModel.deviceid;
+        }
+        //保存
+        [[UserConfig shareInstace] setAllInformation:userModel];
+        
+        // 请求功能列表
+        [self loadData];
+        
+    } failureBlock:^(NSError *error){
+        
+    }];
+}
+
 // 加载数据
 - (void)loadData {
-    [SVProgressHUD showWithStatus:@"数据加载中"];
     UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
     NSString *urlStr = [NSString stringWithFormat:@"getWristWatchFunction.htm?deviceid=%@&phone=%@",userModel.defaultDeVice,userModel.userPhoneNum];
     [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil successBlock:^(id returnValue) {
@@ -333,7 +363,7 @@
             // 未做
         }
         else if([title isEqualToString:@"体温"]) {
-            // 位置
+            // 未做
         }
         else if([title isEqualToString:@"体脂称"]) {
             BraceletSearchController *BraceletVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BraceletSearchController"];

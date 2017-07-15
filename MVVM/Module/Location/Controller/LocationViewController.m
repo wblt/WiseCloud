@@ -33,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     //加载数据
     [self loadData];
     
@@ -269,11 +271,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"submitcommand.htm?deviceid=%@&command=128&cmdvaluex=0&cmdvaluex=0",userModel.defaultDeVice];
     [NetRequestClass afn_requestURL:urlStr httpMethod:kGET params:nil successBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
-        NSString *aString = [[NSString alloc] initWithData:returnValue encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",aString);
-        if ([aString isEqualToString:@"device busy or power down"]) {
-            [SVProgressHUD showWithStatus:aString];
-        }
+        [SVProgressHUD showWithStatus:@"加载成功"];
     } failureBlock:^(NSError *error){
         
     }];

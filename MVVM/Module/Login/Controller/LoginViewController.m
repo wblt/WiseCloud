@@ -13,7 +13,6 @@
 #import "ForgetPwdController.h"
 #import "AppDelegate.h"
 #import "BaseNavigationController.h"
-#import "MyDeviceModel.h"
 #import "UserModel.h"
 
 @interface LoginViewController ()
@@ -96,8 +95,6 @@
                 delegate.window.rootViewController.view.transform = CGAffineTransformIdentity;
             }completion:nil];
             
-            //这里来添加一个请求设备的列表
-            [self getDeviceList];
         }
         else if (num == -1) {
             //弹出提示框提示
@@ -132,29 +129,4 @@
         };
     }
 }
-
-- (void)getDeviceList {
-    NSString *urlStr = [NSString stringWithFormat:@"hjkSeeBinding.htm?phone=%@",self.phoneNumFiled.text];
-    [NetRequestClass afn_requestURL:urlStr httpMethod:@"GET" params:nil  successBlock:^(id returnValue) {
-        NSArray *dataArray = (NSArray *)returnValue;
-        NSMutableArray *temp = [NSMutableArray array];
-        for (int i = 0; i < dataArray.count; i++) {
-            MyDeviceModel *model = [MyDeviceModel mj_objectWithKeyValues:dataArray[i]];
-            [temp addObject:model];
-        }
-        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
-        userModel.deviceArray = [temp copy];
-        if (userModel.defaultDeVice.length == 0) {
-            MyDeviceModel *tempModel = [userModel.deviceArray firstObject];
-            userModel.defaultDeVice = tempModel.deviceid;
-        }
-        //保存
-        [[UserConfig shareInstace] setAllInformation:userModel];
-        
-        } failureBlock:^(NSError *error){
-
-    }];
-
-}
-
 @end
