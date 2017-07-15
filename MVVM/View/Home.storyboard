@@ -577,8 +577,8 @@
                                                                 <color key="textColor" red="0.094117647060000004" green="0.75686274509999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收缩压" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipo-Rm-TJe">
-                                                                <rect key="frame" x="40" y="94" width="46" height="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高压" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipo-Rm-TJe">
+                                                                <rect key="frame" x="47.5" y="94" width="31" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -648,8 +648,8 @@
                                                                     <constraint firstAttribute="width" constant="40" id="ddu-lI-usy"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="舒张压" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-6A-EV1">
-                                                                <rect key="frame" x="39.5" y="94" width="46" height="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="低压" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-6A-EV1">
+                                                                <rect key="frame" x="47" y="94" width="31" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1414,6 +1414,7 @@
                     <connections>
                         <outlet property="fourX" destination="hIU-PQ-lsU" id="TkS-90-De7"/>
                         <outlet property="heartRing" destination="WvV-xC-Ldl" id="93x-ly-Ppu"/>
+                        <outlet property="heartTitle" destination="jTy-QF-e1i" id="ynV-vS-LBl"/>
                         <outlet property="heatHighValue" destination="XFs-y3-MgB" id="Stf-sA-lxX"/>
                         <outlet property="heatLowValue" destination="2wU-cd-KQa" id="iXK-GF-Ei1"/>
                         <outlet property="heatValue" destination="sMk-us-Hqk" id="7ob-cm-wsh"/>
@@ -1424,11 +1425,23 @@
                         <outlet property="thrid2X" destination="95X-cE-EJg" id="2jH-J8-KqW"/>
                         <outlet property="thridX" destination="aU4-Dr-08Q" id="yjX-47-Fgi"/>
                         <outlet property="width" destination="NcH-CT-9f1" id="Nyx-Wb-kDM"/>
+                        <outlet property="xeuyangLow" destination="fLT-tL-8xJ" id="cnH-TS-a8u"/>
+                        <outlet property="xueYaShousuYa" destination="ZNv-I4-Mvk" id="rs4-Mz-Ft4"/>
                         <outlet property="xueya1" destination="nHb-53-zNE" id="Bse-T2-PJX"/>
                         <outlet property="xueya2" destination="1X0-Lv-kAN" id="0RJ-us-9cm"/>
                         <outlet property="xueyaRingStudy" destination="Ewb-y2-OZV" id="0rx-JB-EAn"/>
+                        <outlet property="xueyaStudyHigh" destination="RhD-IL-j4e" id="Hxd-Ma-dss"/>
+                        <outlet property="xueyaStudyLow" destination="n9R-sJ-Tfc" id="DFn-7h-VuN"/>
+                        <outlet property="xueyaStudyTitle" destination="ZL1-lS-SLQ" id="RaK-Ve-Ml7"/>
+                        <outlet property="xueyaStudyValue" destination="ah4-dO-LMs" id="ana-w6-Rb4"/>
+                        <outlet property="xueyaTitle" destination="pn3-S1-8Sm" id="qx9-fL-KBp"/>
+                        <outlet property="xueyaValue" destination="AaR-K1-lHQ" id="4z1-kb-YqG"/>
                         <outlet property="xueyanRingTest" destination="aof-68-wIG" id="Vsu-KK-QiA"/>
+                        <outlet property="xueyangHigh" destination="Qkp-aP-aVk" id="TMS-M6-gV7"/>
                         <outlet property="xueyangRing" destination="lzE-Uo-XpG" id="tnU-yp-dxK"/>
+                        <outlet property="xueyangTitle" destination="zKK-Vp-Dm4" id="19j-Lr-E6m"/>
+                        <outlet property="xueyangValue" destination="Sm4-84-5qQ" id="1rN-JU-K3U"/>
+                        <outlet property="xuyaSuZhangYa" destination="DVw-KI-Anh" id="NyE-yq-Bbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrW-hp-yIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

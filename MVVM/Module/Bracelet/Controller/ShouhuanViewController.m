@@ -26,13 +26,53 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thrid2X;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fourX;
 
+// 心率值
 @property (weak, nonatomic) IBOutlet UILabel *heatValue;
 
-
+// 心率低值
 @property (weak, nonatomic) IBOutlet UILabel *heatLowValue;
 
+// 心率高值
 @property (weak, nonatomic) IBOutlet UILabel *heatHighValue;
 
+// 心率标题
+@property (weak, nonatomic) IBOutlet UILabel *heartTitle;
+
+// 血压标题
+@property (weak, nonatomic) IBOutlet UILabel *xueyaTitle;
+
+// 血压值
+@property (weak, nonatomic) IBOutlet UILabel *xueyaValue;
+
+// 血压收缩压
+@property (weak, nonatomic) IBOutlet UILabel *xueYaShousuYa;
+
+// 血压舒张压
+@property (weak, nonatomic) IBOutlet UILabel *xuyaSuZhangYa;
+
+// 血压学习标题
+@property (weak, nonatomic) IBOutlet UILabel *xueyaStudyTitle;
+
+// 血压学习值
+@property (weak, nonatomic) IBOutlet UILabel *xueyaStudyValue;
+
+// 血压学习高值
+@property (weak, nonatomic) IBOutlet UILabel *xueyaStudyHigh;
+
+// 血压学习低值
+@property (weak, nonatomic) IBOutlet UILabel *xueyaStudyLow;
+
+// 血氧标题
+@property (weak, nonatomic) IBOutlet UILabel *xueyangTitle;
+
+// 血氧值
+@property (weak, nonatomic) IBOutlet UILabel *xueyangValue;
+
+// 血氧低值
+@property (weak, nonatomic) IBOutlet UILabel *xeuyangLow;
+
+// 血氧高值
+@property (weak, nonatomic) IBOutlet UILabel *xueyangHigh;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *xueya1;
@@ -83,6 +123,7 @@
     // [self bleConnecting];
 }
 
+// 初始化手势
 - (void)initGesture {
     // 心率点击测量
     self.heartRing.userInteractionEnabled = YES;
@@ -95,7 +136,6 @@
     self.xueyanRingTest.tag = 102;
     UITapGestureRecognizer *xueyaTestTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.xueyanRingTest addGestureRecognizer:xueyaTestTap];
-    
     
     // 点击血压学习
     self.xueyaRingStudy.userInteractionEnabled = YES;
@@ -111,6 +151,7 @@
     [self.xueyangRing addGestureRecognizer:xueyangTap];
 }
 
+// 初始化数据
 - (void)initData {
     NSMutableArray *arr1 = [NSMutableArray array];
     for (int i = 80; i<= 160; i ++) {
@@ -397,8 +438,6 @@
         
         
     }
-
-    
 }
 
 - (NSMutableArray *)arry {
@@ -407,5 +446,4 @@
     }
     return _arry;
 }
-
 @end
