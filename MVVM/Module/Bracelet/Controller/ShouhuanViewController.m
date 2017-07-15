@@ -20,9 +20,6 @@
 // =================手环==================
 
 @interface ShouhuanViewController ()<BLEManagerDelegate,UIScrollViewDelegate, UIPickerViewDataSource,UIPickerViewDelegate>
-{
-    NSArray *arr1;
-}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thridX;
@@ -44,7 +41,18 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (assign,nonatomic) NSInteger lastIndex;
 @property (assign,nonatomic) BOOL firstFlag;
+@property (nonatomic,strong) NSMutableArray *arry;
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *heartRing;
+
+@property (weak, nonatomic) IBOutlet UIImageView *xueyanRingTest;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *xueyaRingStudy;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *xueyangRing;
 
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
@@ -55,7 +63,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    arr1 = @[@[@"50",@"60",@"70",@"80",@"90",@"100",@"110"],@[@"60",@"70",@"80",@"90",@"100",@"110",@"120",@"130"]];
+    
+    [self initData];
+    
     self.width.constant = kScreenWidth*4;
     self.secondX.constant = kScreenWidth;
     self.thridX.constant = kScreenWidth*2;
@@ -68,7 +78,52 @@
     self.ble = [BLEManager sharedInstance];
     self.ble.delegate = self;
     
-//    [self bleConnecting];
+    [self initGesture];
+    
+    // [self bleConnecting];
+}
+
+- (void)initGesture {
+    // 心率点击测量
+    self.heartRing.userInteractionEnabled = YES;
+    self.heartRing.tag = 101;
+    UITapGestureRecognizer *heartTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.heartRing addGestureRecognizer:heartTap];
+    
+    // 点击血压测量
+    self.xueyanRingTest.userInteractionEnabled = YES;
+    self.xueyanRingTest.tag = 102;
+    UITapGestureRecognizer *xueyaTestTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.xueyanRingTest addGestureRecognizer:xueyaTestTap];
+    
+    
+    // 点击血压学习
+    self.xueyaRingStudy.userInteractionEnabled = YES;
+    self.xueyaRingStudy.tag = 103;
+    UITapGestureRecognizer *xueyaStudyTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.xueyaRingStudy addGestureRecognizer:xueyaStudyTap];
+    
+    
+    // 点击血氧测量
+    self.xueyangRing.userInteractionEnabled = YES;
+    self.xueyangRing.tag = 104;
+    UITapGestureRecognizer *xueyangTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.xueyangRing addGestureRecognizer:xueyangTap];
+}
+
+- (void)initData {
+    NSMutableArray *arr1 = [NSMutableArray array];
+    for (int i = 80; i<= 160; i ++) {
+        NSString *str = [NSString stringWithFormat:@"%d",i];
+        [arr1 addObject:str];
+    }
+    NSMutableArray *arr2 = [NSMutableArray array];
+    for (int i = 50; i<=120; i++) {
+        NSString *str = [NSString stringWithFormat:@"%d",i];
+        [arr2 addObject:str];
+    }
+    [self.arry addObject:arr1];
+    [self.arry addObject:arr2];
 }
 
 - (void)bleConnecting {
@@ -83,11 +138,13 @@
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [SVProgressHUD dismiss];
     [self.ble disConnecting:self.peripheral];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
 }
 
 // 断开连接
@@ -292,13 +349,13 @@
 //列
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return arr1.count;
+    return self.arry.count;
 }
 
 // 返回第component有多少行
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    NSArray *arayM= arr1[component];
+    NSArray *arayM= self.arry[component];
     return arayM.count;
 }
 
@@ -307,7 +364,7 @@
 {
     
     //1.获取当前的列
-    NSArray *arayM= arr1[component];
+    NSArray *arayM= self.arry[component];
     //2.获取当前列对应的行的数据
     NSString *name=arayM[row];
     return name;
@@ -317,6 +374,38 @@
  -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
 
+}
+
+- (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
+    //do something....
+//    [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
+    UIView *view = gestureRecognizer.view;
+    NSLog(@"%ld",(long)view.tag);
+    if(view.tag == 101) {
+        // 心率
+        
+    } else if (view.tag == 102) {
+        // 血压测试
+        
+        
+    } else if (view.tag == 103) {
+        // 血压学习
+        
+        
+    } else if (view.tag == 104) {
+        // 血氧测试
+        
+        
+    }
+
+    
+}
+
+- (NSMutableArray *)arry {
+    if (_arry == nil) {
+        _arry = [NSMutableArray array];
+    }
+    return _arry;
 }
 
 @end
