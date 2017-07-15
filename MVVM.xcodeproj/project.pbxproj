@@ -21,6 +21,7 @@
 		360DA3AE1F1776CD009E503C /* HealthReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3AD1F1776CD009E503C /* HealthReportCell.m */; };
 		360DA3B11F1776FF009E503C /* HealthReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3B01F1776FF009E503C /* HealthReportModel.m */; };
 		360DA3B71F1777F9009E503C /* DNADetectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360DA3B61F1777F9009E503C /* DNADetectController.m */; };
+		3648F9B21F1A2FE2009913F7 /* Y2Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 3648F9B11F1A2FE2009913F7 /* Y2Model.m */; };
 		36605C0C1EF3846800FDB857 /* TestUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C0B1EF3846800FDB857 /* TestUserModel.m */; };
 		36605C141EF388C000FDB857 /* UserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 36605C131EF388C000FDB857 /* UserConfig.m */; };
 		366A1B691EE7DE150090FB81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 366A1B681EE7DE150090FB81 /* main.m */; };
@@ -202,6 +203,8 @@
 		360DA3B01F1776FF009E503C /* HealthReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReportModel.m; sourceTree = "<group>"; };
 		360DA3B51F1777F9009E503C /* DNADetectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNADetectController.h; sourceTree = "<group>"; };
 		360DA3B61F1777F9009E503C /* DNADetectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNADetectController.m; sourceTree = "<group>"; };
+		3648F9B01F1A2FE2009913F7 /* Y2Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Y2Model.h; sourceTree = "<group>"; };
+		3648F9B11F1A2FE2009913F7 /* Y2Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Y2Model.m; sourceTree = "<group>"; };
 		36605C0A1EF3846800FDB857 /* TestUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUserModel.h; sourceTree = "<group>"; };
 		36605C0B1EF3846800FDB857 /* TestUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUserModel.m; sourceTree = "<group>"; };
 		36605C121EF388C000FDB857 /* UserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfig.h; sourceTree = "<group>"; };
@@ -1231,6 +1234,8 @@
 				402DA81A1EF22B8A00402707 /* RecordModel.m */,
 				360DA3861F175CAD009E503C /* WristFunctionModel.h */,
 				360DA3871F175CAD009E503C /* WristFunctionModel.m */,
+				3648F9B01F1A2FE2009913F7 /* Y2Model.h */,
+				3648F9B11F1A2FE2009913F7 /* Y2Model.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1529,6 +1534,7 @@
 				36C04DA51EF6351600A69B63 /* XDScaningViewController.m in Sources */,
 				36C04D8A1EF6351600A69B63 /* UIFont+customFont.m in Sources */,
 				36C04D951EF6351600A69B63 /* UIView_extra.m in Sources */,
+				3648F9B21F1A2FE2009913F7 /* Y2Model.m in Sources */,
 				36C04D841EF6351600A69B63 /* NSString+Extend.m in Sources */,
 				366D4D561F14C33600AF875B /* LocationViewController.m in Sources */,
 				360DA3B71F1777F9009E503C /* DNADetectController.m in Sources */,

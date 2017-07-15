@@ -89,6 +89,8 @@
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
+
+@property (nonatomic,copy) NSString *testMode;
 @end
 
 @implementation ShouhuanViewController
@@ -96,7 +98,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 初始化数据
     [self initData];
+    
+    [self initY2Model];
     
     self.width.constant = kScreenWidth*4;
     self.secondX.constant = kScreenWidth;
@@ -112,7 +117,18 @@
     
     [self initGesture];
     
-    // [self bleConnecting];
+    [self bleConnecting];
+}
+
+// 初始化Y2模型
+- (void)initY2Model {
+    Y2Model *y2model = [[UserConfig shareInstace] getAllInformation].y2Mdoel;
+    if (y2model == nil) {
+        y2model = [[Y2Model alloc] init];
+        UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+        userModel.y2Mdoel = y2model;
+        [[UserConfig shareInstace] setAllInformation:userModel];
+    }
 }
 
 // 初始化手势
@@ -252,9 +268,7 @@
              [self.ble setNotifyValue:peripheral forCharacteristic:c];
          }
      }
-    
-    
-    
+
 }
 
 // 断开连接
@@ -268,6 +282,9 @@
          NSString *newString = [Tools convertDataToHexStr:characteristic.value];
          // 数据解析
          [self analysisData:newString];
+         
+         
+         // 打印测试数据
          NSData * data = characteristic.value;
          Byte *resultByte = (Byte *)[data bytes];
          for(int i=0;i<[data length];i++) {
@@ -307,10 +324,9 @@
             case 1:
             {
                 // 发送心率指令
-                NSString *str = [BraceletInstructions getHeartRateTestInstructions:YES];
+                NSString *str = [BraceletInstructions getHeartRateInstructions];
                 NSLog(@"心率数据：%@",str);
                 [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
-                
                 break;
             }
             case 2:
@@ -346,12 +362,23 @@
     NSString *cmd = [newString substringWithRange:NSMakeRange(2,2)];
     NSLog(@"收到的数据：%@\n指令：%@",newString,cmd);
     if ([cmd isEqualToString:@"f3"]) {
-        NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
-        heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
-        NSLog(@"%@",heatvalue);
-        self.heatValue.text = heatvalue;
-        self.heatLowValue.text = heatvalue;
-        self.heatHighValue.text = heatvalue;
+        // 判断是在进行那个测试
+        if ([self.testMode isEqualToString:@"血压测试"]) {
+            
+        } else if([self.testMode isEqualToString:@"血压学习"]) {
+            
+        } else if([self.testMode isEqualToString:@"血氧测试"]) {
+            
+        } else if([self.testMode isEqualToString:@"心率测试"]) {
+            
+        } else {
+            NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
+            heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
+            NSLog(@"%@",heatvalue);
+            self.heatValue.text = heatvalue;
+            self.heatLowValue.text = heatvalue;
+            self.heatHighValue.text = heatvalue;
+        }
     } else {
         
         
@@ -427,8 +454,7 @@
         
     } else if (view.tag == 104) {
         // 血氧测试
-        
-        
+
     }
 }
 
@@ -438,6 +464,4 @@
     }
     return _arry;
 }
-
-
 @end

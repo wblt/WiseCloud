@@ -82,7 +82,7 @@ static  UserConfig *instance = nil;
  *  退出登陆
  */
 - (void)logout {
-
+    // 不处理
 }
 
 #pragma mark - 验证相关方法

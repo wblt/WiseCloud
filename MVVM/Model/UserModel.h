@@ -10,6 +10,8 @@
 
 #import "TestUserModel.h"
 
+#import "Y2Model.h"
+
 @interface UserModel : NSObject
 
 @property (nonatomic,copy) NSString *userPhoneNum;
@@ -24,4 +26,5 @@
 
 @property (nonatomic,strong) TestUserModel *testUserModel;
 
+@property (nonatomic,strong) Y2Model *y2Mdoel;
 @end
