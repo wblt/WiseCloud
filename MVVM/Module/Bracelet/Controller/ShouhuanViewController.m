@@ -91,12 +91,16 @@
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
 
 @property (nonatomic,copy) NSString *testMode;
+@property (nonatomic,copy) NSString *cmd;
+
 @end
 
 @implementation ShouhuanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.cmd = @"none";
     
     // 初始化数据
     [self initData];
@@ -282,22 +286,24 @@
          NSString *newString = [Tools convertDataToHexStr:characteristic.value];
          // 数据解析
          [self analysisData:newString];
-         
-         
          // 打印测试数据
          NSData * data = characteristic.value;
          Byte *resultByte = (Byte *)[data bytes];
          for(int i=0;i<[data length];i++) {
              printf("testByteFF02[%d] = %d\n",i,resultByte[i]);
          }
+         
+         // 判断是否有待发送的命令
          if (self.firstFlag == NO) {
              // 首次发送获取运动的数据
-             NSString *str = [BraceletInstructions getUnbundingInstructions];
-             NSLog(@"运动数据：%@",str);
-             [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
+//             NSString *str = [BraceletInstructions getUnbundingInstructions];
+//             NSLog(@"运动数据：%@",str);
+//             [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
+             self.cmd = [BraceletInstructions getUnbundingInstructions];
              self.firstFlag = YES;
          }
          
+         [self send];
      }
 }
 
@@ -318,7 +324,6 @@
                 NSString *str = [BraceletInstructions getMotionInstructions];
                 NSLog(@"运动数据：%@",str);
                 [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
-                
                 break;
             }
             case 1:
@@ -357,33 +362,6 @@
     self.lastIndex = index;
 }
 
-// 数据解析
-- (void)analysisData:(NSString *)newString {
-    NSString *cmd = [newString substringWithRange:NSMakeRange(2,2)];
-    NSLog(@"收到的数据：%@\n指令：%@",newString,cmd);
-    if ([cmd isEqualToString:@"f3"]) {
-        // 判断是在进行那个测试
-        if ([self.testMode isEqualToString:@"血压测试"]) {
-            
-        } else if([self.testMode isEqualToString:@"血压学习"]) {
-            
-        } else if([self.testMode isEqualToString:@"血氧测试"]) {
-            
-        } else if([self.testMode isEqualToString:@"心率测试"]) {
-            
-        } else {
-            NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
-            heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
-            NSLog(@"%@",heatvalue);
-            self.heatValue.text = heatvalue;
-            self.heatLowValue.text = heatvalue;
-            self.heatHighValue.text = heatvalue;
-        }
-    } else {
-        
-        
-    }
-}
 
 - (IBAction)xueyaStudy:(id)sender {
     self.xueya1.hidden = YES;
@@ -436,25 +414,61 @@
 
 }
 
+// 数据解析
+- (void)analysisData:(NSString *)newString {
+    NSString *cmd = [newString substringWithRange:NSMakeRange(2,2)];
+    NSLog(@"收到的数据：%@\n指令：%@",newString,cmd);
+    // 心率测试
+    if ([cmd isEqualToString:@"f3"]) {
+        [SVProgressHUD dismiss];
+        // 判断是在进行那个测试
+        if ([self.testMode isEqualToString:@"血压测试"]) {
+            
+        } else if([self.testMode isEqualToString:@"血压学习"]) {
+            
+        } else if([self.testMode isEqualToString:@"血氧测试"]) {
+            
+        } else if([self.testMode isEqualToString:@"心率测试"]) {
+            
+        } else {
+            NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
+            heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
+            NSLog(@"%@",heatvalue);
+            self.heatValue.text = heatvalue;
+            self.heatLowValue.text = heatvalue;
+            self.heatHighValue.text = heatvalue;
+        }
+    } else {
+        // 其他指令
+    }
+}
+
+
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
     //do something....
-//    [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
+    [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
     UIView *view = gestureRecognizer.view;
     NSLog(@"%ld",(long)view.tag);
     if(view.tag == 101) {
-        // 心率
-        
+        // 心率测试
+        self.testMode = @"心率测试";
+        self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+        [self send];
     } else if (view.tag == 102) {
         // 血压测试
-        
-        
+        self.testMode = @"血压测试";
+        self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+        [self send];
     } else if (view.tag == 103) {
         // 血压学习
-        
-        
+        self.testMode = @"血压学习";
+        self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+        [self send];
     } else if (view.tag == 104) {
         // 血氧测试
-
+        self.testMode = @"血氧测试";
+        self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+        [self send];
     }
 }
 
@@ -463,5 +477,24 @@
         _arry = [NSMutableArray array];
     }
     return _arry;
+}
+
+// 统一定制发送的命令
+- (void)send{
+    // 先检测设备是否连接
+    if (self.peripheral.state == CBPeripheralStateConnected) {
+        // 直接发送命令
+        if (![self.cmd isEqualToString:@"none"]) {
+            NSLog(@"~~~~有待发送的命令,命令为：%@",self.cmd);
+            [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:self.cmd] toCharacteristic:self.writeCharacteristic];
+            self.cmd = @"none";
+        } else {
+            NSLog(@"~~~~无待发送的命令");
+        }
+    } else {
+        // 重新建立连接
+        NSLog(@"~~~~重新建立连接");
+        [self bleConnecting];
+    }
 }
 @end
