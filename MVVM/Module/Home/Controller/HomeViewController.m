@@ -244,7 +244,45 @@
         } else if([title isEqualToString:@"位置"]) {
             UIImage *img = [UIImage imageNamed:@"gndg3"];
             cell.imageView.image = img;
-        } else {
+        } else if([title isEqualToString:@"心率"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg2"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"心电图"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg1"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"血糖"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg8"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"运动"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg4"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"水分仪"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg13dd"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"氧气"]) {
+            
+        } else if([title isEqualToString:@"状态"]) {
+            
+            
+        } else if([title isEqualToString:@"体温"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg6"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"血压"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg7"];
+            cell.imageView.image = img;
+            
+        } else if([title isEqualToString:@"睡眠"]) {
+            UIImage *img = [UIImage imageNamed:@"gndg5"];
+            cell.imageView.image = img;
+        }
+
+        else {
             UIImage *img = [UIImage imageNamed:@"gndg15-2"];
             cell.imageView.image = img;
         }
