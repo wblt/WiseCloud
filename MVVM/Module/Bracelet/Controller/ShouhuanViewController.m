@@ -86,12 +86,17 @@
 @property (weak, nonatomic) IBOutlet UIImageView *xueyanRingTest;
 @property (weak, nonatomic) IBOutlet UIImageView *xueyaRingStudy;
 @property (weak, nonatomic) IBOutlet UIImageView *xueyangRing;
+
 @property (nonatomic,strong) BLEManager *ble;
 @property (nonatomic, strong) CBPeripheral *peripheral;
 @property (strong ,nonatomic) CBCharacteristic *writeCharacteristic;
 
 @property (nonatomic,copy) NSString *testMode;
 @property (nonatomic,copy) NSString *cmd;
+@property (nonatomic,assign) NSInteger testIndex;
+@property (nonatomic,assign) NSInteger sum;
+@property (nonatomic,copy) NSString *highBloodPre;
+@property (nonatomic,copy) NSString *lowBloodPre;
 
 @end
 
@@ -101,6 +106,8 @@
     [super viewDidLoad];
     
     self.cmd = @"none";
+    
+    self.sum = 0;
     
     // 初始化数据
     [self initData];
@@ -295,10 +302,6 @@
          
          // 判断是否有待发送的命令
          if (self.firstFlag == NO) {
-             // 首次发送获取运动的数据
-//             NSString *str = [BraceletInstructions getUnbundingInstructions];
-//             NSLog(@"运动数据：%@",str);
-//             [self.ble peripheral:self.peripheral writeData:[Tools hexToBytes:str] toCharacteristic:self.writeCharacteristic];
              self.cmd = [BraceletInstructions getUnbundingInstructions];
              self.firstFlag = YES;
          }
@@ -363,13 +366,18 @@
 }
 
 
+
 - (IBAction)xueyaStudy:(id)sender {
     self.xueya1.hidden = YES;
     self.xueya2.hidden = NO;
 }
 
+// 设置
 - (IBAction)settingXueya:(id)sender {
     self.pickerView.hidden = NO;
+    
+    // 设置默认显示的值
+    
 }
 
 - (IBAction)cancle:(id)sender {
@@ -383,7 +391,24 @@
 
 - (IBAction)pickerCentian:(id)sender {
     self.pickerView.hidden = YES;
+    UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+    Y2Model *y2model = userModel.y2Mdoel;
+    if (self.highBloodPre == nil) {
+        y2model.baseBloodPreHigh = @"80";
+    }
+    if (self.lowBloodPre == nil) {
+        y2model.baseBloodPreLow = @"50";
+    }
+    userModel.y2Mdoel = y2model;
+    [[UserConfig shareInstace] setAllInformation:userModel];
+    
+    // 点击进行学习
+    
+    
+
 }
+
+
 //列
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -411,7 +436,20 @@
 //select
  -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-
+    //1.获取当前的列
+    NSArray *arayM= self.arry[component];
+    //2.获取当前列对应的行的数据
+    NSString *name=arayM[row];
+    NSLog(@"row:%ld,component:%ld,name:%@",(long)row,(long)component,name);
+    if (component == 0) {
+        // 高压
+        self.highBloodPre = name;
+        NSLog(@"高压：%@",name);
+    } else if(component == 1) {
+        // 低压
+        self.lowBloodPre = name;
+        NSLog(@"低压：%@",name);
+    }
 }
 
 // 数据解析
@@ -420,7 +458,10 @@
     NSLog(@"收到的数据：%@\n指令：%@",newString,cmd);
     // 心率测试
     if ([cmd isEqualToString:@"f3"]) {
-        [SVProgressHUD dismiss];
+        
+        NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
+        heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
+        NSLog(@"%@",heatvalue);
         // 判断是在进行那个测试
         if ([self.testMode isEqualToString:@"血压测试"]) {
             
@@ -429,11 +470,31 @@
         } else if([self.testMode isEqualToString:@"血氧测试"]) {
             
         } else if([self.testMode isEqualToString:@"心率测试"]) {
-            
+            // 计算累计值
+            self.sum = self.sum + [heatvalue integerValue];
+            if (self.testIndex == 3) {
+                // 停止测试，计算平准值
+                [SVProgressHUD dismiss];
+                NSLog(@"%ld",(long)self.sum);
+                NSString *str = [NSString stringWithFormat:@"%d",self.sum / 3];
+                self.heatValue.text = str;
+                self.heatLowValue.text = str;
+                self.heatHighValue.text = str;
+
+                // 保存这次测量的结果
+                UserModel *userModel = [[UserConfig shareInstace] getAllInformation];
+                Y2Model *y2model = userModel.y2Mdoel;
+                y2model.heartValue = str;
+                userModel.y2Mdoel = y2model;
+                [[UserConfig shareInstace] setAllInformation:userModel];
+            } else {
+                // 继续发送测试命令
+                self.testIndex ++;
+                self.testMode = @"心率测试";
+                self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
+                [self send];
+            }
         } else {
-            NSString *heatvalue = [newString substringWithRange:NSMakeRange(8,2)];
-            heatvalue = [NSString stringWithFormat:@"%ld",strtoul([heatvalue UTF8String],0,16)];
-            NSLog(@"%@",heatvalue);
             self.heatValue.text = heatvalue;
             self.heatLowValue.text = heatvalue;
             self.heatHighValue.text = heatvalue;
@@ -443,28 +504,31 @@
     }
 }
 
-
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
     //do something....
-    [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
     UIView *view = gestureRecognizer.view;
     NSLog(@"%ld",(long)view.tag);
     if(view.tag == 101) {
+        [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
         // 心率测试
+        self.testIndex = 1;
         self.testMode = @"心率测试";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
     } else if (view.tag == 102) {
+        [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
         // 血压测试
         self.testMode = @"血压测试";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
     } else if (view.tag == 103) {
+        [SVProgressHUD showWithStatus:@"学习中，请稍候..."];
         // 血压学习
         self.testMode = @"血压学习";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
         [self send];
     } else if (view.tag == 104) {
+        [SVProgressHUD showWithStatus:@"测量中，请稍候..."];
         // 血氧测试
         self.testMode = @"血氧测试";
         self.cmd = [BraceletInstructions getHeartRateTestInstructions:YES];
