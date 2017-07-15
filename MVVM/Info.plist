@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -28,11 +28,13 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>是否允许使用蓝牙？</string>
+	<string>智能云健康正在尝试打开你的蓝牙，请问是否允许它访问你的蓝牙？</string>
 	<key>NSCameraUsageDescription</key>
-	<string>需要获取您的相机权限</string>
+	<string>智能云健康正在尝试打开你的相机，请问是否允许它访问你的相机？</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>请点击“允许”访问</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>需要获取您的相册权限保存图片</string>
+	<string>智能云健康正在尝试打开你的相册，请问是否允许它访问你的相册？</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
