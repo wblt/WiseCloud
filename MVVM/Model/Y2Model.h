@@ -30,7 +30,4 @@
 
 // 血氧
 @property(nonatomic,copy) NSString *xueyangValue;
-
-
-
 @end
